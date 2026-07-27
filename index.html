@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#002A5C">
+<title>IMBIO — Instituto Municipal de Biodiversidad y Protección Ambiental</title>
+<style>
+  :root {
+    --azul-marino: #002A5C;
+    --azul-marino-claro: #0B3D75;
+    --verde: #2f8f5b;
+    --verde-claro: #e6f4ec;
+    --gris-texto: #4a4a4a;
+    --fondo: #f4f6f8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--fondo);
+    color: #1f2a24;
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--azul-marino), var(--azul-marino-claro));
+    color: white;
+    padding: 3.5rem 1.5rem 5rem;
+    text-align: center;
+    position: relative;
+  }
+  header .icono {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
+    color: #cfe0f0;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .ayto {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #9db8d4;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: -3rem auto 0;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 18px rgba(0, 42, 92, 0.1);
+    border-top: 4px solid var(--azul-marino);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 26px rgba(0, 42, 92, 0.18);
+  }
+  .card .emoji {
+    font-size: 1.8rem;
+  }
+  .card h2 {
+    font-size: 1.2rem;
+    color: var(--azul-marino);
+  }
+  .card p {
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    flex-grow: 1;
+  }
+  .card .tag {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    background: var(--verde-claro);
+    color: var(--verde);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  .seccion-titulo {
+    margin: 2.5rem 0 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--azul-marino);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 0.4rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #7a8a99;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="icono">🌿</div>
+  <h1>IMBIO</h1>
+  <p>Instituto Municipal de Biodiversidad y Protección Ambiental — Pabellón de Arteaga</p>
+  <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
+</header>
+
+<main>
+
+  <div class="seccion-titulo">Monitoreo y denuncia ciudadana</div>
+  <div class="grid">
+
+    <a class="card" href="https://denuncias.imbio.info" target="_blank" rel="noopener">
+      <div class="emoji">📊</div>
+      <h2>Plataforma de Monitoreo Ambiental</h2>
+      <p>Panel de control con reportes, mapa general, inspectores, establecimientos y verificaciones ambientales.</p>
+      <span class="tag">Panel administrativo</span>
+    </a>
+
+    <a class="card" href="https://denuncias.imbio.info/app" target="_blank" rel="noopener">
+      <div class="emoji">🌱</div>
+      <h2>Denuncias Ambientales</h2>
+      <p>Reporta incidencias ambientales: residuos, agua contaminada, ruido, emergencias y más.</p>
+      <span class="tag">Servicio ciudadano</span>
+    </a>
+
+    <a class="card" href="https://denuncias.imbio.info/app" target="_blank" rel="noopener">
+      <div class="emoji">✂️</div>
+      <h2>Solicitud de Poda y Derribo</h2>
+      <p>Solicita la poda o el derribo de árboles en tu domicilio o vía pública de forma segura y regulada.</p>
+      <span class="tag">Servicio ciudadano</span>
+    </a>
+
+  </div>
+
+  <div class="seccion-titulo">Herramientas técnicas</div>
+  <div class="grid">
+
+    <a class="card" href="/atlas-de-riesgo">
+      <div class="emoji">🗺️</div>
+      <h2>Atlas de Riesgos</h2>
+      <p>Atlas de riesgos multiamenaza y vulnerabilidad social del municipio, con análisis de punto interactivo.</p>
+      <span class="tag">Herramienta SIG</span>
+    </a>
+
+    <a class="card" href="/ladrilleras">
+      <div class="emoji">🧱</div>
+      <h2>Control de Ladrilleras</h2>
+      <p>Verificación de permisos, hornos registrados y reportes de quema de las ladrilleras del municipio.</p>
+      <span class="tag">Control ambiental</span>
+    </a>
+
+    <a class="card" href="https://arboles.imbio.info" target="_blank" rel="noopener">
+      <div class="emoji">🌳</div>
+      <h2>Monitoreo de Arbolado Urbano</h2>
+      <p>Censo y seguimiento del arbolado urbano y forestal del municipio.</p>
+      <span class="tag">Censo forestal</span>
+    </a>
+
+  </div>
+
+</main>
+
+<footer>
+  © <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes
+</footer>
+
+<script>
+  document.getElementById("anio").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
