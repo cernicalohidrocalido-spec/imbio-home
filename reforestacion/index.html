@@ -600,7 +600,7 @@ function especieCard(e) {
 }
 
 /* ═══ Fotos de especies — varias de iNaturalist + Wikipedia, con caché local ═══ */
-const FOTO_CACHE_KEY = 'reforesta_fotos_v3_';
+const FOTO_CACHE_KEY = 'reforesta_fotos_v4_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
@@ -689,14 +689,6 @@ function dedupeFotos(fotos) {
   return out;
 }
 
-function fotoDesdeTaxonVerificado(taxon) {
-  if (!taxon || taxon.iconic_taxon_name !== 'Plantae') return null;
-  if (!esRangoEspecie(taxon.rank)) return null;
-  const foto = taxon.default_photo;
-  if (!foto || !foto.medium_url) return null;
-  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
-}
-
 async function buscarTaxonPorNombre(nombreCientifico) {
   if (!nombreCientifico || /\bspp\.?\b/i.test(nombreCientifico)) return null;
   const params = new URLSearchParams({
@@ -737,72 +729,90 @@ async function resolverTaxon(e) {
   return await buscarTaxonPorNombre(e.nombre_cientifico);
 }
 
+function aspectRatioDeFoto(photo) {
+  const d = photo?.original_dimensions;
+  if (!d?.width || !d?.height) return null;
+  return d.width / d.height;
+}
+
+/** Evita panorámicas/paisajes extremos; favorece retrato o plano cercano del ejemplar. */
+function esFotoDeEjemplar(photo) {
+  const ar = aspectRatioDeFoto(photo);
+  if (ar == null) return true; // sin datos: no descartar
+  if (ar > 1.85) return false; // paisaje muy ancho
+  if (ar < 0.35) return false; // franja rara
+  return true;
+}
+
+function fotoDesdeObjetoPhoto(photo, source, taxonId) {
+  if (!photo) return null;
+  if (!esFotoDeEjemplar(photo)) return null;
+  const url = photo.medium_url || normalizarUrlInat(photo.url) || photo.large_url;
+  if (!url) return null;
+  return {
+    url,
+    attribution: photo.attribution || '',
+    source,
+    taxonId: taxonId || null,
+    aspect: aspectRatioDeFoto(photo),
+    curated: source === 'inat-curated',
+  };
+}
+
 async function fetchFotosObservaciones(taxonId) {
   if (!taxonId) return [];
-  const params = new URLSearchParams({
-    taxon_id: String(taxonId),
-    photos: 'true',
-    quality_grade: 'research',
-    per_page: String(MAX_FOTOS_POR_ESPECIE),
-    order_by: 'votes',
-  });
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 10000);
   const fotos = [];
-  for (const obs of (data?.results || [])) {
-    // Solo fotos cuyo taxón de la observación es el mismo o descendiente del buscado
-    const obsTaxonId = obs.taxon?.id;
-    const ancestors = obs.taxon?.ancestor_ids || [];
-    if (obsTaxonId !== taxonId && !ancestors.includes(taxonId)) continue;
-    for (const photo of (obs.photos || [])) {
-      const url = normalizarUrlInat(photo.url) || photo.medium_url || photo.large_url;
-      if (!url) continue;
-      fotos.push({
-        url,
-        attribution: photo.attribution || obs.user?.login || '',
-        source: 'inat',
-      });
+  const vistas = new Set();
+
+  // 1) Preferir observaciones con fenología de planta (flor/fruto) — suelen ser close-ups
+  // term_id=12 = Plant phenology en iNaturalist
+  const queries = [
+    { taxon_id: String(taxonId), photos: 'true', quality_grade: 'research', per_page: '12', order_by: 'votes', term_id: '12' },
+    { taxon_id: String(taxonId), photos: 'true', quality_grade: 'research', per_page: '12', order_by: 'created_at' },
+  ];
+
+  for (const q of queries) {
+    if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
+    const params = new URLSearchParams(q);
+    const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 10000);
+    for (const obs of (data?.results || [])) {
+      const obsTaxonId = obs.taxon?.id;
+      // Exacto o subespecie/variedad del taxón pedido (ancestor incluye al padre)
+      const ancestors = obs.taxon?.ancestor_ids || [];
+      if (obsTaxonId !== taxonId && !ancestors.includes(taxonId)) continue;
+      // Evitar observaciones de taxones superiores (género/familia) coladas por error
+      if (obs.taxon?.rank && !esRangoEspecie(obs.taxon.rank) && obsTaxonId !== taxonId) continue;
+
+      for (const photo of (obs.photos || []).slice(0, 2)) {
+        const f = fotoDesdeObjetoPhoto(photo, 'inat', taxonId);
+        if (!f) continue;
+        const key = f.url.split('?')[0];
+        if (vistas.has(key)) continue;
+        vistas.add(key);
+        fotos.push(f);
+        if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
+      }
       if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
     }
-    if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
   }
   return fotos;
 }
 
 async function fetchFotosDeTaxon(taxon) {
-  if (!taxon) return [];
+  if (!taxon?.id) return [];
+  // Siempre pedir detalle: taxon_photos curadas son las más representativas del ejemplar
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxon.id}`, INAT_HEADERS, 10000);
+  const full = data?.results?.[0];
+  if (!full || full.iconic_taxon_name !== 'Plantae') return [];
+
   const fotos = [];
-  const def = fotoDesdeTaxonVerificado(taxon);
-  if (def) fotos.push(def);
-  for (const tp of (taxon.taxon_photos || [])) {
+  const fDef = fotoDesdeObjetoPhoto(full.default_photo, 'inat-curated', full.id);
+  if (fDef) fotos.push(fDef);
+
+  for (const tp of (full.taxon_photos || [])) {
     const photo = tp.photo || tp;
-    const url = photo.medium_url || normalizarUrlInat(photo.url);
-    if (!url) continue;
-    fotos.push({
-      url,
-      attribution: photo.attribution || '',
-      source: 'inat',
-      taxonId: taxon.id,
-    });
-  }
-  // Si el objeto taxon de la búsqueda no trae taxon_photos, pide el detalle
-  if (fotos.length < 2 && taxon.id) {
-    const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxon.id}`, INAT_HEADERS, 8000);
-    const full = data?.results?.[0];
-    if (full) {
-      const def2 = fotoDesdeTaxonVerificado(full);
-      if (def2) fotos.push(def2);
-      for (const tp of (full.taxon_photos || [])) {
-        const photo = tp.photo || tp;
-        const url = photo.medium_url || normalizarUrlInat(photo.url);
-        if (!url) continue;
-        fotos.push({
-          url,
-          attribution: photo.attribution || '',
-          source: 'inat',
-          taxonId: full.id,
-        });
-      }
-    }
+    const f = fotoDesdeObjetoPhoto(photo, 'inat-curated', full.id);
+    if (f) fotos.push(f);
   }
   return fotos;
 }
@@ -810,39 +820,45 @@ async function fetchFotosDeTaxon(taxon) {
 async function fetchFotoWikipedia(titulo) {
   if (!titulo) return null;
   const clean = String(titulo).replace(/_/g, ' ').trim();
-  // Evitar páginas genéricas (spp.)
   if (/\bspp\.?\b/i.test(clean)) return null;
   for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
     const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(clean)}`, {}, 6000);
     if (!data || data.type === 'disambiguation') continue;
-    // Si Wikipedia redirige a otra especie, el título suele seguir relacionado
     const url = data?.originalimage?.source || data?.thumbnail?.source;
-    if (url) return { url, attribution: `Wikipedia / ${data.title || clean}`, source: 'wikipedia' };
+    if (url) return { url, attribution: `Wikipedia / ${data.title || clean}`, source: 'wikipedia', curated: false };
   }
   return null;
 }
 
 async function resolverFotosEspecie(e) {
-  const fotos = [];
   const taxon = await resolverTaxon(e);
+  let fotos = [];
 
   if (taxon?.id) {
-    const desdeObs = await fetchFotosObservaciones(taxon.id);
-    fotos.push(...desdeObs);
-    if (fotos.length < 2) {
-      const desdeTaxon = await fetchFotosDeTaxon(taxon);
-      fotos.push(...desdeTaxon);
+    // 1) Primero fotos curadas de iNaturalist (ejemplar / hojas / flores / frutos)
+    const curadas = await fetchFotosDeTaxon(taxon);
+    fotos.push(...curadas);
+
+    // 2) Completar con observaciones (prioriza fenología: flor/fruto), sin paisajes anchos
+    if (fotos.length < MAX_FOTOS_POR_ESPECIE) {
+      const obs = await fetchFotosObservaciones(taxon.id);
+      fotos.push(...obs);
     }
   }
 
-  if (fotos.length < MAX_FOTOS_POR_ESPECIE) {
+  // 3) Wikipedia solo como último recurso si casi no hay nada de iNaturalist
+  const soloInat = fotos.filter(f => f.source !== 'wikipedia');
+  if (soloInat.length === 0) {
     let wiki = null;
     if (e.wikipedia_titulo) wiki = await fetchFotoWikipedia(e.wikipedia_titulo);
     if (!wiki && e.nombre_cientifico) wiki = await fetchFotoWikipedia(e.nombre_cientifico);
     if (wiki) fotos.push(wiki);
   }
 
-  return { fotos: dedupeFotos(fotos), taxonId: taxon?.id || null, taxonName: taxon?.name || null };
+  fotos = dedupeFotos(fotos);
+  // Orden: curadas primero, luego el resto
+  fotos.sort((a, b) => Number(!!b.curated) - Number(!!a.curated));
+  return { fotos, taxonId: taxon?.id || null, taxonName: taxon?.name || null };
 }
 
 function pintarFotoEspecie(id, resultado) {
@@ -866,7 +882,7 @@ function actualizarVistaFoto(cont) {
   cont.dataset.idx = String(idx);
 
   const foto = fotos[idx];
-  const credito = foto.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
+  const credito = foto.source === 'wikipedia' ? 'Wikipedia' : (foto.curated || foto.source === 'inat-curated' ? 'iNaturalist' : 'iNaturalist');
   const muchas = fotos.length > 1;
 
   cont.classList.toggle('has-many', muchas);
