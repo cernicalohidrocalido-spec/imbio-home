@@ -86,10 +86,16 @@
     border: 1px solid var(--borde);
   }
   nav.subnav a:hover { background: var(--verde-claro); border-color: var(--verde); }
+  nav.subnav a.active {
+    background: var(--azul-marino);
+    color: #fff;
+    border-color: var(--azul-marino);
+  }
 
   main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 
-  section { padding-top: 2.5rem; }
+  section.panel { padding-top: 2.5rem; display: none; }
+  section.panel.active { display: block; }
   .section-titulo {
     font-size: 1.5rem;
     font-weight: 800;
@@ -298,26 +304,14 @@
 </header>
 
 <nav class="subnav">
-  <a href="#guia">Cómo plantar</a>
-  <a href="#evitar">Qué NO plantar</a>
-  <a href="#catalogo">Catálogo de especies</a>
+  <a href="#catalogo" data-panel="catalogo">Catálogo de especies</a>
+  <a href="#guia" data-panel="guia">Cómo plantar</a>
+  <a href="#evitar" data-panel="evitar">Qué NO plantar</a>
 </nav>
 
 <main>
 
-  <section id="guia">
-    <div class="section-titulo">Cómo plantar un árbol, paso a paso</div>
-    <p class="section-sub">Sigue esta guía para asegurar la mayor supervivencia posible de cada árbol plantado. La tasa de supervivencia al año es el indicador más importante de éxito en reforestación: una tasa mayor al 70% se considera exitosa.</p>
-    <div class="pasos-grid" id="pasos-grid"></div>
-  </section>
-
-  <section id="evitar">
-    <div class="section-titulo">Qué NO plantar</div>
-    <p class="section-sub">Especies prohibidas o desaconsejadas por SEMARNAT, la Secretaría Estatal y SEMADESU para reforestación urbana en Aguascalientes.</p>
-    <div class="evitar-grid" id="evitar-grid"></div>
-  </section>
-
-  <section id="catalogo">
+  <section id="catalogo" class="panel active">
     <div class="section-titulo">Catálogo de especies</div>
     <p class="section-sub">157 especies nativas y adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
 
@@ -363,6 +357,18 @@
     <p class="sin-resultados" id="sin-resultados" style="display:none;">No hay especies con estos filtros. Intenta ajustar la búsqueda.</p>
   </section>
 
+  <section id="guia" class="panel">
+    <div class="section-titulo">Cómo plantar un árbol, paso a paso</div>
+    <p class="section-sub">Sigue esta guía para asegurar la mayor supervivencia posible de cada árbol plantado. La tasa de supervivencia al año es el indicador más importante de éxito en reforestación: una tasa mayor al 70% se considera exitosa.</p>
+    <div class="pasos-grid" id="pasos-grid"></div>
+  </section>
+
+  <section id="evitar" class="panel">
+    <div class="section-titulo">Qué NO plantar</div>
+    <p class="section-sub">Especies prohibidas o desaconsejadas por SEMARNAT, la Secretaría Estatal y SEMADESU para reforestación urbana en Aguascalientes.</p>
+    <div class="evitar-grid" id="evitar-grid"></div>
+  </section>
+
 </main>
 
 <footer>
@@ -371,6 +377,36 @@
 
 <script>
 document.getElementById("anio").textContent = new Date().getFullYear();
+
+const PANELES = ['catalogo', 'guia', 'evitar'];
+
+function mostrarPanel(id) {
+  const panelId = PANELES.includes(id) ? id : 'catalogo';
+  document.querySelectorAll('section.panel').forEach(s => {
+    s.classList.toggle('active', s.id === panelId);
+  });
+  document.querySelectorAll('nav.subnav a').forEach(a => {
+    a.classList.toggle('active', a.dataset.panel === panelId);
+  });
+  if (location.hash.slice(1) !== panelId) {
+    history.replaceState(null, '', '#' + panelId);
+  }
+  window.scrollTo(0, 0);
+}
+
+function panelDesdeHash() {
+  const h = location.hash.replace(/^#/, '');
+  mostrarPanel(h || 'catalogo');
+}
+
+document.querySelectorAll('nav.subnav a').forEach(a => {
+  a.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    mostrarPanel(a.dataset.panel);
+  });
+});
+window.addEventListener('hashchange', panelDesdeHash);
+panelDesdeHash();
 
 const TIPO_LABEL = { arbol: 'Árbol', arbusto: 'Arbusto', herbacea: 'Herbácea' };
 const SITIO_LABEL = { banquetas: 'Banquetas', camellones: 'Camellones', parques: 'Parques', jardin: 'Jardín', agricola: 'Agrícola' };
