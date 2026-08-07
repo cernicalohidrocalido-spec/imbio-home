@@ -38,6 +38,31 @@
     padding: 2.5rem 1.5rem 2.75rem;
     text-align: center;
   }
+  header .ayto {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #aecbe6;
+  }
+  header .instituto {
+    margin-top: 0.35rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #dbe8f5;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header .logo-ayto {
+    display: block;
+    height: 72px;
+    width: auto;
+    margin: 1.1rem auto 1.2rem;
+    border-radius: 8px;
+    background: #fff;
+    padding: 6px 10px;
+  }
   header .icono { font-size: 2.4rem; margin-bottom: 0.5rem; }
   header h1 { font-size: 2rem; font-weight: 800; letter-spacing: 0.3px; max-width: 760px; margin: 0 auto; }
   header p {
@@ -352,12 +377,44 @@
     border: 1px dashed var(--borde);
   }
 
-  footer { text-align: center; padding: 2rem 1rem; color: #647082; font-size: 0.95rem; margin-top: 2rem; }
+  footer {
+    text-align: center;
+    padding: 2.25rem 1.25rem 2.5rem;
+    color: #647082;
+    font-size: 0.92rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--borde);
+    background: #fff;
+    line-height: 1.55;
+  }
+  footer .ayto {
+    font-weight: 700;
+    color: var(--azul-marino);
+    font-size: 0.95rem;
+  }
+  footer .instituto {
+    margin-top: 0.2rem;
+    color: var(--gris-texto);
+    font-weight: 600;
+  }
+  footer .creditos {
+    margin-top: 0.85rem;
+    color: var(--muted);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer .creditos a { color: var(--azul-marino); font-weight: 600; text-decoration: none; }
+  footer .creditos a:hover { text-decoration: underline; }
+  footer .copy { margin-top: 0.9rem; font-size: 0.85rem; color: #8a94a6; }
 </style>
 </head>
 <body>
 
 <header>
+  <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
+  <div class="instituto">Instituto Municipal de Biodiversidad y Protección Ambiental</div>
+  <img class="logo-ayto" src="/logo_ayuntamiento.jpg" alt="Logotipo del H. Ayuntamiento de Pabellón de Arteaga">
   <div class="icono">🌱</div>
   <h1>Manual de Plantas Útiles para la Reforestación</h1>
   <p>Guía práctica y catálogo de especies para plantar y cuidar árboles en Pabellón de Arteaga y el estado de Aguascalientes.</p>
@@ -441,7 +498,13 @@
 </main>
 
 <footer>
-  © <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes
+  <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
+  <div class="instituto">Instituto Municipal de Biodiversidad y Protección Ambiental</div>
+  <div class="creditos">
+    Coordinación y elaboración: Biólogo Luis Felipe Lozano Román<br>
+    Correo electrónico: <a href="mailto:imbio@pabellon.gob.mx">imbio@pabellon.gob.mx</a>
+  </div>
+  <div class="copy">© <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes</div>
 </footer>
 
 <script>
