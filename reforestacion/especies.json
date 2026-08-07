@@ -59,14 +59,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 8,
     "riego": "medio",
-    "raiz": "compacta",
-    "advertencia": null,
+    "raiz": "agresiva",
+    "advertencia": "Raíz agresiva y muy sensible a las heladas; no apta para banquetas ni, en general, para el clima frío invernal de Aguascalientes salvo en microclimas cálidos resguardados.",
     "servicios": [
       "ornamental",
       "sombra media"
@@ -166,14 +165,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 12,
     "riego": "medio",
-    "raiz": "semiprofunda",
-    "advertencia": null,
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva y extensa que levanta pavimento y banquetas; sembrar solo en parques y camellones amplios, lejos de tuberías y construcciones.",
     "servicios": [
       "sombra densa",
       "ornamental"
@@ -622,13 +620,12 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques"
     ],
     "altura_max_m": 12,
     "riego": "medio",
-    "raiz": "semiprofunda",
-    "advertencia": null,
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva y superficial que daña banquetas, tuberías y cimentaciones; solo en parques y camellones muy amplios.",
     "servicios": [
       "ornamental",
       "sombra"
@@ -733,14 +730,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 8,
     "riego": "bajo",
-    "raiz": "semiprofunda",
-    "advertencia": "Látex puede irritar piel en algunas personas.",
+    "raiz": "agresiva",
+    "advertencia": "Látex puede irritar piel en algunas personas. Raíz agresiva que puede levantar banquetas y tuberías cercanas; mejor en jardines y parques con espacio amplio.",
     "servicios": [
       "fruto comestible",
       "sombra"
@@ -761,13 +757,12 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques"
     ],
     "altura_max_m": 12,
     "riego": "medio",
-    "raiz": "semiprofunda",
-    "advertencia": null,
+    "raiz": "agresiva",
+    "advertencia": "Raíz agresiva típica de los Ficus, puede levantar banquetas; además es sensible a heladas y requiere protección los primeros años. Reservar para parques y camellones amplios.",
     "servicios": [
       "ornamental",
       "sombra"
@@ -973,14 +968,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 10,
     "riego": "bajo",
-    "raiz": "semiprofunda",
-    "advertencia": "Frutos tóxicos si se ingieren. Evitar en zonas con niños pequeños.",
+    "raiz": "agresiva",
+    "advertencia": "Frutos tóxicos si se ingieren. Evitar en zonas con niños pequeños. Raíz agresiva y alta capacidad de propagarse por semilla; no recomendable en banquetas, reservar para camellones y parques amplios con monitoreo.",
     "servicios": [
       "sombra",
       "ornamental",
@@ -1029,14 +1023,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 12,
     "riego": "medio-alto",
     "raiz": "superficial carnosa",
-    "advertencia": "Raíces carnosas sensibles. No remover tierra alrededor del tronco.",
+    "advertencia": "Raíces carnosas sensibles. No remover tierra alrededor del tronco. Por su sistema radicular superficial y extendido no es apta para banquetas estrechas; reservar para parques y jardines amplios.",
     "servicios": [
       "ornamental",
       "flores fragantes"
@@ -1600,13 +1593,12 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques"
     ],
     "altura_max_m": 8,
     "riego": "muy bajo",
-    "raiz": "semiprofunda",
-    "advertencia": "Frutos pueden causar irritación en personas sensibles.",
+    "raiz": "agresiva",
+    "advertencia": "Frutos pueden causar irritación en personas sensibles. Considerada invasora en varias regiones cálidas y de raíz agresiva; no apta para banquetas, reservar para parques con monitoreo.",
     "servicios": [
       "ornamental",
       "resistente sequía"
@@ -1737,14 +1729,13 @@
     "nativa": false,
     "sitios": [
       "camellones",
-      "banquetas",
       "parques",
       "jardin"
     ],
     "altura_max_m": 10,
     "riego": "bajo",
-    "raiz": "semiprofunda",
-    "advertencia": "Puede volverse invasor en algunos contextos. Frutos tóxicos.",
+    "raiz": "agresiva",
+    "advertencia": "Puede volverse invasor en algunos contextos. Frutos tóxicos. Raíz agresiva que puede levantar banquetas angostas; mejor en camellones y parques amplios.",
     "servicios": [
       "seto",
       "ornamental",
