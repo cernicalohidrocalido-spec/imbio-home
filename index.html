@@ -26,7 +26,6 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-
   header {
     background: linear-gradient(135deg, var(--azul-marino), var(--azul-marino-claro));
     color: white;
@@ -65,13 +64,11 @@
     font-size: 1rem;
     color: #aecbe6;
   }
-
   main {
     max-width: 1100px;
     margin: 0 auto;
     padding: 1.5rem 1.5rem 3rem;
   }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -79,7 +76,6 @@
     margin-top: 1.5rem;
     align-items: stretch;
   }
-
   .card {
     background: white;
     border-radius: 16px;
@@ -128,7 +124,6 @@
     padding: 0.3rem 0.75rem;
     border-radius: 999px;
   }
-
   .seccion-titulo {
     margin: 2.75rem 0 0.6rem;
     font-size: 1.1rem;
@@ -139,7 +134,6 @@
     border-bottom: 2px solid var(--verde-claro);
     padding-bottom: 0.5rem;
   }
-
   footer {
     text-align: center;
     padding: 2rem 1rem;
@@ -149,7 +143,6 @@
 </style>
 </head>
 <body>
-
 <header>
   <img class="logo-ayto" src="logo_ayuntamiento.jpg" alt="H. Ayuntamiento de Pabellón de Arteaga">
   <div class="icono">🌿</div>
@@ -157,47 +150,33 @@
   <p>Instituto Municipal de Biodiversidad y Protección Ambiental — Pabellón de Arteaga</p>
   <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
 </header>
-
 <main>
-
   <div class="seccion-titulo">Herramientas técnicas</div>
   <div class="grid">
-
     <a class="card" href="/atlas-de-riesgo">
       <div class="emoji">🗺️</div>
       <h2>Atlas de Riesgos</h2>
       <p>Atlas de riesgos multiamenaza y vulnerabilidad social del municipio, con análisis de punto interactivo.</p>
       <span class="tag">Herramienta SIG</span>
     </a>
-
     <a class="card" href="/plan-climatico">
       <div class="emoji">🌡️</div>
       <h2>Plan de Acción Climática Local</h2>
       <p>Inventario de emisiones de GEI 2022 y Plan de Acción Climática 2026-2030 del municipio, con documentos descargables.</p>
       <span class="tag">Cambio climático</span>
     </a>
-
-    <a class="card" href="/calidad-aire">
-      <div class="emoji">🌬️</div>
-      <h2>Calidad del Aire de Pabellón de Arteaga</h2>
-      <p>Monitoreo en tiempo real del índice de calidad del aire y contaminantes (PM2.5, PM10, ozono y más) en el municipio.</p>
-      <span class="tag">Monitoreo ambiental</span>
-    </a>
-
     <a class="card" href="/biodiversidad">
       <div class="emoji">🦎</div>
       <h2>Biodiversidad de Aguascalientes</h2>
       <p>Catálogo de 3,517 especies de flora, hongos, aves, mamíferos, herpetofauna, peces e invertebrados, con fichas técnicas y fotografías.</p>
       <span class="tag">Catálogo de especies</span>
     </a>
-
     <a class="card" href="/especies-en-riesgo">
       <div class="emoji">🦅</div>
       <h2>Especies en Riesgo de Aguascalientes</h2>
       <p>Catálogo de 75 especies en riesgo y prioritarias, verificadas contra la NOM-059-SEMARNAT-2010 vigente, con fichas técnicas y fotografías.</p>
       <span class="tag">Catálogo de especies</span>
     </a>
-
     <a class="card" href="https://anp.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">🏞️</div>
       <h2>Sistema de Áreas Naturales Protegidas</h2>
@@ -210,99 +189,94 @@
       <p>Visor y fichas de las 160 Unidades de Gestión Ambiental (UGA) del estado, con matriz de compatibilidad de usos y criterios de regulación ecológica.</p>
     <span class="tag">Herramienta SIG</span>
     </a>
+    <a class="card" href="/calidad-aire">
+      <div class="emoji">🌬️</div>
+      <h2>Calidad del Aire de Pabellón de Arteaga</h2>
+      <p>Estación IoT PureAir en Pabellón Centro: ICA, partículas suspendidas (PM2.5, PM10, PM1.0), temperatura y humedad en tiempo real, según NOM-172-SEMARNAT-2023.</p>
+      <span class="tag">Monitoreo en tiempo real</span>
+    </a>
   </div>
-
   <div class="seccion-titulo">Monitoreo y denuncia ciudadana</div>
   <div class="grid">
-
     <a class="card" href="https://denuncias.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">📊</div>
       <h2>Plataforma de Monitoreo Ambiental</h2>
       <p>Panel de control con reportes, mapa general, inspectores, establecimientos y verificaciones ambientales.</p>
       <span class="tag">Panel administrativo</span>
     </a>
-
     <a class="card" href="https://denuncias.imbio.info/app?modo=denuncia" target="_blank" rel="noopener">
       <div class="emoji">🌱</div>
       <h2>Denuncias Ambientales</h2>
       <p>Reporta incidencias ambientales: residuos, agua contaminada, ruido, emergencias y más.</p>
       <span class="tag">Servicio ciudadano</span>
     </a>
-
     <a class="card" href="https://denuncias.imbio.info/app?modo=poda" target="_blank" rel="noopener">
       <div class="emoji">✂️</div>
       <h2>Solicitud de Poda y Derribo</h2>
       <p>Solicita la poda o el derribo de árboles en tu domicilio o vía pública de forma segura y regulada.</p>
       <span class="tag">Servicio ciudadano</span>
     </a>
-
     <a class="card" href="https://denuncias.imbio.info/app?modo=animal" target="_blank" rel="noopener">
       <div class="emoji">🐾</div>
       <h2>Control y Bienestar Animal</h2>
       <p>Reporta animales en situación de calle, maltrato animal o perros agresivos.</p>
       <span class="tag">Servicio ciudadano</span>
     </a>
-
     <a class="card" href="https://mascotas.imbio.info/#/registro" target="_blank" rel="noopener">
       <div class="emoji">🐶</div>
       <h2>Padrón de Mascotas</h2>
       <p>Registra a tu mascota en el padrón municipal de Pabellón de Arteaga.</p>
       <span class="tag">Servicio ciudadano</span>
     </a>
-
     <a class="card" href="https://arboles.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">🌳</div>
       <h2>Monitoreo de Arbolado Urbano</h2>
       <p>Censo y seguimiento del arbolado urbano y forestal del municipio.</p>
       <span class="tag">Censo forestal</span>
     </a>
-
     <a class="card" href="https://areas-verdes.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">🌿</div>
       <h2>Manejo de Áreas Verdes</h2>
       <p>Registro y seguimiento de actividades de mantenimiento e intervención en áreas verdes municipales.</p>
       <span class="tag">Personal IMBIO</span>
     </a>
-
     <a class="card" href="https://cadaveres.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">🐾</div>
       <h2>Cadáveres en Vía Pública</h2>
       <p>Reporte ciudadano de cadáveres de animales en vía pública para su atención y registro municipal.</p>
       <span class="tag">Servicio ciudadano</span>
     </a>
-
     <a class="card" href="https://contencion.imbio.info" target="_blank" rel="noopener">
       <div class="emoji">🏚️</div>
       <h2>Centro de Contención Temporal</h2>
       <p>Registro y seguimiento de animales en resguardo: ingreso, salud, jaulas asignadas y destino final.</p>
       <span class="tag">Personal IMBIO</span>
     </a>
-
+    <a class="card" href="https://gps.chrysaetos.mx" target="_blank" rel="noopener">
+      <div class="emoji">📍</div>
+      <h2>GPS Flota</h2>
+      <p>Rastreo satelital en tiempo real de los vehículos y unidades de la flota municipal.</p>
+      <span class="tag">Personal IMBIO</span>
+    </a>
     <a class="card" href="/ladrilleras">
       <div class="emoji">🧱</div>
       <h2>Control de Ladrilleras</h2>
       <p>Verificación de permisos, hornos registrados y reportes de quema de las ladrilleras del municipio.</p>
       <span class="tag">Control ambiental</span>
     </a>
-
     <a class="card" href="https://denuncias.imbio.info/inspector" target="_blank" rel="noopener">
       <div class="emoji">🕵️</div>
       <h2>Panel de Inspector</h2>
       <p>Acceso para inspectores: atención de denuncias, diligencias de verificación, actas y expedientes.</p>
       <span class="tag">Personal IMBIO</span>
     </a>
-
   </div>
-
 </main>
-
 <footer>
   © <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes
 </footer>
-
 <script>
   document.getElementById("anio").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
