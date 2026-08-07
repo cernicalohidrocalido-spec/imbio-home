@@ -233,6 +233,67 @@
     font-size: 0.62rem;
     padding: 0.6rem 0.6rem 0.3rem;
     text-align: right;
+    pointer-events: none;
+  }
+  .especie-foto .foto-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .especie-foto.has-many:hover .foto-nav,
+  .especie-foto.has-many:focus-within .foto-nav { display: flex; }
+  .especie-foto .foto-nav.prev { left: 0.45rem; }
+  .especie-foto .foto-nav.next { right: 0.45rem; }
+  .especie-foto .foto-nav:hover { background: rgba(0,0,0,0.7); }
+  .especie-foto .foto-dots {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 1.35rem;
+    display: none;
+    justify-content: center;
+    gap: 0.28rem;
+    z-index: 2;
+  }
+  .especie-foto.has-many .foto-dots { display: flex; }
+  .especie-foto .foto-dots button {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    background: rgba(255,255,255,0.55);
+    cursor: pointer;
+  }
+  .especie-foto .foto-dots button.active { background: #fff; transform: scale(1.15); }
+  .especie-foto .foto-contador {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    display: none;
+    z-index: 2;
+  }
+  .especie-foto.has-many .foto-contador { display: block; }
+  @media (hover: none) {
+    .especie-foto.has-many .foto-nav { display: flex; }
   }
   .especie-card .cuerpo { padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; flex-grow: 1; }
   .especie-card .cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
@@ -538,11 +599,12 @@ function especieCard(e) {
   `;
 }
 
-/* ═══ Fotos de especies — iNaturalist → Wikipedia, con caché local ═══ */
-const FOTO_CACHE_KEY = 'reforesta_foto_v1_';
+/* ═══ Fotos de especies — varias de iNaturalist + Wikipedia, con caché local ═══ */
+const FOTO_CACHE_KEY = 'reforesta_fotos_v2_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
+const MAX_FOTOS_POR_ESPECIE = 6;
 
 function generoConcuerda(esperado, devuelto) {
   if (!esperado || !devuelto) return false;
@@ -554,9 +616,10 @@ function leerCacheFoto(id) {
     const raw = localStorage.getItem(FOTO_CACHE_KEY + id);
     if (!raw) return null;
     const data = JSON.parse(raw);
+    if (!Array.isArray(data.fotos)) return null;
     const dias = (Date.now() - data.ts) / 86400000;
-    if (data.source === 'placeholder' && dias >= FOTO_CACHE_DIAS) return null;
-    if (data.source !== 'placeholder' && dias >= FOTO_CACHE_DIAS * 6) return null;
+    if (data.fotos.length === 0 && dias >= FOTO_CACHE_DIAS) return null;
+    if (data.fotos.length > 0 && dias >= FOTO_CACHE_DIAS * 6) return null;
     return data;
   } catch (e) {
     return null;
@@ -583,7 +646,29 @@ async function fetchJsonConTimeout(url, headers, ms) {
   }
 }
 
-function fotoDesdeTaxon(taxon, nombreEsperado) {
+function normalizarUrlInat(url) {
+  if (!url) return null;
+  return url
+    .replace('/square.', '/medium.')
+    .replace('/small.', '/medium.')
+    .replace('/thumb.', '/medium.');
+}
+
+function dedupeFotos(fotos) {
+  const vistos = new Set();
+  const out = [];
+  for (const f of fotos) {
+    if (!f?.url) continue;
+    const key = f.url.split('?')[0];
+    if (vistos.has(key)) continue;
+    vistos.add(key);
+    out.push(f);
+    if (out.length >= MAX_FOTOS_POR_ESPECIE) break;
+  }
+  return out;
+}
+
+function fotoDesdeTaxonDefault(taxon, nombreEsperado) {
   const iconico = taxon.iconic_taxon_name || '';
   if (iconico !== 'Plantae') return null;
   const rank = taxon.rank || '';
@@ -594,51 +679,159 @@ function fotoDesdeTaxon(taxon, nombreEsperado) {
   return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
 }
 
-async function fetchFotoPorTaxonId(taxonId, nombreCientifico) {
+async function resolverTaxonId(e) {
+  if (e.inat_taxon_id) return e.inat_taxon_id;
+  if (!e.nombre_cientifico) return null;
+  const params = new URLSearchParams({ q: e.nombre_cientifico, iconic_taxa: 'Plantae', per_page: '8' });
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 8000);
+  for (const taxon of (data?.results || [])) {
+    const foto = fotoDesdeTaxonDefault(taxon, e.nombre_cientifico);
+    if (foto?.taxonId) return foto.taxonId;
+    if (generoConcuerda(e.nombre_cientifico, taxon.name || '') && ['species', 'subspecies', 'variety'].includes(taxon.rank || '')) {
+      return taxon.id;
+    }
+  }
+  return null;
+}
+
+async function fetchFotosObservaciones(taxonId) {
+  if (!taxonId) return [];
+  const params = new URLSearchParams({
+    taxon_id: String(taxonId),
+    photos: 'true',
+    quality_grade: 'research',
+    per_page: String(MAX_FOTOS_POR_ESPECIE),
+    order_by: 'votes',
+  });
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 10000);
+  const fotos = [];
+  for (const obs of (data?.results || [])) {
+    for (const photo of (obs.photos || [])) {
+      const url = normalizarUrlInat(photo.url) || photo.medium_url || photo.large_url;
+      if (!url) continue;
+      fotos.push({
+        url,
+        attribution: photo.attribution || obs.user?.login || '',
+        source: 'inat',
+      });
+      if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
+    }
+    if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
+  }
+  return fotos;
+}
+
+async function fetchFotoDefaultTaxon(taxonId, nombreCientifico) {
+  if (!taxonId) return null;
   const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxonId}`, INAT_HEADERS, 8000);
   const taxon = data?.results?.[0];
   if (!taxon) return null;
-  return fotoDesdeTaxon(taxon, nombreCientifico);
-}
-
-async function fetchFotoPorNombre(nombreCientifico) {
-  const params = new URLSearchParams({ q: nombreCientifico, iconic_taxa: 'Plantae', per_page: '8' });
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 8000);
-  const results = data?.results || [];
-  for (const taxon of results) {
-    const foto = fotoDesdeTaxon(taxon, nombreCientifico);
-    if (foto) return foto;
+  const fotos = [];
+  const def = fotoDesdeTaxonDefault(taxon, nombreCientifico || taxon.name);
+  if (def) fotos.push(def);
+  for (const tp of (taxon.taxon_photos || [])) {
+    const photo = tp.photo || tp;
+    const url = photo.medium_url || normalizarUrlInat(photo.url);
+    if (!url) continue;
+    fotos.push({
+      url,
+      attribution: photo.attribution || '',
+      source: 'inat',
+      taxonId: taxon.id,
+    });
   }
-  return null;
+  return fotos;
 }
 
 async function fetchFotoWikipedia(titulo) {
   for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
     const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 6000);
-    const url = data?.thumbnail?.source;
+    const url = data?.thumbnail?.source || data?.originalimage?.source;
     if (url) return { url, attribution: `Wikipedia / ${data.title || titulo}`, source: 'wikipedia' };
   }
   return null;
 }
 
-async function resolverFotoEspecie(e) {
-  let resultado = null;
-  if (e.inat_taxon_id) resultado = await fetchFotoPorTaxonId(e.inat_taxon_id, e.nombre_cientifico);
-  if (!resultado) resultado = await fetchFotoPorNombre(e.nombre_cientifico);
-  if (!resultado && e.wikipedia_titulo) resultado = await fetchFotoWikipedia(e.wikipedia_titulo);
-  if (!resultado && e.nombre_cientifico) resultado = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
-  return resultado || { source: 'placeholder' };
+async function resolverFotosEspecie(e) {
+  const fotos = [];
+  const taxonId = await resolverTaxonId(e);
+
+  const desdeObs = await fetchFotosObservaciones(taxonId);
+  fotos.push(...desdeObs);
+
+  if (fotos.length < 2) {
+    const desdeTaxon = await fetchFotoDefaultTaxon(taxonId, e.nombre_cientifico);
+    if (desdeTaxon?.length) fotos.push(...desdeTaxon);
+  }
+
+  if (fotos.length === 0 && e.nombre_cientifico) {
+    const params = new URLSearchParams({ q: e.nombre_cientifico, iconic_taxa: 'Plantae', per_page: '8' });
+    const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 8000);
+    for (const taxon of (data?.results || [])) {
+      const foto = fotoDesdeTaxonDefault(taxon, e.nombre_cientifico);
+      if (foto) { fotos.push(foto); break; }
+    }
+  }
+
+  if (fotos.length < MAX_FOTOS_POR_ESPECIE) {
+    let wiki = null;
+    if (e.wikipedia_titulo) wiki = await fetchFotoWikipedia(e.wikipedia_titulo);
+    if (!wiki && e.nombre_cientifico) wiki = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
+    if (wiki) fotos.push(wiki);
+  }
+
+  return { fotos: dedupeFotos(fotos) };
 }
 
 function pintarFotoEspecie(id, resultado) {
   const cont = document.getElementById(`foto-${id}`);
   if (!cont) return;
-  if (!resultado.url) return; // deja el placeholder 🌿
-  const credito = resultado.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
+  const fotos = (resultado?.fotos || []).filter(f => f.url);
+  if (fotos.length === 0) return;
+
+  cont.dataset.fotos = JSON.stringify(fotos);
+  cont.dataset.idx = '0';
+  cont.classList.toggle('has-many', fotos.length > 1);
+  actualizarVistaFoto(cont);
+}
+
+function actualizarVistaFoto(cont) {
+  const fotos = JSON.parse(cont.dataset.fotos || '[]');
+  if (!fotos.length) return;
+  let idx = Number(cont.dataset.idx || 0);
+  if (idx < 0) idx = fotos.length - 1;
+  if (idx >= fotos.length) idx = 0;
+  cont.dataset.idx = String(idx);
+
+  const foto = fotos[idx];
+  const credito = foto.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
+  const muchas = fotos.length > 1;
+
+  cont.classList.toggle('has-many', muchas);
   cont.innerHTML = `
-    <img src="${resultado.url}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span class=&quot;placeholder&quot;>🌿</span>'">
-    <span class="creditos">Foto: ${credito}</span>
+    <img src="${foto.url}" alt="" loading="lazy" onerror="this.style.opacity=0.2">
+    ${muchas ? `
+      <button type="button" class="foto-nav prev" aria-label="Foto anterior">‹</button>
+      <button type="button" class="foto-nav next" aria-label="Foto siguiente">›</button>
+      <div class="foto-contador">${idx + 1}/${fotos.length}</div>
+      <div class="foto-dots">
+        ${fotos.map((_, i) => `<button type="button" data-dot="${i}" class="${i === idx ? 'active' : ''}" aria-label="Foto ${i + 1}"></button>`).join('')}
+      </div>
+    ` : ''}
+    <span class="creditos">Foto: ${credito}${muchas ? ` · ${idx + 1}/${fotos.length}` : ''}</span>
   `;
+
+  const prev = cont.querySelector('.foto-nav.prev');
+  const next = cont.querySelector('.foto-nav.next');
+  if (prev) prev.addEventListener('click', (ev) => { ev.stopPropagation(); cont.dataset.idx = String(idx - 1); actualizarVistaFoto(cont); });
+  if (next) next.addEventListener('click', (ev) => { ev.stopPropagation(); cont.dataset.idx = String(idx + 1); actualizarVistaFoto(cont); });
+  cont.querySelectorAll('[data-dot]').forEach(btn => {
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      cont.dataset.idx = btn.dataset.dot;
+      actualizarVistaFoto(cont);
+    });
+  });
 }
 
 /* Cola con concurrencia limitada para no saturar las APIs públicas */
@@ -660,7 +853,7 @@ async function procesarColaFotos() {
   fotosActivas++;
   try {
     const cache = leerCacheFoto(especie.id);
-    const resultado = cache || await resolverFotoEspecie(especie);
+    const resultado = cache || await resolverFotosEspecie(especie);
     if (!cache) guardarCacheFoto(especie.id, resultado);
     pintarFotoEspecie(especie.id, resultado);
   } finally {
