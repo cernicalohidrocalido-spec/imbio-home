@@ -4878,5 +4878,693 @@
       "valle"
     ],
     "descripcion_ampliada": "Nopal silvestre de pencas medianas y tunas comestibles, presente en matorrales del centro-occidente de México. Amplía la diversidad de cactáceas del catálogo, útil en reforestación de suelos áridos y proyectos agroforestales de bajo consumo de agua."
+  },
+  {
+    "id": "amate_amarillo",
+    "nombre": "Amate Amarillo",
+    "nombre_cientifico": "Ficus petiolaris",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva y a menudo aérea; solo en parques amplios lejos de construcciones y tuberías.",
+    "servicios": [
+      "sombra",
+      "hábitat de fauna",
+      "fruto para aves"
+    ],
+    "inat_taxon_id": 205972,
+    "wikipedia_titulo": "Ficus_petiolaris",
+    "zonas_estado": [
+      "sierra",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Higuera nativa que crece frecuentemente sobre rocas y cañadas, con raíces que abrazan peñascos. Da sombra densa y frutos que alimentan aves silvestres. Por su sistema radicular agresivo, mejor en parques de gran superficie que en camellones o banquetas."
+  },
+  {
+    "id": "amate_negro",
+    "nombre": "Amate Negro",
+    "nombre_cientifico": "Ficus cotinifolia",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva; no plantar cerca de banquetas, drenajes o construcciones.",
+    "servicios": [
+      "sombra",
+      "hábitat de fauna",
+      "fruto para aves"
+    ],
+    "inat_taxon_id": 316762,
+    "wikipedia_titulo": "Ficus_cotinifolia",
+    "zonas_estado": [
+      "sierra",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Higuera nativa de gran porte y copa densa, común en barrancas y laderas rocosas. Excelente proveedor de sombra y alimento para fauna silvestre en parques de gran escala; su raíz vigorosa la hace inadecuada para arbolado de calle."
+  },
+  {
+    "id": "alamo_del_rio",
+    "nombre": "Álamo del Río",
+    "nombre_cientifico": "Populus fremontii",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 20,
+    "riego": "alto",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva hacia tuberías; requiere humedad constante, solo cerca de cauces o riego garantizado.",
+    "servicios": [
+      "sombra rápida",
+      "conservación de cauces",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 52120,
+    "wikipedia_titulo": "Populus_fremontii",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Álamo nativo de galerías ribereñas del centro-norte de México, alternativa nativa al Álamo europeo (Populus nigra) ya presente en el catálogo. Ideal para restauración de cauces y zonas con nivel freático alto; no apto para sitios secos sin riego constante."
+  },
+  {
+    "id": "ahuejote",
+    "nombre": "Ahuejote",
+    "nombre_cientifico": "Salix bonplandiana",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 15,
+    "riego": "alto",
+    "raiz": "agresiva",
+    "advertencia": "Raíz agresiva hacia tuberías; requiere suelo húmedo o riego constante.",
+    "servicios": [
+      "sombra",
+      "conservación de cauces",
+      "control de erosión ribereña"
+    ],
+    "inat_taxon_id": 69993,
+    "wikipedia_titulo": "Salix_bonplandiana",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Sauce nativo mexicano, tradicionalmente usado para estabilizar orillas de ríos y canales. Buena opción para reforestación ribereña y camellones con riego garantizado; evitar en sitios secos o cerca de tuberías por su raíz vigorosa."
+  },
+  {
+    "id": "tascate",
+    "nombre": "Táscate / Sabino de la Sierra",
+    "nombre_cientifico": "Juniperus deppeana",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "conservación de suelo",
+      "hábitat de fauna",
+      "cortina rompevientos"
+    ],
+    "inat_taxon_id": 121924,
+    "wikipedia_titulo": "Juniperus_deppeana",
+    "zonas_estado": [
+      "sierra"
+    ],
+    "descripcion_ampliada": "Conífera nativa de los bosques templados de la Sierra Fría, de corteza gruesa característica en forma de placas. Muy tolerante a la sequía una vez establecida y útil como cortina rompevientos en reforestación de zona serrana. No recomendable para clima cálido del valle."
+  },
+  {
+    "id": "fresno_blanco_americano",
+    "nombre": "Fresno Blanco Americano",
+    "nombre_cientifico": "Fraxinus americana",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "sombra",
+      "ornamental",
+      "follaje de otoño"
+    ],
+    "inat_taxon_id": 54805,
+    "wikipedia_titulo": "Fraxinus_americana",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Fresno exótico bien adaptado a las condiciones urbanas de Aguascalientes, alternativa al Fresno Mexicano ya presente en el catálogo. Buen árbol de sombra para camellones amplios, con vistoso cambio de color de follaje en otoño."
+  },
+  {
+    "id": "fresno_terciopelo",
+    "nombre": "Fresno Terciopelo",
+    "nombre_cientifico": "Fraxinus velutina",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "sombra",
+      "ornamental"
+    ],
+    "inat_taxon_id": 64132,
+    "wikipedia_titulo": "Fraxinus_velutina",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Fresno nativo del norte y centro de México, de hojas aterciopeladas y buena tolerancia a suelos alcalinos comunes en Aguascalientes. Árbol de sombra confiable para parques y camellones con riego moderado."
+  },
+  {
+    "id": "morera_negra",
+    "nombre": "Morera Negra",
+    "nombre_cientifico": "Morus nigra",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 9,
+    "riego": "medio",
+    "raiz": "agresiva",
+    "advertencia": "Raíz agresiva; frutos caídos manchan banquetas, mejor en jardines y parques que en camellones.",
+    "servicios": [
+      "sombra",
+      "fruto comestible",
+      "melífero"
+    ],
+    "inat_taxon_id": 126741,
+    "wikipedia_titulo": "Morus_nigra",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Morera exótica bien adaptada al clima de Aguascalientes, cultivada tradicionalmente por su fruto comestible (mora). Buena sombra de crecimiento rápido para huertos urbanos y jardines; evitar sobre banquetas por la caída de fruto."
+  },
+  {
+    "id": "nogal_pecanero",
+    "nombre": "Nogal Pecanero",
+    "nombre_cientifico": "Carya illinoinensis",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 25,
+    "riego": "alto",
+    "raiz": "profunda",
+    "advertencia": "Requiere riego constante y suelo profundo; no apto para banquetas estrechas por su copa amplia.",
+    "servicios": [
+      "sombra",
+      "fruto comestible",
+      "producción agrícola"
+    ],
+    "inat_taxon_id": 67593,
+    "wikipedia_titulo": "Carya_illinoinensis",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Nogal exótico ampliamente cultivado en huertas de la región centro-norte de México por su nuez (pecana). Árbol de gran porte y sombra densa, adecuado para parques amplios y proyectos agroforestales con riego garantizado."
+  },
+  {
+    "id": "aguacate",
+    "nombre": "Aguacate",
+    "nombre_cientifico": "Persea americana",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": "Sensible a heladas fuertes; proteger los primeros años en zonas con riesgo de frío intenso.",
+    "servicios": [
+      "fruto comestible",
+      "sombra",
+      "ornamental"
+    ],
+    "inat_taxon_id": 62831,
+    "wikipedia_titulo": "Aguacate",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol frutal muy popular en huertos urbanos de Aguascalientes, bien adaptado con riego moderado. Da sombra perenne y fruto comestible; conviene resguardarlo de heladas severas durante sus primeros años de establecimiento."
+  },
+  {
+    "id": "pata_de_vaca",
+    "nombre": "Pata de Vaca",
+    "nombre_cientifico": "Bauhinia purpurea",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 8,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "atrae polinizadores",
+      "sombra ligera"
+    ],
+    "inat_taxon_id": 82135,
+    "wikipedia_titulo": "Bauhinia_purpurea",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol exótico ornamental de flores rosa-púrpura vistosas, bien adaptado a jardines y camellones urbanos de Aguascalientes. Atrae abejas y otros polinizadores; su follaje bilobulado en forma de pezuña le da su nombre común."
+  },
+  {
+    "id": "encino_blanco",
+    "nombre": "Encino Blanco",
+    "nombre_cientifico": "Quercus obtusata",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": "Crecimiento lento; propio de clima serrano, no recomendable en valle.",
+    "servicios": [
+      "sombra",
+      "conservación de suelo",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 209421,
+    "wikipedia_titulo": "Quercus_obtusata",
+    "zonas_estado": [
+      "sierra"
+    ],
+    "descripcion_ampliada": "Encino de hoja ancha y envés blanquecino, propio de los bosques templados de la Sierra Fría. Amplía la diversidad de encinos nativos del catálogo, útil en proyectos de restauración forestal de zona alta."
+  },
+  {
+    "id": "tepozan_blanco",
+    "nombre": "Tepozán Blanco",
+    "nombre_cientifico": "Buddleja cordata",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "medicinal",
+      "control de erosión"
+    ],
+    "inat_taxon_id": 154027,
+    "wikipedia_titulo": "Buddleja_cordata",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Arbusto o arbolillo nativo de rápido crecimiento y flores pequeñas muy visitadas por polinizadores. Buen colonizador de suelos alterados; complementa al Tepozán (Buddleja sessiliflora) ya presente en el catálogo."
+  },
+  {
+    "id": "granjeno",
+    "nombre": "Granjeno",
+    "nombre_cientifico": "Celtis pallida",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Ramas con espinas; usar en linderos y cercas vivas, no en zonas de tránsito peatonal.",
+    "servicios": [
+      "cerca viva",
+      "fruto para fauna",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 160266,
+    "wikipedia_titulo": "Celtis_pallida",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto espinoso muy resistente a la sequía, común en matorrales del centro-norte de México. Sus frutillos naranjas alimentan aves y fauna silvestre. Excelente para cercas vivas impenetrables en linderos rurales."
+  },
+  {
+    "id": "granjeno_acebuche",
+    "nombre": "Granjeno Acebuche",
+    "nombre_cientifico": "Forestiera phillyreoides",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "cerca viva",
+      "hábitat de fauna",
+      "tolerante a poda"
+    ],
+    "inat_taxon_id": 281261,
+    "wikipedia_titulo": "Forestiera_phillyreoides",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Arbusto nativo de follaje denso, tolerante a la poda, útil como seto o cerca viva de bajo mantenimiento. Buena alternativa nativa a especies exóticas de seto en camellones y parques."
+  },
+  {
+    "id": "charrasquillo",
+    "nombre": "Charrasquillo",
+    "nombre_cientifico": "Calliandra eriophylla",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "fijación de nitrógeno",
+      "atrae polinizadores"
+    ],
+    "inat_taxon_id": 75933,
+    "wikipedia_titulo": "Calliandra_eriophylla",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Arbusto bajo de flores rosa en forma de borla, muy atractivas para abejas y colibríes. Extremadamente tolerante a la sequía una vez establecido, ideal para xerojardinería de bajo mantenimiento y bordes de parque."
+  },
+  {
+    "id": "vara_dulce",
+    "nombre": "Vara Dulce",
+    "nombre_cientifico": "Aloysia gratissima",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "aromático",
+      "atrae polinizadores",
+      "medicinal"
+    ],
+    "inat_taxon_id": 56891,
+    "wikipedia_titulo": "Aloysia_gratissima",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Arbusto aromático nativo de flores blancas diminutas y follaje perfumado, muy visitado por abejas. Buena opción para jardines de bajo consumo de agua y proyectos de reforestación con enfoque en polinizadores."
+  },
+  {
+    "id": "jazmin_amarillo",
+    "nombre": "Jazmín Amarillo",
+    "nombre_cientifico": "Jasminum mesnyi",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "camellones",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "medio",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cerca viva",
+      "cubresuelo en talud"
+    ],
+    "inat_taxon_id": 164229,
+    "wikipedia_titulo": "Jasminum_mesnyi",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto exótico de flores amarillas abundantes en primavera, muy usado en jardinería urbana de Aguascalientes por su rápida cobertura y bajo mantenimiento. Útil también como cubresuelo en taludes."
+  },
+  {
+    "id": "olmo_siberia",
+    "nombre": "Olmo de Siberia",
+    "nombre_cientifico": "Ulmus pumila",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "agresiva",
+    "advertencia": "Susceptible a plagas de barrenador y de rápida propagación por semilla; usar con moderación y dar seguimiento fitosanitario.",
+    "servicios": [
+      "sombra rápida",
+      "cortina rompevientos"
+    ],
+    "inat_taxon_id": 79463,
+    "wikipedia_titulo": "Ulmus_pumila",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Olmo exótico muy tolerante a la sequía y de crecimiento rápido, complementario al Olmo Común (Ulmus minor) ya presente en el catálogo. Se recomienda con moderación por su tendencia a propagarse por semilla y su vulnerabilidad a plagas."
+  },
+  {
+    "id": "acacia_hoja_azul",
+    "nombre": "Acacia de Hoja Azul",
+    "nombre_cientifico": "Acacia saligna",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 6,
+    "riego": "bajo",
+    "raiz": "agresiva",
+    "advertencia": "Especie con potencial invasor documentado en otras regiones; monitorear su regeneración por semilla y evitar cerca de áreas naturales.",
+    "servicios": [
+      "fijación de nitrógeno",
+      "control de erosión",
+      "ornamental"
+    ],
+    "inat_taxon_id": 75255,
+    "wikipedia_titulo": "Acacia_saligna",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Arbusto exótico australiano de follaje azulado y flores amarillas vistosas, usado para control de erosión en taludes. Se recomienda con precaución y monitoreo por su capacidad de naturalizarse agresivamente fuera de su rango de origen."
+  },
+  {
+    "id": "palo_zorrillo",
+    "nombre": "Palo Zorrillo",
+    "nombre_cientifico": "Senna atomaria",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "fijación de nitrógeno",
+      "ornamental",
+      "atrae polinizadores"
+    ],
+    "inat_taxon_id": 280501,
+    "wikipedia_titulo": "Senna_atomaria",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto o arbolillo nativo de flores amarillas vistosas, tolerante a la sequía y a suelos pobres. Complementa a las demás especies de Senna del catálogo, ampliando opciones nativas de floración vistosa para reforestación mixta."
+  },
+  {
+    "id": "colorin_nortenio",
+    "nombre": "Colorín Norteño",
+    "nombre_cientifico": "Erythrina flabelliformis",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Semillas tóxicas si se ingieren; mantener fuera del alcance de niños pequeños y mascotas.",
+    "servicios": [
+      "ornamental",
+      "atrae polinizadores",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 129395,
+    "wikipedia_titulo": "Erythrina_flabelliformis",
+    "zonas_estado": [
+      "sierra",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativo de flores rojas tubulares muy atractivas para colibríes, propio de cañadas y laderas rocosas del norte-centro de México. Complementa al Colorín (Erythrina americana) ya presente en el catálogo; sus semillas son tóxicas si se ingieren."
+  },
+  {
+    "id": "sotol_verde",
+    "nombre": "Sotol Verde",
+    "nombre_cientifico": "Dasylirion acrotrichum",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Hojas con bordes aserrados finos; sembrar alejado de zonas de paso estrecho.",
+    "servicios": [
+      "ornamental",
+      "muy tolerante a sequía",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 276586,
+    "wikipedia_titulo": "Dasylirion_acrotrichum",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Planta xerófita en forma de roseta, nativa de matorrales rosetófilos de Aguascalientes, distinta al Sotol (Dasylirion wheeleri) ya presente en el catálogo. Excelente elemento arquitectónico para xerojardinería de bajísimo mantenimiento."
+  },
+  {
+    "id": "guapilla",
+    "nombre": "Guapilla / Cordón",
+    "nombre_cientifico": "Hechtia podantha",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Hojas con espinas marginales; sembrar en bordes de jardín, no en áreas de paso.",
+    "servicios": [
+      "ornamental",
+      "muy tolerante a sequía",
+      "control de erosión en taludes rocosos"
+    ],
+    "inat_taxon_id": 276776,
+    "wikipedia_titulo": "Hechtia",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Bromelia terrestre nativa de laderas y afloramientos rocosos, forma colonias densas que ayudan a retener suelo en taludes. Planta de muy bajo mantenimiento, ideal para rocallas y xerojardinería de la región."
+  },
+  {
+    "id": "lechuguilla_mansa",
+    "nombre": "Lechuguilla Mansa",
+    "nombre_cientifico": "Agave filifera",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin",
+      "camellones"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Hojas con filamentos y punta terminal rígida; mantener alejada de zonas de juego infantil.",
+    "servicios": [
+      "ornamental",
+      "muy tolerante a sequía"
+    ],
+    "inat_taxon_id": 290832,
+    "wikipedia_titulo": "Agave_filifera",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Maguey pequeño y ornamental, de hojas angostas con filamentos blancos característicos en el borde. Amplía las opciones de agaves nativos del catálogo para xerojardinería de camellones y parques de bajo mantenimiento."
+  },
+  {
+    "id": "maguey_manso",
+    "nombre": "Maguey Manso",
+    "nombre_cientifico": "Agave mapisaga",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "muy bajo",
+    "raiz": "superficial extendida",
+    "advertencia": "Púa terminal rígida y afilada; sembrar alejado de zonas de paso.",
+    "servicios": [
+      "ornamental",
+      "muy tolerante a sequía",
+      "hábitat de fauna"
+    ],
+    "inat_taxon_id": 273687,
+    "wikipedia_titulo": "Agave_mapisaga",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Maguey de gran porte y hojas amplias, tradicionalmente aprovechado para producción de aguamiel. Elemento ornamental de gran impacto visual en parques y jardines xerófilos de mantenimiento mínimo."
   }
 ]
