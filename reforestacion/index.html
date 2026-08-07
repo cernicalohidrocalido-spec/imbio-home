@@ -918,6 +918,11 @@ let fotosActivas = 0;
 const MAX_FOTOS_CONCURRENTES = 3;
 
 function encolarFoto(especie) {
+  // Tras filtrar se recrea el DOM: si ya tenemos el resultado, solo repintar
+  if (especie._fotosResultado) {
+    pintarFotoEspecie(especie.id, especie._fotosResultado);
+    return;
+  }
   if (especie._fotoEncolada) return;
   especie._fotoEncolada = true;
   colaFotos.push(especie);
@@ -933,6 +938,7 @@ async function procesarColaFotos() {
     const cache = leerCacheFoto(especie.id);
     const resultado = cache || await resolverFotosEspecie(especie);
     if (!cache) guardarCacheFoto(especie.id, resultado);
+    especie._fotosResultado = resultado;
     pintarFotoEspecie(especie.id, resultado);
   } finally {
     fotosActivas--;
@@ -953,6 +959,20 @@ function iniciarObservadorFotos() {
     }
   }, { rootMargin: '200px' });
   document.querySelectorAll('.especie-card').forEach(card => observadorFotos.observe(card));
+}
+
+function aplicarFotosResueltas(lista) {
+  for (const e of lista) {
+    if (e._fotosResultado?.fotos?.length) {
+      pintarFotoEspecie(e.id, e._fotosResultado);
+      continue;
+    }
+    const cache = leerCacheFoto(e.id);
+    if (cache?.fotos?.length) {
+      e._fotosResultado = cache;
+      pintarFotoEspecie(e.id, cache);
+    }
+  }
 }
 
 function filtrarEspecies() {
@@ -989,6 +1009,8 @@ function renderCatalogo() {
   }
   sinResultados.style.display = 'none';
   grid.innerHTML = filtradas.map(especieCard).join('');
+  // Repinta de inmediato las que ya se habían cargado / están en caché (filtros recrean el DOM)
+  aplicarFotosResueltas(filtradas);
   iniciarObservadorFotos();
 }
 
