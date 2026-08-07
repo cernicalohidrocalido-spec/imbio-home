@@ -202,11 +202,33 @@
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 3px 14px rgba(0, 42, 92, 0.08);
-    padding: 1.1rem 1.25rem;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
   }
+  .especie-foto {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--verde-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .especie-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .especie-foto .placeholder { font-size: 2.2rem; opacity: 0.5; }
+  .especie-foto .creditos {
+    position: absolute;
+    right: 0; bottom: 0; left: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
+    color: #fff;
+    font-size: 0.62rem;
+    padding: 0.6rem 0.6rem 0.3rem;
+    text-align: right;
+  }
+  .especie-card .cuerpo { padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; flex-grow: 1; }
   .especie-card .cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
   .especie-card h4 { font-size: 1.02rem; color: var(--azul-marino); font-weight: 700; }
   .especie-card .cientifico { font-size: 0.78rem; font-style: italic; color: var(--muted); margin-bottom: 0.2rem; }
@@ -454,27 +476,176 @@ function especieCard(e) {
     ? `<a class="wiki-link" href="https://es.wikipedia.org/wiki/${encodeURIComponent(e.wikipedia_titulo)}" target="_blank" rel="noopener">Más información ›</a>`
     : '';
   return `
-    <article class="especie-card">
-      <div class="cabecera">
-        <div>
-          <h4>${e.nombre_comun}</h4>
-          <div class="cientifico">${e.nombre_cientifico || ''}</div>
+    <article class="especie-card" data-especie-id="${e.id}">
+      <div class="especie-foto" id="foto-${e.id}"><span class="placeholder">🌿</span></div>
+      <div class="cuerpo">
+        <div class="cabecera">
+          <div>
+            <h4>${e.nombre_comun}</h4>
+            <div class="cientifico">${e.nombre_cientifico || ''}</div>
+          </div>
+          <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa' : 'Adaptada'}</span>
         </div>
-        <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa' : 'Adaptada'}</span>
+        <div class="especie-datos">
+          <span class="chip">${TIPO_LABEL[e.tipo] || e.tipo}</span>
+          ${e.altura_max_m ? `<span class="chip">Hasta ${e.altura_max_m} m</span>` : ''}
+          <span class="chip">${RIEGO_LABEL[e.riego] || e.riego}</span>
+          <span class="chip">Raíz ${e.raiz}</span>
+          ${sitios}
+          ${zonas}
+        </div>
+        ${e.descripcion_ampliada ? `<p class="especie-desc">${e.descripcion_ampliada}</p>` : ''}
+        ${e.advertencia ? `<div class="especie-advertencia">⚠️ ${e.advertencia}</div>` : ''}
+        ${wiki}
       </div>
-      <div class="especie-datos">
-        <span class="chip">${TIPO_LABEL[e.tipo] || e.tipo}</span>
-        ${e.altura_max_m ? `<span class="chip">Hasta ${e.altura_max_m} m</span>` : ''}
-        <span class="chip">${RIEGO_LABEL[e.riego] || e.riego}</span>
-        <span class="chip">Raíz ${e.raiz}</span>
-        ${sitios}
-        ${zonas}
-      </div>
-      ${e.descripcion_ampliada ? `<p class="especie-desc">${e.descripcion_ampliada}</p>` : ''}
-      ${e.advertencia ? `<div class="especie-advertencia">⚠️ ${e.advertencia}</div>` : ''}
-      ${wiki}
     </article>
   `;
+}
+
+/* ═══ Fotos de especies — iNaturalist → Wikipedia, con caché local ═══ */
+const FOTO_CACHE_KEY = 'reforesta_foto_v1_';
+const FOTO_CACHE_DIAS = 30;
+const INAT_BASE = 'https://api.inaturalist.org/v1';
+const INAT_HEADERS = { 'Accept': 'application/json' };
+
+function generoConcuerda(esperado, devuelto) {
+  if (!esperado || !devuelto) return false;
+  return esperado.trim().split(' ')[0].toLowerCase() === devuelto.trim().split(' ')[0].toLowerCase();
+}
+
+function leerCacheFoto(id) {
+  try {
+    const raw = localStorage.getItem(FOTO_CACHE_KEY + id);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    const dias = (Date.now() - data.ts) / 86400000;
+    if (data.source === 'placeholder' && dias >= FOTO_CACHE_DIAS) return null;
+    if (data.source !== 'placeholder' && dias >= FOTO_CACHE_DIAS * 6) return null;
+    return data;
+  } catch (e) {
+    return null;
+  }
+}
+
+function guardarCacheFoto(id, resultado) {
+  try {
+    localStorage.setItem(FOTO_CACHE_KEY + id, JSON.stringify({ ...resultado, ts: Date.now() }));
+  } catch (e) { /* localStorage lleno o no disponible: seguir sin caché */ }
+}
+
+async function fetchJsonConTimeout(url, headers, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    const res = await fetch(url, { headers, signal: ctrl.signal });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function fotoDesdeTaxon(taxon, nombreEsperado) {
+  const iconico = taxon.iconic_taxon_name || '';
+  if (iconico !== 'Plantae') return null;
+  const rank = taxon.rank || '';
+  if (!['species', 'subspecies', 'variety'].includes(rank)) return null;
+  if (!generoConcuerda(nombreEsperado, taxon.name || '')) return null;
+  const foto = taxon.default_photo;
+  if (!foto || !foto.medium_url) return null;
+  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
+}
+
+async function fetchFotoPorTaxonId(taxonId, nombreCientifico) {
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxonId}`, INAT_HEADERS, 8000);
+  const taxon = data?.results?.[0];
+  if (!taxon) return null;
+  return fotoDesdeTaxon(taxon, nombreCientifico);
+}
+
+async function fetchFotoPorNombre(nombreCientifico) {
+  const params = new URLSearchParams({ q: nombreCientifico, iconic_taxa: 'Plantae', per_page: '8' });
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 8000);
+  const results = data?.results || [];
+  for (const taxon of results) {
+    const foto = fotoDesdeTaxon(taxon, nombreCientifico);
+    if (foto) return foto;
+  }
+  return null;
+}
+
+async function fetchFotoWikipedia(titulo) {
+  for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
+    const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 6000);
+    const url = data?.thumbnail?.source;
+    if (url) return { url, attribution: `Wikipedia / ${data.title || titulo}`, source: 'wikipedia' };
+  }
+  return null;
+}
+
+async function resolverFotoEspecie(e) {
+  let resultado = null;
+  if (e.inat_taxon_id) resultado = await fetchFotoPorTaxonId(e.inat_taxon_id, e.nombre_cientifico);
+  if (!resultado) resultado = await fetchFotoPorNombre(e.nombre_cientifico);
+  if (!resultado && e.wikipedia_titulo) resultado = await fetchFotoWikipedia(e.wikipedia_titulo);
+  if (!resultado && e.nombre_cientifico) resultado = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
+  return resultado || { source: 'placeholder' };
+}
+
+function pintarFotoEspecie(id, resultado) {
+  const cont = document.getElementById(`foto-${id}`);
+  if (!cont) return;
+  if (!resultado.url) return; // deja el placeholder 🌿
+  const credito = resultado.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
+  cont.innerHTML = `
+    <img src="${resultado.url}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span class=&quot;placeholder&quot;>🌿</span>'">
+    <span class="creditos">Foto: ${credito}</span>
+  `;
+}
+
+/* Cola con concurrencia limitada para no saturar las APIs públicas */
+const colaFotos = [];
+let fotosActivas = 0;
+const MAX_FOTOS_CONCURRENTES = 3;
+
+function encolarFoto(especie) {
+  if (especie._fotoEncolada) return;
+  especie._fotoEncolada = true;
+  colaFotos.push(especie);
+  procesarColaFotos();
+}
+
+async function procesarColaFotos() {
+  if (fotosActivas >= MAX_FOTOS_CONCURRENTES) return;
+  const especie = colaFotos.shift();
+  if (!especie) return;
+  fotosActivas++;
+  try {
+    const cache = leerCacheFoto(especie.id);
+    const resultado = cache || await resolverFotoEspecie(especie);
+    if (!cache) guardarCacheFoto(especie.id, resultado);
+    pintarFotoEspecie(especie.id, resultado);
+  } finally {
+    fotosActivas--;
+    procesarColaFotos();
+  }
+}
+
+let observadorFotos = null;
+function iniciarObservadorFotos() {
+  if (observadorFotos) observadorFotos.disconnect();
+  observadorFotos = new IntersectionObserver((entradas) => {
+    for (const entrada of entradas) {
+      if (!entrada.isIntersecting) continue;
+      const id = entrada.target.dataset.especieId;
+      const especie = ESPECIES.find(x => x.id === id);
+      if (especie) encolarFoto(especie);
+      observadorFotos.unobserve(entrada.target);
+    }
+  }, { rootMargin: '200px' });
+  document.querySelectorAll('.especie-card').forEach(card => observadorFotos.observe(card));
 }
 
 function filtrarEspecies() {
@@ -511,6 +682,7 @@ function renderCatalogo() {
   }
   sinResultados.style.display = 'none';
   grid.innerHTML = filtradas.map(especieCard).join('');
+  iniciarObservadorFotos();
 }
 
 ['f-buscar', 'f-tipo', 'f-sitio', 'f-zona', 'f-riego', 'f-nativa'].forEach(id => {
