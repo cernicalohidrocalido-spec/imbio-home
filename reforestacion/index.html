@@ -562,8 +562,47 @@
   <section id="polinizadores" class="panel">
     <div class="section-titulo">🐝 Jardines de polinizadores</div>
     <p class="section-sub">Árboles, arbustos y herbáceas con flor que alimentan abejas nativas, mariposas y colibríes. Para que un jardín funcione como refugio real de polinizadores, evita el uso de insecticidas y deja algunas zonas con flor silvestre sin podar.</p>
+
+    <div class="filtros">
+      <input type="search" id="p-buscar" placeholder="Buscar por nombre común o científico…">
+      <select id="p-tipo">
+        <option value="">Todos los tipos</option>
+        <option value="arbol">Árbol</option>
+        <option value="arbusto">Arbusto</option>
+        <option value="herbacea">Herbácea</option>
+      </select>
+      <select id="p-sitio">
+        <option value="">Cualquier sitio</option>
+        <option value="banquetas">Banquetas</option>
+        <option value="camellones">Camellones</option>
+        <option value="parques">Parques</option>
+        <option value="jardin">Jardín</option>
+        <option value="agricola">Agrícola</option>
+      </select>
+      <select id="p-zona">
+        <option value="">Cualquier zona</option>
+        <option value="valle">Valle</option>
+        <option value="sierra">Sierra</option>
+        <option value="oriente">Oriente</option>
+        <option value="calvillo">Calvillo</option>
+      </select>
+      <select id="p-riego">
+        <option value="">Cualquier riego</option>
+        <option value="muy bajo">Muy bajo</option>
+        <option value="bajo">Bajo</option>
+        <option value="medio">Medio</option>
+        <option value="medio-alto">Medio-alto</option>
+        <option value="alto">Alto</option>
+      </select>
+      <select id="p-nativa">
+        <option value="">Nativas y exóticas</option>
+        <option value="1">Solo nativas</option>
+        <option value="0">Solo exóticas/adaptadas</option>
+      </select>
+    </div>
     <p class="resultados-conteo" id="polinizadores-conteo"></p>
     <div class="catalogo-grid" id="polinizadores-grid"></div>
+    <p class="sin-resultados" id="polinizadores-sin" style="display:none;">No hay especies polinizadoras con estos filtros. Intenta ajustar la búsqueda.</p>
   </section>
 
   <section id="guia" class="panel">
@@ -796,10 +835,28 @@ function esPlantaPolinizadora(especie) {
 let observadorPolinizadores = null;
 function renderPolinizadores() {
   const grid = document.getElementById('polinizadores-grid');
+  const sinResultados = document.getElementById('polinizadores-sin');
   if (!grid) return;
-  const plantas = ESPECIES.filter(esPlantaPolinizadora);
+
+  const base = ESPECIES.filter(esPlantaPolinizadora);
+  const plantas = filtrarLista(base, {
+    buscar: 'p-buscar',
+    tipo: 'p-tipo',
+    sitio: 'p-sitio',
+    zona: 'p-zona',
+    riego: 'p-riego',
+    nativa: 'p-nativa',
+  });
+
   document.getElementById('polinizadores-conteo').textContent =
-    `${plantas.length} especies para atraer abejas, mariposas y colibríes`;
+    `${plantas.length} de ${base.length} especies para atraer abejas, mariposas y colibríes`;
+
+  if (plantas.length === 0) {
+    grid.innerHTML = '';
+    if (sinResultados) sinResultados.style.display = 'block';
+    return;
+  }
+  if (sinResultados) sinResultados.style.display = 'none';
   grid.innerHTML = plantas.map(especieCard).join('');
   aplicarFotosResueltas(plantas);
 
@@ -1276,15 +1333,15 @@ function aplicarFotosResueltas(lista) {
   }
 }
 
-function filtrarEspecies() {
-  const q = document.getElementById('f-buscar').value.trim().toLowerCase();
-  const tipo = document.getElementById('f-tipo').value;
-  const sitio = document.getElementById('f-sitio').value;
-  const zona = document.getElementById('f-zona').value;
-  const riego = document.getElementById('f-riego').value;
-  const nativa = document.getElementById('f-nativa').value;
+function filtrarLista(lista, ids) {
+  const q = (document.getElementById(ids.buscar)?.value || '').trim().toLowerCase();
+  const tipo = document.getElementById(ids.tipo)?.value || '';
+  const sitio = document.getElementById(ids.sitio)?.value || '';
+  const zona = document.getElementById(ids.zona)?.value || '';
+  const riego = document.getElementById(ids.riego)?.value || '';
+  const nativa = document.getElementById(ids.nativa)?.value || '';
 
-  return ESPECIES.filter(e => {
+  return lista.filter(e => {
     if (q && !(`${e.nombre_comun || e.nombre || ''} ${e.nombre_cientifico || ''}`.toLowerCase().includes(q))) return false;
     if (tipo && e.tipo !== tipo) return false;
     if (sitio && !(e.sitios || []).includes(sitio)) return false;
@@ -1293,6 +1350,17 @@ function filtrarEspecies() {
     if (nativa === '1' && !e.nativa) return false;
     if (nativa === '0' && e.nativa) return false;
     return true;
+  });
+}
+
+function filtrarEspecies() {
+  return filtrarLista(ESPECIES, {
+    buscar: 'f-buscar',
+    tipo: 'f-tipo',
+    sitio: 'f-sitio',
+    zona: 'f-zona',
+    riego: 'f-riego',
+    nativa: 'f-nativa',
   });
 }
 
@@ -1318,6 +1386,12 @@ function renderCatalogo() {
 ['f-buscar', 'f-tipo', 'f-sitio', 'f-zona', 'f-riego', 'f-nativa'].forEach(id => {
   const el = document.getElementById(id);
   el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', renderCatalogo);
+});
+
+['p-buscar', 'p-tipo', 'p-sitio', 'p-zona', 'p-riego', 'p-nativa'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', renderPolinizadores);
 });
 
 renderPasos();
