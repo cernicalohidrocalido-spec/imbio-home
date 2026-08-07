@@ -481,7 +481,7 @@ function especieCard(e) {
       <div class="cuerpo">
         <div class="cabecera">
           <div>
-            <h4>${e.nombre_comun}</h4>
+            <h4>${e.nombre_comun || e.nombre || ''}</h4>
             <div class="cientifico">${e.nombre_cientifico || ''}</div>
           </div>
           <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa' : 'Adaptada'}</span>
@@ -657,7 +657,7 @@ function filtrarEspecies() {
   const nativa = document.getElementById('f-nativa').value;
 
   return ESPECIES.filter(e => {
-    if (q && !(`${e.nombre_comun} ${e.nombre_cientifico}`.toLowerCase().includes(q))) return false;
+    if (q && !(`${e.nombre_comun || e.nombre || ''} ${e.nombre_cientifico || ''}`.toLowerCase().includes(q))) return false;
     if (tipo && e.tipo !== tipo) return false;
     if (sitio && !(e.sitios || []).includes(sitio)) return false;
     if (zona && !(e.zonas_estado || []).includes(zona)) return false;
