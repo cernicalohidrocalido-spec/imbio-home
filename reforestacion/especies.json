@@ -5566,5 +5566,442 @@
       "valle"
     ],
     "descripcion_ampliada": "Maguey de gran porte y hojas amplias, tradicionalmente aprovechado para producción de aguamiel. Elemento ornamental de gran impacto visual en parques y jardines xerófilos de mantenimiento mínimo."
+  },
+  {
+    "id": "pinillo_algodoncillo",
+    "nombre": "Pinillo (Algodoncillo)",
+    "nombre_cientifico": "Asclepias linaria",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Savia ligeramente tóxica si se ingiere; manejar con cuidado.",
+    "servicios": [
+      "atrae polinizadores",
+      "planta hospedera de mariposa monarca",
+      "ornamental"
+    ],
+    "inat_taxon_id": 62295,
+    "wikipedia_titulo": "Asclepias_linaria",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Algodoncillo nativo de hoja fina, indispensable como planta hospedera de las orugas de mariposa Monarca en su ruta migratoria por el centro de México. Imprescindible en cualquier jardín de polinizadores de la región."
+  },
+  {
+    "id": "algodoncillo_tropical",
+    "nombre": "Algodoncillo Tropical",
+    "nombre_cientifico": "Asclepias curassavica",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "medio",
+    "raiz": "fibrosa",
+    "advertencia": "Savia tóxica si se ingiere; manejar con cuidado y mantener alejada de mascotas.",
+    "servicios": [
+      "atrae polinizadores",
+      "planta hospedera de mariposa monarca",
+      "flores vistosas"
+    ],
+    "inat_taxon_id": 75602,
+    "wikipedia_titulo": "Asclepias_curassavica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Algodoncillo de flores rojo-anaranjadas muy vistosas, planta hospedera clave de la mariposa Monarca. En climas templados como el de Aguascalientes conviene podarla en invierno para evitar acumulación de un parásito de la mariposa (OE)."
+  },
+  {
+    "id": "gallito_de_monte",
+    "nombre": "Gallito de Monte",
+    "nombre_cientifico": "Zinnia peruviana",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin",
+      "camellones"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental",
+      "flor de temporada de lluvias"
+    ],
+    "inat_taxon_id": 153439,
+    "wikipedia_titulo": "Zinnia_peruviana",
+    "zonas_estado": [
+      "valle",
+      "sierra",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Zinnia silvestre nativa de floración abundante en temporada de lluvias, muy visitada por abejas y mariposas. De fácil propagación por semilla, ideal para franjas de flores silvestres en parques y camellones."
+  },
+  {
+    "id": "cinco_llagas",
+    "nombre": "Cinco Llagas",
+    "nombre_cientifico": "Tagetes lunulata",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.8,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental",
+      "aromático",
+      "repelente natural de plagas"
+    ],
+    "inat_taxon_id": 153954,
+    "wikipedia_titulo": "Tagetes_lunulata",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Cempasúchil silvestre nativo de flores anaranjadas y rojizas, pariente del cempasúchil de temporada de muertos. Su aroma ayuda a repeler algunas plagas de jardín y atrae abejas y mariposas."
+  },
+  {
+    "id": "dalia_roja",
+    "nombre": "Dalia Roja",
+    "nombre_cientifico": "Dahlia coccinea",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio",
+    "raiz": "tuberosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental",
+      "flor nacional de México"
+    ],
+    "inat_taxon_id": 146597,
+    "wikipedia_titulo": "Dahlia_coccinea",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Dalia silvestre de flores rojo-anaranjadas, ancestro de las dalias ornamentales y flor nacional de México. Su raíz tuberosa rebrota cada temporada de lluvias; excelente atractivo para abejas y mariposas en jardines de polinizadores."
+  },
+  {
+    "id": "mirto_chico",
+    "nombre": "Mirto Chico",
+    "nombre_cientifico": "Salvia microphylla",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "atrae colibríes",
+      "aromático"
+    ],
+    "inat_taxon_id": 168386,
+    "wikipedia_titulo": "Salvia_microphylla",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Salvia arbustiva de flores rojas tubulares, imán de colibríes y abejas durante la mayor parte del año. Muy tolerante a la sequía una vez establecida, ideal para bordes de jardín de polinizadores."
+  },
+  {
+    "id": "mirto_palido",
+    "nombre": "Mirto Pálido",
+    "nombre_cientifico": "Salvia axillaris",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.8,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "atrae colibríes",
+      "aromático"
+    ],
+    "inat_taxon_id": 286962,
+    "wikipedia_titulo": "Salvia_axillaris",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Salvia nativa de flores lila pálido, atractiva para abejas nativas y colibríes. Complementa a otras salvias del catálogo, ampliando la floración escalonada disponible para polinizadores a lo largo del año."
+  },
+  {
+    "id": "salvia_hoja_tilo",
+    "nombre": "Salvia Hoja de Tilo",
+    "nombre_cientifico": "Salvia tiliifolia",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin",
+      "agricola"
+    ],
+    "altura_max_m": 0.7,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "aromático"
+    ],
+    "inat_taxon_id": 153953,
+    "wikipedia_titulo": "Salvia_tiliifolia",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Salvia herbácea de amplia distribución en el centro de México, con flores azul-violeta pequeñas muy visitadas por abejas nativas. Buena especie de relleno para franjas florales de bajo mantenimiento."
+  },
+  {
+    "id": "espinosilla",
+    "nombre": "Espinosilla",
+    "nombre_cientifico": "Loeselia mexicana",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Hojas con puntas ligeramente espinosas.",
+    "servicios": [
+      "atrae polinizadores",
+      "atrae colibríes",
+      "medicinal"
+    ],
+    "inat_taxon_id": 146622,
+    "wikipedia_titulo": "Loeselia_mexicana",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Arbusto nativo de flores rojas tubulares muy atractivas para colibríes, de uso medicinal tradicional. Floración casi todo el año, buena opción para mantener alimento disponible para colibríes en temporada seca."
+  },
+  {
+    "id": "garanona",
+    "nombre": "Garañona",
+    "nombre_cientifico": "Castilleja tenuiflora",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.5,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Planta hemiparásita: establece mejor raíces junto a pastos o herbáceas nativas que le sirvan de hospedero.",
+    "servicios": [
+      "atrae colibríes",
+      "ornamental",
+      "medicinal"
+    ],
+    "inat_taxon_id": 143148,
+    "wikipedia_titulo": "Castilleja_tenuiflora",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Hierba nativa de brácteas rojas muy vistosas, gran atractivo para colibríes. Al ser hemiparásita de raíces de gramíneas, se recomienda sembrarla junto con pastos o herbáceas nativas para asegurar su establecimiento."
+  },
+  {
+    "id": "alfombrilla_de_campo",
+    "nombre": "Alfombrilla de Campo",
+    "nombre_cientifico": "Glandularia bipinnatifida",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin",
+      "camellones"
+    ],
+    "altura_max_m": 0.25,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "cubresuelo",
+      "ornamental"
+    ],
+    "inat_taxon_id": 125675,
+    "wikipedia_titulo": "Glandularia_bipinnatifida",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Verbena silvestre nativa, rastrera y de floración morada abundante, ideal como cubresuelo de bajo mantenimiento en camellones y bordes de jardín. Muy visitada por mariposas y abejas pequeñas."
+  },
+  {
+    "id": "burrillo",
+    "nombre": "Burrillo",
+    "nombre_cientifico": "Stevia serrata",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental"
+    ],
+    "inat_taxon_id": 169389,
+    "wikipedia_titulo": "Stevia_serrata",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Herbácea nativa de flores blancas pequeñas en racimo, del mismo género que la stevia edulcorante. Buena planta de relleno para jardines de polinizadores de zona serrana y valle."
+  },
+  {
+    "id": "trompetilla_colorada",
+    "nombre": "Trompetilla Colorada",
+    "nombre_cientifico": "Bouvardia ternifolia",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.2,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae colibríes",
+      "ornamental",
+      "medicinal"
+    ],
+    "inat_taxon_id": 147990,
+    "wikipedia_titulo": "Bouvardia_ternifolia",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Arbusto nativo de flores rojas tubulares muy vistosas, favorito de los colibríes en bosques y matorrales de la sierra. Distinta a la Trompetilla (Russelia) ya presente en el catálogo; amplía la oferta de flores para colibríes."
+  },
+  {
+    "id": "arnica_mexicana",
+    "nombre": "Árnica Mexicana",
+    "nombre_cientifico": "Heterotheca inuloides",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.7,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "medicinal",
+      "ornamental"
+    ],
+    "inat_taxon_id": 281680,
+    "wikipedia_titulo": "Heterotheca_inuloides",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árnica mexicana de flores amarillas, ampliamente usada en medicina tradicional y muy visitada por abejas nativas. Fácil de establecer en jardines de polinizadores de bajo consumo de agua."
+  },
+  {
+    "id": "hierba_del_negro",
+    "nombre": "Hierba del Negro",
+    "nombre_cientifico": "Sphaeralcea angustifolia",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin",
+      "camellones"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental",
+      "medicinal"
+    ],
+    "inat_taxon_id": 79173,
+    "wikipedia_titulo": "Sphaeralcea_angustifolia",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Malvácea nativa de flores anaranjadas casi todo el año, una de las plantas silvestres más comunes y visitadas por abejas en Aguascalientes. Muy resistente y de floración prolongada para jardines de polinizadores."
+  },
+  {
+    "id": "cimpasuchil",
+    "nombre": "Cimpasúchil",
+    "nombre_cientifico": "Adenophyllum cancellatum",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.4,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "atrae polinizadores",
+      "ornamental",
+      "aromático"
+    ],
+    "inat_taxon_id": 279803,
+    "wikipedia_titulo": "Adenophyllum",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Herbácea nativa emparentada con el cempasúchil, de flores amarillas pequeñas y follaje aromático. Buena cobertura floral de temporada de lluvias para atraer abejas y mariposas."
   }
 ]
