@@ -182,20 +182,65 @@
     color: var(--gris-texto);
   }
 
-  /* ── Qué NO plantar ── */
-  .evitar-grid {
+  /* ── ¿Por qué importa reforestar bien? ── */
+  .datos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.1rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
-  .evitar-card {
-    background: var(--rojo-claro);
-    border: 1px solid #ef9a9a;
+  .dato-card {
+    background: linear-gradient(160deg, var(--verde-oscuro) 0%, var(--verde) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.25rem 1.15rem;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0, 42, 92, 0.1);
+    transition: transform 0.15s ease;
+  }
+  .dato-card:hover { transform: translateY(-3px); }
+  .dato-card .dato-icono { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .dato-card .dato-cifra { font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+  .dato-card .dato-texto { font-size: 0.78rem; opacity: 0.92; margin-top: 0.35rem; line-height: 1.4; }
+
+  .acordeon { display: flex; flex-direction: column; gap: 0.7rem; }
+  .acordeon-item {
+    background: #fff;
+    border: 1px solid var(--borde);
     border-radius: 14px;
-    padding: 1.1rem 1.25rem;
+    overflow: hidden;
   }
-  .evitar-card h4 { color: var(--rojo); font-size: 1rem; margin-bottom: 0.4rem; }
-  .evitar-card p { font-size: 0.88rem; color: var(--gris-texto); }
+  .acordeon-pregunta {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1.05rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--azul-marino);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .acordeon-pregunta .flecha { transition: transform 0.2s ease; color: var(--verde); flex-shrink: 0; }
+  .acordeon-item.abierto .acordeon-pregunta .flecha { transform: rotate(180deg); }
+  .acordeon-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .acordeon-item.abierto .acordeon-respuesta { max-height: 520px; }
+  .acordeon-respuesta p {
+    padding: 0 1.25rem 1.15rem;
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    line-height: 1.55;
+  }
+  .acordeon-respuesta a { color: var(--verde); font-weight: 600; }
 
   /* ── Catálogo ── */
   .filtros {
@@ -425,7 +470,7 @@
   <a href="#catalogo" data-panel="catalogo">Catálogo de especies</a>
   <a href="#polinizadores" data-panel="polinizadores">🐝 Jardines de polinizadores</a>
   <a href="#guia" data-panel="guia">Cómo plantar</a>
-  <a href="#evitar" data-panel="evitar">Qué NO plantar</a>
+  <a href="#consejos" data-panel="consejos">¿Por qué importa reforestar bien?</a>
 </nav>
 
 <main>
@@ -489,10 +534,11 @@
     <div class="pasos-grid" id="pasos-grid"></div>
   </section>
 
-  <section id="evitar" class="panel">
-    <div class="section-titulo">Qué NO plantar</div>
-    <p class="section-sub">Especies prohibidas o desaconsejadas por SEMARNAT, la Secretaría Estatal y SEMADESU para reforestación urbana en Aguascalientes.</p>
-    <div class="evitar-grid" id="evitar-grid"></div>
+  <section id="consejos" class="panel">
+    <div class="section-titulo">¿Por qué importa reforestar bien?</div>
+    <p class="section-sub">Cada árbol que se planta en Pabellón de Arteaga con la especie correcta, en el sitio correcto, es agua, sombra y biodiversidad ganada para las próximas décadas. Este manual existe para que esa decisión se tome con información, no al azar.</p>
+    <div class="datos-grid" id="datos-grid"></div>
+    <div class="acordeon" id="acordeon-consejos"></div>
   </section>
 
 </main>
@@ -510,7 +556,7 @@
 <script>
 document.getElementById("anio").textContent = new Date().getFullYear();
 
-const PANELES = ['catalogo', 'polinizadores', 'guia', 'evitar'];
+const PANELES = ['catalogo', 'polinizadores', 'guia', 'consejos'];
 
 function mostrarPanel(id) {
   const panelId = PANELES.includes(id) ? id : 'catalogo';
@@ -554,7 +600,7 @@ const PASOS = [
   },
   {
     numero: '2 de 8', titulo: 'Elige la especie correcta', img: null,
-    descripcion: 'Prioriza especies nativas o adaptadas al clima semiárido de Aguascalientes, con bajo consumo hídrico. Evita las especies PROHIBIDAS por SEMARNAT, Secretaría Estatal y SEMADESU (ver sección Qué NO plantar). Consulta el catálogo: filtra por tu sitio (banqueta, camellón, parque) y región para ver las especies recomendadas.',
+    descripcion: 'Prioriza especies nativas o adaptadas al clima semiárido de Aguascalientes, con bajo consumo hídrico. Consulta el catálogo: filtra por tu sitio (banqueta, camellón, parque) y región para ver las especies recomendadas, y revisa las advertencias de cada ficha antes de plantar.',
     consejo: 'Las plantas nativas de la región requieren hasta 80% menos agua que las especies exóticas una vez establecidas.',
     tip: 'En Aguascalientes, la mejor época para plantar es al inicio de lluvias (junio–julio) o en otoño (sept–oct) cuando el calor cede. Evita plantar en enero–febrero cuando hay riesgo de heladas para especies sensibles.',
   },
@@ -606,21 +652,78 @@ function renderPasos() {
   `).join('');
 }
 
-/* ═══ Qué NO plantar ═══ */
-const EVITAR = [
-  { nombre: 'Eucalipto (Eucalyptus spp.)', texto: 'PROHIBIDO por SEMARNAT, Secretaría Estatal y SEMADESU. Consume cantidades excesivas de agua subterránea, libera sustancias que impiden crecer a otras plantas (alelopatía) y acidifica el suelo. Alternativa recomendada: Mezquite o Fresno para sombra amplia.' },
-  { nombre: 'Casuarina (Casuarina equisetifolia)', texto: 'PROHIBIDA en zonas urbanas. Afecta gravemente la biodiversidad local, acidifica el suelo y es muy susceptible a plagas con alta mortandad. Alternativa recomendada: Palo Verde o Tronadora.' },
-  { nombre: 'Cedro / Ciprés (Cupressus spp.)', texto: 'Evitar en zonas urbanas de AGS: alta mortandad documentada por el barrenador del ciprés. La SEMADESU registró pérdidas masivas de ejemplares en el municipio. Alternativa recomendada: Pirul criollo o Arrayán para setos.' },
-  { nombre: 'Tamarix / Pino salado (Tamarix spp.)', texto: 'Especie invasora que desplaza vegetación nativa y consume grandes cantidades de agua. No plantar en ningún contexto de reforestación. Alternativa recomendada: Guaje o Huizache para zonas áridas.' },
+/* ═══ ¿Por qué importa reforestar bien? ═══ */
+const DATOS_CURIOSOS = [
+  { icono: '🌡️', cifra: 'Hasta 5°C menos', texto: 'La sombra de un árbol urbano bien ubicado reduce la temperatura de su entorno inmediato.' },
+  { icono: '💧', cifra: '80% menos agua', texto: 'Las especies nativas ya establecidas requieren mucha menos agua de riego que las exóticas no adaptadas.' },
+  { icono: '🌳', cifra: '70%', texto: 'Tasa de supervivencia al año que se considera un proyecto de reforestación exitoso.' },
+  { icono: '🐝', cifra: '67 especies', texto: 'Del catálogo están identificadas como fuente de alimento para abejas, mariposas o colibríes.' },
+  { icono: '📅', cifra: '90 días', texto: 'Periodo crítico tras la plantación en el que un árbol necesita riego constante, 2-3 veces por semana.' },
+  { icono: '🍃', cifra: '~20 kg CO₂/año', texto: 'Lo que puede absorber en promedio un árbol adulto sano, según especie y tamaño de copa.' },
 ];
 
-function renderEvitar() {
-  document.getElementById('evitar-grid').innerHTML = EVITAR.map(e => `
-    <div class="evitar-card">
-      <h4>🚫 ${e.nombre}</h4>
-      <p>${e.texto}</p>
+function renderDatosCuriosos() {
+  const grid = document.getElementById('datos-grid');
+  if (!grid) return;
+  grid.innerHTML = DATOS_CURIOSOS.map(d => `
+    <div class="dato-card">
+      <div class="dato-icono">${d.icono}</div>
+      <div class="dato-cifra">${d.cifra}</div>
+      <div class="dato-texto">${d.texto}</div>
     </div>
   `).join('');
+}
+
+const CONSEJOS_ACORDEON = [
+  {
+    pregunta: '¿Por qué priorizar especies nativas?',
+    respuesta: 'Las especies nativas evolucionaron junto con el suelo, el clima y la fauna de Aguascalientes: una vez establecidas necesitan mucha menos agua, resisten mejor las heladas y las sequías, y sostienen a las abejas, mariposas y aves locales. Este manual también incluye especies exóticas de uso urbano muy extendido y bien adaptado, pero siempre conviene dar preferencia a una nativa cuando ambas cumplan la función que buscas.'
+  },
+  {
+    pregunta: '¿Cuándo es la mejor época para plantar en Aguascalientes?',
+    respuesta: 'Lo ideal es el inicio de la temporada de lluvias (junio–julio) o el otoño (septiembre–octubre), cuando el calor extremo ya cedió. Evita plantar especies sensibles entre enero y febrero, cuando el riesgo de heladas es más alto.'
+  },
+  {
+    pregunta: '¿Cómo elijo la especie correcta para mi espacio?',
+    respuesta: 'Usa los filtros del <a href="#catalogo">catálogo</a>: tipo de sitio (banqueta, camellón, parque, jardín), zona del estado, necesidad de riego y si buscas una especie nativa. Revisa siempre la advertencia de raíz antes de plantar cerca de banquetas, tuberías o construcciones.'
+  },
+  {
+    pregunta: '¿Por qué el manual incluye también especies exóticas?',
+    respuesta: 'Muchas especies exóticas llevan décadas en el paisaje urbano de Aguascalientes y están bien adaptadas al clima local; excluirlas del todo no reflejaría la realidad de calles, parques y jardines de la ciudad. Cada ficha indica si la especie es nativa o adaptada, y las advertencias señalan cuando una especie requiere manejo cuidadoso por su comportamiento de raíz o su capacidad de propagarse.'
+  },
+  {
+    pregunta: '¿Qué papel juegan los polinizadores?',
+    respuesta: 'Sin abejas, mariposas y colibríes, buena parte de la vegetación silvestre y de los cultivos de la región no podría reproducirse. La sección de <a href="#polinizadores">jardines de polinizadores</a> reúne las especies del catálogo que mejor los alimentan a lo largo del año.'
+  },
+  {
+    pregunta: '¿Qué hago si un árbol que planté no sobrevivió?',
+    respuesta: 'Antes de volver a plantar, revisa: si recibió suficiente riego los primeros 90 días, si la especie era adecuada para ese sitio y su nivel de riego, y si el cuello de la raíz quedó al nivel del suelo (ver <a href="#guia">guía de plantación</a>). Vuelve a intentarlo en la siguiente temporada adecuada, no fuera de época.'
+  },
+  {
+    pregunta: '¿Cómo puedo colaborar con IMBIO más allá de plantar?',
+    respuesta: 'Puedes reportar arbolado en riesgo, solicitar poda o derribo regulado, o denunciar tala ilegal desde las <a href="https://denuncias.imbio.info" target="_blank" rel="noopener">plataformas de monitoreo ambiental</a> de IMBIO. Cada árbol registrado y bien cuidado suma al arbolado urbano de todo el municipio.'
+  },
+];
+
+function renderAcordeonConsejos() {
+  const cont = document.getElementById('acordeon-consejos');
+  if (!cont) return;
+  cont.innerHTML = CONSEJOS_ACORDEON.map((c, i) => `
+    <div class="acordeon-item" id="acordeon-item-${i}">
+      <button class="acordeon-pregunta" type="button" aria-expanded="false" onclick="toggleAcordeon(${i})">
+        <span>${c.pregunta}</span>
+        <span class="flecha">▾</span>
+      </button>
+      <div class="acordeon-respuesta"><p>${c.respuesta}</p></div>
+    </div>
+  `).join('');
+}
+
+function toggleAcordeon(i) {
+  const item = document.getElementById(`acordeon-item-${i}`);
+  if (!item) return;
+  const abierto = item.classList.toggle('abierto');
+  item.querySelector('.acordeon-pregunta').setAttribute('aria-expanded', abierto ? 'true' : 'false');
 }
 
 /* ═══ Catálogo de especies ═══ */
@@ -1126,7 +1229,8 @@ function renderCatalogo() {
 });
 
 renderPasos();
-renderEvitar();
+renderDatosCuriosos();
+renderAcordeonConsejos();
 cargarEspecies();
 </script>
 
