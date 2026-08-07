@@ -515,7 +515,8 @@
 
   <section id="catalogo" class="panel active">
     <div class="section-titulo">Catálogo de especies</div>
-    <p class="section-sub">218 especies nativas y adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
+    <p class="section-sub">218 especies nativas de México y exóticas bien adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
+    <p class="section-sub" style="margin-top:-1.25rem; font-size:0.82rem;">"Nativa de México" indica que la especie es originaria del país; no todas ocurren de forma natural específicamente en Pabellón de Arteaga. Usa el filtro de zona para ver qué especies están documentadas en el valle, la sierra, oriente o Calvillo.</p>
 
     <div class="filtros">
       <input type="search" id="f-buscar" placeholder="Buscar por nombre común o científico…">
@@ -549,9 +550,9 @@
         <option value="alto">Alto</option>
       </select>
       <select id="f-nativa">
-        <option value="">Nativas y exóticas</option>
-        <option value="1">Solo nativas</option>
-        <option value="0">Solo exóticas/adaptadas</option>
+        <option value="">Nativas de México y exóticas</option>
+        <option value="1">Solo nativas de México</option>
+        <option value="0">Solo exóticas adaptadas</option>
       </select>
     </div>
     <p class="resultados-conteo" id="resultados-conteo"></p>
@@ -595,9 +596,9 @@
         <option value="alto">Alto</option>
       </select>
       <select id="p-nativa">
-        <option value="">Nativas y exóticas</option>
-        <option value="1">Solo nativas</option>
-        <option value="0">Solo exóticas/adaptadas</option>
+        <option value="">Nativas de México y exóticas</option>
+        <option value="1">Solo nativas de México</option>
+        <option value="0">Solo exóticas adaptadas</option>
       </select>
     </div>
     <p class="resultados-conteo" id="polinizadores-conteo"></p>
@@ -888,7 +889,7 @@ function especieCard(e) {
             <h4>${e.nombre_comun || e.nombre || ''}</h4>
             <div class="cientifico">${e.nombre_cientifico || ''}</div>
           </div>
-          <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa' : 'Adaptada'}</span>
+          <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa de México' : 'Exótica adaptada'}</span>
         </div>
         <div class="especie-datos">
           <span class="chip">${TIPO_LABEL[e.tipo] || e.tipo}</span>

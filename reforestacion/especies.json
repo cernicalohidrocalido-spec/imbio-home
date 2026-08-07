@@ -4402,8 +4402,8 @@
     "descripcion_ampliada": "Arbusto espinoso nativo del centro-norte de México, muy común en matorrales y orillas de terrenos agrícolas de Aguascalientes. Fija nitrógeno al suelo y da forraje al ganado en época de secas. Por sus espinas, mejor en linderos y cercas vivas que en zonas de tránsito peatonal."
   },
   {
-    "id": "mezquite_extranjero",
-    "nombre": "Mezquite (Prosopis juliflora)",
+    "id": "mezquite_juliflora",
+    "nombre": "Mezquite Juliflora",
     "nombre_cientifico": "Neltuma juliflora",
     "tipo": "arbol",
     "nativa": true,
@@ -4426,7 +4426,7 @@
     "zonas_estado": [
       "valle"
     ],
-    "descripcion_ampliada": "Especie del género de los mezquites (reclasificado recientemente de Prosopis a Neltuma), de gran tolerancia a la sequía. Da sombra rápida y forraje, pero su capacidad de rebrote y dispersión por semilla requiere monitoreo para evitar que invada terrenos agrícolas o de pastoreo cercanos."
+    "descripcion_ampliada": "Especie del género de los mezquites (reclasificado recientemente de Prosopis a Neltuma), nativa del sureste de México, Centroamérica y el Caribe, de gran tolerancia a la sequía. Fuera de su rango original —incluyendo zonas áridas del centro-norte del país como Aguascalientes— puede regenerarse agresivamente por semilla, por lo que su plantación debe monitorearse."
   },
   {
     "id": "mezquite_dulce",
