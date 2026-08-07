@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#002A5C">
-<title>Calidad del Aire — Pabellón de Arteaga | IMBIO</title>
+<title>Calidad del Aire en Tiempo Real — Pabellón de Arteaga | IMBIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,392 +15,602 @@
     --verde: #2f8f5b;
     --verde-claro: #e6f4ec;
     --gris-texto: #3d4a43;
+    --muted: #64748b;
     --fondo: #f4f6f8;
+    --borde: #e2e8f0;
+    --radius: 14px;
+    --radius-lg: 18px;
+    --shadow: 0 4px 18px rgba(0, 42, 92, 0.1);
+    --shadow-lg: 0 8px 26px rgba(0, 42, 92, 0.14);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { font-size: 17px; }
+  html { font-size: 18px; }
   body {
     font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
     background: var(--fondo);
     color: #1f2a24;
-    line-height: 1.55;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
   }
+  .tnum { font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; }
 
   header {
     background: linear-gradient(135deg, var(--azul-marino), var(--azul-marino-claro));
     color: white;
-    padding: 1.75rem 1.25rem 2rem;
+    padding: 2.5rem 1.5rem 2.75rem;
     text-align: center;
   }
-  header a.volver {
-    display: inline-block;
-    color: #aecbe6;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.85rem;
-  }
-  header a.volver:hover { color: white; }
-  header h1 {
-    font-size: clamp(1.45rem, 4vw, 2rem);
-    font-weight: 800;
-    letter-spacing: 0.2px;
-  }
+  header .icono { font-size: 2.4rem; margin-bottom: 0.5rem; }
+  header h1 { font-size: 2.1rem; font-weight: 800; letter-spacing: 0.3px; }
   header p {
-    margin-top: 0.45rem;
-    color: #dbe8f5;
-    font-size: 1.05rem;
+    margin-top: 0.65rem;
+    font-size: 1.1rem;
     font-weight: 500;
+    color: #dbe8f5;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  header .meta {
-    margin-top: 0.85rem;
-    font-size: 0.88rem;
-    color: #aecbe6;
-  }
-
-  main {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 1.5rem 1.25rem 3rem;
-  }
-
-  .hero {
-    background: white;
-    border-radius: 18px;
-    padding: 1.75rem 1.5rem;
-    box-shadow: 0 4px 18px rgba(0, 42, 92, 0.1);
-    display: grid;
-    gap: 1.25rem;
-    align-items: center;
-    text-align: center;
-  }
-  @media (min-width: 640px) {
-    .hero {
-      grid-template-columns: auto 1fr;
-      text-align: left;
-      padding: 2rem;
-    }
-  }
-
-  .aqi-ring {
-    width: 148px;
-    height: 148px;
-    border-radius: 50%;
-    margin: 0 auto;
-    display: grid;
-    place-items: center;
-    border: 10px solid #ccc;
-    background: #fafbfc;
-  }
-  .aqi-ring .num {
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--azul-marino);
-  }
-  .aqi-ring .lbl {
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: #647082;
-    margin-top: 0.2rem;
-  }
-
-  .hero-copy h2 {
-    font-size: 1.55rem;
-    font-weight: 800;
-    color: var(--azul-marino);
-  }
-  .hero-copy .estado {
+  header .volver {
     display: inline-block;
-    margin-top: 0.55rem;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    color: white;
-  }
-  .hero-copy .recomendacion {
-    margin-top: 0.85rem;
-    color: var(--gris-texto);
-    font-size: 1rem;
-  }
-  .hero-copy .actualizado {
-    margin-top: 0.7rem;
-    font-size: 0.88rem;
-    color: #647082;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-top: 1.25rem;
-  }
-  .pollutant {
-    background: white;
-    border-radius: 14px;
-    padding: 1.15rem 1rem;
-    box-shadow: 0 3px 14px rgba(0, 42, 92, 0.08);
-    border-top: 4px solid var(--azul-marino);
-  }
-  .pollutant .name {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #647082;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
-  .pollutant .value {
-    margin-top: 0.35rem;
-    font-size: 1.55rem;
-    font-weight: 800;
-    color: var(--azul-marino);
-  }
-  .pollutant .unit {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #647082;
-  }
-
-  .legend {
-    margin-top: 1.5rem;
-    background: white;
-    border-radius: 14px;
-    padding: 1.25rem 1.15rem;
-    box-shadow: 0 3px 14px rgba(0, 42, 92, 0.08);
-  }
-  .legend h3 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--azul-marino);
-    margin-bottom: 0.75rem;
-  }
-  .legend-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--gris-texto);
-    background: #f4f6f8;
-    padding: 0.35rem 0.65rem;
-    border-radius: 999px;
-  }
-  .chip i {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  .acciones {
-    margin-top: 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  button, .btn {
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    background: var(--azul-marino);
-    color: white;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.7rem 1.15rem;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  button:hover, .btn:hover { background: var(--azul-marino-claro); }
-  button:disabled { opacity: 0.65; cursor: wait; }
-
-  .nota {
-    margin-top: 1.5rem;
-    font-size: 0.88rem;
-    color: #647082;
-    line-height: 1.55;
-  }
-  .error {
-    margin-top: 1rem;
-    background: #fdecea;
-    color: #8a1f11;
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-    font-weight: 600;
-    display: none;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1.5rem 1rem 2rem;
-    color: #647082;
+    margin-top: 1.4rem;
+    color: #cfe0f2;
     font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
   }
+  header .volver:hover { background: rgba(255,255,255,0.1); }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 300px);
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+  .dashboard-stations { min-height: 120px; order: 1; }
+  .dashboard-clima { order: 2; }
+
+  .dashboard-msg {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px dashed var(--borde);
+  }
+  .dashboard-msg--error { color: #b71c1c; border-color: rgba(183, 28, 28, 0.25); background: #fff5f5; }
+
+  .station-card {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 1.75rem;
+  }
+  .station-card__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .station-card__name { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--azul-marino); }
+  .station-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+  .station-badge--live { color: #0a7a55; background: #dcfce7; }
+  .station-badge--warn { color: #92400e; background: #fef3c7; }
+
+  .station-card__body {
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .station-card__body { grid-template-columns: 1fr; } }
+
+  .aqi-panel {
+    background: color-mix(in srgb, var(--aqi-color) 12%, white);
+    border: 3px solid var(--aqi-color);
+    border-radius: 50%;
+    width: 190px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .aqi-panel__label { margin: 0; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .aqi-panel__value { margin: 0; font-size: 2.6rem; font-weight: 800; color: var(--aqi-color); line-height: 1; }
+  .aqi-panel__cat {
+    margin: 0.15rem 0 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--aqi-text, #1f2a24);
+    background: var(--aqi-color);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+  }
+  .aqi-panel__pm { margin: 0.5rem 0 0; font-size: 0.72rem; color: var(--muted); }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.85rem;
+    margin: 0;
+  }
+  .metric { background: #f4f6f8; border: 1px solid var(--borde); border-radius: 10px; padding: 0.75rem 0.85rem; }
+  .metric--neutral { opacity: 0.92; }
+  .metric dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 0.25rem; }
+  .metric dd { margin: 0; font-size: 1.15rem; font-weight: 600; color: #1f2a24; }
+  .metric-unit { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+  .metric-note { display: block; font-size: 0.62rem; font-weight: 400; color: var(--muted); margin-top: 0.2rem; line-height: 1.3; }
+
+  .station-update { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--muted); }
+  .station-update--warn { color: #b45309; }
+
+  .chart-wrap { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--borde); }
+  .chart-title { margin: 0 0 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--azul-marino); }
+  .chart-wrap canvas { width: 100% !important; height: 220px !important; }
+
+  .aire-nom-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  .clima-card {
+    background: linear-gradient(160deg, var(--azul-marino) 0%, var(--azul-marino-claro) 100%);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.35rem;
+  }
+  .clima-card__badge {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .clima-card__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; }
+  .clima-card__title { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.35; }
+  .clima-card__sub { margin: 0.35rem 0 0; font-size: 0.72rem; opacity: 0.82; line-height: 1.45; }
+  .clima-card__icon { font-size: 2.5rem; line-height: 1; flex-shrink: 0; }
+  .clima-card__desc { margin: 0 0 1rem; font-size: 0.95rem; font-weight: 600; }
+  .clima-card__hero { display: flex; align-items: baseline; gap: 0.35rem; margin-bottom: 1rem; }
+  .clima-card__temp { font-size: 2.75rem; font-weight: 800; line-height: 1; }
+  .clima-card__unit { font-size: 1.1rem; opacity: 0.85; }
+  .clima-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin: 0; }
+  .clima-metric { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 0.65rem 0.75rem; }
+  .clima-metric dt { margin: 0 0 0.2rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.78; }
+  .clima-metric dd { margin: 0; font-size: 0.95rem; font-weight: 600; }
+  .clima-card__today { margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.78rem; opacity: 0.9; }
+  .clima-card__source { margin-top: 0.85rem; font-size: 0.62rem; opacity: 0.65; line-height: 1.4; }
+  .clima-card--loading, .clima-card--error { background: #fff; color: #1f2a24; border: 1px dashed var(--borde); box-shadow: var(--shadow); }
+  .clima-card--error { color: #92400e; background: #fffbeb; border-color: #fcd34d; }
+
+  footer { text-align: center; padding: 2rem 1rem; color: #647082; font-size: 0.95rem; }
 </style>
 </head>
 <body>
 
 <header>
-  <a class="volver" href="/">← Volver al portal IMBIO</a>
-  <h1>Calidad del Aire de Pabellón de Arteaga</h1>
-  <p>Monitoreo en tiempo real · IMBIO</p>
-  <div class="meta">Pabellón de Arteaga, Aguascalientes · H. Ayuntamiento</div>
+  <div class="icono">🌬️</div>
+  <h1>Calidad del Aire en Tiempo Real</h1>
+  <p>Estación IoT PureAir en Pabellón Centro. Partículas suspendidas, temperatura y humedad actualizadas desde la nube.</p>
+  <a class="volver" href="/">← Volver a IMBIO</a>
 </header>
 
 <main>
-  <section class="hero" aria-live="polite">
-    <div class="aqi-ring" id="aqiRing">
-      <div>
-        <div class="num" id="aqiNum">—</div>
-        <div class="lbl">Índice AQI</div>
-      </div>
-    </div>
-    <div class="hero-copy">
-      <h2 id="aqiTitulo">Cargando calidad del aire…</h2>
-      <span class="estado" id="aqiEstado" style="background:#647082">—</span>
-      <p class="recomendacion" id="aqiReco">Obteniendo datos satelitales y de modelos atmosféricos para el municipio.</p>
-      <p class="actualizado" id="aqiHora"></p>
-    </div>
-  </section>
-
-  <div class="error" id="errorBox"></div>
-
-  <div class="grid" id="pollutants">
-    <div class="pollutant"><div class="name">PM2.5</div><div class="value" id="pm25">—</div><div class="unit">μg/m³</div></div>
-    <div class="pollutant"><div class="name">PM10</div><div class="value" id="pm10">—</div><div class="unit">μg/m³</div></div>
-    <div class="pollutant"><div class="name">Ozono (O₃)</div><div class="value" id="o3">—</div><div class="unit">μg/m³</div></div>
-    <div class="pollutant"><div class="name">NO₂</div><div class="value" id="no2">—</div><div class="unit">μg/m³</div></div>
-    <div class="pollutant"><div class="name">SO₂</div><div class="value" id="so2">—</div><div class="unit">μg/m³</div></div>
-    <div class="pollutant"><div class="name">CO</div><div class="value" id="co">—</div><div class="unit">μg/m³</div></div>
+  <div class="dashboard-grid">
+    <div id="dashboard-stations" class="dashboard-stations" aria-live="polite"></div>
+    <div id="dashboard-clima" class="dashboard-clima" aria-live="polite"></div>
   </div>
-
-  <div class="acciones">
-    <button type="button" id="btnRefresh">Actualizar ahora</button>
-    <a class="btn" href="/" style="background:#2f8f5b">Portal IMBIO</a>
-  </div>
-
-  <section class="legend">
-    <h3>Escala del índice (AQI europeo)</h3>
-    <div class="legend-row">
-      <span class="chip"><i style="background:#50f0e6"></i>0–20 Buena</span>
-      <span class="chip"><i style="background:#50ccaa"></i>20–40 Aceptable</span>
-      <span class="chip"><i style="background:#f0e641"></i>40–60 Moderada</span>
-      <span class="chip"><i style="background:#ff5050"></i>60–80 Mala</span>
-      <span class="chip"><i style="background:#960032"></i>80–100 Muy mala</span>
-      <span class="chip"><i style="background:#7d2181"></i>&gt;100 Extremadamente mala</span>
-    </div>
-  </section>
-
-  <p class="nota">
-    Datos en tiempo real de Open-Meteo Air Quality (modelos CAMS) para las coordenadas de
-    Pabellón de Arteaga (≈ 22.15° N, 102.27° O). La información se actualiza automáticamente
-    cada 15 minutos. Fuente: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.
-  </p>
+  <p class="aire-nom-note">Categoría ICA según NOM-172-SEMARNAT-2023 (PM2.5). El sensor de gas/VOC es informativo y no está normado.</p>
 </main>
 
 <footer>
-  © <span id="anio"></span> IMBIO · Instituto Municipal de Biodiversidad y Protección Ambiental
+  © <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-  document.getElementById("anio").textContent = new Date().getFullYear();
+document.getElementById("anio").textContent = new Date().getFullYear();
 
-  const LAT = 22.147;
-  const LON = -102.275;
-  const API =
-    "https://air-quality-api.open-meteo.com/v1/air-quality" +
-    `?latitude=${LAT}&longitude=${LON}` +
-    "&current=european_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone" +
-    "&timezone=America%2FMexico_City";
+/**
+ * Dashboard calidad del aire — REST Firebase (sin SDK)
+ */
+const FB = 'https://chrysaetos-pureair-default-rtdb.firebaseio.com';
 
-  const NIVELES = [
-    { max: 20, label: "Buena", color: "#50f0e6", text: "#0b3d40",
-      reco: "La calidad del aire es favorable. Puedes realizar actividades al aire libre con normalidad." },
-    { max: 40, label: "Aceptable", color: "#50ccaa", text: "#0b3d40",
-      reco: "Calidad del aire aceptable. Personas muy sensibles pueden notar molestias leves." },
-    { max: 60, label: "Moderada", color: "#f0e641", text: "#3d3a00",
-      reco: "Grupos sensibles: reduzcan esfuerzo prolongado al aire libre. Resto de la población: precaución moderada." },
-    { max: 80, label: "Mala", color: "#ff5050", text: "#fff",
-      reco: "Se recomienda limitar actividades al aire libre, especialmente para niños, adultos mayores y personas con asma." },
-    { max: 100, label: "Muy mala", color: "#960032", text: "#fff",
-      reco: "Evite actividades físicas intensas al aire libre. Permanezca en interiores si es posible." },
-    { max: Infinity, label: "Extremadamente mala", color: "#7d2181", text: "#fff",
-      reco: "Condiciones peligrosas. Evite salir y mantenga ventanas cerradas. Consulte orientación oficial." }
-  ];
+const STATION = {
+  id: 'dispositivos/pureair_001/estacion',
+  historyPath: 'dispositivos/pureair_001/historial',
+  name: 'Pabellón Centro',
+};
 
-  function nivelDe(aqi) {
-    return NIVELES.find(n => aqi <= n.max) || NIVELES[NIVELES.length - 1];
-  }
+/** NOM-172-SEMARNAT-2023 */
+const NOM172 = [
+  { max: 15, label: 'Buena', color: '#22B33E', textOn: '#ffffff' },
+  { max: 25, label: 'Aceptable', color: '#FFFF00', textOn: '#1a1a1a' },
+  { max: 79, label: 'Mala', color: '#FF7E00', textOn: '#ffffff' },
+  { max: 130, label: 'Muy mala', color: '#FF0000', textOn: '#ffffff' },
+  { max: Infinity, label: 'Extremadamente mala', color: '#8F3F97', textOn: '#ffffff' },
+];
 
-  function fmt(n, d = 1) {
-    if (n == null || Number.isNaN(n)) return "—";
-    return Number(n).toFixed(d);
-  }
+const OFFLINE_MS = 15 * 60 * 1000;
+const TZ = 'America/Mexico_City';
+const CHART_FONT = "'Plus Jakarta Sans', system-ui, sans-serif";
+/** Pabellón de Arteaga, Aguascalientes */
+const CLIMA_LAT = 21.99;
+const CLIMA_LNG = -102.28;
+const CLIMA_REFRESH_MS = 15 * 60 * 1000;
 
-  function setText(id, value) {
-    document.getElementById(id).textContent = value;
-  }
+const state = {
+  station: { current: null, history: [] },
+  chart: null,
+  historyLoadedAt: 0,
+  clima: { data: null, loadedAt: 0, loading: false },
+};
 
-  async function cargar() {
-    const btn = document.getElementById("btnRefresh");
-    const err = document.getElementById("errorBox");
-    btn.disabled = true;
-    err.style.display = "none";
-    try {
-      const res = await fetch(API);
-      if (!res.ok) throw new Error("No se pudo consultar el servicio de calidad del aire.");
-      const data = await res.json();
-      const c = data.current || {};
-      const aqi = Number(c.european_aqi);
-      const nivel = nivelDe(aqi);
+function classifyNom172(pm25) {
+  const v = Number(pm25) || 0;
+  const band = NOM172.find((b) => v < b.max) || NOM172[NOM172.length - 1];
+  return { pm25: v, ica: Math.round(v), color: band.color, textOn: band.textOn, label: band.label };
+}
 
-      setText("aqiNum", Number.isFinite(aqi) ? Math.round(aqi) : "—");
-      setText("aqiTitulo", "Índice de calidad del aire");
-      const estado = document.getElementById("aqiEstado");
-      estado.textContent = nivel.label;
-      estado.style.background = nivel.color;
-      estado.style.color = nivel.text;
-      document.getElementById("aqiRing").style.borderColor = nivel.color;
-      setText("aqiReco", nivel.reco);
+function formatNumber(n, decimals = 1) {
+  if (n == null || Number.isNaN(n)) return '—';
+  return Number(n).toLocaleString('es-MX', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
 
-      const hora = c.time
-        ? new Date(c.time).toLocaleString("es-MX", { dateStyle: "medium", timeStyle: "short" })
-        : "—";
-      setText("aqiHora", "Última medición del modelo: " + hora);
+function relativeUpdate(tsMs) {
+  if (!tsMs) return { text: '—', offline: true };
+  const diff = Date.now() - tsMs;
+  if (diff < 60000) return { text: 'justo ahora', offline: false };
+  const min = Math.floor(diff / 60000);
+  return { text: `hace ${min} min`, offline: diff > OFFLINE_MS };
+}
 
-      setText("pm25", fmt(c.pm2_5));
-      setText("pm10", fmt(c.pm10));
-      setText("o3", fmt(c.ozone, 0));
-      setText("no2", fmt(c.nitrogen_dioxide));
-      setText("so2", fmt(c.sulphur_dioxide));
-      setText("co", fmt(c.carbon_monoxide, 0));
-    } catch (e) {
-      err.textContent = e.message || "Error al cargar los datos.";
-      err.style.display = "block";
-      setText("aqiTitulo", "No se pudo actualizar");
-    } finally {
-      btn.disabled = false;
+async function fetchJson(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if (data === null) throw new Error('empty');
+  return data;
+}
+
+async function fetchCurrent() { return fetchJson(`${FB}/${STATION.id}.json`); }
+
+async function fetchHistory() {
+  const q = encodeURIComponent('"$key"');
+  return fetchJson(`${FB}/${STATION.historyPath}.json?orderBy=${q}&limitToLast=200`);
+}
+
+function historyToArray(obj) {
+  if (!obj || typeof obj !== 'object') return [];
+  return Object.values(obj)
+    .filter((row) => row && row.timestamp != null)
+    .sort((a, b) => Number(a.timestamp) - Number(b.timestamp));
+}
+
+function subsample(arr, maxPoints = 60) {
+  if (arr.length <= maxPoints) return arr;
+  const step = Math.ceil(arr.length / maxPoints);
+  return arr.filter((_, i) => i % step === 0);
+}
+
+function formatChartTime(tsMs) {
+  return new Intl.DateTimeFormat('es-MX', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(tsMs));
+}
+
+function metricRow(label, value, unit, neutral = false) {
+  const note = neutral ? `<span class="metric-note">Informativo, no normado</span>` : '';
+  return `
+    <div class="metric ${neutral ? 'metric--neutral' : ''}">
+      <dt>${label}</dt>
+      <dd class="tnum">${value} <span class="metric-unit">${unit}</span>${note}</dd>
+    </div>
+  `;
+}
+
+function renderEstacion(datos, historial, container) {
+  const nom = classifyNom172(datos?.pm2_5);
+  const rel = relativeUpdate(datos?.timestamp);
+
+  container.innerHTML = `
+    <article class="station-card">
+      <header class="station-card__header">
+        <h3 class="station-card__name">${STATION.name}</h3>
+        ${rel.offline
+          ? `<span class="station-badge station-badge--warn">Fuera de línea</span>`
+          : `<span class="station-badge station-badge--live">● EN VIVO</span>`}
+      </header>
+      <div class="station-card__body">
+        <div class="aqi-panel" style="--aqi-color:${nom.color};--aqi-text:${nom.textOn}">
+          <p class="aqi-panel__label">ICA PM2.5</p>
+          <p class="aqi-panel__value tnum">${nom.ica}</p>
+          <p class="aqi-panel__cat tnum">${nom.label}</p>
+          <p class="aqi-panel__pm tnum">PM2.5 · ${formatNumber(datos?.pm2_5)} µg/m³</p>
+        </div>
+        <dl class="metrics-grid">
+          ${metricRow('PM2.5', formatNumber(datos?.pm2_5), 'µg/m³')}
+          ${metricRow('PM10', formatNumber(datos?.pm10), 'µg/m³')}
+          ${metricRow('PM1.0', formatNumber(datos?.pm1_0), 'µg/m³')}
+          ${metricRow('Temperatura', formatNumber(datos?.temperatura), '°C')}
+          ${metricRow('Humedad', formatNumber(datos?.humedad, 0), '%')}
+          ${metricRow('Presión', formatNumber(datos?.presion, 0), 'hPa')}
+          ${metricRow('CO2', formatNumber(datos?.co2, 0), 'ppm')}
+          ${metricRow('Gas/VOC', formatNumber(datos?.gas, 0), 'kΩ', true)}
+        </dl>
+      </div>
+      <p class="station-update ${rel.offline ? 'station-update--warn' : ''}">
+        Actualizado <strong class="tnum">${rel.text}</strong>
+      </p>
+      <div class="chart-wrap">
+        <p class="chart-title">Histórico PM2.5 (últimas lecturas)</p>
+        <canvas id="chart-station" aria-label="Histórico PM2.5"></canvas>
+      </div>
+    </article>
+  `;
+
+  renderChart(historial);
+}
+
+function renderChart(historial) {
+  const canvas = document.getElementById('chart-station');
+  if (!canvas || typeof Chart === 'undefined') return;
+
+  const rows = subsample(historyToArray(historial));
+  const labels = rows.map((r) => formatChartTime(r.timestamp));
+  const values = rows.map((r) => Number(r.pm2_5 ?? r.pm25 ?? 0));
+
+  if (state.chart) state.chart.destroy();
+
+  const nom = classifyNom172(values[values.length - 1] ?? 0);
+
+  state.chart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'PM2.5',
+        data: values,
+        borderColor: nom.color,
+        backgroundColor: `${nom.color}22`,
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.3,
+        fill: true,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { maxTicksLimit: 8, color: '#64748b', font: { family: CHART_FONT } }, grid: { color: '#e2e8f0' } },
+        y: {
+          title: { display: true, text: 'µg/m³', color: '#64748b', font: { family: CHART_FONT, size: 11 } },
+          ticks: { color: '#64748b', font: { family: CHART_FONT } },
+          grid: { color: '#e2e8f0' },
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+}
+
+function showDashboardMessage(text, type = 'info') {
+  const root = document.getElementById('dashboard-stations');
+  if (!root) return;
+  root.innerHTML = `<p class="dashboard-msg dashboard-msg--${type}">${text}</p>`;
+}
+
+async function loadStationFull(withHistory = true) {
+  const root = document.getElementById('dashboard-stations');
+  if (!root) return;
+  try {
+    const current = await fetchCurrent();
+    let history = state.station.history;
+    if (withHistory) {
+      history = await fetchHistory();
+      state.historyLoadedAt = Date.now();
+    }
+    state.station = { current, history };
+    renderEstacion(current, history, root);
+  } catch (e) {
+    console.warn('[dashboard]', e);
+    if (state.station.current) {
+      renderEstacion(state.station.current, state.station.history ?? [], root);
+    } else {
+      showDashboardMessage('No se pudo cargar la información de la estación.', 'error');
     }
   }
+}
 
-  document.getElementById("btnRefresh").addEventListener("click", cargar);
-  cargar();
-  setInterval(cargar, 15 * 60 * 1000);
+async function refreshCurrentOnly() {
+  try {
+    const current = await fetchCurrent();
+    state.station.current = current;
+    const root = document.getElementById('dashboard-stations');
+    if (root && state.station.history) {
+      renderEstacion(current, state.station.history, root);
+    }
+  } catch (e) {
+    console.warn('[dashboard refresh]', e);
+  }
+}
+
+function windDirLabel(deg) {
+  if (deg == null || Number.isNaN(deg)) return '—';
+  const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'];
+  const idx = Math.round(((Number(deg) % 360) / 45)) % 8;
+  return dirs[idx];
+}
+
+const WEATHER_DESC = {
+  0: 'Cielo despejado', 1: 'Mayormente despejado', 2: 'Parcialmente nublado', 3: 'Nublado',
+  45: 'Neblina', 48: 'Niebla con escarcha',
+  51: 'Llovizna ligera', 53: 'Llovizna moderada', 55: 'Llovizna densa',
+  61: 'Lluvia ligera', 63: 'Lluvia moderada', 65: 'Lluvia fuerte',
+  71: 'Nevada ligera', 73: 'Nevada moderada', 75: 'Nevada fuerte',
+  80: 'Chubascos ligeros', 81: 'Chubascos moderados', 82: 'Chubascos fuertes',
+  95: 'Tormenta', 96: 'Tormenta con granizo', 99: 'Tormenta fuerte con granizo',
+};
+
+function weatherDescription(code) {
+  if (WEATHER_DESC[code] != null) return WEATHER_DESC[code];
+  const closest = Object.keys(WEATHER_DESC).reduce((a, b) => (Math.abs(b - code) < Math.abs(a - code) ? b : a));
+  return WEATHER_DESC[closest] ?? '';
+}
+
+function weatherIcon(code, isDay) {
+  if (code === 0) return isDay ? '☀️' : '🌙';
+  if (code === 1 || code === 2) return isDay ? '🌤️' : '☁️';
+  if (code === 3) return '☁️';
+  if (code === 45 || code === 48) return '🌫️';
+  if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return '🌧️';
+  if ([71, 73, 75].includes(code)) return '❄️';
+  if ([95, 96, 99].includes(code)) return '⛈️';
+  return '🌡️';
+}
+
+async function fetchClima() {
+  const params = new URLSearchParams({
+    latitude: CLIMA_LAT,
+    longitude: CLIMA_LNG,
+    current: 'temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day',
+    daily: 'temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum',
+    timezone: TZ,
+    forecast_days: 1,
+  });
+  return fetchJson(`https://api.open-meteo.com/v1/forecast?${params.toString()}`);
+}
+
+function renderClimaCard() {
+  const root = document.getElementById('dashboard-clima');
+  if (!root) return;
+
+  const c = state.clima;
+
+  if (c.loading && !c.data) {
+    root.innerHTML = `<div class="clima-card clima-card--loading"><p>Cargando clima…</p></div>`;
+    return;
+  }
+  if (!c.data) {
+    root.innerHTML = `<div class="clima-card clima-card--error"><p>No se pudo cargar el clima.</p></div>`;
+    return;
+  }
+
+  const cur = c.data.current || {};
+  const daily = c.data.daily || {};
+  const code = cur.weather_code;
+  const icon = weatherIcon(code, cur.is_day !== 0);
+  const desc = weatherDescription(code);
+
+  const tmax = daily.temperature_2m_max?.[0];
+  const tmin = daily.temperature_2m_min?.[0];
+  const uv = daily.uv_index_max?.[0];
+  const precipDay = daily.precipitation_sum?.[0];
+
+  root.innerHTML = `
+    <div class="clima-card">
+      <span class="clima-card__badge">Clima regional</span>
+      <div class="clima-card__header">
+        <div>
+          <h3 class="clima-card__title">Pabellón de Arteaga</h3>
+          <p class="clima-card__sub">Modelo meteorológico regional. No reemplaza la medición del sensor de la estación.</p>
+        </div>
+        <div class="clima-card__icon">${icon}</div>
+      </div>
+      <p class="clima-card__desc">${desc}</p>
+      <div class="clima-card__hero">
+        <span class="clima-card__temp tnum">${formatNumber(cur.temperature_2m, 0)}</span>
+        <span class="clima-card__unit">°C</span>
+      </div>
+      <dl class="clima-metrics">
+        <div class="clima-metric"><dt>Sensación</dt><dd class="tnum">${formatNumber(cur.apparent_temperature, 0)} °C</dd></div>
+        <div class="clima-metric"><dt>Humedad</dt><dd class="tnum">${formatNumber(cur.relative_humidity_2m, 0)} %</dd></div>
+        <div class="clima-metric"><dt>Viento</dt><dd class="tnum">${formatNumber(cur.wind_speed_10m, 0)} km/h ${windDirLabel(cur.wind_direction_10m)}</dd></div>
+        <div class="clima-metric"><dt>Presión</dt><dd class="tnum">${formatNumber(cur.pressure_msl, 0)} hPa</dd></div>
+        <div class="clima-metric"><dt>Precipitación</dt><dd class="tnum">${formatNumber(precipDay, 1)} mm</dd></div>
+        <div class="clima-metric"><dt>Índice UV</dt><dd class="tnum">${formatNumber(uv, 1)}</dd></div>
+      </dl>
+      <div class="clima-card__today">
+        <strong>Hoy:</strong> Máx ${formatNumber(tmax, 0)}°C · Mín ${formatNumber(tmin, 0)}°C
+      </div>
+      <p class="clima-card__source">Fuente: Open-Meteo · ${CLIMA_LAT.toFixed(2)}, ${CLIMA_LNG.toFixed(2)}</p>
+    </div>
+  `;
+}
+
+async function loadClima(force = false) {
+  if (!force && state.clima.data && Date.now() - state.clima.loadedAt < CLIMA_REFRESH_MS) {
+    renderClimaCard();
+    return;
+  }
+  if (state.clima.loading) return;
+  state.clima.loading = true;
+  if (!state.clima.data) renderClimaCard();
+  try {
+    const data = await fetchClima();
+    state.clima.data = data;
+    state.clima.loadedAt = Date.now();
+  } catch (e) {
+    console.warn('[dashboard clima]', e);
+  } finally {
+    state.clima.loading = false;
+    renderClimaCard();
+  }
+}
+
+setInterval(() => loadClima(false), CLIMA_REFRESH_MS);
+
+async function initDashboard() {
+  const root = document.getElementById('dashboard-stations');
+  if (!root) return;
+
+  showDashboardMessage('Cargando datos de la estación…', 'info');
+  await loadStationFull(true);
+
+  loadClima(false);
+  setInterval(refreshCurrentOnly, 60_000);
+  setInterval(async () => {
+    if (Date.now() - state.historyLoadedAt < 5 * 60_000) return;
+    try {
+      const history = await fetchHistory();
+      state.station.history = history;
+      state.historyLoadedAt = Date.now();
+      const r = document.getElementById('dashboard-stations');
+      if (r && state.station.current) renderEstacion(state.station.current, history, r);
+    } catch (e) {
+      console.warn('[dashboard history]', e);
+    }
+  }, 60_000);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDashboard);
+} else {
+  initDashboard();
+}
 </script>
+
 </body>
 </html>
