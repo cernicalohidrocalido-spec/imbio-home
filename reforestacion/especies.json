@@ -1,222 +1,4377 @@
 [
   {
-    "id_especie": "prosopis_laevigata", "nombre_comun": "Mezquite", "nombre_cientifico": "Prosopis laevigata",
-    "familia": "Fabaceae", "inat_taxon_id": 78529, "wikipedia_titulo": "Prosopis laevigata",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "8-10 m", "crecimiento": "Lento", "imagen_asset": "assets/images/mezquite.jpg",
-    "zonas_estado": ["valle", "oriente"],
-    "servicios": ["Sombra densa", "Fija nitrógeno", "Refugio de fauna", "Comestible (vainas)"],
-    "regla": "La especie reina para linderos agrícolas y parques; fija nitrógeno y mejora el suelo. En banqueta solo si es mayor a 2 m de ancho y con poda de formación vertical estricta.",
-    "descripcion": "Árbol emblemático del semiárido aguascalentense. Excelente para parques, camellones amplios y cortinas rompevientos."
+    "id": "alamo",
+    "nombre": "Álamo",
+    "nombre_cientifico": "Populus nigra",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 25,
+    "riego": "alto",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva hacia tuberías. Solo en parques con espacio amplio.",
+    "servicios": [
+      "sombra rápida",
+      "ornamental"
+    ],
+    "inat_taxon_id": 56028,
+    "wikipedia_titulo": "Populus_nigra",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 25 m, con riego alto. Ofrece: sombra rápida, ornamental. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "vachellia_farnesiana", "nombre_comun": "Huizache", "nombre_cientifico": "Vachellia farnesiana",
-    "familia": "Fabaceae", "inat_taxon_id": 135736, "wikipedia_titulo": "Vachellia farnesiana",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.0, "altura_maxima": "3-6 m", "crecimiento": "Rápido", "imagen_asset": "assets/images/huizache.jpg",
-    "zonas_estado": ["valle", "oriente"],
-    "servicios": ["Fija nitrógeno", "Control de erosión", "Melífero", "Aromático"],
-    "regla": "Extremadamente resistente a sequía y suelos pobres. Tiene espinas: no lo plantes junto a banquetas con tránsito peatonal.",
-    "descripcion": "Pionero de zonas áridas y llanos. Ideal para camellones, recuperar suelos degradados y formar barreras vivas."
+    "id": "alamo_blanco",
+    "nombre": "Álamo Blanco",
+    "nombre_cientifico": "Populus alba",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 25,
+    "riego": "alto",
+    "raiz": "muy agresiva",
+    "advertencia": "Igual que álamo: raíz invasiva. Solo parques amplios.",
+    "servicios": [
+      "sombra rápida",
+      "cortina rompevientos"
+    ],
+    "inat_taxon_id": 56029,
+    "wikipedia_titulo": "Populus_alba",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 25 m, con riego alto. Ofrece: sombra rápida, cortina rompevientos. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "tecoma_stans", "nombre_comun": "Tronadora", "nombre_cientifico": "Tecoma stans",
-    "familia": "Bignoniaceae", "inat_taxon_id": 57220, "wikipedia_titulo": "Tecoma stans",
-    "nativa": true, "requerimiento_hidrico": 2,
-    "apto_banqueta": true, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 0.8, "altura_maxima": "4-6 m", "crecimiento": "Rápido", "imagen_asset": "assets/images/tronadora.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Floración ornamental", "Atrae polinizadores", "Raíz no invasiva"],
-    "regla": "Porte pequeño y raíz no agresiva: ideal para banquetas. Floración amarilla constante atractiva para abejas y colibríes.",
-    "descripcion": "Arbusto-árbol de floración llamativa. Perfecto para arbolado urbano en espacios reducidos."
+    "id": "aralia_arborescente",
+    "nombre": "Aralia Arborescente",
+    "nombre_cientifico": "Schefflera actinophylla",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "sombra media"
+    ],
+    "inat_taxon_id": 77282,
+    "wikipedia_titulo": "Schefflera_actinophylla",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego medio. Ofrece: ornamental, sombra media. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "parkinsonia_aculeata", "nombre_comun": "Palo Verde", "nombre_cientifico": "Parkinsonia aculeata",
-    "familia": "Fabaceae", "inat_taxon_id": 51868, "wikipedia_titulo": "Parkinsonia aculeata",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 1.2, "altura_maxima": "4-8 m", "crecimiento": "Rápido", "imagen_asset": "assets/images/palo_verde.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Resiste calor extremo", "Sombra ligera", "Floración amarilla"],
-    "regla": "Fotosíntesis en corteza, copa abierta que no obstruye la visibilidad. Plántalo al centro del camellón, nunca en esquinas.",
-    "descripcion": "Tronco verde fotosintético, sobrevive con mínima agua. De los más resilientes para vialidades."
+    "id": "araucaria",
+    "nombre": "Araucaria",
+    "nombre_cientifico": "Araucaria heterophylla",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 30,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": "Solo parques muy amplios. No apto para banquetas ni camellones estrechos.",
+    "servicios": [
+      "ornamental",
+      "referencia paisajística"
+    ],
+    "inat_taxon_id": 54948,
+    "wikipedia_titulo": "Araucaria_heterophylla",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 30 m, con riego medio. Ofrece: ornamental, referencia paisajística. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "eysenhardtia_polystachya", "nombre_comun": "Vara Dulce", "nombre_cientifico": "Eysenhardtia polystachya",
-    "familia": "Fabaceae", "inat_taxon_id": 159448, "wikipedia_titulo": "Eysenhardtia polystachya",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": true, "apto_camellon": false, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 0.9, "altura_maxima": "3-5 m", "crecimiento": "Medio", "imagen_asset": "assets/images/vara_dulce.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Fija nitrógeno", "Melífero", "Medicinal", "Raíces amigables"],
-    "regla": "Arbusto/árbol bajo nativo de raíces amigables y gran valor melífero. Apto para banquetas y restauración de matorral.",
-    "descripcion": "Nativo de gran valor ecológico, melífero y medicinal. Ideal para banquetas anchas, parcelas y restauración."
+    "id": "arce",
+    "nombre": "Arce",
+    "nombre_cientifico": "Acer negundo",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "sombra",
+      "color otoñal"
+    ],
+    "inat_taxon_id": 48877,
+    "wikipedia_titulo": "Acer_negundo",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: sombra, color otoñal. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "chilopsis_linearis", "nombre_comun": "Mimbre", "nombre_cientifico": "Chilopsis linearis",
-    "familia": "Bignoniaceae", "inat_taxon_id": 57219, "wikipedia_titulo": "Chilopsis linearis",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": true, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 0.9, "altura_maxima": "3-6 m", "crecimiento": "Medio", "imagen_asset": "assets/images/mimbre.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Floración ornamental", "Atrae colibríes", "Raíces profundas"],
-    "regla": "Nativa de zonas áridas, floración rosa-lila estética. Raíces profundas no agresivas: apta para banquetas y camellones.",
-    "descripcion": "Pequeño árbol de desierto con flores vistosas. Muy bajo consumo de agua, perfecto para arbolado urbano semiárido."
+    "id": "arrayan",
+    "nombre": "Arrayán",
+    "nombre_cientifico": "Psidium sartorianum",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "fruto comestible",
+      "melífero"
+    ],
+    "inat_taxon_id": 79215,
+    "wikipedia_titulo": "Psidium_sartorianum",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativo de bosques de encino y pino en la Sierra de AGS. Tronco recto con corteza rojiza y follaje perenne aromático; flores blancas y bayas comestibles azul-negras. Excelente para parques en zona serrana con sombra densa y frutos silvestres. Tolera suelos ácidos y frío. Riego medio en establecimiento; espacio 2.5×2.5 m."
   },
   {
-    "id_especie": "bauhinia_variegata", "nombre_comun": "Pata de Vaca", "nombre_cientifico": "Bauhinia variegata",
-    "familia": "Fabaceae", "inat_taxon_id": 49021, "wikipedia_titulo": "Bauhinia variegata",
-    "nativa": false, "requerimiento_hidrico": 2,
-    "apto_banqueta": true, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 0.9, "altura_maxima": "4-7 m", "crecimiento": "Medio", "imagen_asset": "assets/images/pata_vaca.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Floración ornamental", "Raíces controladas", "Sombra media"],
-    "regla": "Porte bajo, raíces controladas y excelente floración. Adaptada, ideal para banquetas y camellones.",
-    "descripcion": "Árbol ornamental de flores tipo orquídea. Adaptada de baja agresividad radicular, buena para calles."
+    "id": "astronomica",
+    "nombre": "Astronómica",
+    "nombre_cientifico": "Ficus religiosa",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "sombra densa",
+      "ornamental"
+    ],
+    "inat_taxon_id": 64279,
+    "wikipedia_titulo": "Ficus_religiosa",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: sombra densa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "ipomoea_arborescens", "nombre_comun": "Casahuate", "nombre_cientifico": "Ipomoea arborescens",
-    "familia": "Convolvulaceae", "inat_taxon_id": 159500, "wikipedia_titulo": "Ipomoea arborescens",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "5-8 m", "crecimiento": "Medio", "imagen_asset": "assets/images/casahuate.jpg",
-    "zonas_estado": ["calvillo"],
-    "servicios": ["Corteza blanca estética", "Floración invernal", "Nativa"],
-    "regla": "Nativa excelente para camellones anchos en zonas bajas. Corteza blanca muy estética en invierno.",
-    "descripcion": "Árbol nativo de corteza clara y floración invernal. Para camellones amplios del Cañón de Calvillo y zonas bajas."
+    "id": "bailarina",
+    "nombre": "Bailarina / Abedul",
+    "nombre_cientifico": "Betula pendula",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio-alto",
+    "raiz": "semiprofunda",
+    "advertencia": "Requiere riego regular. Mejor en zonas con más humedad.",
+    "servicios": [
+      "ornamental",
+      "color otoñal"
+    ],
+    "inat_taxon_id": 53563,
+    "wikipedia_titulo": "Betula_pendula",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio-alto. Ofrece: ornamental, color otoñal. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "jacaranda_mimosifolia", "nombre_comun": "Jacaranda", "nombre_cientifico": "Jacaranda mimosifolia",
-    "familia": "Bignoniaceae", "inat_taxon_id": 54989, "wikipedia_titulo": "Jacaranda mimosifolia",
-    "nativa": false, "requerimiento_hidrico": 3,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 2.0, "altura_maxima": "8-12 m", "crecimiento": "Medio", "imagen_asset": "assets/images/jacaranda.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Floración espectacular", "Sombra amplia", "Atrae polinizadores"],
-    "regla": "Introducida pero muy adaptada. Solo para camellones anchos (mayor a 3 m) por la amplitud de su copa.",
-    "descripcion": "Árbol ornamental de floración violeta espectacular. Requiere espacio amplio para su copa."
+    "id": "cana_fistula",
+    "nombre": "Caña Fístula",
+    "nombre_cientifico": "Cassia fistula",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "sombra media"
+    ],
+    "inat_taxon_id": 82920,
+    "wikipedia_titulo": "Cassia_fistula",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol ornamental adaptado de flores amarillas colgantes, frecuente en parques de Aguascalientes. Copa abierta con hojas pinnadas grandes; cadenas florales doradas en verano muy vistosas. Tolera calor urbano y suelos variados. Sombra media y valor paisajístico alto. Riego medio en establecimiento. Espacio mínimo 3×3 m por copa extendida."
   },
   {
-    "id_especie": "quercus_laeta", "nombre_comun": "Encino", "nombre_cientifico": "Quercus laeta",
-    "familia": "Fagaceae", "inat_taxon_id": 167400, "wikipedia_titulo": "Quercus laeta",
-    "nativa": true, "requerimiento_hidrico": 3,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "8-15 m", "crecimiento": "Lento", "imagen_asset": "assets/images/encino.jpg",
-    "zonas_estado": ["sierra"],
-    "servicios": ["Refugio de fauna", "Captura de carbono", "Longevo", "Servicios ambientales"],
-    "regla": "Nativo de gran valor ecológico a largo plazo. Para zonas altas (San José de Gracia, Calvillo alto). No apto para el valle.",
-    "descripcion": "Encino nativo de bosque templado. Lento pero longevo, aporta enormes servicios ambientales."
+    "id": "capulin_cimarron",
+    "nombre": "Capulín Cimarrón",
+    "nombre_cientifico": "Prunus serotina",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "refugio fauna",
+      "melífero"
+    ],
+    "inat_taxon_id": 54901,
+    "wikipedia_titulo": "Prunus_serotina",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 12 m, con riego medio. Ofrece: fruto comestible, refugio fauna, melífero. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "pinus_cembroides", "nombre_comun": "Pino Piñonero", "nombre_cientifico": "Pinus cembroides",
-    "familia": "Pinaceae", "inat_taxon_id": 135437, "wikipedia_titulo": "Pinus cembroides",
-    "nativa": true, "requerimiento_hidrico": 2,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "5-10 m", "crecimiento": "Lento", "imagen_asset": "assets/images/pino_pinonero.jpg",
-    "zonas_estado": ["sierra"],
-    "servicios": ["Piñón comestible", "Refugio de fauna", "Perennifolio"],
-    "regla": "Excelente para parques urbanos en zonas altas o de transición. Resiste sequía mejor que otros pinos.",
-    "descripcion": "Pino nativo de zonas semiáridas altas. Produce piñón comestible y tolera bien la sequía."
+    "id": "chabacano",
+    "nombre": "Chabacano / Albaricoque",
+    "nombre_cientifico": "Prunus armeniaca",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 54907,
+    "wikipedia_titulo": "Prunus_armeniaca",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego medio. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "juniperus_deppeana", "nombre_comun": "Táscate / Enebro", "nombre_cientifico": "Juniperus deppeana",
-    "familia": "Cupressaceae", "inat_taxon_id": 56301, "wikipedia_titulo": "Juniperus deppeana",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.2, "altura_maxima": "6-10 m", "crecimiento": "Lento", "imagen_asset": "assets/images/tascate.jpg",
-    "zonas_estado": ["sierra"],
-    "servicios": ["Perennifolio", "Refugio de fauna", "Control de erosión"],
-    "regla": "Nativo de altura, muy resistente a sequía. Para parques y linderos en zona serrana.",
-    "descripcion": "Conífera nativa de la sierra, follaje perenne y altísima resistencia a sequía."
+    "id": "chicozapote",
+    "nombre": "Chicozapote",
+    "nombre_cientifico": "Manilkara zapota",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "sombra densa"
+    ],
+    "inat_taxon_id": 78972,
+    "wikipedia_titulo": "Manilkara_zapota",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: fruto comestible, sombra densa. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "arbutus_xalapensis", "nombre_comun": "Madroño", "nombre_cientifico": "Arbutus xalapensis",
-    "familia": "Ericaceae", "inat_taxon_id": 49006, "wikipedia_titulo": "Arbutus xalapensis",
-    "nativa": true, "requerimiento_hidrico": 2,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 1.2, "altura_maxima": "5-10 m", "crecimiento": "Lento", "imagen_asset": "assets/images/madrono.jpg",
-    "zonas_estado": ["sierra"],
-    "servicios": ["Corteza ornamental", "Alimento para fauna", "Melífero"],
-    "regla": "Nativo de bosque templado, corteza rojiza muy estética. Para parques en zona serrana.",
-    "descripcion": "Árbol nativo de corteza rojiza llamativa y frutos para fauna. Propio de la Sierra Fría."
+    "id": "chopo",
+    "nombre": "Chopo / Álamo Carolina",
+    "nombre_cientifico": "Populus deltoides",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 25,
+    "riego": "alto",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva. Solo parques amplios alejados de tuberías.",
+    "servicios": [
+      "sombra rápida",
+      "cortina rompevientos"
+    ],
+    "inat_taxon_id": 56027,
+    "wikipedia_titulo": "Populus_deltoides",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 25 m, con riego alto. Ofrece: sombra rápida, cortina rompevientos. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "taxodium_mucronatum", "nombre_comun": "Sabino / Ahuehuete", "nombre_cientifico": "Taxodium mucronatum",
-    "familia": "Cupressaceae", "inat_taxon_id": 47867, "wikipedia_titulo": "Taxodium mucronatum",
-    "nativa": true, "requerimiento_hidrico": 5,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 2.0, "altura_maxima": "15-30 m", "crecimiento": "Medio", "imagen_asset": "assets/images/ahuehuete.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Árbol nacional", "Sombra enorme", "Longevo", "Retención de agua"],
-    "regla": "El árbol nacional. SOLO en parques con agua tratada o zonas de escurrimiento natural. No tolera sequía.",
-    "descripcion": "Árbol nacional de México, monumental y longevo. Exclusivo para zonas con humedad constante."
+    "id": "ciruelillo",
+    "nombre": "Ciruelillo",
+    "nombre_cientifico": "Prunus domestica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 6,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental"
+    ],
+    "inat_taxon_id": 54906,
+    "wikipedia_titulo": "Prunus_domestica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 6 m, con riego medio. Ofrece: fruto comestible, ornamental. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "salix_humboldtiana", "nombre_comun": "Sauce Nativo", "nombre_cientifico": "Salix humboldtiana",
-    "familia": "Salicaceae", "inat_taxon_id": 64019, "wikipedia_titulo": "Salix humboldtiana",
-    "nativa": true, "requerimiento_hidrico": 5,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": false,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "8-15 m", "crecimiento": "Rápido", "imagen_asset": "assets/images/sauce.jpg",
-    "zonas_estado": ["valle"],
-    "servicios": ["Estabiliza riberas", "Sombra", "Refugio de fauna"],
-    "regla": "Exclusivo para zonas con humedad constante o cercanía a cuerpos de agua dentro de los parques.",
-    "descripcion": "Sauce nativo de ribera. Solo para márgenes de cuerpos de agua y zonas húmedas."
+    "id": "citricos",
+    "nombre": "Cítricos",
+    "nombre_cientifico": "Citrus spp.",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 6,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 52837,
+    "wikipedia_titulo": "Citrus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 6 m, con riego medio. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "lysiloma_microphyllum", "nombre_comun": "Tepehuaje", "nombre_cientifico": "Lysiloma microphyllum",
-    "familia": "Fabaceae", "inat_taxon_id": 200815, "wikipedia_titulo": "Lysiloma",
-    "nativa": true, "requerimiento_hidrico": 2,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.2, "altura_maxima": "6-12 m", "crecimiento": "Medio", "imagen_asset": "assets/images/tepehuaje.jpg",
-    "zonas_estado": ["calvillo"],
-    "servicios": ["Sombra amplia", "Fija nitrógeno", "Refugio de aves"],
-    "regla": "Sombra amplia y follaje fino. Bueno para camellones y parques del Cañón de Calvillo. Deja espacio para su copa.",
-    "descripcion": "Nativo de buen porte y sombra agradable. Fija nitrógeno y tolera la sequía estacional."
+    "id": "colorin",
+    "nombre": "Colorín / Zompantle",
+    "nombre_cientifico": "Erythrina americana",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Semillas tóxicas. Evitar donde juegan niños pequeños.",
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio aves"
+    ],
+    "inat_taxon_id": 79255,
+    "wikipedia_titulo": "Erythrina_americana",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativo de zonas tropicales y subtropicales, presente en parques de Aguascalientes. Tronco con espinas y hojas trifoliadas; flores rojas en racimos verticales muy llamativos. Caducifolio en invierno, permitiendo sol en banquetas adyacentes. Resistente a sequía y suelos pobres. Espacio mínimo 2×2 m; cuidado con espinas en zonas de tránsito peatonal."
   },
   {
-    "id_especie": "yucca_filifera", "nombre_comun": "Izote / Palma China", "nombre_cientifico": "Yucca filifera",
-    "familia": "Asparagaceae", "inat_taxon_id": 76882, "wikipedia_titulo": "Yucca filifera",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": true, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.0, "altura_maxima": "4-8 m", "crecimiento": "Lento", "imagen_asset": "assets/images/izote.jpg",
-    "zonas_estado": ["oriente", "valle"],
-    "servicios": ["Resiste sequía extrema", "Flor comestible", "Refugio de fauna"],
-    "regla": "Nativa muy resistente a sequía y suelos pedregosos. Ideal para zona oriente minera (Asientos, Tepezalá).",
-    "descripcion": "Yuca arborescente nativa, emblemática del semidesierto. Mínimo mantenimiento y flor comestible."
+    "id": "durazno",
+    "nombre": "Durazno",
+    "nombre_cientifico": "Prunus persica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 6,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 54910,
+    "wikipedia_titulo": "Prunus_persica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 6 m, con riego medio. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "agave_salmiana", "nombre_comun": "Maguey", "nombre_cientifico": "Agave salmiana",
-    "familia": "Asparagaceae", "inat_taxon_id": 122787, "wikipedia_titulo": "Agave salmiana",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": false, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.0, "altura_maxima": "1.5-2 m", "crecimiento": "Lento", "imagen_asset": "assets/images/maguey.jpg",
-    "zonas_estado": ["oriente", "valle"],
-    "servicios": ["Control de erosión", "Estabiliza taludes", "Aguamiel"],
-    "regla": "Uso en taludes y control de erosión en zona oriente. Mínima demanda hídrica.",
-    "descripcion": "Agave nativo para estabilizar taludes y suelos erosionados. Bajísimo consumo de agua."
+    "id": "encino",
+    "nombre": "Encino / Roble",
+    "nombre_cientifico": "Quercus resinosa",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 18,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": "Recomendado principalmente en zonas de mayor precipitación (Sierra, >450mm).",
+    "servicios": [
+      "sombra densa",
+      "refugio fauna",
+      "captura carbono"
+    ],
+    "inat_taxon_id": 47851,
+    "wikipedia_titulo": "Quercus_resinosa",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 18 m, con riego medio. Ofrece: sombra densa, refugio fauna, captura carbono. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "cupressus_lusitanica", "nombre_comun": "Cedro Blanco / San Juan", "nombre_cientifico": "Cupressus lusitanica",
-    "familia": "Cupressaceae", "inat_taxon_id": 135057, "wikipedia_titulo": "Cupressus lusitanica",
-    "nativa": true, "requerimiento_hidrico": 3,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": true, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 1.5, "altura_maxima": "10-20 m", "crecimiento": "Medio", "imagen_asset": "assets/images/cedro_blanco.jpg",
-    "zonas_estado": ["sierra"],
-    "servicios": ["Cortina rompevientos", "Perennifolio", "Madera"],
-    "regla": "Excelente para cortinas rompevientos perimetrales en zonas agrícolas y campestres altas.",
-    "descripcion": "Conífera de rápido crecimiento para cortinas rompevientos y linderos en zona serrana."
+    "id": "falso_maple",
+    "nombre": "Falso Maple",
+    "nombre_cientifico": "Acer pseudoplatanus",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "sombra",
+      "color otoñal"
+    ],
+    "inat_taxon_id": 48876,
+    "wikipedia_titulo": "Acer_pseudoplatanus",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: sombra, color otoñal. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id_especie": "opuntia_spp", "nombre_comun": "Nopal", "nombre_cientifico": "Opuntia",
-    "familia": "Cactaceae", "inat_taxon_id": 47925, "wikipedia_titulo": "Opuntia",
-    "nativa": true, "requerimiento_hidrico": 1,
-    "apto_banqueta": false, "apto_camellon": false, "apto_parque": false, "apto_agricola": true,
-    "ancho_minimo_cepa_m": 0.5, "altura_maxima": "1-3 m", "crecimiento": "Medio", "imagen_asset": "assets/images/nopal.jpg",
-    "zonas_estado": ["valle", "oriente"],
-    "servicios": ["Control de erosión", "Cerca viva", "Comestible"],
-    "regla": "Control de erosión en terrenos degradados. Cerca viva y barrera contra escorrentía en zonas rurales.",
-    "descripcion": "Mínima demanda hídrica. Estabiliza suelos erosionados y forma barreras vivas."
+    "id": "farolito_japones",
+    "nombre": "Farolito Japonés",
+    "nombre_cientifico": "Koelreuteria paniculata",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 75877,
+    "wikipedia_titulo": "Koelreuteria_paniculata",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 10 m, con riego bajo. Ofrece: ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "ficus",
+    "nombre": "Ficus",
+    "nombre_cientifico": "Ficus benjamina",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz extremadamente agresiva. NUNCA en banquetas. Solo parques amplios con suelo libre.",
+    "servicios": [
+      "sombra densa",
+      "ornamental"
+    ],
+    "inat_taxon_id": 79009,
+    "wikipedia_titulo": "Ficus_benjamina",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: sombra densa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "flamboyant",
+    "nombre": "Flamboyán / Tabachín árbol",
+    "nombre_cientifico": "Delonix regia",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "superficial extendida",
+    "advertencia": "Raíces superficiales pueden levantar pavimento en espacios reducidos.",
+    "servicios": [
+      "sombra",
+      "ornamental",
+      "flores llamativas"
+    ],
+    "inat_taxon_id": 80167,
+    "wikipedia_titulo": "Delonix_regia",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: sombra, ornamental, flores llamativas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "fresno",
+    "nombre": "Fresno",
+    "nombre_cientifico": "Fraxinus uhdei",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "medio-alto",
+    "raiz": "profunda",
+    "advertencia": "Requiere espacio amplio. Raíz puede ser agresiva en suelos compactados.",
+    "servicios": [
+      "sombra densa",
+      "captura carbono",
+      "rápido crecimiento"
+    ],
+    "inat_taxon_id": 55882,
+    "wikipedia_titulo": "Fraxinus_uhdei",
+    "zonas_estado": [
+      "valle",
+      "sierra",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol de sombra adaptado al clima templado-seco de la Sierra de Aguascalientes. Copa redondeada con follaje verde intenso que se torna dorado en otoño. Crece relativamente rápido y tolera heladas ligeras. Ideal para parques y camellones amplios donde se busca sombra densa. Raíz profunda; evitar banquetas estrechas. Riego medio en establecimiento, luego moderado."
+  },
+  {
+    "id": "galeana",
+    "nombre": "Galeana / Hule de hoja estrecha",
+    "nombre_cientifico": "Ficus elastica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "sombra"
+    ],
+    "inat_taxon_id": 79008,
+    "wikipedia_titulo": "Ficus_elastica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: ornamental, sombra. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "grevillea",
+    "nombre": "Grevillea",
+    "nombre_cientifico": "Grevillea robusta",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 18,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 58789,
+    "wikipedia_titulo": "Grevillea_robusta",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 18 m, con riego bajo. Ofrece: ornamental, melífero, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "guache",
+    "nombre": "Guache / Tepame",
+    "nombre_cientifico": "Acacia pennatula",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas. Tolera suelos pobres y secos.",
+    "servicios": [
+      "fija nitrógeno",
+      "melífero",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 53588,
+    "wikipedia_titulo": "Acacia_pennatula",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 8 m, con riego bajo. Ofrece: fija nitrógeno, melífero, refugio fauna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "guaje",
+    "nombre": "Guaje / Guash",
+    "nombre_cientifico": "Leucaena leucocephala",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "fija nitrógeno",
+      "semilla comestible",
+      "melífero"
+    ],
+    "inat_taxon_id": 63726,
+    "wikipedia_titulo": "Leucaena_leucocephala",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Leguminosa nativa del trópico seco mexicano, común en parques y jardines de AGS. Copa irregular con follaje compuesto; flores blancas en bolas y vainas comestibles. Fija nitrógeno y tolera suelos calizos y compactados. Melífero y refugio para aves. Adecuado para espacios medianos con riego bajo. Cuadro de plantación 2.5×2.5 m."
+  },
+  {
+    "id": "higuera",
+    "nombre": "Higuera",
+    "nombre_cientifico": "Ficus carica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Látex puede irritar piel en algunas personas.",
+    "servicios": [
+      "fruto comestible",
+      "sombra"
+    ],
+    "inat_taxon_id": 52602,
+    "wikipedia_titulo": "Ficus_carica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego bajo. Ofrece: fruto comestible, sombra. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "higuera_hojas_lira",
+    "nombre": "Higuera Hoja de Lira",
+    "nombre_cientifico": "Ficus lyrata",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "sombra"
+    ],
+    "inat_taxon_id": 79012,
+    "wikipedia_titulo": "Ficus_lyrata",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: ornamental, sombra. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "huamuchil",
+    "nombre": "Huamúchil",
+    "nombre_cientifico": "Pithecellobium dulce",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas en ramas. Copa densa que puede requerir poda periódica.",
+    "servicios": [
+      "sombra densa",
+      "fruto comestible",
+      "melífero"
+    ],
+    "inat_taxon_id": 53790,
+    "wikipedia_titulo": "Pithecellobium_dulce",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Leguminosa nativa del altiplano, muy usada en camellones y zonas agrícolas de AGS. Copa amplia y densa con follaje perenne; flores cremosas en espigas y vainas comestibles dulces. Fija nitrógeno y provee sombra generosa. Tolera sequía y suelos alcalinos. Requiere espacio amplio (3×3 m) por raíz profunda; riego bajo tras el primer año."
+  },
+  {
+    "id": "huizache",
+    "nombre": "Huizache",
+    "nombre_cientifico": "Acacia farnesiana",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 6,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas pronunciadas. Plantar donde no haya tránsito peatonal denso.",
+    "servicios": [
+      "melífero",
+      "barrera viva",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 48660,
+    "wikipedia_titulo": "Vachellia_farnesiana",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Leguminosa nativa del altiplano mexicano, muy común en camellones y parques de Aguascalientes. Copa abierta con follaje fino bipinnado y espinas cortas; flores amarillas en bolas fragantes y vainas curvas. Fija nitrógeno y provee sombra ligera sin demandar riego frecuente. Excelente para zonas urbanas secas y suelos pobres. Plantar con espacio mínimo de 2×2 m y poda ligera de ramas bajas."
+  },
+  {
+    "id": "hule",
+    "nombre": "Hule",
+    "nombre_cientifico": "Ficus elastica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "agresiva",
+    "advertencia": "Raíz agresiva en pavimentos. Reservar para parques con suelo libre.",
+    "servicios": [
+      "ornamental",
+      "sombra densa"
+    ],
+    "inat_taxon_id": 79008,
+    "wikipedia_titulo": "Ficus_elastica",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: ornamental, sombra densa. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "jaboncillo",
+    "nombre": "Jaboncillo",
+    "nombre_cientifico": "Sapindus saponaria",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "fruto con saponinas",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 75810,
+    "wikipedia_titulo": "Sapindus_saponaria",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 10 m, con riego bajo. Ofrece: ornamental, fruto con saponinas, refugio fauna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "jacaranda",
+    "nombre": "Jacaranda",
+    "nombre_cientifico": "Jacaranda mimosifolia",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "profunda lateral",
+    "advertencia": "Raíz puede levantar banquetas en espacios estrechos. Reservar para camellones y parques.",
+    "servicios": [
+      "ornamental",
+      "sombra"
+    ],
+    "inat_taxon_id": 57256,
+    "wikipedia_titulo": "Jacaranda_mimosifolia",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol ornamental adaptado, icono del paisaje urbano de Aguascalientes. Copa abierta con follaje fino bipinnado; floración violeta espectacular en primavera antes de las hojas. Aporta sombra ligera y belleza paisajística en parques y camellones amplios. Tolera sequía moderada una vez establecida. Espacio mínimo 3×3 m; poda de copa para mantener altura bajo cables."
+  },
+  {
+    "id": "jucaro",
+    "nombre": "Júcaro / Casuarina nativa",
+    "nombre_cientifico": "Casuarina cunninghamiana",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "No confundir con Casuarina equisetifolia (prohibida). Esta especie es más tolerante pero también puede ser invasora.",
+    "servicios": [
+      "sombra",
+      "cortina rompevientos"
+    ],
+    "inat_taxon_id": 59043,
+    "wikipedia_titulo": "Casuarina_cunninghamiana",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego bajo. Ofrece: sombra, cortina rompevientos. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "laurel_india",
+    "nombre": "Laurel de la India",
+    "nombre_cientifico": "Ficus microcarpa",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "medio",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva. Solo parques amplios alejados de infraestructura.",
+    "servicios": [
+      "sombra densa",
+      "ornamental"
+    ],
+    "inat_taxon_id": 79006,
+    "wikipedia_titulo": "Ficus_microcarpa",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: sombra densa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "lila",
+    "nombre": "Lila / Sirenio",
+    "nombre_cientifico": "Melia azedarach",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Frutos tóxicos si se ingieren. Evitar en zonas con niños pequeños.",
+    "servicios": [
+      "sombra",
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 75812,
+    "wikipedia_titulo": "Melia_azedarach",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto ornamental adaptado muy común en jardines y banquetas de Aguascalientes. Porte compacto con hojas cordadas y panículas de flores lilas fragantes en primavera. Resistente a sequía moderada y poda intensa. Ideal para espacios reducidos donde se busca floración y aroma sin gran altura. Riego bajo a medio; espacio 1×1 m."
+  },
+  {
+    "id": "liquidambar",
+    "nombre": "Liquidámbar",
+    "nombre_cientifico": "Liquidambar styraciflua",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "medio-alto",
+    "raiz": "profunda",
+    "advertencia": "Frutos espinosos caen al suelo. Evitar en zonas de paso.",
+    "servicios": [
+      "sombra",
+      "color otoñal espectacular"
+    ],
+    "inat_taxon_id": 48842,
+    "wikipedia_titulo": "Liquidambar_styraciflua",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego medio-alto. Ofrece: sombra, color otoñal espectacular. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "magnolia",
+    "nombre": "Magnolia",
+    "nombre_cientifico": "Magnolia grandiflora",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio-alto",
+    "raiz": "superficial carnosa",
+    "advertencia": "Raíces carnosas sensibles. No remover tierra alrededor del tronco.",
+    "servicios": [
+      "ornamental",
+      "flores fragantes"
+    ],
+    "inat_taxon_id": 48830,
+    "wikipedia_titulo": "Magnolia_grandiflora",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio-alto. Ofrece: ornamental, flores fragantes. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "maple",
+    "nombre": "Maple",
+    "nombre_cientifico": "Acer palmatum",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 8,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "color otoñal"
+    ],
+    "inat_taxon_id": 54113,
+    "wikipedia_titulo": "Acer_palmatum",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego medio. Ofrece: ornamental, color otoñal. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "mezquite",
+    "nombre": "Mezquite",
+    "nombre_cientifico": "Prosopis laevigata",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 9,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas en ramas jóvenes. No recomendado en banquetas estrechas.",
+    "servicios": [
+      "sombra",
+      "fija nitrógeno",
+      "melífero",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 53691,
+    "wikipedia_titulo": "Prosopis_laevigata",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativo del semidesierto mexicano, ampliamente distribuido en el Valle de Aguascalientes. De copa irregular con ramas espinosas y flores en amentos amarillos muy melíferos. Produce vainas comestibles y fija nitrógeno al suelo, mejorando su fertilidad. Ideal para camellones y parques por su altísima resistencia a la sequía y al calor urbano. Requiere un cuadro de plantación mínimo de 2×2 m."
+  },
+  {
+    "id": "mimbre",
+    "nombre": "Mimbre / Sauce mimbre",
+    "nombre_cientifico": "Salix viminalis",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 8,
+    "riego": "alto",
+    "raiz": "agresiva",
+    "advertencia": "Requiere agua abundante. Raíz busca tuberías.",
+    "servicios": [
+      "ornamental",
+      "retención suelo"
+    ],
+    "inat_taxon_id": 55885,
+    "wikipedia_titulo": "Salix_viminalis",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego alto. Ofrece: ornamental, retención suelo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "mora",
+    "nombre": "Mora / Moral",
+    "nombre_cientifico": "Morus alba",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "medio",
+    "raiz": "semiprofunda",
+    "advertencia": "Frutos manchan pavimentos. Prever mantenimiento.",
+    "servicios": [
+      "fruto comestible",
+      "sombra",
+      "melífero"
+    ],
+    "inat_taxon_id": 56007,
+    "wikipedia_titulo": "Morus_alba",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: fruto comestible, sombra, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nispero",
+    "nombre": "Níspero",
+    "nombre_cientifico": "Eriobotrya japonica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 58827,
+    "wikipedia_titulo": "Eriobotrya_japonica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego bajo. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nogal",
+    "nombre": "Nogal",
+    "nombre_cientifico": "Juglans major",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 20,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": "Alelopático: inhibe el crecimiento de otras plantas cercanas.",
+    "servicios": [
+      "fruto comestible",
+      "sombra densa",
+      "captura carbono"
+    ],
+    "inat_taxon_id": 62012,
+    "wikipedia_titulo": "Juglans_major",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol nativo de la Sierra de Aguascalientes, recomendado en parques y camellones de mayor altitud. Copa amplia con follaje compuesto aromático; frutos comestibles de nuez. Tolera frío invernal y aporta sombra densa y refugio faunístico. Mejor en zonas con algo más de precipitación (>450 mm). Riego medio; espacio amplio 4×4 m."
+  },
+  {
+    "id": "olivo",
+    "nombre": "Olivo",
+    "nombre_cientifico": "Olea europaea",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Polen muy alergénico. No recomendado en zonas con alta densidad de personas alérgicas.",
+    "servicios": [
+      "ornamental",
+      "fruto comestible",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 56030,
+    "wikipedia_titulo": "Olea_europaea",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 10 m, con riego muy bajo. Ofrece: ornamental, fruto comestible, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "olmo",
+    "nombre": "Olmo",
+    "nombre_cientifico": "Ulmus minor",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "medio",
+    "raiz": "profunda",
+    "advertencia": "Susceptible a la grafiosis del olmo. Verificar disponibilidad de variedades resistentes.",
+    "servicios": [
+      "sombra densa",
+      "ornamental"
+    ],
+    "inat_taxon_id": 56096,
+    "wikipedia_titulo": "Ulmus_minor",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego medio. Ofrece: sombra densa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palma_datilera",
+    "nombre": "Palma Datilera",
+    "nombre_cientifico": "Phoenix dactylifera",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "bajo",
+    "raiz": "profunda no invasiva",
+    "advertencia": "Espinas en la base de las hojas. Poda especializada.",
+    "servicios": [
+      "ornamental",
+      "fruto comestible"
+    ],
+    "inat_taxon_id": 63958,
+    "wikipedia_titulo": "Phoenix_dactylifera",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego bajo. Ofrece: ornamental, fruto comestible. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palma_roebelen",
+    "nombre": "Palma de Roebelen",
+    "nombre_cientifico": "Phoenix roebelenii",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "escala pequeña"
+    ],
+    "inat_taxon_id": 63960,
+    "wikipedia_titulo": "Phoenix_roebelenii",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 3 m, con riego bajo. Ofrece: ornamental, escala pequeña. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palma_washingtonia",
+    "nombre": "Palma Washingtonia",
+    "nombre_cientifico": "Washingtonia robusta",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 25,
+    "riego": "bajo",
+    "raiz": "profunda no invasiva",
+    "advertencia": "Hojas secas colgantes son riesgo de incendio. Poda periódica obligatoria.",
+    "servicios": [
+      "ornamental",
+      "alineamientos"
+    ],
+    "inat_taxon_id": 63961,
+    "wikipedia_titulo": "Washingtonia_robusta",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 25 m, con riego bajo. Ofrece: ornamental, alineamientos. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palma_abanico",
+    "nombre": "Palma Abanico / Washingtonia",
+    "nombre_cientifico": "Washingtonia filifera",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "muy bajo",
+    "raiz": "profunda no invasiva",
+    "advertencia": "Mismas consideraciones que palma washingtonia robusta.",
+    "servicios": [
+      "ornamental",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 63962,
+    "wikipedia_titulo": "Washingtonia_filifera",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego muy bajo. Ofrece: ornamental, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palo_blanco",
+    "nombre": "Palo Blanco / Cacahuananche",
+    "nombre_cientifico": "Ipomoea arborescens",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores blancas vistosas",
+      "nativa semiárido"
+    ],
+    "inat_taxon_id": 58940,
+    "wikipedia_titulo": "Ipomoea_arborescens",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 10 m, con riego muy bajo. Ofrece: ornamental, flores blancas vistosas, nativa semiárido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palo_bobo",
+    "nombre": "Palo Bobo",
+    "nombre_cientifico": "Ipomoea murucoides",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 8,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "ornamental",
+      "rápido crecimiento"
+    ],
+    "inat_taxon_id": 58941,
+    "wikipedia_titulo": "Ipomoea_murucoides",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 8 m, con riego muy bajo. Ofrece: nativa semiárido, ornamental, rápido crecimiento. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palo_verde",
+    "nombre": "Palo Verde",
+    "nombre_cientifico": "Parkinsonia aculeata",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "banquetas"
+    ],
+    "altura_max_m": 8,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Espinas en ramas. Copa abierta con buena penetración lumínica.",
+    "servicios": [
+      "sombra ligera",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 57173,
+    "wikipedia_titulo": "Parkinsonia_aculeata",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol caducifolio nativo del norte de México, frecuente en camellones de la ciudad. Tronco y ramas de color verde claro con follaje muy fino que filtra la luz; flores amarillas en primavera. Tolera calor extremo, vientos y suelos compactados. Aporta sombra ligera sin bloquear por completo la vialidad. Riego mínimo tras el establecimiento; cuadro de plantación de 2×2 m."
+  },
+  {
+    "id": "paraiso",
+    "nombre": "Paraíso / Melia",
+    "nombre_cientifico": "Melia azedarach",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Frutos tóxicos si se ingieren.",
+    "servicios": [
+      "sombra",
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 75812,
+    "wikipedia_titulo": "Melia_azedarach",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 10 m, con riego bajo. Ofrece: sombra, ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pino",
+    "nombre": "Pino",
+    "nombre_cientifico": "Pinus cembroides",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "camellones"
+    ],
+    "altura_max_m": 12,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Solo en parques amplios. No apto para banquetas. Mejor en zonas de mayor altitud.",
+    "servicios": [
+      "sombra",
+      "piñón comestible",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 54748,
+    "wikipedia_titulo": "Pinus_cembroides",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 12 m, con riego bajo. Ofrece: sombra, piñón comestible, refugio fauna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pino_azul",
+    "nombre": "Pino Azul",
+    "nombre_cientifico": "Pinus engelmannii",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Solo para zonas de sierra o mayor altitud. No apto para valle urbano.",
+    "servicios": [
+      "sombra",
+      "refugio fauna",
+      "captura carbono"
+    ],
+    "inat_taxon_id": 54749,
+    "wikipedia_titulo": "Pinus_engelmannii",
+    "zonas_estado": [
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 20 m, con riego bajo. Ofrece: sombra, refugio fauna, captura carbono. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pino_pionero",
+    "nombre": "Pino Piñonero",
+    "nombre_cientifico": "Pinus pinea",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 20,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": "Copa elevada, buen porte. Piñón comestible de alto valor.",
+    "servicios": [
+      "sombra",
+      "piñón comestible",
+      "ornamental"
+    ],
+    "inat_taxon_id": 54751,
+    "wikipedia_titulo": "Pinus_pinea",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 20 m, con riego bajo. Ofrece: sombra, piñón comestible, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "piracanto",
+    "nombre": "Piracanto / Pyracantha",
+    "nombre_cientifico": "Pyracantha coccinea",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Espinas. Frutos decorativos pero no comestibles.",
+    "servicios": [
+      "ornamental",
+      "barrera viva",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 55313,
+    "wikipedia_titulo": "Pyracantha_coccinea",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 4 m, con riego bajo. Ofrece: ornamental, barrera viva, refugio fauna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pirul_brasileno",
+    "nombre": "Pirul Brasileño",
+    "nombre_cientifico": "Schinus terebinthifolia",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 8,
+    "riego": "muy bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Frutos pueden causar irritación en personas sensibles.",
+    "servicios": [
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 56061,
+    "wikipedia_titulo": "Schinus_terebinthifolia",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 8 m, con riego muy bajo. Ofrece: ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pirul_criollo",
+    "nombre": "Pirul Criollo / Pirú",
+    "nombre_cientifico": "Schinus molle",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz extremadamente agresiva. No plantar cerca de tuberías o construcciones.",
+    "servicios": [
+      "sombra",
+      "ornamental"
+    ],
+    "inat_taxon_id": 56062,
+    "wikipedia_titulo": "Schinus_molle",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptado muy común en camellones y banquetas de Aguascalientes. Copa redondeada con follaje perenne de color verde oscuro; flores cremosas en panículas y frutos pequeños para aves. Tolera sequía, contaminación y podas severas. Sombra densa útil en calles soleadas. Raíz agresiva: evitar junto a tuberías. Espacio mínimo 2×2 m."
+  },
+  {
+    "id": "sabino",
+    "nombre": "Sabino / Ahuehuete",
+    "nombre_cientifico": "Taxodium mucronatum",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 30,
+    "riego": "alto",
+    "raiz": "profunda",
+    "advertencia": "Requiere mucha agua y espacio. Solo parques muy amplios con acceso a riego.",
+    "servicios": [
+      "sombra densa",
+      "árbol monumental",
+      "captura carbono"
+    ],
+    "inat_taxon_id": 54932,
+    "wikipedia_titulo": "Taxodium_mucronatum",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 30 m, con riego alto. Ofrece: sombra densa, árbol monumental, captura carbono. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "sauce_lloron",
+    "nombre": "Sauce Llorón",
+    "nombre_cientifico": "Salix babylonica",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 12,
+    "riego": "alto",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz busca agua activamente. Solo en parques con riego y lejos de tuberías.",
+    "servicios": [
+      "ornamental",
+      "retención suelo ribereño"
+    ],
+    "inat_taxon_id": 55878,
+    "wikipedia_titulo": "Salix_babylonica",
+    "zonas_estado": [
+      "valle",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego alto. Ofrece: ornamental, retención suelo ribereño. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "tronadora",
+    "nombre": "Tronadora / Retama amarilla",
+    "nombre_cientifico": "Tecoma stans",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio colibríes"
+    ],
+    "inat_taxon_id": 78908,
+    "wikipedia_titulo": "Tecoma_stans",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Árbol nativo de barrancas y zonas áridas, muy usado en parques y camellones de AGS. Copa amplia con hojas pinnadas y flores amarillas llamativas en racimos; fruto en vaina larga. Resiste sequía severa y suelos pedregosos. Melífero y ornamental con floración espectacular en primavera. Requiere espacio de 3×3 m y riego ocasional los primeros dos años."
+  },
+  {
+    "id": "trueno",
+    "nombre": "Trueno / Ligustro",
+    "nombre_cientifico": "Ligustrum lucidum",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 10,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Puede volverse invasor en algunos contextos. Frutos tóxicos.",
+    "servicios": [
+      "seto",
+      "ornamental",
+      "perennifolio"
+    ],
+    "inat_taxon_id": 79262,
+    "wikipedia_titulo": "Ligustrum_lucidum",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 10 m, con riego bajo. Ofrece: seto, ornamental, perennifolio. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "yuca",
+    "nombre": "Yuca / Izote",
+    "nombre_cientifico": "Yucca filifera",
+    "tipo": "arbol",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 8,
+    "riego": "muy bajo",
+    "raiz": "compacta",
+    "advertencia": "Hojas con punta muy afilada. Plantar lejos del paso peatonal.",
+    "servicios": [
+      "ornamental",
+      "nativa semiárido",
+      "flor comestible"
+    ],
+    "inat_taxon_id": 57118,
+    "wikipedia_titulo": "Yucca_filifera",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Árbol nativa de hasta 8 m, con riego muy bajo. Ofrece: ornamental, nativa semiárido, flor comestible. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "enebro_virginia",
+    "nombre": "Enebro de Virginia / Táscate",
+    "nombre_cientifico": "Juniperus virginiana",
+    "tipo": "arbol",
+    "nativa": false,
+    "sitios": [
+      "parques"
+    ],
+    "altura_max_m": 15,
+    "riego": "bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cortina rompevientos",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 54918,
+    "wikipedia_titulo": "Juniperus_virginiana",
+    "zonas_estado": [
+      "sierra",
+      "valle"
+    ],
+    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego bajo. Ofrece: ornamental, cortina rompevientos, refugio fauna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "acalifa",
+    "nombre": "Acalifa",
+    "nombre_cientifico": "Acalypha wilkesiana",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "follaje colorido"
+    ],
+    "inat_taxon_id": 84025,
+    "wikipedia_titulo": "Acalypha_wilkesiana",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego medio. Ofrece: ornamental, follaje colorido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "agave_americano",
+    "nombre": "Agave Americano",
+    "nombre_cientifico": "Agave americana",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "muy bajo",
+    "raiz": "fibrosa superficial",
+    "advertencia": "Espinas terminales muy peligrosas. No plantar junto a pasos peatonales.",
+    "servicios": [
+      "ornamental",
+      "barrera",
+      "retención suelo"
+    ],
+    "inat_taxon_id": 52400,
+    "wikipedia_titulo": "Agave_americana",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Succulenta nativa del altiplano mexicano, muy usada en jardines xerófitos de AGS. Roseta grande de hojas gruesas con espinas marginales; quiote floral monumental cada varios años. Casi no requiere riego y tolera suelos pedregosos y calor extremo. Ideal para banquetas, camellones secos y jardines de bajo mantenimiento. Espacio 1.5×1.5 m."
+  },
+  {
+    "id": "agave_angustifolia",
+    "nombre": "Agave Angustifolia / Espadín",
+    "nombre_cientifico": "Agave angustifolia",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Espinas. Especie base del mezcal en Oaxaca.",
+    "servicios": [
+      "ornamental",
+      "nativa semiárido",
+      "fibra"
+    ],
+    "inat_taxon_id": 52403,
+    "wikipedia_titulo": "Agave_angustifolia",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1.5 m, con riego muy bajo. Ofrece: ornamental, nativa semiárido, fibra. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "agave_pulquero",
+    "nombre": "Maguey Pulquero",
+    "nombre_cientifico": "Agave salmiana",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Espinas terminales. Plantar lejos del paso peatonal.",
+    "servicios": [
+      "ornamental",
+      "identidad cultural",
+      "retención suelo"
+    ],
+    "inat_taxon_id": 52395,
+    "wikipedia_titulo": "Agave_salmiana",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Agave nativo del altiplano central, muy cultivado en zonas rurales y jardines de AGS. Roseta grande de hojas gruesas y puntiagudas; quiote de varios metros al final de su ciclo. Materia prima del pulque y forraje tradicional. Resistencia extrema a sequía y suelos pedregosos. Espacio mínimo 2×2 m; riego muy bajo tras establecimiento."
+  },
+  {
+    "id": "acebuche",
+    "nombre": "Acebuche / Olivo silvestre",
+    "nombre_cientifico": "Olea europaea sylvestris",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 56031,
+    "wikipedia_titulo": "Olea_europaea",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego muy bajo. Ofrece: ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "aralia_arbusto",
+    "nombre": "Aralia (arbusto)",
+    "nombre_cientifico": "Schefflera arboricola",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental"
+    ],
+    "inat_taxon_id": 77283,
+    "wikipedia_titulo": "Schefflera_arboricola",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego medio. Ofrece: ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "arbusto_nevado",
+    "nombre": "Arbusto Nevado / Pittosporum",
+    "nombre_cientifico": "Pittosporum tobira",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores fragantes",
+      "seto"
+    ],
+    "inat_taxon_id": 59188,
+    "wikipedia_titulo": "Pittosporum_tobira",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, flores fragantes, seto. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "azalea",
+    "nombre": "Azalea",
+    "nombre_cientifico": "Rhododendron simsii",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio",
+    "raiz": "superficial",
+    "advertencia": "Tóxica si se ingiere.",
+    "servicios": [
+      "ornamental",
+      "flores vistosas"
+    ],
+    "inat_taxon_id": 47219,
+    "wikipedia_titulo": "Rhododendron_simsii",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego medio. Ofrece: ornamental, flores vistosas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "bacharis",
+    "nombre": "Baccharis / Jarilla",
+    "nombre_cientifico": "Baccharis glutinosa",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques"
+    ],
+    "altura_max_m": 2,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "retención suelo",
+      "melífero"
+    ],
+    "inat_taxon_id": 56975,
+    "wikipedia_titulo": "Baccharis_glutinosa",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 2 m, con riego muy bajo. Ofrece: nativa semiárido, retención suelo, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "boxus",
+    "nombre": "Boj / Boxus",
+    "nombre_cientifico": "Buxus sempervirens",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": "Tóxico si se ingiere.",
+    "servicios": [
+      "seto formal",
+      "ornamental"
+    ],
+    "inat_taxon_id": 77296,
+    "wikipedia_titulo": "Buxus_sempervirens",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego medio. Ofrece: seto formal, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "buganvilia",
+    "nombre": "Buganvilia",
+    "nombre_cientifico": "Bougainvillea glabra",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Espinas. Control de crecimiento recomendado.",
+    "servicios": [
+      "ornamental",
+      "barrera viva"
+    ],
+    "inat_taxon_id": 53095,
+    "wikipedia_titulo": "Bougainvillea_glabra",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto trepador ornamental adaptado, omnipresente en jardines y parques de Aguascalientes. Enredadera con brácteas de colores vivos (rosa, morado, naranja) casi todo el año. Tolera sequía y suelos pobres; requiere estructura o muro para trepar. Excelente para cercas vivas y color en espacios verticales. Riego muy bajo; poda después de floración."
+  },
+  {
+    "id": "camelia",
+    "nombre": "Camelia",
+    "nombre_cientifico": "Camellia japonica",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores vistosas"
+    ],
+    "inat_taxon_id": 55843,
+    "wikipedia_titulo": "Camellia_japonica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego medio. Ofrece: ornamental, flores vistosas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "carisa",
+    "nombre": "Carisa / Natal Plum",
+    "nombre_cientifico": "Carissa macrocarpa",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Espinas. Algunas partes tóxicas excepto el fruto maduro.",
+    "servicios": [
+      "barrera viva",
+      "ornamental",
+      "fruto comestible"
+    ],
+    "inat_taxon_id": 82940,
+    "wikipedia_titulo": "Carissa_macrocarpa",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: barrera viva, ornamental, fruto comestible. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cedron",
+    "nombre": "Cedrón / Lippia",
+    "nombre_cientifico": "Aloysia citrodora",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "aromático",
+      "medicinal",
+      "melífero"
+    ],
+    "inat_taxon_id": 72046,
+    "wikipedia_titulo": "Aloysia_citrodora",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: aromático, medicinal, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cepillo",
+    "nombre": "Cepillo / Callistemon",
+    "nombre_cientifico": "Callistemon citrinus",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores en espiga roja",
+      "melífero"
+    ],
+    "inat_taxon_id": 77302,
+    "wikipedia_titulo": "Callistemon_citrinus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego bajo. Ofrece: ornamental, flores en espiga roja, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "chamizo",
+    "nombre": "Chamizo",
+    "nombre_cientifico": "Atriplex canescens",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "retención suelo",
+      "forrajera"
+    ],
+    "inat_taxon_id": 59062,
+    "wikipedia_titulo": "Atriplex_canescens",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 2 m, con riego muy bajo. Ofrece: nativa semiárido, retención suelo, forrajera. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "chilillo",
+    "nombre": "Chilillo / Tecoma",
+    "nombre_cientifico": "Tecoma stans var. angustata",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "nativa semiárido"
+    ],
+    "inat_taxon_id": 78908,
+    "wikipedia_titulo": "Tecoma_stans",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 2.5 m, con riego bajo. Ofrece: ornamental, melífero, nativa semiárido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "codo_de_fraile",
+    "nombre": "Codo de Fraile / Kalanchoe",
+    "nombre_cientifico": "Kalanchoe beharensis",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "suculenta"
+    ],
+    "inat_taxon_id": 117584,
+    "wikipedia_titulo": "Kalanchoe_beharensis",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego muy bajo. Ofrece: ornamental, suculenta. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cotoneaster",
+    "nombre": "Cotoneaster",
+    "nombre_cientifico": "Cotoneaster lacteus",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "frutos decorativos",
+      "refugio aves"
+    ],
+    "inat_taxon_id": 77334,
+    "wikipedia_titulo": "Cotoneaster_lacteus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, frutos decorativos, refugio aves. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cyca",
+    "nombre": "Cica / Palma sagú",
+    "nombre_cientifico": "Cycas revoluta",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Muy tóxica si se ingiere cualquier parte. No plantar donde juegan niños.",
+    "servicios": [
+      "ornamental",
+      "follaje exótico"
+    ],
+    "inat_taxon_id": 50251,
+    "wikipedia_titulo": "Cycas_revoluta",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, follaje exótico. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "ditaxis",
+    "nombre": "Ditaxis",
+    "nombre_cientifico": "Ditaxis heterantha",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "muy bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "cobertura suelo"
+    ],
+    "inat_taxon_id": null,
+    "wikipedia_titulo": "Ditaxis_heterantha",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1 m, con riego muy bajo. Ofrece: nativa semiárido, cobertura suelo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "eskima",
+    "nombre": "Eskima / Escobilla",
+    "nombre_cientifico": "Senna wislizeni",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "melífero"
+    ],
+    "inat_taxon_id": 81968,
+    "wikipedia_titulo": "Senna_wislizeni",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1.5 m, con riego muy bajo. Ofrece: nativa semiárido, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "floripondio",
+    "nombre": "Floripondio",
+    "nombre_cientifico": "Brugmansia suaveolens",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": "TÓXICO. Todas las partes son venenosas. No plantar en zonas con niños.",
+    "servicios": [
+      "ornamental",
+      "flores fragantes colgantes"
+    ],
+    "inat_taxon_id": 50167,
+    "wikipedia_titulo": "Brugmansia_suaveolens",
+    "zonas_estado": [
+      "calvillo",
+      "valle"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego medio. Ofrece: ornamental, flores fragantes colgantes. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "gatuno",
+    "nombre": "Gatuño / Mimosa",
+    "nombre_cientifico": "Mimosa aculeaticarpa",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas muy afiladas. Plantar como barrera, no en paso peatonal.",
+    "servicios": [
+      "nativa semiárido",
+      "barrera viva",
+      "fija nitrógeno"
+    ],
+    "inat_taxon_id": 63598,
+    "wikipedia_titulo": "Mimosa_aculeaticarpa",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 2 m, con riego muy bajo. Ofrece: nativa semiárido, barrera viva, fija nitrógeno. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "granado",
+    "nombre": "Granado",
+    "nombre_cientifico": "Punica granatum",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 78995,
+    "wikipedia_titulo": "Punica_granatum",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 4 m, con riego bajo. Ofrece: fruto comestible, ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "guayaba",
+    "nombre": "Guayabo",
+    "nombre_cientifico": "Psidium guajava",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "fruto comestible",
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 79214,
+    "wikipedia_titulo": "Psidium_guajava",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 5 m, con riego bajo. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "hibisco",
+    "nombre": "Hibisco / Rosa de Jamaica",
+    "nombre_cientifico": "Hibiscus rosa-sinensis",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores vistosas",
+      "melífero"
+    ],
+    "inat_taxon_id": 53870,
+    "wikipedia_titulo": "Hibiscus_rosa-sinensis",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2.5 m, con riego medio. Ofrece: ornamental, flores vistosas, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "huele_de_noche",
+    "nombre": "Huele de Noche / Dama de noche",
+    "nombre_cientifico": "Cestrum nocturnum",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Berries tóxicos. Fragancia nocturna intensa.",
+    "servicios": [
+      "ornamental",
+      "fragancia nocturna"
+    ],
+    "inat_taxon_id": 77448,
+    "wikipedia_titulo": "Cestrum_nocturnum",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2.5 m, con riego bajo. Ofrece: ornamental, fragancia nocturna. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "jaral",
+    "nombre": "Jaral / Senecio arborescens",
+    "nombre_cientifico": "Brickellia veronicifolia",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "melífero"
+    ],
+    "inat_taxon_id": null,
+    "wikipedia_titulo": "Brickellia_veronicifolia",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1.5 m, con riego muy bajo. Ofrece: nativa semiárido, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "jazmin",
+    "nombre": "Jazmín",
+    "nombre_cientifico": "Jasminum officinale",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "fragancia",
+      "trepadora ligera"
+    ],
+    "inat_taxon_id": 56914,
+    "wikipedia_titulo": "Jasminum_officinale",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego medio. Ofrece: ornamental, fragancia, trepadora ligera. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "justicia",
+    "nombre": "Justicia / Muicle",
+    "nombre_cientifico": "Justicia spicigera",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "medicinal"
+    ],
+    "inat_taxon_id": 71938,
+    "wikipedia_titulo": "Justicia_spicigera",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 2 m, con riego bajo. Ofrece: ornamental, melífero, medicinal. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "lantana",
+    "nombre": "Lantana",
+    "nombre_cientifico": "Lantana camara",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "compacta",
+    "advertencia": "Frutos tóxicos si se ingieren.",
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio mariposas"
+    ],
+    "inat_taxon_id": 50150,
+    "wikipedia_titulo": "Lantana_camara",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativo del trópico americano, muy usado en camellones y parques de AGS. Porte bajo con flores amarillas y naranjas que cambian de tono; atrae mariposas y abejas. Extremadamente resistente a sequía, calor y poda. Cubierta de suelo y ornamento en zonas secas. Cuidado: frutos tóxicos si se ingieren. Riego muy bajo; espacio 1×1 m."
+  },
+  {
+    "id": "lechero_rojo",
+    "nombre": "Lechero Rojo / Euphorbia cotinifolia",
+    "nombre_cientifico": "Euphorbia cotinifolia",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Látex muy irritante para piel y ojos. Manejo con guantes.",
+    "servicios": [
+      "ornamental",
+      "follaje rojo"
+    ],
+    "inat_taxon_id": 83030,
+    "wikipedia_titulo": "Euphorbia_cotinifolia",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego bajo. Ofrece: ornamental, follaje rojo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "madre_selva",
+    "nombre": "Madre Selva / Lonicera",
+    "nombre_cientifico": "Lonicera japonica",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Puede volverse invasora. Control de crecimiento recomendado.",
+    "servicios": [
+      "ornamental",
+      "trepadora",
+      "melífero"
+    ],
+    "inat_taxon_id": 75729,
+    "wikipedia_titulo": "Lonicera_japonica",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, trepadora, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "mandioca",
+    "nombre": "Mandioca ornamental",
+    "nombre_cientifico": "Manihot grahamii",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "tuberosa",
+    "advertencia": "No confundir con yuca comestible. Partes tóxicas crudas.",
+    "servicios": [
+      "ornamental",
+      "follaje decorativo"
+    ],
+    "inat_taxon_id": 83212,
+    "wikipedia_titulo": "Manihot_grahamii",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego muy bajo. Ofrece: ornamental, follaje decorativo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "maria_bonita",
+    "nombre": "María Bonita / Cosmos",
+    "nombre_cientifico": "Cosmos bipinnatus",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio mariposas"
+    ],
+    "inat_taxon_id": 77592,
+    "wikipedia_titulo": "Cosmos_bipinnatus",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1 m, con riego bajo. Ofrece: ornamental, melífero, refugio mariposas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nochebuena",
+    "nombre": "Nochebuena",
+    "nombre_cientifico": "Euphorbia pulcherrima",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Látex levemente irritante. No tóxica.",
+    "servicios": [
+      "ornamental",
+      "floración navideña"
+    ],
+    "inat_taxon_id": 83027,
+    "wikipedia_titulo": "Euphorbia_pulcherrima",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 3 m, con riego bajo. Ofrece: ornamental, floración navideña. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "palo_santo",
+    "nombre": "Palo Santo / Bursera",
+    "nombre_cientifico": "Bursera fagaroides",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "aromático",
+      "ornamental"
+    ],
+    "inat_taxon_id": 81847,
+    "wikipedia_titulo": "Bursera_fagaroides",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 4 m, con riego muy bajo. Ofrece: nativa semiárido, aromático, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "papayo",
+    "nombre": "Papayo",
+    "nombre_cientifico": "Carica papaya",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "medio",
+    "raiz": "superficial",
+    "advertencia": "Sensible al frío. Solo en zonas protegidas de heladas.",
+    "servicios": [
+      "fruto comestible",
+      "ornamental"
+    ],
+    "inat_taxon_id": 80043,
+    "wikipedia_titulo": "Carica_papaya",
+    "zonas_estado": [
+      "calvillo",
+      "valle"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 5 m, con riego medio. Ofrece: fruto comestible, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pitosporo",
+    "nombre": "Pitósporo",
+    "nombre_cientifico": "Pittosporum undulatum",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "seto",
+      "flores fragantes"
+    ],
+    "inat_taxon_id": 59189,
+    "wikipedia_titulo": "Pittosporum_undulatum",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 5 m, con riego bajo. Ofrece: ornamental, seto, flores fragantes. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "plumbago",
+    "nombre": "Plúmbago / Jazmín azul",
+    "nombre_cientifico": "Plumbago auriculata",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores azules"
+    ],
+    "inat_taxon_id": 77596,
+    "wikipedia_titulo": "Plumbago_auriculata",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego bajo. Ofrece: ornamental, flores azules. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "plumeria",
+    "nombre": "Pluméria / Cacaloxóchitl",
+    "nombre_cientifico": "Plumeria rubra",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Látex irritante.",
+    "servicios": [
+      "ornamental",
+      "flores fragantes",
+      "melífero"
+    ],
+    "inat_taxon_id": 53858,
+    "wikipedia_titulo": "Plumeria_rubra",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 4 m, con riego bajo. Ofrece: ornamental, flores fragantes, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "portulaca",
+    "nombre": "Portulaca / Rosa de Onceava",
+    "nombre_cientifico": "Portulaca grandiflora",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.3,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cobertura suelo",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 82986,
+    "wikipedia_titulo": "Portulaca_grandiflora",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 0.3 m, con riego muy bajo. Ofrece: ornamental, cobertura suelo, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "quiebraplato",
+    "nombre": "Quiebraplato / Duranta",
+    "nombre_cientifico": "Duranta erecta",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Frutos tóxicos si se ingieren.",
+    "servicios": [
+      "ornamental",
+      "seto",
+      "atrae mariposas"
+    ],
+    "inat_taxon_id": 77428,
+    "wikipedia_titulo": "Duranta_erecta",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego bajo. Ofrece: ornamental, seto, atrae mariposas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "retama",
+    "nombre": "Retama / Cytisus",
+    "nombre_cientifico": "Spartium junceum",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Semillas tóxicas.",
+    "servicios": [
+      "ornamental",
+      "flores amarillas",
+      "resistente sequía"
+    ],
+    "inat_taxon_id": 55457,
+    "wikipedia_titulo": "Spartium_junceum",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 3 m, con riego muy bajo. Ofrece: ornamental, flores amarillas, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "rosa_laurel",
+    "nombre": "Rosa Laurel / Narciso amarillo",
+    "nombre_cientifico": "Nerium oleander",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "compacta",
+    "advertencia": "MUY TÓXICO. Todas las partes son venenosas al ingerirse.",
+    "servicios": [
+      "ornamental",
+      "resistente sequía",
+      "seto"
+    ],
+    "inat_taxon_id": 56885,
+    "wikipedia_titulo": "Nerium_oleander",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 4 m, con riego muy bajo. Ofrece: ornamental, resistente sequía, seto. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "rosas",
+    "nombre": "Rosas",
+    "nombre_cientifico": "Rosa spp.",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio",
+    "raiz": "compacta",
+    "advertencia": "Espinas. Requiere mantenimiento periódico.",
+    "servicios": [
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 47723,
+    "wikipedia_titulo": "Rosa",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego medio. Ofrece: ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "sauco",
+    "nombre": "Saúco",
+    "nombre_cientifico": "Sambucus mexicana",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "bajo",
+    "raiz": "semiprofunda",
+    "advertencia": "Partes crudas (hojas, ramas) tóxicas. Bayas maduras comestibles.",
+    "servicios": [
+      "fruto comestible",
+      "melífero",
+      "medicinal",
+      "nativa"
+    ],
+    "inat_taxon_id": 56929,
+    "wikipedia_titulo": "Sambucus_mexicana",
+    "zonas_estado": [
+      "valle",
+      "sierra",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 4 m, con riego bajo. Ofrece: fruto comestible, melífero, medicinal, nativa. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "tabachin_arbusto",
+    "nombre": "Tabachín arbusto / Césalpinia",
+    "nombre_cientifico": "Caesalpinia pulcherrima",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio colibríes"
+    ],
+    "inat_taxon_id": 79241,
+    "wikipedia_titulo": "Caesalpinia_pulcherrima",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto ornamental adaptado, muy popular en parques y camellones de AGS. Porte arbustivo con hojas bipinnadas y floración roja intensa en racimos erectos de primavera a verano. Resistente al calor y a podas de contorno. Aporta color y polinizadores sin gran demanda hídrica. Ideal en macizos o como árbol pequeño con poda. Riego bajo; espacio 1.5×1.5 m."
+  },
+  {
+    "id": "tuya_arbusto",
+    "nombre": "Thuja / Tuya",
+    "nombre_cientifico": "Thuja occidentalis",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "No confundir con Cedro Cupressus (prohibido). Thuja es distinta.",
+    "servicios": [
+      "seto formal",
+      "ornamental",
+      "cortina"
+    ],
+    "inat_taxon_id": 54912,
+    "wikipedia_titulo": "Thuja_occidentalis",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 5 m, con riego bajo. Ofrece: seto formal, ornamental, cortina. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "velo_novia",
+    "nombre": "Velo de Novia / Gypsophila",
+    "nombre_cientifico": "Gypsophila paniculata",
+    "tipo": "arbusto",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "superficial",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cobertura suelo"
+    ],
+    "inat_taxon_id": 122467,
+    "wikipedia_titulo": "Gypsophila_paniculata",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto adaptada de hasta 1 m, con riego bajo. Ofrece: ornamental, cobertura suelo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "venadilla",
+    "nombre": "Venadilla / Dalea",
+    "nombre_cientifico": "Dalea bicolor",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "fija nitrógeno",
+      "melífero"
+    ],
+    "inat_taxon_id": 63721,
+    "wikipedia_titulo": "Dalea_bicolor",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1.5 m, con riego muy bajo. Ofrece: nativa semiárido, fija nitrógeno, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "ventiunilla",
+    "nombre": "Veintiúnilla / Salvia",
+    "nombre_cientifico": "Salvia mexicana",
+    "tipo": "arbusto",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "nativa semiárido",
+      "melífero",
+      "medicinal"
+    ],
+    "inat_taxon_id": 55930,
+    "wikipedia_titulo": "Salvia_mexicana",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Arbusto nativa de hasta 1.5 m, con riego bajo. Ofrece: nativa semiárido, melífero, medicinal. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "azucena",
+    "nombre": "Azucena / Lirio",
+    "nombre_cientifico": "Lilium candidum",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.8,
+    "riego": "medio",
+    "raiz": "bulbo",
+    "advertencia": "Tóxica para gatos.",
+    "servicios": [
+      "ornamental",
+      "flores fragantes"
+    ],
+    "inat_taxon_id": 49606,
+    "wikipedia_titulo": "Lilium_candidum",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.8 m, con riego medio. Ofrece: ornamental, flores fragantes. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "bambu",
+    "nombre": "Bambú",
+    "nombre_cientifico": "Bambusa vulgaris",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 10,
+    "riego": "medio-alto",
+    "raiz": "rizoma extendida",
+    "advertencia": "Rizoma muy invasivo. Contener con barrera subterránea.",
+    "servicios": [
+      "ornamental",
+      "cortina",
+      "material"
+    ],
+    "inat_taxon_id": 64515,
+    "wikipedia_titulo": "Bambusa_vulgaris",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 10 m, con riego medio-alto. Ofrece: ornamental, cortina, material. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "bambusillo",
+    "nombre": "Bambusillo / Bambú enano",
+    "nombre_cientifico": "Bambusa nana",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "medio",
+    "raiz": "rizoma",
+    "advertencia": "Puede expandirse. Control periódico.",
+    "servicios": [
+      "ornamental",
+      "seto bajo"
+    ],
+    "inat_taxon_id": 159143,
+    "wikipedia_titulo": "Bambusa_multiplex",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 3 m, con riego medio. Ofrece: ornamental, seto bajo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "bignonia_rosa",
+    "nombre": "Bignonia Rosa / Antigonon",
+    "nombre_cientifico": "Antigonon leptopus",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.5,
+    "riego": "bajo",
+    "raiz": "tuberosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "trepadora",
+      "melífero"
+    ],
+    "inat_taxon_id": 75806,
+    "wikipedia_titulo": "Antigonon_leptopus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 0.5 m, con riego bajo. Ofrece: ornamental, trepadora, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cactus_trigono",
+    "nombre": "Cactus Trígono / Cereus",
+    "nombre_cientifico": "Cereus hexagonus",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Espinas. Requiere espacio libre.",
+    "servicios": [
+      "ornamental",
+      "barrera",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 62695,
+    "wikipedia_titulo": "Cereus_hexagonus",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 3 m, con riego muy bajo. Ofrece: ornamental, barrera, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cardencha",
+    "nombre": "Cardencha / Dipsacus",
+    "nombre_cientifico": "Dipsacus fullonum",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "refugio aves"
+    ],
+    "inat_taxon_id": 49758,
+    "wikipedia_titulo": "Dipsacus_fullonum",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 1.5 m, con riego bajo. Ofrece: ornamental, refugio aves. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "cardenche",
+    "nombre": "Cardenche / Opuntia leptocaulis",
+    "nombre_cientifico": "Cylindropuntia leptocaulis",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Espinas muy adherentes. Manejo con guantes gruesos.",
+    "servicios": [
+      "nativa semiárido",
+      "barrera natural"
+    ],
+    "inat_taxon_id": 62688,
+    "wikipedia_titulo": "Cylindropuntia_leptocaulis",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 1.5 m, con riego muy bajo. Ofrece: nativa semiárido, barrera natural. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "carrizo_pampas",
+    "nombre": "Carrizo de las Pampas",
+    "nombre_cientifico": "Cortaderia selloana",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2.5,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Bordes de hojas muy cortantes. Puede volverse invasora.",
+    "servicios": [
+      "ornamental",
+      "visual imponente"
+    ],
+    "inat_taxon_id": 77522,
+    "wikipedia_titulo": "Cortaderia_selloana",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 2.5 m, con riego bajo. Ofrece: ornamental, visual imponente. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "coleo",
+    "nombre": "Coleo / Coleus",
+    "nombre_cientifico": "Plectranthus scutellarioides",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "medio",
+    "raiz": "superficial",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "follaje multicolor"
+    ],
+    "inat_taxon_id": 75742,
+    "wikipedia_titulo": "Plectranthus_scutellarioides",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego medio. Ofrece: ornamental, follaje multicolor. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "dedos_moro",
+    "nombre": "Dedos de Moro / Aloe",
+    "nombre_cientifico": "Aloe vera",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "medicinal",
+      "ornamental",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 52470,
+    "wikipedia_titulo": "Aloe_vera",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego muy bajo. Ofrece: medicinal, ornamental, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "dracaena",
+    "nombre": "Dracaena",
+    "nombre_cientifico": "Dracaena marginata",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Tóxica para mascotas.",
+    "servicios": [
+      "ornamental",
+      "follaje decorativo"
+    ],
+    "inat_taxon_id": 78973,
+    "wikipedia_titulo": "Dracaena_marginata",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, follaje decorativo. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "euphorbia_blanca",
+    "nombre": "Euphorbia Blanca / Lecherillo",
+    "nombre_cientifico": "Euphorbia leucocephala",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": "Látex irritante.",
+    "servicios": [
+      "ornamental",
+      "brácteas blancas"
+    ],
+    "inat_taxon_id": 83028,
+    "wikipedia_titulo": "Euphorbia_leucocephala",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 1.5 m, con riego bajo. Ofrece: ornamental, brácteas blancas. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "formio",
+    "nombre": "Formio / Flax de Nueva Zelanda",
+    "nombre_cientifico": "Phormium tenax",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "follaje estructural"
+    ],
+    "inat_taxon_id": 72124,
+    "wikipedia_titulo": "Phormium_tenax",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 1.5 m, con riego bajo. Ofrece: ornamental, follaje estructural. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "garambullo",
+    "nombre": "Garambullo / Myrtillocactus",
+    "nombre_cientifico": "Myrtillocactus geometrizans",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas. Fruto comestible.",
+    "servicios": [
+      "nativa semiárido",
+      "fruto comestible",
+      "barrera"
+    ],
+    "inat_taxon_id": 62692,
+    "wikipedia_titulo": "Myrtillocactus_geometrizans",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 4 m, con riego muy bajo. Ofrece: nativa semiárido, fruto comestible, barrera. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "garra_de_leon",
+    "nombre": "Garra de León / Leonotis",
+    "nombre_cientifico": "Leonotis leonurus",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero"
+    ],
+    "inat_taxon_id": 56839,
+    "wikipedia_titulo": "Leonotis_leonurus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 2 m, con riego bajo. Ofrece: ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "helianto",
+    "nombre": "Helianto / Girasol",
+    "nombre_cientifico": "Helianthus annuus",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "semilla comestible",
+      "melífero"
+    ],
+    "inat_taxon_id": 51895,
+    "wikipedia_titulo": "Helianthus_annuus",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 2 m, con riego bajo. Ofrece: ornamental, semilla comestible, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "hiedra_trepadora",
+    "nombre": "Hiedra Trepadora",
+    "nombre_cientifico": "Hedera helix",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.3,
+    "riego": "medio",
+    "raiz": "adherente",
+    "advertencia": "Puede dañar muros. Tóxica si se ingiere.",
+    "servicios": [
+      "cobertura suelo",
+      "ornamental"
+    ],
+    "inat_taxon_id": 75756,
+    "wikipedia_titulo": "Hedera_helix",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.3 m, con riego medio. Ofrece: cobertura suelo, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "hoja_elegante",
+    "nombre": "Hoja Elegante / Caladium",
+    "nombre_cientifico": "Caladium bicolor",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "medio",
+    "raiz": "tuberosa",
+    "advertencia": "Tóxica si se ingiere. Irritante para piel.",
+    "servicios": [
+      "ornamental",
+      "follaje colorido"
+    ],
+    "inat_taxon_id": 78848,
+    "wikipedia_titulo": "Caladium_bicolor",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego medio. Ofrece: ornamental, follaje colorido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "lirio_arana",
+    "nombre": "Lirio Araña / Hymenocallis",
+    "nombre_cientifico": "Hymenocallis littoralis",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "medio",
+    "raiz": "bulbo",
+    "advertencia": "Tóxica si se ingiere.",
+    "servicios": [
+      "ornamental",
+      "flores fragantes"
+    ],
+    "inat_taxon_id": 77669,
+    "wikipedia_titulo": "Hymenocallis_littoralis",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego medio. Ofrece: ornamental, flores fragantes. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "llamarada",
+    "nombre": "Llamarada / Canna",
+    "nombre_cientifico": "Canna indica",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio",
+    "raiz": "rizoma",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "flores llamativas",
+      "melífero"
+    ],
+    "inat_taxon_id": 75674,
+    "wikipedia_titulo": "Canna_indica",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 1.5 m, con riego medio. Ofrece: ornamental, flores llamativas, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "miguelito",
+    "nombre": "Miguelito / Antigonon",
+    "nombre_cientifico": "Antigonon leptopus",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.5,
+    "riego": "bajo",
+    "raiz": "tuberosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "trepadora",
+      "melífero"
+    ],
+    "inat_taxon_id": 75806,
+    "wikipedia_titulo": "Antigonon_leptopus",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 0.5 m, con riego bajo. Ofrece: ornamental, trepadora, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nopal_blanco",
+    "nombre": "Nopal Blanco / Nopal tapón",
+    "nombre_cientifico": "Opuntia leucotricha",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "superficial extendida",
+    "advertencia": "Espinas glóquidas invisibles. Requiere espacio.",
+    "servicios": [
+      "fruto comestible",
+      "barrera viva",
+      "refugio fauna"
+    ],
+    "inat_taxon_id": 58855,
+    "wikipedia_titulo": "Opuntia_leucotricha",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Cactácea nativa del altiplano, fundamental en la cultura y gastronomía de Aguascalientes. Tallos planos ovalados de color verde claro con espinas cortas; flores amarillas y tunas comestibles. Casi no requiere riego y fija suelo en laderas. Ideal para jardines xerófitos, banquetas amplias y barreras naturales. Manejo con guantes; espacio 1×1 m."
+  },
+  {
+    "id": "nopal_duraznillo",
+    "nombre": "Nopal Duraznillo",
+    "nombre_cientifico": "Opuntia robusta",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Espinas. Tuna comestible.",
+    "servicios": [
+      "fruto comestible",
+      "nativa semiárido"
+    ],
+    "inat_taxon_id": 58862,
+    "wikipedia_titulo": "Opuntia_robusta",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 3 m, con riego muy bajo. Ofrece: fruto comestible, nativa semiárido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nopal_tapon",
+    "nombre": "Nopal Tapón / Cardón",
+    "nombre_cientifico": "Opuntia streptacantha",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 3,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Espinas largas. Tuna muy apreciada.",
+    "servicios": [
+      "fruto comestible",
+      "nativa semiárido",
+      "identidad regional"
+    ],
+    "inat_taxon_id": 58868,
+    "wikipedia_titulo": "Opuntia_streptacantha",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 3 m, con riego muy bajo. Ofrece: fruto comestible, nativa semiárido, identidad regional. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "nopalia",
+    "nombre": "Nopalia / Nopal de Castilla",
+    "nombre_cientifico": "Opuntia ficus-indica",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "muy bajo",
+    "raiz": "superficial",
+    "advertencia": "Espinas. Nopal comestible de mayor valor comercial.",
+    "servicios": [
+      "fruto comestible",
+      "pencas comestibles",
+      "nativa"
+    ],
+    "inat_taxon_id": 58841,
+    "wikipedia_titulo": "Opuntia_ficus-indica",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 4 m, con riego muy bajo. Ofrece: fruto comestible, pencas comestibles, nativa. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "organo_cactus",
+    "nombre": "Órgano / Cactus órgano",
+    "nombre_cientifico": "Pachycereus marginatus",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas. Muy resistente.",
+    "servicios": [
+      "ornamental",
+      "barrera natural",
+      "nativa semiárido"
+    ],
+    "inat_taxon_id": 62693,
+    "wikipedia_titulo": "Pachycereus_marginatus",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 5 m, con riego muy bajo. Ofrece: ornamental, barrera natural, nativa semiárido. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "papiro",
+    "nombre": "Papiro",
+    "nombre_cientifico": "Cyperus papyrus",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 2,
+    "riego": "alto",
+    "raiz": "rizoma acuático",
+    "advertencia": "Requiere humedad constante o agua estancada. Solo junto a fuentes o estanques.",
+    "servicios": [
+      "ornamental",
+      "acuática"
+    ],
+    "inat_taxon_id": 57485,
+    "wikipedia_titulo": "Cyperus_papyrus",
+    "zonas_estado": [
+      "valle"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 2 m, con riego alto. Ofrece: ornamental, acuática. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "pitayo",
+    "nombre": "Pitayo",
+    "nombre_cientifico": "Stenocereus queretaroensis",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "parques",
+      "agricola",
+      "jardin"
+    ],
+    "altura_max_m": 5,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Espinas. Fruto muy apreciado en Aguascalientes.",
+    "servicios": [
+      "fruto comestible",
+      "nativa",
+      "ornamental"
+    ],
+    "inat_taxon_id": 64225,
+    "wikipedia_titulo": "Stenocereus_queretaroensis",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 5 m, con riego muy bajo. Ofrece: fruto comestible, nativa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "platanillo",
+    "nombre": "Platanillo / Heliconia",
+    "nombre_cientifico": "Heliconia psittacorum",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "medio-alto",
+    "raiz": "rizoma",
+    "advertencia": "Requiere riego regular y protección de heladas.",
+    "servicios": [
+      "ornamental",
+      "flores tropicales"
+    ],
+    "inat_taxon_id": 68768,
+    "wikipedia_titulo": "Heliconia_psittacorum",
+    "zonas_estado": [
+      "calvillo",
+      "valle"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 1.5 m, con riego medio-alto. Ofrece: ornamental, flores tropicales. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "platano_banano",
+    "nombre": "Plátano / Banano",
+    "nombre_cientifico": "Musa paradisiaca",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 4,
+    "riego": "alto",
+    "raiz": "rizoma",
+    "advertencia": "Requiere mucha agua y calor. Solo en zonas con microclima favorable.",
+    "servicios": [
+      "fruto comestible",
+      "ornamental"
+    ],
+    "inat_taxon_id": 53501,
+    "wikipedia_titulo": "Musa_paradisiaca",
+    "zonas_estado": [
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 4 m, con riego alto. Ofrece: fruto comestible, ornamental. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "rocio_suculenta",
+    "nombre": "Rocío / Echeveria",
+    "nombre_cientifico": "Echeveria elegans",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.2,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cobertura suelo",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 52498,
+    "wikipedia_titulo": "Echeveria_elegans",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 0.2 m, con riego muy bajo. Ofrece: ornamental, cobertura suelo, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "sabila",
+    "nombre": "Sábila / Aloe vera",
+    "nombre_cientifico": "Aloe vera",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.6,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "medicinal",
+      "ornamental",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 52470,
+    "wikipedia_titulo": "Aloe_vera",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego muy bajo. Ofrece: medicinal, ornamental, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "sangre_de_grado",
+    "nombre": "Sangre de Grado / Jatropha",
+    "nombre_cientifico": "Jatropha dioica",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "muy bajo",
+    "raiz": "profunda",
+    "advertencia": "Látex puede irritar. Semillas tóxicas.",
+    "servicios": [
+      "nativa semiárido",
+      "medicinal"
+    ],
+    "inat_taxon_id": 83150,
+    "wikipedia_titulo": "Jatropha_dioica",
+    "zonas_estado": [
+      "valle",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 1 m, con riego muy bajo. Ofrece: nativa semiárido, medicinal. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "siempre_viva",
+    "nombre": "Siempre Viva / Sedum",
+    "nombre_cientifico": "Sedum morganianum",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.3,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "cobertura suelo",
+      "muy resistente sequía"
+    ],
+    "inat_taxon_id": 81682,
+    "wikipedia_titulo": "Sedum_morganianum",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 0.3 m, con riego muy bajo. Ofrece: ornamental, cobertura suelo, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "sotol",
+    "nombre": "Sotol / Dasylirion",
+    "nombre_cientifico": "Dasylirion wheeleri",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1.5,
+    "riego": "muy bajo",
+    "raiz": "fibrosa",
+    "advertencia": "Hojas con dientes serrados. Plantar con espacio libre.",
+    "servicios": [
+      "nativa semiárido",
+      "ornamental",
+      "identidad regional"
+    ],
+    "inat_taxon_id": 57108,
+    "wikipedia_titulo": "Dasylirion_wheeleri",
+    "zonas_estado": [
+      "valle",
+      "oriente",
+      "calvillo",
+      "sierra"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 1.5 m, con riego muy bajo. Ofrece: nativa semiárido, ornamental, identidad regional. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "trompeta",
+    "nombre": "Trompeta / Campsis",
+    "nombre_cientifico": "Campsis radicans",
+    "tipo": "herbacea",
+    "nativa": false,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 0.5,
+    "riego": "bajo",
+    "raiz": "adherente",
+    "advertencia": "Trepadora vigorosa. Puede dañar estructuras si no se controla.",
+    "servicios": [
+      "ornamental",
+      "trepadora",
+      "melífero"
+    ],
+    "inat_taxon_id": 77391,
+    "wikipedia_titulo": "Campsis_radicans",
+    "zonas_estado": [
+      "valle",
+      "calvillo"
+    ],
+    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.5 m, con riego bajo. Ofrece: ornamental, trepadora, melífero. Adecuada para reforestación urbana en Aguascalientes."
+  },
+  {
+    "id": "trompetilla",
+    "nombre": "Trompetilla / Russelia",
+    "nombre_cientifico": "Russelia equisetiformis",
+    "tipo": "herbacea",
+    "nativa": true,
+    "sitios": [
+      "camellones",
+      "banquetas",
+      "parques",
+      "jardin"
+    ],
+    "altura_max_m": 1,
+    "riego": "bajo",
+    "raiz": "compacta",
+    "advertencia": null,
+    "servicios": [
+      "ornamental",
+      "melífero",
+      "refugio colibríes"
+    ],
+    "inat_taxon_id": 77632,
+    "wikipedia_titulo": "Russelia_equisetiformis",
+    "zonas_estado": [
+      "valle",
+      "calvillo",
+      "oriente"
+    ],
+    "descripcion_ampliada": "Planta herbácea nativa de hasta 1 m, con riego bajo. Ofrece: ornamental, melífero, refugio colibríes. Adecuada para reforestación urbana en Aguascalientes."
   }
 ]
