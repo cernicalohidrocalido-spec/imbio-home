@@ -112,6 +112,22 @@ img{max-width:100%;display:block;border-radius:10px;}
 .modcard p{font-size:.85rem;color:var(--tinta-600);margin:0;flex:1;}
 .modcard .goto{font-size:.78rem;font-weight:700;color:var(--verde-700);}
 
+/* app recommendation */
+.app-rec{
+  display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:center;
+  background:var(--blanco);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #e5e0d2;padding:1.5rem 1.6rem;margin:0 0 3rem;
+}
+.app-rec .eyebrow{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--verde-600);font-weight:700;margin-bottom:.35rem;}
+.app-rec h3{font-family:var(--serif);font-size:1.45rem;margin:0 0 .55rem;color:var(--verde-900);}
+.app-rec p{margin:0;font-size:.92rem;color:var(--tinta-600);max-width:52rem;line-height:1.55;}
+.app-rec .app-actions{display:flex;flex-direction:column;gap:.55rem;align-items:stretch;min-width:200px;}
+.app-rec .app-actions .btn{text-align:center;}
+@media (max-width:720px){
+  .app-rec{grid-template-columns:1fr;}
+  .app-rec .app-actions{min-width:0;}
+}
+
 /* module page layout */
 .course{display:none;background:var(--blanco);}
 .course.active{display:block;}
@@ -188,6 +204,7 @@ footer .foot-credit{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(2
     <a href="/">← Volver a IMBIO</a>
     <a href="#inicio" onclick="showLanding()">Inicio</a>
     <a href="#modulos" onclick="showLanding()">Módulos</a>
+    <a href="#arbolmetria" onclick="showLanding();setTimeout(()=>document.getElementById('arbolmetria').scrollIntoView(),50)">Arbolmetria Pro</a>
     <a href="#glosario-land" onclick="showLanding();setTimeout(()=>document.getElementById('glosario-land').scrollIntoView(),50)">Glosario</a>
   </nav>
 </div>
@@ -223,6 +240,23 @@ footer .foot-credit{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(2
     </div>
 
     <div class="modgrid" id="modgrid"></div>
+
+    <div class="section-label" id="arbolmetria">
+      <div class="eyebrow">Herramienta recomendada</div>
+      <h2>App Arbolmetria Pro</h2>
+      <p>Complemento práctico del manual para medir, registrar y dar seguimiento al arbolado urbano en campo.</p>
+    </div>
+    <aside class="app-rec">
+      <div>
+        <div class="eyebrow">Desarrollada por el IMBIO</div>
+        <h3>Arbolmetria Pro</h3>
+        <p>Se recomienda el uso de la aplicación <b>Arbolmetria Pro</b>, desarrollada por el Instituto Municipal de Biodiversidad y Protección Ambiental (IMBIO), para apoyar el inventario, la medición y el seguimiento técnico del arbolado urbano en Pabellón de Arteaga. Disponible de forma gratuita en Google Play.</p>
+      </div>
+      <div class="app-actions">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.arbolmetria.arbol_metria&pcampaignid=web_share" target="_blank" rel="noopener">Descargar en Google Play</a>
+        <a class="btn btn-ghost" href="https://arboles.imbio.info" target="_blank" rel="noopener" style="border-color:var(--verde-400);color:var(--verde-800);">Ver monitoreo web</a>
+      </div>
+    </aside>
 
     <div class="section-label" id="glosario-land">
       <div class="eyebrow">Referencia rápida</div>
