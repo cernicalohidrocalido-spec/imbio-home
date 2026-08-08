@@ -370,8 +370,8 @@
   },
   {
     "id": "citricos",
-    "nombre": "Cítricos",
-    "nombre_cientifico": "Citrus spp.",
+    "nombre": "Naranjo Dulce",
+    "nombre_cientifico": "Citrus sinensis",
     "tipo": "arbol",
     "nativa": false,
     "sitios": [
@@ -390,12 +390,12 @@
       "melífero"
     ],
     "inat_taxon_id": 52837,
-    "wikipedia_titulo": "Citrus",
+    "wikipedia_titulo": "Citrus_sinensis",
     "zonas_estado": [
       "valle",
       "calvillo"
     ],
-    "descripcion_ampliada": "Árbol adaptada de hasta 6 m, con riego medio. Ofrece: fruto comestible, ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+    "descripcion_ampliada": "Árbol frutal de traspatio muy común en Aguascalientes, cultivado por su fruto comestible y su follaje perenne aromático. Requiere riego moderado y protección contra heladas fuertes en sus primeros años. Buena sombra ligera para jardines y parques de tamaño medio."
   },
   {
     "id": "colorin",
@@ -613,32 +613,6 @@
     "descripcion_ampliada": "Árbol de sombra adaptado al clima templado-seco de la Sierra de Aguascalientes. Copa redondeada con follaje verde intenso que se torna dorado en otoño. Crece relativamente rápido y tolera heladas ligeras. Ideal para parques y camellones amplios donde se busca sombra densa. Raíz profunda; evitar banquetas estrechas. Riego medio en establecimiento, luego moderado."
   },
   {
-    "id": "galeana",
-    "nombre": "Galeana / Hule de hoja estrecha",
-    "nombre_cientifico": "Ficus elastica",
-    "tipo": "arbol",
-    "nativa": false,
-    "sitios": [
-      "camellones",
-      "parques"
-    ],
-    "altura_max_m": 12,
-    "riego": "medio",
-    "raiz": "muy agresiva",
-    "advertencia": "Raíz muy agresiva y superficial que daña banquetas, tuberías y cimentaciones; solo en parques y camellones muy amplios.",
-    "servicios": [
-      "ornamental",
-      "sombra"
-    ],
-    "inat_taxon_id": 126507,
-    "wikipedia_titulo": "Ficus_elastica",
-    "zonas_estado": [
-      "valle",
-      "calvillo"
-    ],
-    "descripcion_ampliada": "Árbol adaptada de hasta 12 m, con riego medio. Ofrece: ornamental, sombra. Adecuada para reforestación urbana en Aguascalientes."
-  },
-  {
     "id": "grevillea",
     "nombre": "Grevillea",
     "nombre_cientifico": "Grevillea robusta",
@@ -834,7 +808,7 @@
   },
   {
     "id": "hule",
-    "nombre": "Hule",
+    "nombre": "Hule / Galeana",
     "nombre_cientifico": "Ficus elastica",
     "tipo": "arbol",
     "nativa": false,
@@ -844,18 +818,20 @@
     ],
     "altura_max_m": 15,
     "riego": "medio",
-    "raiz": "agresiva",
-    "advertencia": "Raíz agresiva en pavimentos. Reservar para parques con suelo libre.",
+    "raiz": "muy agresiva",
+    "advertencia": "Raíz muy agresiva y superficial que daña banquetas, tuberías y cimentaciones; solo en parques y camellones muy amplios con suelo libre.",
     "servicios": [
       "ornamental",
+      "sombra",
       "sombra densa"
     ],
     "inat_taxon_id": 126507,
     "wikipedia_titulo": "Ficus_elastica",
     "zonas_estado": [
+      "calvillo",
       "valle"
     ],
-    "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: ornamental, sombra densa. Adecuada para reforestación urbana en Aguascalientes."
+    "descripcion_ampliada": "Árbol de gran porte y follaje denso y brillante, muy plantado como ornamental en parques de Aguascalientes. Su sistema de raíces es de los más agresivos del catálogo: solo apto para espacios muy amplios, lejos de banquetas, tuberías y cimentaciones."
   },
   {
     "id": "jaboncillo",
@@ -959,35 +935,6 @@
       "valle"
     ],
     "descripcion_ampliada": "Árbol adaptada de hasta 15 m, con riego medio. Ofrece: sombra densa, ornamental. Adecuada para reforestación urbana en Aguascalientes."
-  },
-  {
-    "id": "lila",
-    "nombre": "Lila / Sirenio",
-    "nombre_cientifico": "Melia azedarach",
-    "tipo": "arbol",
-    "nativa": false,
-    "sitios": [
-      "camellones",
-      "parques",
-      "jardin"
-    ],
-    "altura_max_m": 10,
-    "riego": "bajo",
-    "raiz": "agresiva",
-    "advertencia": "Frutos tóxicos si se ingieren. Evitar en zonas con niños pequeños. Raíz agresiva y alta capacidad de propagarse por semilla; no recomendable en banquetas, reservar para camellones y parques amplios con monitoreo.",
-    "servicios": [
-      "sombra",
-      "ornamental",
-      "resistente sequía"
-    ],
-    "inat_taxon_id": 53720,
-    "wikipedia_titulo": "Melia_azedarach",
-    "zonas_estado": [
-      "valle",
-      "oriente",
-      "calvillo"
-    ],
-    "descripcion_ampliada": "Arbusto ornamental adaptado muy común en jardines y banquetas de Aguascalientes. Porte compacto con hojas cordadas y panículas de flores lilas fragantes en primavera. Resistente a sequía moderada y poda intensa. Ideal para espacios reducidos donde se busca floración y aroma sin gran altura. Riego bajo a medio; espacio 1×1 m."
   },
   {
     "id": "liquidambar",
@@ -1453,30 +1400,32 @@
   },
   {
     "id": "paraiso",
-    "nombre": "Paraíso / Melia",
+    "nombre": "Paraíso / Lila / Sirenio",
     "nombre_cientifico": "Melia azedarach",
     "tipo": "arbol",
     "nativa": false,
     "sitios": [
       "camellones",
+      "jardin",
       "parques"
     ],
     "altura_max_m": 10,
     "riego": "bajo",
-    "raiz": "semiprofunda",
-    "advertencia": "Frutos tóxicos si se ingieren.",
+    "raiz": "agresiva",
+    "advertencia": "Frutos tóxicos si se ingieren; evitar en zonas con niños pequeños. Raíz agresiva y alta capacidad de propagarse por semilla; no recomendable en banquetas, reservar para camellones y parques amplios con monitoreo.",
     "servicios": [
-      "sombra",
       "ornamental",
-      "resistente sequía"
+      "resistente sequía",
+      "sombra"
     ],
     "inat_taxon_id": 53720,
     "wikipedia_titulo": "Melia_azedarach",
     "zonas_estado": [
-      "valle",
-      "oriente"
+      "calvillo",
+      "oriente",
+      "valle"
     ],
-    "descripcion_ampliada": "Árbol adaptada de hasta 10 m, con riego bajo. Ofrece: sombra, ornamental, resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
+    "descripcion_ampliada": "Árbol exótico de crecimiento rápido y flores lilas fragantes en primavera, muy extendido en camellones y parques del centro de México. Todos sus frutos (bolitas amarillas) son tóxicos si se ingieren. Su raíz agresiva y su facilidad para propagarse por semilla piden monitorear su regeneración y evitar plantarlo en banquetas."
   },
   {
     "id": "pino",
@@ -3120,8 +3069,8 @@
   },
   {
     "id": "rosas",
-    "nombre": "Rosas",
-    "nombre_cientifico": "Rosa spp.",
+    "nombre": "Rosa China",
+    "nombre_cientifico": "Rosa chinensis",
     "tipo": "arbusto",
     "nativa": false,
     "sitios": [
@@ -3139,12 +3088,12 @@
       "melífero"
     ],
     "inat_taxon_id": 47723,
-    "wikipedia_titulo": "Rosa",
+    "wikipedia_titulo": "Rosa_chinensis",
     "zonas_estado": [
       "valle",
       "calvillo"
     ],
-    "descripcion_ampliada": "Arbusto adaptada de hasta 1.5 m, con riego medio. Ofrece: ornamental, melífero. Adecuada para reforestación urbana en Aguascalientes."
+    "descripcion_ampliada": "Rosal arbustivo de floración casi continua, una de las especies base de la mayoría de las rosas de jardín cultivadas hoy en día. Requiere riego moderado, poda periódica y sol pleno; sus espinas piden mantenerlo alejado de zonas de paso estrecho."
   },
   {
     "id": "sauco",
@@ -3408,35 +3357,6 @@
     "descripcion_ampliada": "Planta herbácea adaptada de hasta 3 m, con riego medio. Ofrece: ornamental, seto bajo. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
-    "id": "bignonia_rosa",
-    "nombre": "Bignonia Rosa / Antigonon",
-    "nombre_cientifico": "Antigonon leptopus",
-    "tipo": "herbacea",
-    "nativa": true,
-    "sitios": [
-      "camellones",
-      "banquetas",
-      "parques",
-      "jardin"
-    ],
-    "altura_max_m": 0.5,
-    "riego": "bajo",
-    "raiz": "tuberosa",
-    "advertencia": null,
-    "servicios": [
-      "ornamental",
-      "trepadora",
-      "melífero"
-    ],
-    "inat_taxon_id": 48380,
-    "wikipedia_titulo": "Antigonon_leptopus",
-    "zonas_estado": [
-      "valle",
-      "calvillo"
-    ],
-    "descripcion_ampliada": "Planta herbácea nativa de hasta 0.5 m, con riego bajo. Ofrece: ornamental, trepadora, melífero. Adecuada para reforestación urbana en Aguascalientes."
-  },
-  {
     "id": "cactus_trigono",
     "nombre": "Cactus Trígono / Cereus",
     "nombre_cientifico": "Cereus hexagonus",
@@ -3569,36 +3489,6 @@
       "calvillo"
     ],
     "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego medio. Ofrece: ornamental, follaje multicolor. Adecuada para reforestación urbana en Aguascalientes."
-  },
-  {
-    "id": "dedos_moro",
-    "nombre": "Dedos de Moro / Aloe",
-    "nombre_cientifico": "Aloe vera",
-    "tipo": "herbacea",
-    "nativa": false,
-    "sitios": [
-      "camellones",
-      "banquetas",
-      "parques",
-      "jardin"
-    ],
-    "altura_max_m": 0.6,
-    "riego": "muy bajo",
-    "raiz": "fibrosa",
-    "advertencia": null,
-    "servicios": [
-      "medicinal",
-      "ornamental",
-      "muy resistente sequía"
-    ],
-    "inat_taxon_id": 126882,
-    "wikipedia_titulo": "Aloe_vera",
-    "zonas_estado": [
-      "valle",
-      "oriente",
-      "calvillo"
-    ],
-    "descripcion_ampliada": "Planta herbácea adaptada de hasta 0.6 m, con riego muy bajo. Ofrece: medicinal, ornamental, muy resistente sequía. Adecuada para reforestación urbana en Aguascalientes."
   },
   {
     "id": "dracaena",
@@ -3882,7 +3772,7 @@
   },
   {
     "id": "miguelito",
-    "nombre": "Miguelito / Antigonon",
+    "nombre": "Miguelito / San Miguel / Bignonia Rosa",
     "nombre_cientifico": "Antigonon leptopus",
     "tipo": "herbacea",
     "nativa": true,
@@ -4189,7 +4079,7 @@
   },
   {
     "id": "sabila",
-    "nombre": "Sábila / Aloe vera",
+    "nombre": "Sábila / Dedos de Moro",
     "nombre_cientifico": "Aloe vera",
     "tipo": "herbacea",
     "nativa": false,

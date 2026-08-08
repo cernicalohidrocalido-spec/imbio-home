@@ -352,6 +352,32 @@
   .jp-creditos li:last-child { margin-bottom: 0; }
   .jp-creditos a { color: var(--verde); font-weight: 600; }
 
+  /* ── Imagen sugerida (para generar con IA e insertar después) ── */
+  .sc-imagen-slot { margin-bottom: 1rem; border-radius: 12px; overflow: hidden; }
+  .sc-imagen-slot img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .sc-imagen-placeholder {
+    aspect-ratio: 16/9;
+    border: 2px dashed var(--verde);
+    border-radius: 12px;
+    background: var(--verde-claro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.25rem;
+    gap: 0.35rem;
+  }
+  .sc-imagen-icono { font-size: 1.6rem; }
+  .sc-imagen-placeholder p { font-size: 0.78rem; color: var(--gris-texto); line-height: 1.45; margin: 0; max-width: 90%; }
+  .sc-imagen-placeholder code {
+    font-size: 0.68rem;
+    background: rgba(255,255,255,0.7);
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+    color: var(--verde-oscuro);
+  }
+
   @media (max-width: 480px) {
     .jp-nav { flex-wrap: wrap; }
     .jp-contador { order: -1; width: 100%; text-align: center; }
@@ -532,6 +558,7 @@
     <a href="#guia">Cómo plantar</a>
     <a href="#consejos">Consejos y datos útiles</a>
     <a href="#guia-polinizadores">Haz tu jardín de polinizadores</a>
+    <a href="#colecta-semillas">Cómo colectar semillas</a>
   </div>
 </nav>
 
@@ -539,7 +566,7 @@
 
   <section id="catalogo">
     <div class="section-titulo">Catálogo de especies</div>
-    <p class="section-sub">218 especies nativas de México y exóticas bien adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
+    <p class="section-sub">214 especies nativas de México y exóticas bien adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
     <p class="section-sub" style="margin-top:-1.25rem; font-size:0.82rem;">"Nativa de México" indica que la especie es originaria del país; no todas ocurren de forma natural específicamente en Pabellón de Arteaga. Usa el filtro de zona para ver qué especies están documentadas en el valle, la sierra, oriente o Calvillo.</p>
 
     <div class="filtros">
@@ -670,6 +697,33 @@
         <li>Riverside-Corona Resource Conservation District. <em>Planifique su paraíso polinizador</em> (guía de diseño de jardín).</li>
         <li>The Xerces Society for Invertebrate Conservation. <em>Jardines para Polinizadores — Guía de diseño</em>.</li>
         <li>Fotografías de <em>Cosmos bipinnatus</em> y <em>Buddleja cordata</em>: contribuciones de la comunidad de <a href="https://www.inaturalist.org" target="_blank" rel="noopener">iNaturalist</a> o de <a href="https://es.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a>, según se indica en cada imagen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="colecta-semillas">
+    <div class="section-titulo">🌾 Cómo colectar semillas para tu jardín de polinizadores</div>
+    <p class="section-sub">Guía paso a paso para colectar, limpiar, almacenar y romper la latencia de semillas de plantas nativas — sin dañar las poblaciones silvestres de las que las tomas.</p>
+
+    <div class="jp-wizard">
+      <div class="jp-progreso">
+        <div class="jp-dots" id="cs-dots"></div>
+        <div class="jp-barra"><div class="jp-barra-fill" id="cs-barra-fill"></div></div>
+      </div>
+      <div class="jp-paso" id="cs-paso"></div>
+      <div class="jp-nav">
+        <button type="button" class="jp-btn jp-btn-secundario" id="cs-anterior" onclick="csIrPaso(csPasoActual - 1)">‹ Anterior</button>
+        <span class="jp-contador" id="cs-contador"></span>
+        <button type="button" class="jp-btn" id="cs-siguiente" onclick="csIrPaso(csPasoActual + 1)">Siguiente ›</button>
+      </div>
+    </div>
+
+    <div class="jp-creditos">
+      <p class="jp-creditos-titulo">Fuentes y créditos</p>
+      <ul>
+        <li>Eckberg, James; Hopwood, Jennifer; Lee-Mäder, Eric. <em>Collecting and Using Your Own Wildflower Seed — To Expand Pollinator Habitat on Farms</em>. The Xerces Society for Invertebrate Conservation, 2016.</li>
+        <li>Midgley, Jan. <em>Germination Guide for Native Seeds</em>, actualizado 10/2023.</li>
+        <li>Ilustraciones sugeridas por generar con Adobe Firefly o Gemini (Nano Banana) — ver la descripción bajo cada casilla punteada.</li>
       </ul>
     </div>
   </section>
@@ -983,6 +1037,177 @@ function jpCambiarTab(tab) {
   document.getElementById('jp-tab-btn-vivero').classList.toggle('activo', tab === 'vivero');
 }
 
+/* ═══ Wizard: Cómo colectar semillas ═══ */
+/* Casilla de imagen sugerida: muestra el archivo si ya existe en img/semillas/,
+   y si no, un recuadro punteado con la descripción de la imagen a generar
+   (con Adobe Firefly, Gemini/Nano Banana, etc.) y el nombre de archivo esperado. */
+function scImagenSlot(archivo, descripcion) {
+  return `
+    <div class="sc-imagen-slot">
+      <img src="/reforestacion/img/semillas/${archivo}" alt="${descripcion}" loading="lazy"
+           onerror="this.replaceWith(scCrearPlaceholder('${archivo}', this.alt))">
+    </div>
+  `;
+}
+
+function scCrearPlaceholder(archivo, descripcion) {
+  const div = document.createElement('div');
+  div.className = 'sc-imagen-placeholder';
+  div.innerHTML = `
+    <span class="sc-imagen-icono">🎨</span>
+    <p>${descripcion}</p>
+    <code>img/semillas/${archivo}</code>
+  `;
+  return div;
+}
+
+const CS_FUENTE = '<p class="jp-fuente">Fuente: Xerces Society, <em>Collecting and Using Your Own Wildflower Seed</em>, y Jan Midgley, <em>Germination Guide for Native Seeds</em>.</p>';
+
+const CS_PASOS = [
+  {
+    eyebrow: 'Paso 1 de 8',
+    titulo: '¿Cuándo está lista una semilla para colectar?',
+    html: `
+      ${scImagenSlot('paso-1-cuando-colectar.jpg', 'Ilustración estilo acuarela de una mano comparando dos vainas de semillas en una rama: una verde e inmadura y otra café/seca y lista para colectar, con nopales y mezquites de fondo en un jardín semiárido.')}
+      <p>Las semillas de flores silvestres suelen estar listas de <strong>2 a 5 semanas después del pico de floración</strong>; en árboles y arbustos puede tardar <strong>dos meses o más</strong>. Busca estas señales:</p>
+      <ul>
+        <li>El color cambia de verde a <strong>café, tostado, negro o gris</strong> — semillas verdes, amarillas o blancas casi siempre están inmaduras.</li>
+        <li>La semilla o vaina está <strong>seca y firme</strong>, no blanda ni húmeda.</li>
+        <li>Se desprende con un <strong>jalón suave</strong>. Si la estructura se dobla o resiste, todavía no está lista.</li>
+      </ul>
+      <div class="jp-dato">El clima cálido y seco acelera la maduración; el clima fresco y húmedo la retrasa. Anota fechas de floración y colecta por especie — te servirá de guía para los años siguientes.</div>
+      <p>No te tardes una vez maduras: muchas semillas se dispersan solas o se las comen los animales en cuanto están listas.</p>
+      ${CS_FUENTE}
+    `,
+  },
+  {
+    eyebrow: 'Paso 2 de 8',
+    titulo: 'Colecta sin dañar la población silvestre',
+    html: `
+      ${scImagenSlot('paso-2-colecta-responsable.jpg', 'Ilustración estilo acuarela de una persona colectando semillas silvestres a mano en un campo de flores nativas de Aguascalientes, tomando solo algunas plantas dispersas entre muchas, con una bolsa de papel en la otra mano.')}
+      <ul>
+        <li><strong>No tomes más del 20%</strong> de la semilla disponible de una especie en un mismo año.</li>
+        <li>Colecta de <strong>varias plantas dispersas</strong>, no solo de una mata — así conservas la diversidad genética de la población.</li>
+        <li>Prioriza especies <strong>abundantes</strong>; evita colectar de plantas raras o poco comunes en el sitio.</li>
+        <li>Si la planta es <strong>perenne</strong> (rebrota cada año) puedes colectar con más frecuencia que de una <strong>anual o bienal</strong>, que depende más de su propia semilla para persistir en ese sitio.</li>
+        <li>Si vas a colectar en un terreno que no es tuyo — incluyendo áreas naturales protegidas — pide permiso primero.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 3 de 8',
+    titulo: 'Herramientas y contenedores',
+    html: `
+      ${scImagenSlot('paso-3-herramientas.jpg', 'Ilustración estilo acuarela de herramientas de colecta de semillas ordenadas sobre una mesa de madera: guantes de jardín, tijeras podadoras, bolsas de papel café, una bolsa de malla fina y frascos de vidrio etiquetados.')}
+      <ul>
+        <li><strong>Guantes</strong> y <strong>tijeras o podadora</strong> para cortar vainas o cabezuelas secas.</li>
+        <li><strong>Bolsas de papel</strong> para semillas secas (dejan respirar y evitan que se enmohezcan).</li>
+        <li><strong>Bolsas de plástico resellables</strong> solo para semillas que deben mantenerse húmedas — por ejemplo frutos carnosos como los del capulín o el arrayán.</li>
+        <li><strong>Bolsas de malla fina o una media vieja</strong> amarradas sobre las vainas antes de que revienten — ideal para algodoncillos (<em>Asclepias</em>) y otras semillas que el viento dispersa solas.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 4 de 8',
+    titulo: 'Limpieza: trilla y cernido',
+    html: `
+      ${scImagenSlot('paso-4-limpieza.jpg', 'Ilustración estilo acuarela de manos cerniendo semillas sobre una malla/colador de metal encima de una charola blanca, separando semillas oscuras de fragmentos secos de plantas (paja), luz natural de tarde.')}
+      <p>Limpiar la semilla significa separarla de flores secas, tallos y cápsulas (la "paja"). Son dos pasos:</p>
+      <ul>
+        <li><strong>Trilla</strong> — rompe las cabezuelas o vainas a mano con guantes, con un rodillo sobre cápsulas duras, o pisando el material extendido sobre una lona (funciona bien para volúmenes grandes; a la mayoría de las semillas maduras no les afecta que las pisen).</li>
+        <li><strong>Cernido</strong> — pasa la mezcla de semilla y paja por coladores o mallas de distintos tamaños, de la más abierta a la más cerrada, hasta quedarte solo con semilla.</li>
+      </ul>
+      <div class="jp-dato">Paso extra opcional: <strong>aventado</strong>. Deja caer la semilla limpia desde cierta altura hacia un recipiente frente a un ventilador a baja velocidad — la semilla (más pesada) cae derecho y el polvo/paja (más ligero) se aleja volando. Usa cubrebocas: el polvo de algunas semillas puede traer esporas de hongos.</div>
+    `,
+  },
+  {
+    eyebrow: 'Paso 5 de 8',
+    titulo: 'Revisión de insectos y secado',
+    html: `
+      <ul>
+        <li>Revisa la semilla lo antes posible por <strong>actividad de insectos</strong> (agujeritos, polvo fino, larvas). Es un problema frecuente en <strong>leguminosas</strong> — mezquites, huizaches, gatuños, Senna — así como en iris.</li>
+        <li>Si detectas daño, <strong>congela la semilla ya limpia y seca de 2 a 3 semanas</strong> para matar larvas, antes de guardarla a largo plazo (esto es distinto al almacenamiento final: es solo un tratamiento temporal contra plagas).</li>
+        <li>Aunque la semilla ya esté dura, sécala un poco más antes de guardarla: extiéndela en una bolsa o charola con <strong>buena circulación de aire</strong>, lejos del sol directo (que puede matarla) y de la lluvia. Unas semanas suelen bastar.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 6 de 8',
+    titulo: 'Almacenamiento y etiquetado',
+    html: `
+      ${scImagenSlot('paso-6-almacenamiento.jpg', 'Ilustración estilo acuarela de sobres de papel y frascos de vidrio con semillas, cada uno con una etiqueta escrita a mano (nombre de la especie, fecha, lugar), organizados dentro de una caja de zapatos, luz cálida de interior.')}
+      <ul>
+        <li>Guarda la semilla limpia en <strong>sobres, bolsas de papel o frascos</strong>, dentro de un recipiente cerrado que la proteja de roedores e insectos.</li>
+        <li>Un lugar <strong>fresco, seco y oscuro</strong> funciona bien; el refrigerador (alrededor de 4 °C) prolonga la viabilidad de la mayoría de las semillas.</li>
+        <li><strong>Nunca la guardes en el congelador</strong> como método de almacenamiento a largo plazo — los cristales de hielo dañan el embrión. (El congelado de 2–3 semanas del paso anterior es solo para matar plagas.)</li>
+        <li><strong>Etiqueta siempre</strong>: especie, lugar donde la colectaste y fecha. Te servirá a ti y a quien comparta la semilla contigo.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 7 de 8',
+    titulo: 'Rompe la latencia antes de sembrar',
+    html: `
+      ${scImagenSlot('paso-7-latencia.jpg', 'Ilustración estilo acuarela dividida en dos escenas: a la izquierda semillas de leguminosa siendo lijadas suavemente con papel de lija; a la derecha una bolsa resellable con semillas mezcladas con arena húmeda dentro de un refrigerador entreabierto.')}
+      <p>Muchas semillas nativas no germinan de inmediato aunque estén maduras: la planta las "programó" para esperar el momento correcto. Según la especie, prueba:</p>
+      <ul>
+        <li><strong>Cubierta dura (leguminosas)</strong> — mezquites, huizaches, gatuños, palo zorrillo y otras especies de vaina: raspa o lija ligeramente la cubierta (escarificación), o remoja la semilla en agua tibia de 12 a 24 horas antes de sembrar.</li>
+        <li><strong>Necesita frío (estratificación fría)</strong> — mezcla la semilla con arena o vermiculita apenas húmeda en una bolsa resellable, refrigérala varias semanas, y revisa/humedece cada semana.</li>
+        <li><strong>Necesita luz para germinar</strong> — siembra en la superficie y presiona ligeramente, sin cubrir; una capa muy ligera de vermiculita protege sin bloquear la luz.</li>
+        <li><strong>Necesita oscuridad</strong> — cubre bien con sustrato, o coloca papel/cartón encima y revisa cada día a partir del octavo día para retirarlo en cuanto asomen las primeras hojitas.</li>
+        <li><strong>¿No sabes qué necesita?</strong> Imita lo que pasaría en la naturaleza: siembra en otoño y deja la maceta a la intemperie, protegida de roedores, para que reciba el frío del invierno de forma natural.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 8 de 8',
+    titulo: 'Comparte tus semillas',
+    html: `
+      ${scImagenSlot('paso-8-comparte.jpg', 'Ilustración estilo acuarela de un pequeño intercambio comunitario de semillas al aire libre: una mesa con sobres etiquetados de distintas semillas nativas y varias personas conversando alrededor, ambiente cálido y comunitario.')}
+      <p>Guardar y compartir semilla es una tradición tan antigua como la agricultura misma. Cada semilla que compartes puede convertirse en una nueva franja de hábitat en otro jardín.</p>
+      <ul>
+        <li>Organiza o súmate a un <strong>intercambio de semillas</strong> con vecinos, tu escuela o tu colonia.</li>
+        <li>No lleves semilla fuera de la región donde crece de forma natural — una planta adaptada a otro clima puede no sobrevivir, o en el peor caso volverse invasora.</li>
+        <li>Usa tu semilla colectada para ampliar tu propio <a href="#guia-polinizadores">jardín de polinizadores</a>, o dónala a proyectos comunitarios de reforestación.</li>
+      </ul>
+      <p>¡Listo! Con esto ya puedes cerrar el ciclo completo: plantar, dejar que florezca, colectar su semilla, y volver a sembrar.</p>
+      ${CS_FUENTE}
+    `,
+  },
+];
+
+let csPasoActual = 0;
+
+function csRenderDots() {
+  const dots = document.getElementById('cs-dots');
+  dots.innerHTML = CS_PASOS.map((_, i) => `
+    <button type="button" class="jp-dot ${i === csPasoActual ? 'activo' : i < csPasoActual ? 'completado' : ''}" onclick="csIrPaso(${i})" aria-label="Ir al paso ${i + 1}">${i + 1}</button>
+  `).join('');
+}
+
+function csRenderPaso() {
+  const paso = CS_PASOS[csPasoActual];
+  document.getElementById('cs-paso').innerHTML = `
+    <div class="jp-paso-eyebrow">${paso.eyebrow}</div>
+    <h3>${paso.titulo}</h3>
+    ${paso.html}
+  `;
+  document.getElementById('cs-contador').textContent = `Paso ${csPasoActual + 1} de ${CS_PASOS.length}`;
+  document.getElementById('cs-barra-fill').style.width = `${((csPasoActual + 1) / CS_PASOS.length) * 100}%`;
+  document.getElementById('cs-anterior').disabled = csPasoActual === 0;
+  const btnSig = document.getElementById('cs-siguiente');
+  btnSig.textContent = csPasoActual === CS_PASOS.length - 1 ? 'Volver al inicio ↺' : 'Siguiente ›';
+  csRenderDots();
+}
+
+function csIrPaso(i) {
+  if (i > CS_PASOS.length - 1) i = 0;
+  if (i < 0) i = 0;
+  csPasoActual = i;
+  csRenderPaso();
+  document.getElementById('colecta-semillas').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 /* ═══ Catálogo de especies ═══ */
 let ESPECIES = [];
 
@@ -1084,7 +1309,7 @@ function especieCard(e) {
 /* Galería: la foto principal del taxón + varias fotos de observaciones de la
    comunidad, para que el usuario pueda deslizar entre ellas en vez de
    depender de una sola imagen (que a veces es de hábitat, no del organismo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v2_';
+const FOTO_CACHE_KEY = 'reforesta_galeria_v3_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
@@ -1162,29 +1387,45 @@ async function fetchTaxonPorNombre(nombreCientifico) {
 
 /* Fotos adicionales de observaciones de investigación (verificadas por la
    comunidad), del organismo — no de hábitat ni paisaje. */
-async function fetchGaleriaObservaciones(taxonId, excluirUrl) {
-  const params = new URLSearchParams({
-    taxon_id: taxonId,
-    place_id: '6793', // Aguascalientes
-    quality_grade: 'research',
-    photos: 'true',
-    per_page: '10',
-    order: 'votes',
-    order_by: 'votes',
-  });
+async function fetchObservacionesConParams(params) {
   const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 9000);
-  const results = data?.results || [];
-  const fotos = [];
+  return data?.results || [];
+}
+
+/* Muchas especies (sobre todo exóticas ornamentales) tienen pocas o cero
+   observaciones grado-investigación dentro de Aguascalientes — eso dejaba
+   la galería con una sola foto. Se prueba de más específico a más amplio
+   hasta reunir suficientes fotos. */
+async function fetchGaleriaObservaciones(taxonId, excluirUrl, minimoDeseado) {
   const vistos = new Set(excluirUrl ? [excluirUrl] : []);
-  for (const obs of results) {
-    for (const foto of obs.photos || []) {
-      const url = (foto.url || '').replace('square', 'medium');
-      if (!url || vistos.has(url)) continue;
-      vistos.add(url);
-      fotos.push({ url, attribution: foto.attribution || '', source: 'inat' });
-      if (fotos.length >= GALERIA_MAX_FOTOS - 1) return fotos;
+  const fotos = [];
+
+  function agregar(results) {
+    for (const obs of results) {
+      for (const foto of obs.photos || []) {
+        const url = (foto.url || '').replace('square', 'medium');
+        if (!url || vistos.has(url)) continue;
+        vistos.add(url);
+        fotos.push({ url, attribution: foto.attribution || '', source: 'inat' });
+        if (fotos.length >= GALERIA_MAX_FOTOS - 1) return true;
+      }
     }
+    return false;
   }
+
+  const intentos = [
+    { taxon_id: taxonId, place_id: '6793', quality_grade: 'research', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
+    { taxon_id: taxonId, place_id: '6793', quality_grade: 'research,needs_id', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
+    { taxon_id: taxonId, quality_grade: 'research', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
+    { taxon_id: taxonId, quality_grade: 'research,needs_id', photos: 'true', per_page: '15', order: 'votes', order_by: 'votes' },
+  ];
+
+  for (const intento of intentos) {
+    if (fotos.length >= (minimoDeseado || GALERIA_MAX_FOTOS - 1)) break;
+    const results = await fetchObservacionesConParams(new URLSearchParams(intento));
+    if (agregar(results)) break;
+  }
+
   return fotos;
 }
 
@@ -1372,6 +1613,7 @@ renderPasos();
 renderDatosCuriosos();
 renderAcordeonConsejos();
 jpRenderPaso();
+csRenderPaso();
 cargarEspecies();
 </script>
 
