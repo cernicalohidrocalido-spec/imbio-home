@@ -442,7 +442,15 @@
     height: 100%;
     transition: transform 0.25s ease;
   }
-  .galeria-track img { width: 100%; height: 100%; object-fit: cover; display: block; flex-shrink: 0; user-select: none; -webkit-user-drag: none; }
+  .galeria-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
   .especie-foto .creditos {
     position: absolute;
     right: 0; bottom: 0; left: 0;
@@ -1308,15 +1316,35 @@ function especieCard(e) {
 /* Galería: la foto principal del taxón + varias fotos de observaciones de la
    comunidad, para que el usuario pueda deslizar entre ellas en vez de
    depender de una sola imagen (que a veces es de hábitat, no del organismo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v5_';
+const FOTO_CACHE_KEY = 'reforesta_galeria_v6_';
 const FOTO_CACHE_DIAS = 30;
+const FOTO_CACHE_DIAS_INCOMPLETO = 1; /* reintentar al día si solo hay 0–1 foto */
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
 const GALERIA_MAX_FOTOS = 5;
 
 function generoConcuerda(esperado, devuelto) {
   if (!esperado || !devuelto) return false;
-  return esperado.trim().split(' ')[0].toLowerCase() === devuelto.trim().split(' ')[0].toLowerCase();
+  return esperado.trim().split(/\s+/)[0].toLowerCase() === devuelto.trim().split(/\s+/)[0].toLowerCase();
+}
+
+/* Epíteto específico con variantes latinas (actinophylla ≈ actinophyllum).
+   Sirve cuando iNaturalist aceptó un sinónimo con otro género
+   (Schefflera → Heptapleurum) sin confundir taxones totalmente distintos. */
+function epitetoConcuerda(esperado, devuelto) {
+  if (!esperado || !devuelto) return false;
+  const e = esperado.trim().toLowerCase().split(/\s+/);
+  const d = devuelto.trim().toLowerCase().split(/\s+/);
+  if (e.length < 2 || d.length < 2) return false;
+  if (e[1] === d[1]) return true;
+  const tallo = (s) => s.replace(/(orum|arum|ium|um|us|is|ae|a|e)$/i, '');
+  const te = tallo(e[1]);
+  const td = tallo(d[1]);
+  return te.length >= 5 && te === td;
+}
+
+function taxonCoincide(esperado, nombreTaxon) {
+  return generoConcuerda(esperado, nombreTaxon) || epitetoConcuerda(esperado, nombreTaxon);
 }
 
 function leerCacheFoto(id) {
@@ -1326,10 +1354,8 @@ function leerCacheFoto(id) {
     const data = JSON.parse(raw);
     const dias = (Date.now() - data.ts) / 86400000;
     const numFotos = (data.fotos || []).length;
-    // Con 0 o 1 foto es probable que la galería no se haya completado por
-    // una falla temporal de la API; se reintenta pronto en vez de quedar
-    // pegado hasta 6 meses.
-    if (numFotos < 2 && dias >= FOTO_CACHE_DIAS) return null;
+    // Galería incompleta: reintentar pronto (API falló o matching taxonómico).
+    if (numFotos < 2 && dias >= FOTO_CACHE_DIAS_INCOMPLETO) return null;
     if (numFotos >= 2 && dias >= FOTO_CACHE_DIAS * 6) return null;
     return data;
   } catch (e) {
@@ -1373,8 +1399,9 @@ function fotoDesdeTaxon(taxon, nombreEsperado) {
   const iconico = taxon.iconic_taxon_name || '';
   if (iconico !== 'Plantae') return null;
   const rank = taxon.rank || '';
-  if (!['species', 'subspecies', 'variety'].includes(rank)) return null;
-  if (!generoConcuerda(nombreEsperado, taxon.name || '')) return null;
+  /* Incluye hybrid: muchos frutales urbanos (Citrus, etc.) están así en iNat. */
+  if (!['species', 'subspecies', 'variety', 'hybrid'].includes(rank)) return null;
+  if (!taxonCoincide(nombreEsperado, taxon.name || '')) return null;
   const foto = taxon.default_photo;
   if (!foto || !foto.medium_url) return null;
   return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
@@ -1468,10 +1495,11 @@ async function resolverGaleriaEspecie(e) {
     fotos.push(...extra);
   }
 
-  if (fotos.length === 0) {
+  /* Wikipedia como respaldo o como foto extra si la galería quedó corta. */
+  if (fotos.length < 2) {
     let wiki = e.wikipedia_titulo ? await fetchFotoWikipedia(e.wikipedia_titulo) : null;
     if (!wiki && e.nombre_cientifico) wiki = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
-    if (wiki) fotos.push(wiki);
+    if (wiki && !fotos.some(f => f.url === wiki.url)) fotos.push(wiki);
   }
 
   return { fotos };
@@ -1539,11 +1567,25 @@ function galeriaAdjuntarSwipe(cont) {
 
 /* Cola con concurrencia limitada para no saturar las APIs públicas */
 const colaFotos = [];
+const galeriaMemoria = new Map(); /* resultados ya resueltos en esta sesión */
 let fotosActivas = 0;
 const MAX_FOTOS_CONCURRENTES = 2;
 const PAUSA_ENTRE_FOTOS_MS = 250;
 
 function encolarFoto(especie) {
+  /* Tras filtrar se recrean las fichas: reutiliza memoria/caché sin reconsultar. */
+  if (galeriaMemoria.has(especie.id)) {
+    pintarFotoEspecie(especie.id, galeriaMemoria.get(especie.id));
+    especie._fotoEncolada = true;
+    return;
+  }
+  const cache = leerCacheFoto(especie.id);
+  if (cache) {
+    galeriaMemoria.set(especie.id, cache);
+    pintarFotoEspecie(especie.id, cache);
+    especie._fotoEncolada = true;
+    return;
+  }
   if (especie._fotoEncolada) return;
   especie._fotoEncolada = true;
   colaFotos.push(especie);
@@ -1562,10 +1604,12 @@ async function procesarColaFotos() {
   try {
     const cache = leerCacheFoto(especie.id);
     if (cache) {
+      galeriaMemoria.set(especie.id, cache);
       pintarFotoEspecie(especie.id, cache);
     } else {
       await esperar(PAUSA_ENTRE_FOTOS_MS); // da margen a la API antes de disparar la siguiente
       const resultado = await resolverGaleriaEspecie(especie);
+      galeriaMemoria.set(especie.id, resultado);
       guardarCacheFoto(especie.id, resultado);
       pintarFotoEspecie(especie.id, resultado);
     }
