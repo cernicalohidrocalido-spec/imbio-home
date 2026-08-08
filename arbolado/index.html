@@ -85,24 +85,6 @@ img{max-width:100%;display:block;border-radius:10px;}
 .btn:hover{transform:translateY(-2px);}
 .btn-primary{background:var(--ambar-500);color:var(--verde-900);}
 .btn-ghost{background:transparent;color:var(--arena-100);border:1.5px solid rgba(255,255,255,.5);}
-.hero-figure{margin-top:1rem;font-size:.72rem;color:var(--verde-100);opacity:.65;font-style:italic;max-width:600px;margin-inline:auto;}
-
-/* image prompt callouts */
-.img-prompt{
-  background:var(--verde-100);
-  border:1.5px dashed var(--verde-500);
-  border-radius:var(--radius);
-  padding:1rem 1.2rem;
-  margin:1.2rem 0;
-  font-size:.85rem;
-  color:var(--verde-800);
-}
-.img-prompt b{color:var(--verde-900);}
-.img-prompt .tag{
-  display:inline-block;background:var(--verde-600);color:#fff;font-size:.65rem;
-  padding:.15rem .55rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem;font-weight:700;
-}
-
 /* ---------- LAYOUT ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 1.4rem;}
 .section-label{
@@ -213,15 +195,12 @@ footer .foot-credit{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(2
         <a class="btn btn-primary" href="#modulos">Explorar los 14 módulos</a>
         <a class="btn btn-ghost" href="#glosario-land">Ir al glosario</a>
       </div>
-      <p class="hero-figure">Espacio de imagen — ver prompt de Adobe Firefly al pie de esta sección.</p>
+      
     </div>
   </header>
 
   <div class="wrap">
-    <div class="img-prompt" style="margin-top:1.6rem;">
-      <span class="tag">Prompt Firefly · Portada</span><br>
-      <b>Genera:</b> "Wide horizontal illustration, editorial botanical style, a diverse urban avenue lined with mature native trees, tree canopy overhead, pedestrians and cyclists beneath dappled shade, warm afternoon light, green and amber earthy palette, flat vector illustration with fine line texture, no text" — tamaño sugerido 1600×700px, usar como imagen de portada (hero) del sitio.
-    </div>
+    <img src="/arbolado/img/portada.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
     <div class="stats">
       <div class="stat"><div class="num">14</div><div class="lbl">Módulos técnicos</div></div>
@@ -275,7 +254,7 @@ const MODULES = [
  <h2>01 · Dasonomía urbana: historia y valores</h2>
  <p>La <b>Dasonomía urbana</b> es la disciplina de las ciencias forestales que estudia los árboles dentro de los centros de población humana. Integra dos campos: la <b>Arboricultura</b> (técnicas de establecimiento y manejo de árboles individuales) y la <b>Arquitectura del paisaje</b> (diseño estético y funcional de la vegetación urbana).</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Split illustration comparing an ancient Egyptian garden with trees planted in raised earthen beds (left) and a modern city street with municipal tree planting crew (right), sepia and green tones, historical botanical illustration style, no text" — usar en la sección de historia (banqueo desde el Antiguo Egipto).</div>
+ <img src="/arbolado/img/01-historia-dasonomia.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Una práctica milenaria</h3>
  <p>El trasplante y banqueo de árboles no es una técnica nueva: existen registros del <b>banqueo en el Antiguo Egipto</b>. Durante siglos, los árboles aportaron bienes de consumo directo (leña, frutos, materiales) y para la industria de transformación. En las ciudades, sin embargo, se les valoró casi exclusivamente por ser "algo bonito", relegando su función ambiental.</p>
@@ -323,7 +302,7 @@ const MODULES = [
  <h2>02 · Biología y fisiología del árbol</h2>
  <p>Comprender cómo funciona un árbol es la base de cualquier intervención técnica (poda, riego, fertilización, inyección). Un árbol no es un objeto inerte: es un organismo con sistemas de transporte, defensa y crecimiento interdependientes.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Cross-section botanical diagram of a tree trunk showing bark, phloem, cambium, sapwood (xylem) and heartwood layers, labeled scientific illustration style, soft educational color palette, clean white background, no text overlays" — usar como diagrama de anatomía del tronco (agregar etiquetas en español tras generar).</div>
+ <img src="/arbolado/img/02-anatomia-tronco.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Estructura funcional</h3>
  <ul>
@@ -384,7 +363,7 @@ const MODULES = [
    <li><b>Árboles grandes/extra grandes:</b> reservados a parques, camellones &gt;10 m, jardines temáticos — nunca en banquetas de espacio limitado.</li>
  </ul>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Botanical infographic showing five tree crown silhouette shapes side by side: oval, round, columnar, pyramidal, and vase-shaped (V-form), simple flat vector icons, dark green on cream background, minimal labels, educational diagram style" — usar en la sección "Formas de copa" (agregar etiquetas correspondientes tras generar: Oval, Redonda, Columnar, Piramidal, Jarrón).</div>
+ <img src="/arbolado/img/03-formas-copa.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Formas de copa y su función urbana</h3>
  <ul>
@@ -438,7 +417,7 @@ const MODULES = [
  <h3>Apertura de la cepa</h3>
  <p>La cepa debe ser <b>2 a 3 veces el diámetro del cepellón</b>, con profundidad equivalente a su altura, procurando un 50% de suelo removido en el fondo. Esto facilita el crecimiento de raíces nuevas: crecen rápido en suelo suelto y muy lento en suelo compactado.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Technical cutaway diagram of proper urban tree planting: root ball at correct depth, root collar level with soil surface, mulch ring around base not touching trunk, staking with soft ties, cross-section illustration, clean instructional style, muted earth tones, no text" — usar en "Colocación y profundidad" (etiquetar tras generar: cuello radical, mulch, tutor).</div>
+ <img src="/arbolado/img/04-plantacion-profundidad.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Colocación: la regla del cuello radical</h3>
  <div class="callout"><b>Regla de oro:</b> el cuello radical debe quedar 5-10 cm por encima del nivel del piso (el suelo suelto bajará con el riego). Raíces muy profundas se asfixian por falta de O₂; raíces muy superficiales se deshidratan.</div>
@@ -548,7 +527,7 @@ const MODULES = [
  <h3>Fertilidad y crecimiento: la curva de respuesta</h3>
  <p>El crecimiento aumenta con la concentración de nutrientes hasta un punto máximo; más allá de ese punto, el exceso ya no favorece el crecimiento y puede provocar consumo excesivo o toxicidad.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Simple line chart illustration showing a growth-response curve rising then plateauing then declining (toxicity zone), botanical scientific poster style, sage green line on cream background, minimal educational infographic, no text" — usar para ilustrar la curva de fertilidad y crecimiento.</div>
+ <img src="/arbolado/img/05-curva-fertilidad.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Diagnóstico visual de deficiencias</h3>
  <table>
@@ -605,7 +584,7 @@ const MODULES = [
  <h3>Higiene de herramientas</h3>
  <p>En individuos enfermos, desinfectar las tijeras entre cortes (alcohol al 70% o cloro comercial 1:9) para no propagar patógenos. En coníferas, usar aceite delgado para evitar que la resina trabe las navajas.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Close-up technical illustration of a correct pruning cut showing the branch collar and branch bark ridge, arrow indicating the correct cutting angle just outside the collar, versus an incorrect flush cut, side-by-side comparison, clean scientific diagram style, muted greens and browns, no text" — usar en "El corte correcto" (etiquetar: correcto / incorrecto tras generar).</div>
+ <img src="/arbolado/img/06-corte-poda.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>El principio del corte correcto</h3>
  <p>Todo corte de poda debe hacerse <b>justo afuera del cuello de la rama</b> (branch collar), sin dejar muñón y sin cortar a ras del tronco ("corte a flor"). Esto respeta las zonas de tejido que el árbol utiliza para compartimentar la herida (CODIT). Nunca se deben aplicar selladores o pinturas cicatrizantes: interfieren con el proceso natural de compartimentación.</p>
@@ -708,7 +687,7 @@ const MODULES = [
    <li><b>Control o manejo</b> — ¿Cómo, cuándo y con qué? Selección de tácticas, análisis de costos, monitoreo y seguimiento.</li>
  </ol>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Educational diagram of the epidemiological triangle for plant pathology: three connected nodes labeled Agente causal, Hospedante, Ambiente, forming a triangle, botanical scientific poster style, olive and rust color palette, clean icons for insect, tree leaf, and weather symbol at each node" — usar para ilustrar la triada epidemiológica (mantener texto en español).</div>
+ <img src="/arbolado/img/07-triada-epidemiologica.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Tipos de daño según el aparato bucal del insecto</h3>
  <ul>
@@ -886,7 +865,7 @@ const MODULES = [
    <li><b>Ergonómicos:</b> evaluados con métodos OWAS (postura) y REBA (carga postural de tronco, cuello, brazos); posturas de poda con torsión y flexión &gt;20° reciben calificaciones altas de riesgo musculoesquelético.</li>
  </ul>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Illustration of a professional arborist wearing full safety gear — helmet, harness, climbing rope system — working safely in a tree canopy near a marked safety perimeter with cones and signage on the ground, flat educational infographic style, safety orange and forest green palette, no text" — usar en la sección de EPP y trabajo en alturas.</div>
+ <img src="/arbolado/img/08-seguridad-epp.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Trabajo seguro en alturas: checklist</h3>
  <ul>
@@ -932,7 +911,7 @@ const MODULES = [
  </table>
  <p>Opera cruzando datos de campo (especie, diámetro, altura, copa) con bases de datos de +8,000 especies, información climática y de contaminantes por hora, para generar pronósticos de servicios ecosistémicos y bioemisiones.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Aerial satellite-style illustration of a city block with tree canopy coverage highlighted in green overlay dots for sampling, data visualization aesthetic, clean modern GIS map style, teal and green palette, no text" — usar en la explicación de i-Tree Canopy.</div>
+ <img src="/arbolado/img/09-itree-canopy.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3>Infraestructura verde</h3>
  <p><b>Definición:</b> "Estructuras naturales y hechas por el hombre, o espacios permanentemente vacíos, que proveen — directa o indirectamente, parcial o totalmente por la vegetación que soportan — una serie de servicios para la sociedad", manteniendo y mejorando las funciones ecológicas en combinación con la multifuncionalidad del uso del territorio.</p>
@@ -990,7 +969,7 @@ const MODULES = [
  <h3>Principios del diseño</h3>
  <p>Armonía, balance, contraste, proporción, ritmo y unidad — aplicados a los elementos de forma, color y textura para lograr una composición armónica.</p>
 
- <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Top-down landscape design sketch of an urban park showing tree placement zones, circulation paths, seating areas, and planting beds, hand-drawn architectural rendering style with green watercolor washes, warm paper texture background, no text" — usar en la sección de diseño de áreas verdes.</div>
+ <img src="/arbolado/img/10-diseno-areas-verdes.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
  <h3 style="margin-top:2.2rem;">Caso de estudio: Ciudad Nezahualcóyotl</h3>
  <p>Municipio de 63.44 km² y 1.3 millones de habitantes que implementó un programa integral: modernización de 32,000 luminarias a tecnología LED/aditivo cerámico, 45 km de ciclopista, composteo de 50 toneladas diarias de residuos orgánicos, huertos urbanos con agua tratada, y reforestación de zonas antes cementadas.</p>
