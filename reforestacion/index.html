@@ -1312,16 +1312,19 @@ function especieCard(e) {
   `;
 }
 
-/* ═══ Fotos de especies — iNaturalist → Wikipedia, con caché local ═══ */
-/* Galería: la foto principal del taxón + varias fotos de observaciones de la
-   comunidad, para que el usuario pueda deslizar entre ellas en vez de
-   depender de una sola imagen (que a veces es de hábitat, no del organismo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v6_';
+/* ═══ Fotos de especies — Wikipedia + iNaturalist, con caché local ═══ */
+/* Orden de la galería: ejemplar completo → flores → hojas → tallos → otros.
+   Wikipedia aporta pies de foto (Hojas, Corteza, Aspecto…); iNaturalist
+   aporta volumen y anotaciones de fenología (floración / vegetativo). */
+const FOTO_CACHE_KEY = 'reforesta_galeria_v7_';
 const FOTO_CACHE_DIAS = 30;
 const FOTO_CACHE_DIAS_INCOMPLETO = 1; /* reintentar al día si solo hay 0–1 foto */
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
 const GALERIA_MAX_FOTOS = 5;
+const GALERIA_ORDEN = ['ejemplar', 'flor', 'hoja', 'tallo', 'otro'];
+/* Plant Phenology (controlled term 12): flowering, fruiting, budding, none */
+const INAT_FENOLOGIA = { floracion: 13, fructificacion: 14, boton: 15, sinFlor: 21 };
 
 function generoConcuerda(esperado, devuelto) {
   if (!esperado || !devuelto) return false;
@@ -1404,7 +1407,7 @@ function fotoDesdeTaxon(taxon, nombreEsperado) {
   if (!taxonCoincide(nombreEsperado, taxon.name || '')) return null;
   const foto = taxon.default_photo;
   if (!foto || !foto.medium_url) return null;
-  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
+  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id, tipo: 'otro' };
 }
 
 async function fetchTaxonPorId(taxonId, nombreCientifico) {
@@ -1426,59 +1429,222 @@ async function fetchTaxonPorNombre(nombreCientifico) {
   return null;
 }
 
-/* Fotos adicionales de observaciones de investigación (verificadas por la
-   comunidad), del organismo — no de hábitat ni paisaje. */
 async function fetchObservacionesConParams(params) {
   const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 9000);
   return data?.results || [];
 }
 
-/* Muchas especies (sobre todo exóticas ornamentales) tienen pocas o cero
-   observaciones grado-investigación dentro de Aguascalientes — eso dejaba
-   la galería con una sola foto. Se prueba de más específico a más amplio
-   hasta reunir suficientes fotos. */
-async function fetchGaleriaObservaciones(taxonId, excluirUrl, minimoDeseado) {
-  const vistos = new Set(excluirUrl ? [excluirUrl] : []);
-  const fotos = [];
-
-  function agregar(results) {
-    for (const obs of results) {
-      for (const foto of obs.photos || []) {
-        const url = (foto.url || '').replace('square', 'medium');
-        if (!url || vistos.has(url)) continue;
-        vistos.add(url);
-        fotos.push({ url, attribution: foto.attribution || '', source: 'inat' });
-        if (fotos.length >= GALERIA_MAX_FOTOS - 1) return true;
-      }
-    }
-    return false;
+/* Clasifica una foto por pie de foto, nombre de archivo o texto libre.
+   Devuelve null si es mapa/logo/IUCN (no sirve en la ficha). */
+function clasificarFotoPorTexto(texto) {
+  const t = (texto || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  if (!t.trim()) return 'otro';
+  if (/\.(svg)(\b|$)/i.test(t) || /\b(iucn|status_|range.?map|mapa|distribution map|logo|icon|coat.of.arms|banner|flag)\b/.test(t)) {
+    return null;
   }
 
-  /* Máximo 2 llamadas por especie (antes eran hasta 4) para no disparar el
-     límite de peticiones por segundo de iNaturalist, que provocaba fallos
-     silenciosos y dejaba la galería con una sola foto. Una búsqueda amplia
-     (sin restringir a Aguascalientes) es suficiente para la mayoría de las
-     especies; solo si sigue sin alcanzar el mínimo se intenta una vez más
-     incluyendo observaciones pendientes de revisión. */
-  const intentos = [
-    { taxon_id: taxonId, quality_grade: 'research', photos: 'true', per_page: '20', order: 'votes', order_by: 'votes' },
-    { taxon_id: taxonId, quality_grade: 'needs_id', photos: 'true', per_page: '20', order: 'votes', order_by: 'votes' },
-  ];
+  const esTallo = /\b(corteza|corcho|tronco|tallo|rama[s]?|bark|trunk|stem|branch(?:es)?|cork|-cort)\b/.test(t);
+  const esFlor = /\b(flor(?:es|al|ales)?|flower|bloom|inflorescencia|inflorescence|botones?\s+flor|-flor)\b/.test(t);
+  const esHoja = /\b(hoja[s]?|follaje|foliage|leaf|leaves|-fol)\b/.test(t);
+  const esFruto = /\b(fruto[s]?|fruta|fruit|semilla[s]?|seed[s]?|cone[s]?|-fruto|-fruit|-seed)\b/.test(t);
+  const esEjemplar = /\b(aspecto|ejemplar|habito|habit|arbol|arbusto|planta\b|tree|shrub|general|otono|autumn|invierno|winter|street|avenue|avenida|parque|park|landscape|porte|completo)\b/.test(t);
 
-  for (const intento of intentos) {
-    if (fotos.length >= (minimoDeseado || GALERIA_MAX_FOTOS - 1)) break;
-    const results = await fetchObservacionesConParams(new URLSearchParams(intento));
-    if (agregar(results)) break;
+  if (esFlor && !esEjemplar) return 'flor';
+  if (esHoja && !esEjemplar && !esFlor) return 'hoja';
+  if (esTallo && !esEjemplar) return 'tallo';
+  if (esEjemplar) return 'ejemplar';
+  if (esFlor) return 'flor';
+  if (esHoja) return 'hoja';
+  if (esTallo) return 'tallo';
+  if (esFruto) return 'otro';
+  return 'otro';
+}
+
+function tipoDesdeAnotacionesInat(obs) {
+  const vals = (obs.annotations || [])
+    .filter(a => a.controlled_attribute_id === 12)
+    .map(a => a.controlled_value_id);
+  if (vals.includes(INAT_FENOLOGIA.floracion) || vals.includes(INAT_FENOLOGIA.boton)) return 'flor';
+  if (vals.includes(INAT_FENOLOGIA.fructificacion)) return 'otro';
+  if (vals.includes(INAT_FENOLOGIA.sinFlor)) return 'ejemplar';
+  return 'otro';
+}
+
+function urlFotoAbsoluta(src) {
+  if (!src) return null;
+  if (src.startsWith('//')) return 'https:' + src;
+  return src;
+}
+
+function claveUrlFoto(url) {
+  return (url || '').replace(/\/(square|small|medium|large|original)\./, '/').replace(/\?.*$/, '');
+}
+
+/* Galería etiquetada desde Wikipedia (pies de foto: Hojas, Corteza, Aspecto…). */
+async function fetchGaleriaWikipedia(titulo) {
+  if (!titulo) return [];
+  const fotos = [];
+  const vistos = new Set();
+
+  for (const lang of ['es', 'en']) {
+    const data = await fetchJsonConTimeout(
+      `https://${lang}.wikipedia.org/api/rest_v1/page/media-list/${encodeURIComponent(titulo)}`,
+      {},
+      8000
+    );
+    if (!data?.items?.length) continue;
+
+    let leadMarcado = false;
+    for (const item of data.items) {
+      if (item.type !== 'image') continue;
+      const title = item.title || '';
+      const caption = (item.caption && item.caption.text) || '';
+      const srcset = item.srcset || [];
+      const src = urlFotoAbsoluta(
+        (srcset.length ? srcset[srcset.length - 1].src : null) ||
+        (srcset[0] && srcset[0].src) ||
+        (item.thumbnail && item.thumbnail.source)
+      );
+      if (!src) continue;
+
+      let tipo = clasificarFotoPorTexto(`${caption} ${title}`);
+      if (tipo === null) continue;
+      /* La primera imagen útil del lead suele ser el porte / ejemplar completo. */
+      if (tipo === 'otro' && item.section_id === 0 && !leadMarcado) {
+        tipo = 'ejemplar';
+        leadMarcado = true;
+      } else if (item.section_id === 0 && !caption) {
+        leadMarcado = true;
+      }
+
+      const clave = claveUrlFoto(src);
+      if (vistos.has(clave)) continue;
+      vistos.add(clave);
+      fotos.push({
+        url: src,
+        attribution: `Wikipedia / ${lang}`,
+        source: 'wikipedia',
+        tipo
+      });
+    }
+
+    if (fotos.some(f => f.tipo === 'ejemplar') && fotos.length >= 3) break;
   }
 
   return fotos;
 }
 
+/* Observaciones de iNaturalist tipadas por fenología.
+   Si Wikipedia ya cubre bien la galería, solo se hace una consulta general. */
+async function fetchGaleriaInatClasificada(taxonId, fotoPrincipal, wikiSuficiente) {
+  const vistos = new Set(fotoPrincipal?.url ? [claveUrlFoto(fotoPrincipal.url)] : []);
+  const fotos = [];
+
+  function agregarObs(results, tipoForzado) {
+    for (const obs of results) {
+      const tipo = tipoForzado || tipoDesdeAnotacionesInat(obs);
+      for (const foto of obs.photos || []) {
+        const url = (foto.url || '').replace('square', 'medium');
+        if (!url) continue;
+        const clave = claveUrlFoto(url);
+        if (vistos.has(clave)) continue;
+        vistos.add(clave);
+        fotos.push({
+          url,
+          attribution: foto.attribution || '',
+          source: 'inat',
+          tipo
+        });
+        break; /* una foto representativa por observación */
+      }
+    }
+  }
+
+  const base = { taxon_id: String(taxonId), photos: 'true', per_page: '12', order: 'votes', order_by: 'votes', quality_grade: 'research' };
+  const intentos = wikiSuficiente
+    ? [{ ...base }]
+    : [
+        { ...base, term_id: '12', term_value_id: String(INAT_FENOLOGIA.sinFlor) },
+        { ...base, term_id: '12', term_value_id: String(INAT_FENOLOGIA.floracion) },
+        { ...base },
+      ];
+
+  for (const intento of intentos) {
+    const tipoForzado = intento.term_value_id === String(INAT_FENOLOGIA.sinFlor)
+      ? 'ejemplar'
+      : (intento.term_value_id === String(INAT_FENOLOGIA.floracion) ? 'flor' : null);
+    const results = await fetchObservacionesConParams(new URLSearchParams(intento));
+    agregarObs(results, tipoForzado);
+    if (fotos.length >= GALERIA_MAX_FOTOS + 4) break;
+  }
+
+  if (fotoPrincipal?.url) {
+    fotos.unshift({
+      ...fotoPrincipal,
+      tipo: fotoPrincipal.tipo || 'otro'
+    });
+  }
+
+  return fotos;
+}
+
+/* Une Wikipedia + iNaturalist priorizando: ejemplar → flor → hoja → tallo.
+   Primero intenta una foto de cada tipo; luego rellena en ese mismo orden. */
+function fusionarGaleriaPriorizada(...listas) {
+  const porTipo = { ejemplar: [], flor: [], hoja: [], tallo: [], otro: [] };
+  const vistos = new Set();
+
+  for (const lista of listas) {
+    for (const f of lista || []) {
+      if (!f?.url) continue;
+      const clave = claveUrlFoto(f.url);
+      if (vistos.has(clave)) continue;
+      vistos.add(clave);
+      const tipo = GALERIA_ORDEN.includes(f.tipo) ? f.tipo : 'otro';
+      porTipo[tipo].push({ ...f, tipo });
+    }
+  }
+
+  const elegidas = [];
+  const usados = new Set();
+
+  for (const tipo of GALERIA_ORDEN) {
+    if (elegidas.length >= GALERIA_MAX_FOTOS) break;
+    const cand = porTipo[tipo].find(f => !usados.has(claveUrlFoto(f.url)));
+    if (cand) {
+      usados.add(claveUrlFoto(cand.url));
+      elegidas.push(cand);
+    }
+  }
+
+  for (const tipo of GALERIA_ORDEN) {
+    for (const f of porTipo[tipo]) {
+      if (elegidas.length >= GALERIA_MAX_FOTOS) break;
+      const clave = claveUrlFoto(f.url);
+      if (usados.has(clave)) continue;
+      usados.add(clave);
+      elegidas.push(f);
+    }
+  }
+
+  return elegidas;
+}
+
 async function fetchFotoWikipedia(titulo) {
   for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
     const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 6000);
-    const url = data?.thumbnail?.source;
-    if (url) return { url, attribution: `Wikipedia / ${data.title || titulo}`, source: 'wikipedia' };
+    const url = data?.originalimage?.source || data?.thumbnail?.source;
+    if (url) {
+      return {
+        url,
+        attribution: `Wikipedia / ${data.title || titulo}`,
+        source: 'wikipedia',
+        tipo: 'ejemplar'
+      };
+    }
   }
   return null;
 }
@@ -1488,18 +1654,20 @@ async function resolverGaleriaEspecie(e) {
   if (e.inat_taxon_id) hallazgo = await fetchTaxonPorId(e.inat_taxon_id, e.nombre_cientifico);
   if (!hallazgo) hallazgo = await fetchTaxonPorNombre(e.nombre_cientifico);
 
-  const fotos = [];
-  if (hallazgo) {
-    fotos.push(hallazgo.foto);
-    const extra = await fetchGaleriaObservaciones(hallazgo.taxonId, hallazgo.foto.url);
-    fotos.push(...extra);
-  }
+  const tituloWiki = e.wikipedia_titulo || (e.nombre_cientifico ? e.nombre_cientifico.replace(/ /g, '_') : null);
+  const wikiFotos = tituloWiki ? await fetchGaleriaWikipedia(tituloWiki) : [];
+  const tiposWiki = new Set(wikiFotos.map(f => f.tipo));
+  const wikiSuficiente = ['ejemplar', 'flor', 'hoja', 'tallo'].filter(t => tiposWiki.has(t)).length >= 3;
 
-  /* Wikipedia como respaldo o como foto extra si la galería quedó corta. */
-  if (fotos.length < 2) {
-    let wiki = e.wikipedia_titulo ? await fetchFotoWikipedia(e.wikipedia_titulo) : null;
-    if (!wiki && e.nombre_cientifico) wiki = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
-    if (wiki && !fotos.some(f => f.url === wiki.url)) fotos.push(wiki);
+  const inatFotos = hallazgo
+    ? await fetchGaleriaInatClasificada(hallazgo.taxonId, hallazgo.foto, wikiSuficiente)
+    : [];
+
+  let fotos = fusionarGaleriaPriorizada(wikiFotos, inatFotos);
+
+  if (fotos.length < 2 && tituloWiki) {
+    const wiki = await fetchFotoWikipedia(tituloWiki);
+    if (wiki) fotos = fusionarGaleriaPriorizada([wiki], fotos);
   }
 
   return { fotos };
