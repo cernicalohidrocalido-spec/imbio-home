@@ -723,7 +723,6 @@
       <ul>
         <li>Eckberg, James; Hopwood, Jennifer; Lee-Mäder, Eric. <em>Collecting and Using Your Own Wildflower Seed — To Expand Pollinator Habitat on Farms</em>. The Xerces Society for Invertebrate Conservation, 2016.</li>
         <li>Midgley, Jan. <em>Germination Guide for Native Seeds</em>, actualizado 10/2023.</li>
-        <li>Ilustraciones sugeridas por generar con Adobe Firefly o Gemini (Nano Banana) — ver la descripción bajo cada casilla punteada.</li>
       </ul>
     </div>
   </section>
@@ -1040,7 +1039,7 @@ function jpCambiarTab(tab) {
 /* ═══ Wizard: Cómo colectar semillas ═══ */
 /* Casilla de imagen sugerida: muestra el archivo si ya existe en img/semillas/,
    y si no, un recuadro punteado con la descripción de la imagen a generar
-   (con Adobe Firefly, Gemini/Nano Banana, etc.) y el nombre de archivo esperado. */
+   y el nombre de archivo esperado. */
 function scImagenSlot(archivo, descripcion) {
   return `
     <div class="sc-imagen-slot">
@@ -1309,7 +1308,7 @@ function especieCard(e) {
 /* Galería: la foto principal del taxón + varias fotos de observaciones de la
    comunidad, para que el usuario pueda deslizar entre ellas en vez de
    depender de una sola imagen (que a veces es de hábitat, no del organismo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v3_';
+const FOTO_CACHE_KEY = 'reforesta_galeria_v4_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
@@ -1326,9 +1325,12 @@ function leerCacheFoto(id) {
     if (!raw) return null;
     const data = JSON.parse(raw);
     const dias = (Date.now() - data.ts) / 86400000;
-    const tieneFotos = (data.fotos || []).length > 0;
-    if (!tieneFotos && dias >= FOTO_CACHE_DIAS) return null;
-    if (tieneFotos && dias >= FOTO_CACHE_DIAS * 6) return null;
+    const numFotos = (data.fotos || []).length;
+    // Con 0 o 1 foto es probable que la galería no se haya completado por
+    // una falla temporal de la API; se reintenta pronto en vez de quedar
+    // pegado hasta 6 meses.
+    if (numFotos < 2 && dias >= FOTO_CACHE_DIAS) return null;
+    if (numFotos >= 2 && dias >= FOTO_CACHE_DIAS * 6) return null;
     return data;
   } catch (e) {
     return null;
@@ -1413,11 +1415,15 @@ async function fetchGaleriaObservaciones(taxonId, excluirUrl, minimoDeseado) {
     return false;
   }
 
+  /* Máximo 2 llamadas por especie (antes eran hasta 4) para no disparar el
+     límite de peticiones por segundo de iNaturalist, que provocaba fallos
+     silenciosos y dejaba la galería con una sola foto. Una búsqueda amplia
+     (sin restringir a Aguascalientes) es suficiente para la mayoría de las
+     especies; solo si sigue sin alcanzar el mínimo se intenta una vez más
+     incluyendo observaciones pendientes de revisión. */
   const intentos = [
-    { taxon_id: taxonId, place_id: '6793', quality_grade: 'research', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
-    { taxon_id: taxonId, place_id: '6793', quality_grade: 'research,needs_id', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
-    { taxon_id: taxonId, quality_grade: 'research', photos: 'true', per_page: '10', order: 'votes', order_by: 'votes' },
-    { taxon_id: taxonId, quality_grade: 'research,needs_id', photos: 'true', per_page: '15', order: 'votes', order_by: 'votes' },
+    { taxon_id: taxonId, quality_grade: 'research', photos: 'true', per_page: '20', order: 'votes', order_by: 'votes' },
+    { taxon_id: taxonId, quality_grade: 'needs_id', photos: 'true', per_page: '20', order: 'votes', order_by: 'votes' },
   ];
 
   for (const intento of intentos) {
@@ -1522,13 +1528,18 @@ function galeriaAdjuntarSwipe(cont) {
 /* Cola con concurrencia limitada para no saturar las APIs públicas */
 const colaFotos = [];
 let fotosActivas = 0;
-const MAX_FOTOS_CONCURRENTES = 3;
+const MAX_FOTOS_CONCURRENTES = 2;
+const PAUSA_ENTRE_FOTOS_MS = 250;
 
 function encolarFoto(especie) {
   if (especie._fotoEncolada) return;
   especie._fotoEncolada = true;
   colaFotos.push(especie);
   procesarColaFotos();
+}
+
+function esperar(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function procesarColaFotos() {
@@ -1538,9 +1549,14 @@ async function procesarColaFotos() {
   fotosActivas++;
   try {
     const cache = leerCacheFoto(especie.id);
-    const resultado = cache || await resolverGaleriaEspecie(especie);
-    if (!cache) guardarCacheFoto(especie.id, resultado);
-    pintarFotoEspecie(especie.id, resultado);
+    if (cache) {
+      pintarFotoEspecie(especie.id, cache);
+    } else {
+      await esperar(PAUSA_ENTRE_FOTOS_MS); // da margen a la API antes de disparar la siguiente
+      const resultado = await resolverGaleriaEspecie(especie);
+      guardarCacheFoto(especie.id, resultado);
+      pintarFotoEspecie(especie.id, resultado);
+    }
   } finally {
     fotosActivas--;
     procesarColaFotos();
