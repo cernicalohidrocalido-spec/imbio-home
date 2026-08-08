@@ -1308,7 +1308,7 @@ function especieCard(e) {
 /* Galería: la foto principal del taxón + varias fotos de observaciones de la
    comunidad, para que el usuario pueda deslizar entre ellas en vez de
    depender de una sola imagen (que a veces es de hábitat, no del organismo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v4_';
+const FOTO_CACHE_KEY = 'reforesta_galeria_v5_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
@@ -1343,18 +1343,30 @@ function guardarCacheFoto(id, resultado) {
   } catch (e) { /* localStorage lleno o no disponible: seguir sin caché */ }
 }
 
-async function fetchJsonConTimeout(url, headers, ms) {
+async function fetchJsonUnaVez(url, headers, ms) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), ms);
   try {
     const res = await fetch(url, { headers, signal: ctrl.signal });
-    if (!res.ok) return null;
-    return await res.json();
+    if (!res.ok) return { ok: false, status: res.status };
+    return { ok: true, data: await res.json() };
   } catch (e) {
-    return null;
+    return { ok: false, status: 0 };
   } finally {
     clearTimeout(timer);
   }
+}
+
+/* Reintenta una vez tras una breve pausa si la primera llamada falla —
+   incluyendo el límite de peticiones por segundo de iNaturalist (HTTP 429),
+   que de otro modo dejaba especies sin foto de forma permanente. */
+async function fetchJsonConTimeout(url, headers, ms) {
+  let intento = await fetchJsonUnaVez(url, headers, ms);
+  if (!intento.ok) {
+    await new Promise((r) => setTimeout(r, 700));
+    intento = await fetchJsonUnaVez(url, headers, ms);
+  }
+  return intento.ok ? intento.data : null;
 }
 
 function fotoDesdeTaxon(taxon, nombreEsperado) {
