@@ -1312,11 +1312,11 @@ function especieCard(e) {
   `;
 }
 
-/* ═══ Fotos de especies — Wikipedia + iNaturalist, con caché local ═══ */
+/* ═══ Fotos de especies — iNaturalist (prioridad) + Wikipedia (respaldo) ═══ */
 /* Orden de la galería: ejemplar completo → flores → hojas → tallos → otros.
-   Wikipedia aporta pies de foto (Hojas, Corteza, Aspecto…); iNaturalist
-   aporta volumen y anotaciones de fenología (floración / vegetativo). */
-const FOTO_CACHE_KEY = 'reforesta_galeria_v8_';
+   Preferimos fotos reales de iNaturalist; Wikipedia solo completa huecos
+   y se filtran mapas, logos y dibujos/ilustraciones. */
+const FOTO_CACHE_KEY = 'reforesta_galeria_v9_';
 const FOTO_CACHE_DIAS = 30;
 const FOTO_CACHE_DIAS_INCOMPLETO = 1; /* reintentar al día si solo hay 0–1 foto */
 const INAT_BASE = 'https://api.inaturalist.org/v1';
@@ -1407,42 +1407,74 @@ function fotoDesdeTaxon(taxon, nombreEsperado) {
   if (!taxonCoincide(nombreEsperado, taxon.name || '')) return null;
   const foto = taxon.default_photo;
   if (!foto || !foto.medium_url) return null;
-  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id, tipo: 'otro' };
+  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id, tipo: 'ejemplar' };
+}
+
+/* Fotos curadas del taxón en iNaturalist (suele ir porte → detalles). */
+function fotosDesdeTaxonPhotos(taxon) {
+  const fotos = [];
+  const vistos = new Set();
+  for (const tp of taxon.taxon_photos || []) {
+    const p = tp.photo;
+    const url = p && (p.medium_url || (p.url || '').replace('square', 'medium'));
+    if (!url) continue;
+    const clave = claveUrlFoto(url);
+    if (vistos.has(clave)) continue;
+    vistos.add(clave);
+    fotos.push({
+      url,
+      attribution: p.attribution || '',
+      source: 'inat',
+      /* La primera foto curada del taxón suele ser el porte del ejemplar. */
+      tipo: fotos.length === 0 ? 'ejemplar' : 'otro'
+    });
+    if (fotos.length >= 6) break;
+  }
+  return fotos;
+}
+
+function hallazgoDesdeTaxon(taxon, nombreCientifico) {
+  const foto = fotoDesdeTaxon(taxon, nombreCientifico);
+  if (!foto) return null;
+  return {
+    foto,
+    taxonId: taxon.id,
+    fotosTaxon: fotosDesdeTaxonPhotos(taxon)
+  };
 }
 
 async function fetchTaxonPorId(taxonId, nombreCientifico) {
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxonId}`, INAT_HEADERS, 4000);
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxonId}`, INAT_HEADERS, 5000);
   const taxon = data?.results?.[0];
   if (!taxon) return null;
-  const foto = fotoDesdeTaxon(taxon, nombreCientifico);
-  return foto ? { foto, taxonId: taxon.id } : null;
+  return hallazgoDesdeTaxon(taxon, nombreCientifico);
 }
 
 async function fetchTaxonPorNombre(nombreCientifico) {
   const params = new URLSearchParams({ q: nombreCientifico, iconic_taxa: 'Plantae', per_page: '8' });
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 4000);
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 5000);
   const results = data?.results || [];
   for (const taxon of results) {
-    const foto = fotoDesdeTaxon(taxon, nombreCientifico);
-    if (foto) return { foto, taxonId: taxon.id };
+    const hallazgo = hallazgoDesdeTaxon(taxon, nombreCientifico);
+    if (hallazgo) return hallazgo;
   }
   return null;
 }
 
 async function fetchObservacionesConParams(params) {
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 5000);
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 6000);
   return data?.results || [];
 }
 
 /* Clasifica una foto por pie de foto, nombre de archivo o texto libre.
-   Devuelve null si es mapa/logo/IUCN (no sirve en la ficha). */
+   Devuelve null si es mapa/logo/IUCN/dibujo (no sirve en la ficha). */
 function clasificarFotoPorTexto(texto) {
   const t = (texto || '')
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
   if (!t.trim()) return 'otro';
-  if (/\.(svg)(\b|$)/i.test(t) || /\b(iucn|status_|range_?map|distribution|mapa|_map\b|logo|icon|coat.of.arms|banner|flag|morphology)\b/.test(t)) {
+  if (/\.(svg)(\b|$)/i.test(t) || /\b(iucn|status_|range_?map|distribution|mapa|_map\b|logo|icon|coat.of.arms|banner|flag|morphology|illustration|ilustracion|dibujo|drawing|sketch|diagrama|diagram|litografia|engraving)\b/.test(t)) {
     return null;
   }
 
@@ -1538,11 +1570,18 @@ async function fetchGaleriaWikipedia(titulo) {
   return fotos;
 }
 
-/* Observaciones de iNaturalist tipadas por fenología.
-   Si Wikipedia ya cubre bien la galería, solo se hace una consulta general. */
-async function fetchGaleriaInatClasificada(taxonId, fotoPrincipal, wikiSuficiente) {
-  const vistos = new Set(fotoPrincipal?.url ? [claveUrlFoto(fotoPrincipal.url)] : []);
+/* Observaciones de iNaturalist tipadas por fenología (fotos reales preferidas). */
+async function fetchGaleriaInatClasificada(taxonId, fotoPrincipal, fotosTaxon) {
+  const vistos = new Set();
   const fotos = [];
+
+  function agregarFoto(foto) {
+    if (!foto?.url) return;
+    const clave = claveUrlFoto(foto.url);
+    if (vistos.has(clave)) return;
+    vistos.add(clave);
+    fotos.push(foto);
+  }
 
   function agregarObs(results, tipoForzado) {
     for (const obs of results) {
@@ -1550,10 +1589,7 @@ async function fetchGaleriaInatClasificada(taxonId, fotoPrincipal, wikiSuficient
       for (const foto of obs.photos || []) {
         const url = (foto.url || '').replace('square', 'medium');
         if (!url) continue;
-        const clave = claveUrlFoto(url);
-        if (vistos.has(clave)) continue;
-        vistos.add(clave);
-        fotos.push({
+        agregarFoto({
           url,
           attribution: foto.attribution || '',
           source: 'inat',
@@ -1564,36 +1600,55 @@ async function fetchGaleriaInatClasificada(taxonId, fotoPrincipal, wikiSuficient
     }
   }
 
-  const base = { taxon_id: String(taxonId), photos: 'true', per_page: '12', order: 'votes', order_by: 'votes', quality_grade: 'research' };
-  const intentos = wikiSuficiente
-    ? [{ ...base }]
-    : [
-        { ...base, term_id: '12', term_value_id: String(INAT_FENOLOGIA.sinFlor) },
-        { ...base, term_id: '12', term_value_id: String(INAT_FENOLOGIA.floracion) },
-        { ...base },
-      ];
+  for (const f of fotosTaxon || []) agregarFoto(f);
+  if (fotoPrincipal) agregarFoto({ ...fotoPrincipal, tipo: fotoPrincipal.tipo || 'ejemplar' });
 
-  for (const intento of intentos) {
-    const tipoForzado = intento.term_value_id === String(INAT_FENOLOGIA.sinFlor)
-      ? 'ejemplar'
-      : (intento.term_value_id === String(INAT_FENOLOGIA.floracion) ? 'flor' : null);
-    const results = await fetchObservacionesConParams(new URLSearchParams(intento));
-    agregarObs(results, tipoForzado);
-    if (fotos.length >= GALERIA_MAX_FOTOS + 4) break;
+  const base = {
+    taxon_id: String(taxonId),
+    photos: 'true',
+    per_page: '20',
+    order: 'votes',
+    order_by: 'votes',
+    quality_grade: 'research'
+  };
+
+  /* Consulta popular general (incluye anotaciones) y luego completa flor / porte. */
+  agregarObs(await fetchObservacionesConParams(new URLSearchParams(base)), null);
+
+  const tipos = new Set(fotos.map(f => f.tipo));
+  if (!tipos.has('flor') && fotos.length < GALERIA_MAX_FOTOS + 3) {
+    agregarObs(
+      await fetchObservacionesConParams(new URLSearchParams({
+        ...base,
+        term_id: '12',
+        term_value_id: String(INAT_FENOLOGIA.floracion),
+        per_page: '10'
+      })),
+      'flor'
+    );
   }
-
-  if (fotoPrincipal?.url) {
-    fotos.unshift({
-      ...fotoPrincipal,
-      tipo: fotoPrincipal.tipo || 'otro'
-    });
+  if (!tipos.has('ejemplar') && fotos.length < GALERIA_MAX_FOTOS + 3) {
+    agregarObs(
+      await fetchObservacionesConParams(new URLSearchParams({
+        ...base,
+        term_id: '12',
+        term_value_id: String(INAT_FENOLOGIA.sinFlor),
+        per_page: '10'
+      })),
+      'ejemplar'
+    );
   }
 
   return fotos;
 }
 
-/* Une Wikipedia + iNaturalist priorizando: ejemplar → flor → hoja → tallo.
-   Primero intenta una foto de cada tipo; luego rellena en ese mismo orden. */
+function elegirFotoDeLista(lista, usados) {
+  return lista.find(f => f.source === 'inat' && !usados.has(claveUrlFoto(f.url)))
+    || lista.find(f => !usados.has(claveUrlFoto(f.url)));
+}
+
+/* Une iNaturalist + Wikipedia: ejemplar → flor → hoja → tallo.
+   Dentro de cada tipo, prioriza siempre fotos de iNaturalist. */
 function fusionarGaleriaPriorizada(...listas) {
   const porTipo = { ejemplar: [], flor: [], hoja: [], tallo: [], otro: [] };
   const vistos = new Set();
@@ -1609,12 +1664,16 @@ function fusionarGaleriaPriorizada(...listas) {
     }
   }
 
+  for (const tipo of GALERIA_ORDEN) {
+    porTipo[tipo].sort((a, b) => (a.source === 'inat' ? 0 : 1) - (b.source === 'inat' ? 0 : 1));
+  }
+
   const elegidas = [];
   const usados = new Set();
 
   for (const tipo of GALERIA_ORDEN) {
     if (elegidas.length >= GALERIA_MAX_FOTOS) break;
-    const cand = porTipo[tipo].find(f => !usados.has(claveUrlFoto(f.url)));
+    const cand = elegirFotoDeLista(porTipo[tipo], usados);
     if (cand) {
       usados.add(claveUrlFoto(cand.url));
       elegidas.push(cand);
@@ -1636,9 +1695,10 @@ function fusionarGaleriaPriorizada(...listas) {
 
 async function fetchFotoWikipedia(titulo) {
   for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
-    const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 6000);
+    const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 5000);
     const url = data?.originalimage?.source || data?.thumbnail?.source;
-    if (url) {
+    const tituloArchivo = data?.thumbnail?.source || data?.originalimage?.source || data?.title || titulo;
+    if (url && clasificarFotoPorTexto(String(tituloArchivo)) !== null) {
       return {
         url,
         attribution: `Wikipedia / ${data.title || titulo}`,
@@ -1653,31 +1713,28 @@ async function fetchFotoWikipedia(titulo) {
 async function resolverGaleriaEspecie(e) {
   const tituloWiki = e.wikipedia_titulo || (e.nombre_cientifico ? e.nombre_cientifico.replace(/ /g, '_') : null);
 
-  /* 1) Wikipedia primero: responde bien desde el navegador y ya trae
-     ejemplar/flor/hoja/tallo etiquetados. Así la ficha no queda vacía
-     aunque iNaturalist falle por red/CORS/límite. */
-  let wikiFotos = tituloWiki ? await fetchGaleriaWikipedia(tituloWiki) : [];
-  if (wikiFotos.length < 2 && tituloWiki) {
-    const wiki = await fetchFotoWikipedia(tituloWiki);
-    if (wiki) wikiFotos = fusionarGaleriaPriorizada(wikiFotos, [wiki]);
-  }
+  /* 1) iNaturalist primero: fotos reales de la comunidad. */
+  let hallazgo = null;
+  if (e.inat_taxon_id) hallazgo = await fetchTaxonPorId(e.inat_taxon_id, e.nombre_cientifico);
+  if (!hallazgo) hallazgo = await fetchTaxonPorNombre(e.nombre_cientifico);
 
-  const tiposWiki = new Set(wikiFotos.map(f => f.tipo));
-  const wikiSuficiente = ['ejemplar', 'flor', 'hoja', 'tallo'].filter(t => tiposWiki.has(t)).length >= 2
-    || wikiFotos.length >= 3;
+  const inatFotos = hallazgo
+    ? await fetchGaleriaInatClasificada(hallazgo.taxonId, hallazgo.foto, hallazgo.fotosTaxon)
+    : [];
 
-  /* 2) iNaturalist solo si hace falta completar la galería. */
-  let inatFotos = [];
-  if (!wikiSuficiente) {
-    let hallazgo = null;
-    if (e.inat_taxon_id) hallazgo = await fetchTaxonPorId(e.inat_taxon_id, e.nombre_cientifico);
-    if (!hallazgo) hallazgo = await fetchTaxonPorNombre(e.nombre_cientifico);
-    if (hallazgo) {
-      inatFotos = await fetchGaleriaInatClasificada(hallazgo.taxonId, hallazgo.foto, false);
+  const inatSuficiente = inatFotos.length >= 4;
+
+  /* 2) Wikipedia solo como respaldo (sin dibujos) si faltan fotos. */
+  let wikiFotos = [];
+  if (!inatSuficiente && tituloWiki) {
+    wikiFotos = await fetchGaleriaWikipedia(tituloWiki);
+    if (wikiFotos.length < 2) {
+      const wiki = await fetchFotoWikipedia(tituloWiki);
+      if (wiki) wikiFotos = fusionarGaleriaPriorizada(wikiFotos, [wiki]);
     }
   }
 
-  return { fotos: fusionarGaleriaPriorizada(wikiFotos, inatFotos) };
+  return { fotos: fusionarGaleriaPriorizada(inatFotos, wikiFotos) };
 }
 
 function pintarFotoEspecie(id, resultado) {
