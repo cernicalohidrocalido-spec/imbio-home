@@ -138,6 +138,15 @@ img{max-width:100%;display:block;border-radius:10px;}
 .callout.tip{border-color:var(--verde-500);background:var(--verde-100);}
 ul,ol{padding-left:1.3rem;}
 .progress-note{font-size:.75rem;color:var(--tinta-600);margin-top:2.5rem;border-top:1px solid #e5e0d2;padding-top:1rem;}
+.bottom-nav{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem;justify-content:space-between;}
+.bottom-nav a{
+  flex:1 1 auto;min-width:140px;text-align:center;text-decoration:none;
+  padding:.75rem 1rem;border-radius:10px;font-size:.85rem;font-weight:700;cursor:pointer;
+}
+.bottom-nav .nav-prev,.bottom-nav .nav-index{background:var(--verde-100);color:var(--verde-800);}
+.bottom-nav .nav-next{background:var(--verde-700);color:#fff;}
+.bottom-nav .nav-prev:hover,.bottom-nav .nav-index:hover{background:var(--verde-400);color:#fff;}
+.bottom-nav .nav-next:hover{background:var(--verde-800);}
 
 /* quiz */
 .quiz{background:var(--verde-100);border-radius:var(--radius);padding:1.3rem 1.4rem;margin:1.8rem 0;}
@@ -248,7 +257,7 @@ const MODULES = [
 {
  id:"m1", num:"01", title:"Dasonomía urbana: historia y valores",
  short:"Origen del árbol en la ciudad, urbanización acelerada, islas de calor y los servicios que presta el arbolado.",
- sidebar:["Definición y origen","Urbanización y demanda de verde","Islas de calor","Valores del árbol urbano"],
+ sidebar:["Definición y origen","Urbanización y demanda de verde","Islas de calor","Valores del árbol urbano","Bosque urbano vs. bosque rural","Actores del bosque urbano"],
  html:`
  <p class="badge">Historia</p><p class="badge">Servicios ecosistémicos</p><p class="badge">Introducción</p>
  <h2>01 · Dasonomía urbana: historia y valores</h2>
@@ -275,6 +284,25 @@ const MODULES = [
    <li><b>Sociales:</b> salud física y mental, cohesión comunitaria, identidad cultural y paisajística.</li>
  </ul>
 
+ <h3>Bosque urbano vs. bosque rural: diferencias clave</h3>
+ <p>El <b>bosque urbano</b> —el conjunto de todo el arbolado dentro de una ciudad, sea público o privado— no se comporta como un bosque natural, y por eso requiere una gestión distinta:</p>
+ <ul>
+   <li><b>Individuos dispersos, no una masa forestal continua:</b> cada árbol suele estar aislado, rodeado de pavimento, y compite poco o nada con otros árboles por luz — pero mucho por espacio de raíz disponible bajo el suelo compactado.</li>
+   <li><b>Suelo profundamente alterado:</b> relleno, compactado por maquinaria y tránsito, con horizontes mezclados o removidos — muy distinto al perfil de suelo de un bosque natural.</li>
+   <li><b>Microclima artificial:</b> superficies de concreto y asfalto elevan la temperatura, reducen la humedad relativa y alteran los patrones de viento alrededor de cada árbol.</li>
+   <li><b>Mantenimiento obligatorio y permanente:</b> a diferencia de un bosque que se regenera solo, el bosque urbano depende de riego, poda y reposición planificada por años para mantenerse.</li>
+ </ul>
+
+ <h3>Actores del bosque urbano</h3>
+ <p>La gestión exitosa del arbolado urbano rara vez depende de un solo actor — es el resultado de la coordinación entre varios:</p>
+ <ul>
+   <li><b>Autoridad municipal</b> (en Pabellón de Arteaga, el IMBIO): normatividad, autorización de poda/derribo, arbolado en espacio público.</li>
+   <li><b>Viveristas y productores:</b> calidad genética y fitosanitaria del material vegetal disponible para plantación.</li>
+   <li><b>Arboristas y personal técnico:</b> ejecución de poda, plantación, diagnóstico fitosanitario y derribo.</li>
+   <li><b>Ciudadanía:</b> riego, cuidado y vigilancia del arbolado frente a su propiedad; principal fuente de reporte de riesgo o daño.</li>
+   <li><b>Empresas de servicios (CFE, agua potable, telecomunicaciones):</b> coordinación para evitar conflictos entre infraestructura subterránea/aérea y raíces o copas.</li>
+ </ul>
+
  <div class="quiz" data-quiz="q1">
   <h4>Autoevaluación · Módulo 01</h4>
   <div class="qitem" data-answer="1">
@@ -296,7 +324,7 @@ const MODULES = [
 {
  id:"m2", num:"02", title:"Biología y fisiología del árbol",
  short:"Anatomía, funciones vitales y el modelo CODIT que explica cómo compartimenta sus heridas un árbol.",
- sidebar:["Estructura básica","Transporte de agua y nutrientes","Fotosíntesis y respiración","CODIT: compartimentación"],
+ sidebar:["Estructura básica","Transporte de agua y nutrientes","Fotosíntesis y respiración","Micorrizas","CODIT: compartimentación"],
  html:`
  <p class="badge">Biología</p><p class="badge">Fisiología</p>
  <h2>02 · Biología y fisiología del árbol</h2>
@@ -313,6 +341,12 @@ const MODULES = [
 
  <h3>Transporte: cohesión-tensión</h3>
  <p>El movimiento de agua desde la raíz hasta las hojas se explica mediante la <b>teoría de cohesión-tensión</b> (Dixon y Joly, 1895): la transpiración en las hojas genera una tensión negativa que "jala" columnas continuas de agua a través del xilema, gracias a la cohesión entre moléculas de agua.</p>
+
+ <h3>Fotosíntesis y respiración</h3>
+ <p>Las hojas son la fábrica de energía del árbol: mediante <b>fotosíntesis</b> transforman agua, CO₂ y luz solar en azúcares (carbohidratos) y oxígeno, usando la clorofila como pigmento captador de luz. Estos azúcares se distribuyen por el <b>floema</b> hacia raíces, tronco y tejidos en crecimiento —el llamado <i>proceso de traslocación</i>— y sirven como fuente de energía para la <b>respiración celular</b>, que ocurre las 24 horas del día (a diferencia de la fotosíntesis, que requiere luz). Un árbol con poca copa funcional —por poda excesiva, plagas o daño mecánico— fotosintetiza menos y tiene menos reservas de energía disponibles para crecer, defenderse de plagas o recuperarse de una herida.</p>
+
+ <h3>Micorrizas: la raíz no trabaja sola</h3>
+ <p>La mayoría de las especies arbóreas forman asociaciones simbióticas con hongos del suelo llamados <b>micorrizas</b>: el hongo coloniza la raíz (o la envuelve, según el tipo de micorriza) y extiende una red de hifas mucho más fina que cualquier raíz, ampliando enormemente el volumen de suelo explorado. A cambio de azúcares producidos por el árbol, el hongo mejora la absorción de agua y nutrientes poco móviles (fósforo, zinc) y puede aumentar la tolerancia a sequía y patógenos radiculares. Los suelos urbanos —compactados, removidos y pobres en materia orgánica— suelen tener poblaciones de micorrizas reducidas, lo que es una razón adicional para minimizar la remoción y compactación del suelo alrededor del sistema radicular durante obras y plantación.</p>
 
  <h3>CODIT: cómo se defiende un árbol herido</h3>
  <p>El modelo <b>CODIT</b> (Compartmentalization of Decay in Trees, Alex Shigo, 1977) describe cómo un árbol no "cura" sus heridas como un animal, sino que las <b>compartimenta</b>, aislando el tejido dañado mediante cuatro paredes de defensa (verticales, horizontales, radiales y una pared de generación de nuevo tejido). Este principio es la base científica de toda técnica moderna de poda: cortar en el lugar y ángulo correctos permite que el árbol selle eficazmente la herida.</p>
@@ -340,7 +374,7 @@ const MODULES = [
 {
  id:"m3", num:"03", title:"Selección y establecimiento de especies",
  short:"Criterios técnicos para elegir la especie correcta en el sitio correcto: talla adulta, forma de copa y factores urbanos.",
- sidebar:["Por qué importa la calidad del árbol","Cinco criterios de selección","Formas de copa","Caso: decisiones políticas vs. técnicas"],
+ sidebar:["Por qué importa la calidad del árbol","Cinco criterios de selección","Formas de copa","Diversidad de especies (regla 10-20-30)","Riesgo estructural en la selección","Caso: decisiones políticas vs. técnicas"],
  html:`
  <p class="badge">Selección de especies</p><p class="badge">Planeación</p>
  <h2>03 · Selección y establecimiento de especies</h2>
@@ -374,6 +408,18 @@ const MODULES = [
    <li><b>Jarrón ("V"):</b> considerada la forma más recomendable para árboles de calle — sombra amplia con buena visibilidad a nivel de piso.</li>
  </ul>
 
+ <h3>Diversidad de especies: la regla 10-20-30</h3>
+ <p>Un bosque urbano dominado por pocas especies es vulnerable: si llega una plaga o enfermedad específica de esa especie, puede perderse gran parte del arbolado de la ciudad de una sola vez (el ejemplo histórico más citado en la literatura forestal es la pérdida masiva de olmos por la grafiosis en Norteamérica y Europa durante el siglo XX). Como referencia de planeación, se recomienda que en el arbolado de una ciudad o de un fraccionamiento nuevo:</p>
+ <ul>
+   <li>Ninguna <b>especie</b> supere el <b>10%</b> del total de árboles plantados.</li>
+   <li>Ningún <b>género</b> supere el <b>20%</b> del total.</li>
+   <li>Ninguna <b>familia botánica</b> supere el <b>30%</b> del total.</li>
+ </ul>
+ <p>Esto no significa evitar las especies bien adaptadas al sitio, sino distribuir la plantación entre varias opciones igualmente adecuadas en vez de repetir una sola "especie de moda" en toda una calle o colonia.</p>
+
+ <h3>Riesgo estructural como criterio de selección</h3>
+ <p>Además de los cinco criterios A-E, conviene anticipar el <b>riesgo estructural</b> que la especie desarrollará ya adulta: ángulos de inserción de rama muy cerrados (menores a 30°) tienden a formar corteza incluida y son más propensos a fractura; especies de madera quebradiza bajo carga de viento requieren podas de estructura más frecuentes; y especies con raíces someras y agresivas son poco compatibles con banquetas o tuberías cercanas (ver módulo 11 sobre sustitución y derribo cuando ese riesgo ya se materializó).</p>
+
  <div class="callout danger"><b>Caso Pachuca (factores sociales):</b> con frecuencia la elección de especies no responde a criterios técnicos sino a gustos, modas o disponibilidad de vivero — decisión política más que técnica. Esto compromete la longevidad del arbolado.</div>
 
  <div class="quiz" data-quiz="q3">
@@ -397,7 +443,7 @@ const MODULES = [
 {
  id:"m4", num:"04", title:"Plantación (arborización)",
  short:"Fecha, espaciamiento, apertura de cepa, cajeteo, tutoreo y mulch: la técnica completa de plantar un árbol urbano.",
- sidebar:["Fecha y espaciamiento","Apertura de cepa","Colocación y profundidad","Cajeteo y tutoreo","Mulch: 10 beneficios"],
+ sidebar:["Fecha y espaciamiento","Presentación del material vegetal","Apertura de cepa","Colocación y profundidad","Cajeteo y tutoreo","Mulch: 10 beneficios","Errores comunes"],
  html:`
  <p class="badge">Plantación</p><p class="badge">Técnica de campo</p>
  <h2>04 · Plantación (arborización)</h2>
@@ -412,6 +458,13 @@ const MODULES = [
  <tr><td>Arbustos entre sí</td><td>5 m</td></tr>
  <tr><td>Coníferas en cortina rompevientos</td><td>3–5 m</td></tr>
  <tr><td>Árbol a residencia</td><td>≥ ½ de la altura máxima esperada</td></tr>
+ </table>
+
+ <h3>Presentación del material vegetal</h3>
+ <table><tr><th>Presentación</th><th>Características</th></tr>
+ <tr><td><b>Cepellón envuelto (banqueado)</b></td><td>Sistema radicular con su suelo original, arpillado. Buena tasa de sobrevivencia si el cepellón cumple la regla 5-7x diámetro (módulo 08); más pesado de transportar.</td></tr>
+ <tr><td><b>En contenedor / bolsa de vivero</b></td><td>El más común en vivero comercial. Revisar antes de plantar que la raíz no esté "enroscada" (espiralizada) dentro del contenedor — de ser así, es necesario desenredarla o cortar las raíces circulares antes de plantar, o el árbol desarrollará estrangulamiento de raíz (girdling root) años después.</td></tr>
+ <tr><td><b>Raíz desnuda</b></td><td>Sin sustrato alrededor de la raíz; solo viable en especies caducifolias durante dormancia y con plantación inmediata tras la extracción, para evitar deshidratación radicular.</td></tr>
  </table>
 
  <h3>Apertura de la cepa</h3>
@@ -439,6 +492,15 @@ const MODULES = [
  </ol>
  <div class="callout tip">Aplicar el mulch en capa uniforme sobre la zona del cepellón <b>sin tocar el tallo</b>, para evitar pudriciones.</div>
 
+ <h3>Errores comunes de plantación</h3>
+ <ul>
+   <li><b>"Volcán de mulch":</b> amontonar el cubrepiso contra el tronco en forma de cono — retiene humedad contra la corteza y favorece pudrición del cuello radical e insectos barrenadores.</li>
+   <li><b>Dejar la malla, rafia o costal de yute alrededor del tallo</b> una vez colocado el árbol en la cepa — con el crecimiento del tronco puede estrangularlo con los años.</li>
+   <li><b>No cortar las raíces circulares</b> de árboles criados en contenedor — con el tiempo se convierten en raíces que "estrangulan" el propio tronco bajo el suelo.</li>
+   <li><b>Plantar demasiado profundo</b> — reduce el oxígeno disponible en la zona radicular y favorece pudrición del cuello.</li>
+   <li><b>Compactar el suelo de relleno pisándolo con fuerza</b> — es preferible regar abundantemente para asentar el suelo sin compactarlo mecánicamente.</li>
+ </ul>
+
  <div class="quiz" data-quiz="q4">
   <h4>Autoevaluación · Módulo 04</h4>
   <div class="qitem" data-answer="1">
@@ -460,7 +522,7 @@ const MODULES = [
 {
  id:"m5", num:"05", title:"Relación suelo-árbol y riego",
  short:"Propiedades químicas del suelo (pH, CIC, salinidad), texturas y métodos de riego para arbolado establecido.",
- sidebar:["Manejo del suelo","pH, CIC y salinidad","Textura y retención de agua","Métodos de riego","Fertirriego"],
+ sidebar:["Manejo del suelo","pH, CIC y salinidad","Textura y retención de agua","Riego de establecimiento vs. mantenimiento","Señales de estrés hídrico","Métodos de riego","Fertirriego"],
  html:`
  <p class="badge">Edafología</p><p class="badge">Riego</p>
  <h2>05 · Relación suelo-árbol y riego</h2>
@@ -476,6 +538,20 @@ const MODULES = [
 
  <h3>Textura: arena vs. arcilla</h3>
  <p>Las arcillas retienen más agua por su mayor superficie de contacto (microporosidad), en comparación con las arenas, debido a las fuerzas de tensión y cohesión entre partículas de suelo y agua.</p>
+
+ <h3>Riego de establecimiento vs. riego de mantenimiento</h3>
+ <p>Un árbol recién plantado no tiene el mismo requerimiento de agua que uno ya establecido, porque su sistema radicular todavía no se ha extendido más allá del volumen original del cepellón:</p>
+ <ul>
+   <li><b>Riego de establecimiento</b> (primeros 1-3 años): riegos frecuentes y de menor volumen, concentrados en la zona del cepellón original, hasta que las raíces nuevas colonicen el suelo circundante. Es el periodo más crítico para la sobrevivencia del árbol.</li>
+   <li><b>Riego de mantenimiento</b> (árbol ya establecido): riegos más espaciados pero de mayor volumen, aplicados en toda la proyección de la copa (donde está la mayoría de las raíces absorbentes) y no solo junto al tronco, ajustados a temporada de lluvias y tipo de suelo.</li>
+ </ul>
+
+ <h3>Señales visibles de estrés hídrico</h3>
+ <table><tr><th>Tipo de estrés</th><th>Señales típicas</th></tr>
+ <tr><td>Déficit de agua (sequía)</td><td>Marchitez y enrollamiento de hojas, defoliación prematura, hojas de menor tamaño, muerte descendente de ramillas</td></tr>
+ <tr><td>Exceso de agua (encharcamiento)</td><td>Hojas amarillas (clorosis) a pesar de riego abundante, crecimiento lento, olor a pudrición en la base del tronco, mal drenaje visible tras el riego</td></tr>
+ </table>
+ <div class="callout">El exceso de riego es tan dañino como su falta: las raíces necesitan oxígeno además de agua, y un suelo saturado por tiempo prolongado las asfixia y favorece hongos de pudrición radicular.</div>
 
  <h3>Métodos de riego</h3>
  <ul>
@@ -510,7 +586,7 @@ const MODULES = [
 {
  id:"m6", num:"06", title:"Nutrición vegetal",
  short:"Macro y micronutrientes esenciales, criterios de esencialidad y diagnóstico visual de deficiencias.",
- sidebar:["Historia y criterios de esencialidad","13 elementos esenciales","Fertilidad y crecimiento","Deficiencias visibles"],
+ sidebar:["Historia y criterios de esencialidad","13 elementos esenciales","Función de cada nutriente","Fertilidad y crecimiento","Deficiencias visibles","Cómo diagnosticar (más allá de lo visual)"],
  html:`
  <p class="badge">Nutrición</p><p class="badge">Fisiología</p>
  <h2>06 · Nutrición vegetal</h2>
@@ -523,6 +599,17 @@ const MODULES = [
 
  <h3>13 elementos esenciales</h3>
  <p>Se clasifican en <b>6 macronutrientes</b> (requeridos en grandes cantidades; constituyentes de proteínas y ácidos nucleicos) y <b>7 micronutrientes</b> (constituyentes de enzimas, en proporciones muy pequeñas).</p>
+
+ <h3>Función de cada nutriente</h3>
+ <table><tr><th>Nutriente</th><th>Función principal</th></tr>
+ <tr><td>Nitrógeno (N)</td><td>Constituyente de proteínas, clorofila y ácidos nucleicos; motor del crecimiento vegetativo</td></tr>
+ <tr><td>Fósforo (P)</td><td>Transferencia de energía (ATP), desarrollo radicular y floración</td></tr>
+ <tr><td>Potasio (K)</td><td>Regulación del agua celular (apertura/cierre de estomas), activación enzimática, resistencia a estrés hídrico y a heladas</td></tr>
+ <tr><td>Calcio (Ca)</td><td>Estructura de la pared celular; señalización celular</td></tr>
+ <tr><td>Magnesio (Mg)</td><td>Átomo central de la molécula de clorofila</td></tr>
+ <tr><td>Azufre (S)</td><td>Constituyente de aminoácidos y proteínas</td></tr>
+ <tr><td>Hierro, Manganeso, Zinc, Cobre, Boro, Molibdeno, Cloro (micronutrientes)</td><td>Cofactores de enzimas específicas; el hierro es clave en la síntesis de clorofila (su deficiencia produce clorosis internervial en hojas jóvenes)</td></tr>
+ </table>
 
  <h3>Fertilidad y crecimiento: la curva de respuesta</h3>
  <p>El crecimiento aumenta con la concentración de nutrientes hasta un punto máximo; más allá de ese punto, el exceso ya no favorece el crecimiento y puede provocar consumo excesivo o toxicidad.</p>
@@ -537,6 +624,13 @@ const MODULES = [
  <tr><td>Potasio (K)</td><td>Follaje corto y clorótico; en casos severos, necrosis con muerte descendente desde la punta</td></tr>
  </table>
  <div class="callout"><b>Ojo clínico:</b> al momento en que aparecen síntomas visibles de deficiencia, ya se ha perdido una cantidad significativa de crecimiento — el diagnóstico temprano (análisis de suelo/tejido) es más valioso que la inspección visual tardía.</div>
+
+ <h3>Cómo diagnosticar más allá de lo visual</h3>
+ <p>Los síntomas visibles suelen aparecer cuando la deficiencia ya es severa. Dos herramientas complementarias permiten anticiparse:</p>
+ <ul>
+   <li><b>Análisis de suelo:</b> mide pH, materia orgánica, CIC y disponibilidad de macro/micronutrientes antes de fertilizar — evita aplicar un nutriente que ya está en exceso.</li>
+   <li><b>Análisis foliar:</b> mide la concentración real de nutrientes dentro del tejido de la hoja, comparándola contra rangos de referencia por especie; es más preciso que el análisis de suelo porque refleja lo que el árbol realmente absorbió, no solo lo que está disponible.</li>
+ </ul>
 
  <h3>El suelo urbano y la disponibilidad de nutrientes</h3>
  <p>La mayoría del suelo urbano es de origen mineral profundo (bancos de préstamo), bajo en materia orgánica y con poca dinámica biológica, además de estar frecuentemente compactado — condiciones que limitan la disponibilidad de nutrientes independientemente de la fertilización aplicada.</p>
@@ -562,7 +656,7 @@ const MODULES = [
 {
  id:"m7", num:"07", title:"Conceptos y técnicas de poda",
  short:"Tipos de poda, herramientas adecuadas según diámetro y el principio del corte correcto (cuello de rama).",
- sidebar:["Objetivos de la poda","Herramientas por diámetro","Tipos de poda","El corte correcto"],
+ sidebar:["Objetivos de la poda","Herramientas por diámetro","Tipos de poda","El corte correcto","Época del año y cuánta copa remover"],
  html:`
  <p class="badge">Poda</p><p class="badge">Técnica</p>
  <h2>07 · Conceptos y técnicas de poda</h2>
@@ -597,6 +691,10 @@ const MODULES = [
    <li><b>Rasurado (setos/topiarios):</b> solo en ramillas &lt; 1 cm; no recomendable en árboles de porte grande por los desgarres que ocasiona.</li>
  </ul>
 
+ <h3>Época del año y cuánta copa remover</h3>
+ <p>La poda de mantenimiento y sanitaria (retiro de ramas muertas o rotas) puede hacerse en cualquier época del año. La poda de formación, en cambio, es preferible realizarla en <b>reposo vegetativo o antes del inicio del crecimiento activo</b>, para que el árbol invierta su energía de la nueva temporada en cicatrizar y en las ramas que sí se conservaron, en vez de en tejido que después será removido.</p>
+ <div class="callout danger"><b>Regla del 25%:</b> como referencia general, no se recomienda remover más del <b>25% del follaje vivo</b> de un árbol en una sola intervención (y en árboles ya estresados o de edad avanzada, un porcentaje bastante menor). Podas excesivas reducen drásticamente la capacidad fotosintética del árbol (ver módulo 02), lo debilitan frente a plagas y enfermedades, y suelen inducir el desarrollo de "chupones" o rebrotes débiles y mal insertados.</div>
+
  <div class="quiz" data-quiz="q7">
   <h4>Autoevaluación · Módulo 07</h4>
   <div class="qitem" data-answer="0">
@@ -618,7 +716,7 @@ const MODULES = [
 {
  id:"m8", num:"08", title:"Banqueo y trasplante",
  short:"Formación del cepellón, materiales de arpillado, carga y transporte de árboles al sitio de plantación.",
- sidebar:["Qué es el cepellón","Regla del cepellón","Materiales de banqueo","Carga y transporte"],
+ sidebar:["Qué es el cepellón","Regla del cepellón","Materiales de banqueo","Carga y transporte","Aclimatación post-trasplante"],
  html:`
  <p class="badge">Banqueo</p><p class="badge">Vivero</p>
  <h2>08 · Banqueo y trasplante</h2>
@@ -638,6 +736,10 @@ const MODULES = [
    <li>Usar protecciones en tallo y cepellón; <b>cintas</b>, nunca cuerdas directas sobre corteza.</li>
    <li>Distancias cortas: carritos, "diablitos" o carretillas.</li>
  </ul>
+
+ <h3>Aclimatación post-trasplante</h3>
+ <p>El trasplante corta una parte importante del sistema radicular original, sin importar qué tan cuidadoso sea el banqueo, por lo que todo árbol trasplantado atraviesa un periodo de <b>shock de trasplante</b>: crecimiento aparente lento o nulo mientras la raíz remanente se recupera y coloniza el suelo nuevo. Como referencia general, se estima que un árbol tarda aproximadamente <b>un año de recuperación por cada 2.5 cm (1 pulgada) de diámetro de tronco</b> en restablecer un sistema radicular funcional equivalente al que tenía antes del trasplante. Durante ese periodo es cuando el riego de establecimiento (módulo 05) y la ausencia de poda o fertilización agresiva son más importantes — es también la etapa de mayor vulnerabilidad frente a plagas oportunistas (módulo 09), porque el árbol tiene menos reservas de energía para defenderse.</p>
+ <p>No todos los árboles trasplantan igual de bien: especies de raíz fibrosa y compacta (más fácil de banquear sin gran pérdida) suelen tener mejor sobrevivencia al trasplante que especies de raíz pivotante profunda, que se cortan inevitablemente al extraer el cepellón.</p>
 
  <div class="quiz" data-quiz="q8">
   <h4>Autoevaluación · Módulo 08</h4>
@@ -660,7 +762,7 @@ const MODULES = [
 {
  id:"m9", num:"09", title:"Manejo integrado de plagas y enfermedades (MIP)",
  short:"Triada epidemiológica, fases de diagnóstico fitosanitario y umbral económico de daño.",
- sidebar:["Qué es una plaga","La triada epidemiológica","Fases de diagnóstico","Tipos de daño"],
+ sidebar:["Qué es una plaga","La triada epidemiológica","Fases de diagnóstico","Estrategias de control del MIP","Tipos de daño","Monitoreo"],
  html:`
  <p class="badge">Fitosanidad</p><p class="badge">MIP</p>
  <h2>09 · Manejo integrado de plagas y enfermedades</h2>
@@ -695,6 +797,19 @@ const MODULES = [
    <li><b>Chupadores:</b> clorosis, deformación, transmisión de patógenos (áfidos, escamas, mosca blanca).</li>
  </ul>
 
+ <h3>Las cinco estrategias de control del MIP</h3>
+ <p>El manejo integrado combina, según el caso, dos o más de las siguientes tácticas —nunca depende de una sola—, priorizando siempre las de menor impacto ambiental antes de recurrir al control químico:</p>
+ <ul>
+   <li><b>Control legal / regulatorio:</b> cuarentenas, restricciones de movimiento de material vegetal para evitar la introducción o dispersión de plagas exóticas.</li>
+   <li><b>Control cultural:</b> prácticas de manejo del sitio (riego adecuado, mulch, evitar heridas mecánicas, poda sanitaria oportuna) que reducen el estrés del árbol y por tanto su susceptibilidad.</li>
+   <li><b>Control mecánico/físico:</b> remoción manual de insectos, poda y eliminación de tejido infestado, trampas físicas.</li>
+   <li><b>Control biológico:</b> conservación o introducción de enemigos naturales (depredadores, parasitoides, patógenos de la plaga) que regulan su población.</li>
+   <li><b>Control químico:</b> aplicación de plaguicidas o fungicidas, reservada para cuando las demás tácticas no bastan y siempre por encima del umbral económico de daño, con producto y dosis específicos al problema diagnosticado.</li>
+ </ul>
+
+ <h3>Monitoreo: la base de todo el sistema</h3>
+ <p>El MIP no funciona sin monitoreo periódico: inspección visual programada del arbolado, trampas de feromona o pegajosas para detectar la llegada de una plaga antes de que la población crezca, y registro histórico por sitio o especie que permita anticipar brotes estacionales recurrentes. El objetivo del monitoreo no es erradicar la plaga —biológicamente casi nunca es posible ni deseable— sino mantenerla por debajo del umbral donde el daño se vuelve inaceptable.</p>
+
  <div class="quiz" data-quiz="q9">
   <h4>Autoevaluación · Módulo 09</h4>
   <div class="qitem" data-answer="1">
@@ -716,7 +831,7 @@ const MODULES = [
 {
  id:"m10", num:"10", title:"Inyecciones en tronco",
  short:"Métodos con y sin taladro para aplicar agroquímicos directamente al xilema, ventajas y recomendaciones.",
- sidebar:["Principios: transpiración y traslocación","Ventajas vs. desventajas","Método sin taladro","Método con taladro","Recomendaciones finales"],
+ sidebar:["Principios: transpiración y traslocación","Ventajas vs. desventajas","Cuándo elegir la inyección al tronco","Método sin taladro","Método con taladro","Recomendaciones finales"],
  html:`
  <p class="badge">Fitosanidad</p><p class="badge">Técnica especializada</p>
  <h2>10 · Inyecciones en tronco</h2>
@@ -727,6 +842,9 @@ const MODULES = [
  <tr><td>Menor exposición a agroquímicos del entorno<br>Baja residualidad ambiental<br>Aplicación directa al xilema<br>Útil en árboles altos<br>Sustituye aspersiones y riegos</td>
  <td>Requiere equipo especializado<br>Puede causar daños en el tronco (perforaciones)</td></tr>
  </table>
+
+ <h3>Cuándo elegir la inyección al tronco</h3>
+ <p>La inyección al tronco es una herramienta dentro del MIP (módulo 09), no un sustituto de él: se elige cuando el diagnóstico fitosanitario ya identificó un problema específico (plaga o enfermedad puntual) que justifica control químico y donde la aspersión foliar es poco práctica —árboles muy altos, zonas urbanas densas donde la deriva de aspersión afecta a peatones o cultivos cercanos, o especies con follaje difícil de cubrir por completo—. Cada perforación, sin importar el método, es una herida que el árbol debe compartimentar (CODIT, módulo 02); por eso el número de aplicaciones e inyecciones se limita a lo estrictamente necesario según la ficha técnica del producto y la severidad del problema, y se prioriza el método sin taladro cuando el producto y la especie lo permiten.</p>
 
  <h3>Método sin taladro</h3>
  <p>Microinyecciones pasivas o "a pulso"; no usan perforación con broca, menor daño al tronco, permiten mayor número de aplicaciones con compuestos concentrados. Ejemplos comerciales: Bite®, Wedgle® (ArborSystems).</p>
@@ -766,12 +884,12 @@ const MODULES = [
 
 {
  id:"m11", num:"11", title:"Derribo de arbolado y marco normativo",
- short:"Criterios válidos e inválidos para derribar un árbol, sanciones legales en el Estado de México.",
- sidebar:["Definición y norma aplicable","Razones NO válidas","Criterios que sí justifican derribo","Sanciones legales"],
+ short:"Criterios válidos e inválidos para derribar un árbol y marco normativo federal, estatal y en Pabellón de Arteaga.",
+ sidebar:["Definición general","Razones NO válidas","Criterios que sí justifican derribo","Documentación previa al derribo","Aprovechamiento de la madera","Marco normativo: federal, Aguascalientes y Pabellón de Arteaga"],
  html:`
  <p class="badge">Normativa</p><p class="badge">Derribo</p>
  <h2>11 · Derribo de arbolado y marco normativo</h2>
- <p><b>Derribo:</b> corte de un árbol desde la base, vivo o muerto (NTEA-018-SeMAGEM-DS-2017). Es la intervención más drástica y está fuertemente regulada — la mayoría de las razones "comunes" para pedir un derribo no son legalmente válidas.</p>
+ <p><b>Derribo:</b> corte de un árbol desde la base, vivo o muerto. Es la intervención más drástica y en México está fuertemente regulada a nivel federal, estatal y municipal — la mayoría de las razones "comunes" para pedir un derribo no son legalmente válidas.</p>
 
  <div class="callout danger"><b>Razones NO válidas para derribar</b>
  <ul>
@@ -805,9 +923,38 @@ const MODULES = [
  <h3>Sustitución de árboles</h3>
  <p>Cuando se autoriza por riesgo o afectación severa a patrimonio urbano, la sustitución es de <b>1 a 1</b> conforme a tabla oficial.</p>
 
- <h3>Sanciones (Estado de México)</h3>
- <div class="callout">Código para la Biodiversidad del Estado de México, Art. 2.263: podar, trasplantar o afectar áreas verdes públicas sin autorización se sanciona de 100 a 3,000 veces la Unidad de Medida y Actualización (UMA). Con UMA de $86.8: <b>de $8,688 a $260,640 MXN</b>.<br><br>
- Además, el derribo doloso sin autorización de un árbol en área natural protegida puede constituir <b>delito</b>, con prisión de 2 a 8 años y de 30 a 150 días multa (Art. 228).</div>
+ <h3>Documentación previa al derribo</h3>
+ <p>Antes de autorizar un derribo, la autoridad competente típicamente requiere un expediente que respalde la decisión, no solo la solicitud del interesado:</p>
+ <ul>
+   <li><b>Dictamen técnico</b> elaborado por personal capacitado (arborista o especialista forestal), que describa el estado fitosanitario y estructural del árbol y la justificación técnica del derribo frente a las alternativas del apartado anterior.</li>
+   <li><b>Evidencia fotográfica</b> del árbol completo y de los daños o riesgos específicos que motivan la solicitud.</li>
+   <li><b>Ubicación exacta</b> (dirección, y de ser posible coordenadas) para el seguimiento del expediente.</li>
+   <li><b>Ficha de la especie</b>, cuando se conoce, para determinar si aplica algún régimen de protección especial (especies nativas, en riesgo o de valor patrimonial).</li>
+ </ul>
+
+ <h3>Aprovechamiento de la madera derribada</h3>
+ <p>Un árbol derribado no es solo un residuo: la madera y el material vegetal resultante pueden aprovecharse en vez de desecharse, siguiendo el orden de prioridad recomendado en la gestión forestal urbana:</p>
+ <ul>
+   <li><b>Reutilización como madera</b> (mobiliario urbano, tablones, artesanía) cuando el diámetro y estado sanitario del tronco lo permiten.</li>
+   <li><b>Trituración para mulch/cubrepiso</b>, reincorporando el material orgánico al suelo urbano (ver los 10 beneficios del mulch, módulo 04).</li>
+   <li><b>Leña</b>, en madera de menor calidad o diámetro.</li>
+   <li><b>Compostaje</b> del material más fino (hojas, ramillas).</li>
+ </ul>
+ <div class="callout">Cuando el derribo se debió a una plaga o enfermedad de riesgo fitosanitario, el destino del material debe evaluarse con cuidado —en algunos casos es necesario quemar o confinar la madera en el sitio para no dispersar el patógeno a otros árboles—.</div>
+
+ <h3>Marco normativo en México</h3>
+ <p>El derribo, poda y trasplante de arbolado se regula en varios niveles que se complementan entre sí:</p>
+ <ul>
+   <li><b>Federal:</b> Ley General del Equilibrio Ecológico y la Protección al Ambiente (LGEEPA) y Ley General de Desarrollo Forestal Sustentable (LGDFS), que sientan los principios de protección del arbolado y, en su caso, de las Áreas Naturales Protegidas.</li>
+   <li><b>Estatal:</b> cada estado cuenta con su propia ley ambiental y su autoridad correspondiente, que suele exigir autorización previa para podar, trasplantar o derribar árboles en la vía pública o en áreas verdes públicas, y establece las sanciones aplicables (comúnmente calculadas en Unidades de Medida y Actualización, UMA).</li>
+   <li><b>Municipal:</b> los ayuntamientos y sus institutos o direcciones de medio ambiente son, en la práctica, la autoridad ante la que se tramita el permiso y la que da seguimiento a cada solicitud de poda o derribo en la localidad.</li>
+ </ul>
+
+ <h3>En Aguascalientes</h3>
+ <div class="callout">En el estado de Aguascalientes, la <b>Procuraduría Estatal de Protección al Ambiente (PROESPA)</b> es la autoridad estatal que vigila el cumplimiento de la normativa ambiental, atiende denuncias ambientales e impone las sanciones correspondientes. La poda, trasplante o derribo de arbolado sin la autorización correspondiente puede sancionarse conforme a la legislación ambiental estatal vigente; el monto exacto de la sanción (calculado en UMA) debe consultarse directamente con PROESPA o con la autoridad municipal correspondiente, ya que puede actualizarse periódicamente.</div>
+
+ <h3>En Pabellón de Arteaga</h3>
+ <div class="callout tip">Esta es la autoridad que aplica directamente en el municipio: en Pabellón de Arteaga, el <b>Instituto Municipal de Biodiversidad y Protección Ambiental (IMBIO)</b> es quien autoriza y da seguimiento a la poda y el derribo de arbolado en vía pública y áreas verdes municipales. Cualquier intervención sobre un árbol urbano debe solicitarse y autorizarse <b>antes</b> de realizarla — nunca después. La solicitud se tramita a través del servicio de <a href="https://denuncias.imbio.info/app?modo=poda" target="_blank" rel="noopener">Solicitud de Poda y Derribo</a> de IMBIO.</div>
 
  <div class="quiz" data-quiz="q11">
   <h4>Autoevaluación · Módulo 11</h4>
@@ -830,7 +977,7 @@ const MODULES = [
 {
  id:"m12", num:"12", title:"Seguridad en arboricultura",
  short:"Marco legal STPS, trabajo en alturas, EPP y factores de riesgo físico, químico y ergonómico del arborista.",
- sidebar:["Marco legal (STPS/LFT)","Trabajo en alturas","EPP","Riesgos físicos, químicos, ergonómicos"],
+ sidebar:["Marco legal (STPS/LFT)","Trabajo en alturas","Jerarquía de controles de riesgo","EPP","Riesgos físicos, químicos, ergonómicos","Señalización del área de trabajo"],
  html:`
  <p class="badge">Seguridad laboral</p><p class="badge">NOM-STPS</p>
  <h2>12 · Seguridad en arboricultura</h2>
@@ -847,6 +994,16 @@ const MODULES = [
 
  <h3>Trabajo en alturas</h3>
  <p>Según STPS, el <b>16% de los accidentes laborales mortales</b> ocurren por caídas de altura. Se considera "trabajo en altura" cualquier actividad realizada a más de <b>1.8 m</b> sobre el nivel más bajo, sin plataformas protegidas con barandas.</p>
+
+ <h3>Jerarquía de controles de riesgo</h3>
+ <p>La seguridad ocupacional prioriza siempre eliminar o reducir el riesgo en la fuente, antes de depender de que la persona lo controle con equipo. De mayor a menor efectividad:</p>
+ <ol>
+   <li><b>Eliminación:</b> retirar por completo el peligro (por ejemplo, coordinar con la compañía eléctrica el corte temporal de energía antes de podar cerca de un cable).</li>
+   <li><b>Sustitución:</b> cambiar el método por uno menos riesgoso (usar canastilla hidráulica en vez de trepar, cuando es posible).</li>
+   <li><b>Controles de ingeniería:</b> barreras físicas, puntos de anclaje certificados, plataformas con baranda.</li>
+   <li><b>Controles administrativos:</b> permisos de trabajo, procedimientos escritos, capacitación, rotación de personal en tareas de alto riesgo.</li>
+   <li><b>Equipo de Protección Personal (EPP):</b> el último nivel de la jerarquía — protege a la persona, pero no elimina el peligro; nunca debe ser la única medida de control.</li>
+ </ol>
 
  <h3>Actos inseguros vs. condiciones inseguras</h3>
  <table><tr><th>Concepto</th><th>Definición</th></tr>
@@ -873,6 +1030,15 @@ const MODULES = [
    <li>Examen médico anual</li><li>Manual de procedimientos y botiquín</li><li>Guía de respuesta a emergencias</li>
  </ul>
 
+ <h3>Señalización y delimitación del área de trabajo</h3>
+ <p>Todo sitio donde se realicen trabajos de poda, derribo o banqueo debe delimitarse antes de iniciar la maniobra, no solo para proteger al personal sino a los transeúntes y vehículos alrededor:</p>
+ <ul>
+   <li>Conos, cinta de precaución o vallas físicas alrededor de todo el radio de caída de ramas o del árbol completo (nunca solo bajo la copa).</li>
+   <li>Señalamiento visible desde ambos sentidos de circulación, con anticipación suficiente para que un vehículo pueda reducir velocidad o desviarse.</li>
+   <li>Un vigía o inspector de seguridad en tierra, en constante comunicación con quien trabaja en altura o maneja la motosierra —nunca trabajar en altura sin al menos una persona más en el sitio—.</li>
+   <li>Restricción de paso peatonal por debajo del área de trabajo en altura, incluso si eso implica desviar temporalmente la banqueta.</li>
+ </ul>
+
  <div class="quiz" data-quiz="q12">
   <h4>Autoevaluación · Módulo 12</h4>
   <div class="qitem" data-answer="0">
@@ -894,13 +1060,21 @@ const MODULES = [
 {
  id:"m13", num:"13", title:"Evaluación económica, i-Tree e infraestructura verde",
  short:"Valoración monetaria del arbolado, la herramienta i-Tree del USFS y el concepto de infraestructura verde.",
- sidebar:["Por qué valorar económicamente un árbol","i-Tree: Canopy y Eco","Infraestructura verde: definición","Beneficios cuantificables"],
+ sidebar:["Por qué valorar económicamente un árbol","Métodos de valoración","i-Tree: Canopy y Eco","Infraestructura verde: definición","Beneficios cuantificables","Aplicación en gestión municipal"],
  html:`
  <p class="badge">Valoración económica</p><p class="badge">i-Tree</p><p class="badge">Infraestructura verde</p>
  <h2>13 · Evaluación económica, i-Tree e infraestructura verde</h2>
 
  <h3>¿Por qué poner precio a un árbol?</h3>
  <p>La evaluación económica del arbolado permite justificar presupuestos de mantenimiento, calcular indemnizaciones por daño o derribo ilegal, y comparar el costo de reposición contra el valor de los servicios ambientales que el árbol ya provee. Existen métodos como el de costo de reposición (valor de un árbol equivalente en tamaño y especie) y métodos de valoración de servicios ecosistémicos (captura de carbono, ahorro energético, manejo de agua pluvial).</p>
+
+ <h3>Métodos de valoración de un árbol</h3>
+ <table><tr><th>Método</th><th>Cómo funciona</th></tr>
+ <tr><td><b>Costo de reposición</b></td><td>Estima cuánto costaría comprar, transportar y plantar un árbol equivalente en especie y tamaño; útil sobre todo para árboles jóvenes, donde reponerlos es viable en la práctica</td></tr>
+ <tr><td><b>Valoración por tamaño troncal</b></td><td>Parte de un valor base por unidad de área de la sección transversal del tronco (usualmente medida a la altura del pecho) y lo ajusta con factores de especie, condición fitosanitaria/estructural y ubicación; es el método más usado para árboles adultos, donde el costo de reposición directo ya no es realista</td></tr>
+ <tr><td><b>Valoración de servicios ecosistémicos</b></td><td>Estima el valor monetario de los beneficios que el árbol provee cada año (ahorro energético por sombra, captura de carbono, manejo de agua pluvial, mejora de calidad del aire) — es el enfoque que utilizan herramientas como i-Tree Eco</td></tr>
+ </table>
+ <p>Estos métodos no son excluyentes: un dictamen técnico de derribo (módulo 11) o una indemnización por daño a arbolado puede combinar el valor de reposición del individuo con el valor de los servicios ambientales que dejará de proveer.</p>
 
  <h3>i-Tree: la ciencia forestal del USFS al alcance de todos</h3>
  <p><b>i-Tree</b> es un conjunto de herramientas gratuitas desarrolladas por el Servicio Forestal de Estados Unidos (USFS) y Davey Tree Expert Company, derivado del modelo UFORE de los años 90, para evaluar y gestionar el bosque urbano.</p>
@@ -924,6 +1098,15 @@ const MODULES = [
  <h4>Beneficios documentados</h4>
  <ul><li>Cambios microclimáticos favorables</li><li>Mejora de suelo y aire</li><li>Mejora de la calidad de vida</li></ul>
 
+ <h3>Aplicación práctica en la gestión municipal</h3>
+ <p>Para una autoridad como el IMBIO, la evaluación económica y las herramientas tipo i-Tree tienen usos muy concretos más allá del dato académico:</p>
+ <ul>
+   <li><b>Justificar presupuesto</b> de mantenimiento del arbolado ante el cabildo o la ciudadanía, mostrando el retorno en servicios ambientales frente al costo de no darle mantenimiento.</li>
+   <li><b>Priorizar inversión</b> en las zonas con menor cobertura arbórea (identificadas por fotointerpretación tipo i-Tree Canopy), donde el beneficio marginal de cada árbol nuevo es mayor.</li>
+   <li><b>Calcular compensaciones</b> por derribo autorizado (módulo 11), definiendo cuántos árboles de reposición o qué monto equivalente corresponde al valor perdido.</li>
+   <li><b>Dar seguimiento en el tiempo</b> a la cobertura arbórea municipal, repitiendo el muestreo cada cierto número de años para verificar si la política de arborización está funcionando.</li>
+ </ul>
+
  <div class="quiz" data-quiz="q13">
   <h4>Autoevaluación · Módulo 13</h4>
   <div class="qitem" data-answer="1">
@@ -943,12 +1126,12 @@ const MODULES = [
  `},
 
 {
- id:"m14", num:"14", title:"Diseño de áreas verdes y casos de estudio",
- short:"Los 11 pasos para diseñar un área verde y dos casos reales: Nezahualcóyotl y Xochitla, Estado de México.",
- sidebar:["11 pasos del diseño","Principios de diseño","Caso: Nezahualcóyotl","Caso: Xochitla"],
+ id:"m14", num:"14", title:"Diseño de áreas verdes",
+ short:"Los 11 pasos y los principios de composición para diseñar un área verde funcional, armónica y de bajo mantenimiento.",
+ sidebar:["11 pasos del diseño","Principios de composición","Paleta vegetal y estratos","Mantenimiento a largo plazo"],
  html:`
- <p class="badge">Diseño</p><p class="badge">Casos de estudio</p>
- <h2>14 · Diseño de áreas verdes y casos de estudio</h2>
+ <p class="badge">Diseño</p><p class="badge">Composición</p>
+ <h2>14 · Diseño de áreas verdes</h2>
  <p>El diseño de un área verde equilibra cinco aspectos: <b>estético, ecológico, funcional, económico y cultural</b>.</p>
 
  <h3>11 pasos para diseñar un área verde</h3>
@@ -966,23 +1149,35 @@ const MODULES = [
    <li>Recordar que el espacio necesitará <b>mantenimiento</b> permanente</li>
  </ol>
 
- <h3>Principios del diseño</h3>
- <p>Armonía, balance, contraste, proporción, ritmo y unidad — aplicados a los elementos de forma, color y textura para lograr una composición armónica.</p>
-
  <img src="/arbolado/img/10-diseno-areas-verdes.jpg" alt="" loading="lazy" style="width:100%;border-radius:10px;margin:1.2rem 0;" onerror="this.style.display='none';">
 
- <h3 style="margin-top:2.2rem;">Caso de estudio: Ciudad Nezahualcóyotl</h3>
- <p>Municipio de 63.44 km² y 1.3 millones de habitantes que implementó un programa integral: modernización de 32,000 luminarias a tecnología LED/aditivo cerámico, 45 km de ciclopista, composteo de 50 toneladas diarias de residuos orgánicos, huertos urbanos con agua tratada, y reforestación de zonas antes cementadas.</p>
- <table><tr><th>Especie usada</th><th>Nombre científico</th></tr>
- <tr><td>Tulipán africano</td><td>Spathodea campanulata</td></tr>
- <tr><td>Grevillea</td><td>Grevillea robusta</td></tr>
- <tr><td>Árbol de orquídea</td><td>Bauhinia variegata</td></tr>
- <tr><td>Fresno</td><td>Fraxinus uhdei</td></tr>
- <tr><td>Trueno</td><td>Ligustrum lucidum</td></tr>
- </table>
+ <h3>Principios de composición</h3>
+ <p>Estos seis principios se aplican sobre la forma, el color y la textura de la vegetación y el mobiliario para lograr una composición legible y agradable, en vez de un conjunto de elementos sueltos:</p>
+ <ul>
+   <li><b>Armonía:</b> relación agradable entre los elementos por semejanza de forma, color o textura — evita mezclar demasiados contrastes a la vez.</li>
+   <li><b>Balance:</b> distribución del peso visual del espacio. Puede ser <i>simétrico</i> (ejes claros, formal, típico de plazas cívicas) o <i>asimétrico</i> (más informal y natural, típico de jardines naturalistas con especies nativas).</li>
+   <li><b>Contraste:</b> uso deliberado de elementos opuestos —altura, color, textura, forma de copa— para crear puntos de interés y romper la monotonía visual.</li>
+   <li><b>Proporción:</b> relación de tamaño entre los elementos, el espacio y el usuario. Un árbol de gran porte en un jardín pequeño, o uno pequeño en una plaza amplia, se percibe fuera de escala.</li>
+   <li><b>Ritmo:</b> repetición ordenada de un elemento (por ejemplo, una hilera de árboles de la misma especie) que guía el recorrido visual y físico por el espacio.</li>
+   <li><b>Unidad:</b> que vegetación, mobiliario, pavimentos e iluminación se perciban como parte de un mismo diseño coherente.</li>
+ </ul>
+ <p>A estos seis se suman otros dos criterios prácticos muy usados en diseño de paisaje:</p>
+ <ul>
+   <li><b>Punto focal:</b> un elemento que atrae la mirada primero al llegar al espacio — un árbol singular de forma distintiva, una fuente, una escultura o un acceso destacado.</li>
+   <li><b>Secuencia y recorrido:</b> cómo cambia la experiencia del usuario al caminar por el espacio — alternar zonas de sol y sombra, apertura y cierre visual, y momentos de pausa (bancas, plazoletas) a lo largo del trayecto.</li>
+ </ul>
 
- <h3>Caso de estudio: Xochitla y Parque Bicentenario</h3>
- <p>Casos documentados de manejo integral de áreas verdes en el Estado de México que sirven de referencia para inventarios con i-Tree, programas de MIP y gestión de arbolado a escala de parque metropolitano — articulando en la práctica todos los módulos anteriores de este curso.</p>
+ <h3>Paleta vegetal y estratos</h3>
+ <p>Al elaborar la lista de plantas (paso 10), combina distintos <b>estratos de altura</b> — árboles, arbustos y herbáceas o cubresuelos — para dar densidad visual y ecológica al espacio, en vez de plantar un solo estrato de forma aislada. Aplica los mismos criterios de selección de especies del módulo 3: prioriza especies nativas o bien adaptadas al sitio, revisa su tamaño adulto (no el del vivero), su necesidad de riego y el comportamiento de su raíz antes de definir dónde va cada una.</p>
+
+ <h3>Mantenimiento a largo plazo</h3>
+ <p>Ningún diseño es completo sin planear quién y cómo le dará mantenimiento después de la plantación:</p>
+ <ul>
+   <li><b>Presupuesto de mantenimiento</b> recurrente, no solo el costo inicial de plantación.</li>
+   <li><b>Riego de establecimiento</b> durante los primeros meses, y calendario de riego a largo plazo según la especie.</li>
+   <li><b>Poda de formación</b> en los primeros años, para guiar la estructura del árbol adulto.</li>
+   <li><b>Reposición de bajas</b> — prever qué porcentaje de plantas no sobrevivirá el primer año y cómo se repondrán.</li>
+ </ul>
 
  <div class="callout tip"><b>Cierre del curso:</b> "La mitad de la belleza depende del paisaje y la otra mitad del hombre que la mira" — Khalil Gibran, citado en el módulo original de Diseño de Áreas Verdes.</div>
 
@@ -995,10 +1190,10 @@ const MODULES = [
     <div class="qopt" data-i="2">Recordar que necesitará mantenimiento</div>
   </div>
   <div class="qitem" data-answer="1">
-    <p class="qtext">2. ¿Cuántos km de ciclopista implementó Nezahualcóyotl en su programa de infraestructura verde?</p>
-    <div class="qopt" data-i="0">10 km</div>
-    <div class="qopt" data-i="1">45 km</div>
-    <div class="qopt" data-i="2">100 km</div>
+    <p class="qtext">2. ¿Qué principio de composición se refiere a la repetición ordenada de un elemento para guiar el recorrido visual?</p>
+    <div class="qopt" data-i="0">Contraste</div>
+    <div class="qopt" data-i="1">Ritmo</div>
+    <div class="qopt" data-i="2">Proporción</div>
   </div>
   <div class="quiz-result"></div>
  </div>
@@ -1055,6 +1250,11 @@ MODULES.forEach(m=>{
      <main class="course-main">
        ${m.html}
        <p class="progress-note">Módulo ${m.num} de ${MODULES.length} · IMBIO</p>
+       <div class="bottom-nav">
+         ${prev? `<a class="nav-prev" onclick="openCourse('${prev.id}')">← Módulo ${prev.num}<br><small>${prev.title}</small></a>`:''}
+         <a class="nav-index" onclick="showLanding()">Volver al índice</a>
+         ${next? `<a class="nav-next" onclick="openCourse('${next.id}')">Módulo ${next.num}<br><small>${next.title}</small> →</a>`:''}
+       </div>
      </main>
    </div>`;
   coursesEl.appendChild(course);
