@@ -68,24 +68,50 @@
     z-index: 20;
     background: #fff;
     border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1rem 0.7rem;
+  }
+  .subnav-principal {
     display: flex;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
+    gap: 0.75rem;
     overflow-x: auto;
     justify-content: center;
+    margin-bottom: 0.55rem;
   }
-  nav.subnav a {
+  .subnav-btn-principal {
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--azul-marino), var(--azul-marino-claro));
+    box-shadow: 0 3px 10px rgba(0, 42, 92, 0.22);
+  }
+  .subnav-btn-principal:hover { filter: brightness(1.08); }
+  .subnav-secundaria {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .subnav-secundaria a {
     flex-shrink: 0;
     text-decoration: none;
     color: var(--azul-marino);
     font-weight: 600;
-    font-size: 0.85rem;
-    padding: 0.5rem 0.95rem;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 999px;
     background: var(--fondo);
     border: 1px solid var(--borde);
   }
-  nav.subnav a:hover { background: var(--verde-claro); border-color: var(--verde); }
+  .subnav-secundaria a:hover { background: var(--verde-claro); border-color: var(--verde); }
+  @media (max-width: 560px) {
+    .subnav-principal { flex-direction: column; align-items: stretch; }
+    .subnav-btn-principal { text-align: center; }
+  }
 
   main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 
@@ -463,11 +489,15 @@
 </header>
 
 <nav class="subnav">
-  <a href="#guia">Cómo plantar</a>
-  <a href="#consejos">Consejos y datos útiles</a>
-  <a href="#guia-polinizadores">Haz tu jardín de polinizadores</a>
-  <a href="#polinizadores">Especies para polinizadores</a>
-  <a href="#catalogo">Catálogo de especies</a>
+  <div class="subnav-principal">
+    <a href="#catalogo" class="subnav-btn-principal">🌳 Catálogo de especies</a>
+    <a href="#polinizadores" class="subnav-btn-principal">🌼 Jardín de polinizadores</a>
+  </div>
+  <div class="subnav-secundaria">
+    <a href="#guia">Cómo plantar</a>
+    <a href="#consejos">Consejos y datos útiles</a>
+    <a href="#guia-polinizadores">Haz tu jardín de polinizadores</a>
+  </div>
 </nav>
 
 <main>
@@ -726,11 +756,11 @@ const JP_PASOS = [
     html: `
       <div class="jp-foto-wrap">
         <div class="jp-foto" data-foto-id="maria_bonita"><span class="placeholder">🌸</span></div>
-        <p class="jp-foto-caption">Cosmos (<em>Cosmos bipinnatus</em>), la flor silvestre favorita del biólogo Héctor Ávila Villegas, quien impulsó la conservación de polinizadores en Aguascalientes.</p>
+        <p class="jp-foto-caption">Cosmos (<em>Cosmos bipinnatus</em>), una de las flores silvestres nativas más visitadas por abejas y mariposas en el centro de México.</p>
       </div>
       <div class="jp-dato"><strong>Más del 80%</strong> de las plantas silvestres del planeta y <strong>tres cuartas partes</strong> de los cultivos agrícolas dependen de la polinización animal (Xerces Society).</div>
-      <p>En Aguascalientes la atención se ha centrado casi siempre en la abeja europea (<em>Apis mellifera</em>); no hay todavía investigadores locales estudiando la diversidad de nuestras abejas nativas, aunque mariposas y polillas están algo mejor documentadas gracias a trabajos de la Universidad Autónoma de Aguascalientes (UAA). Cada jardín, por pequeño que sea, ayuda a cerrar ese vacío.</p>
-      <p>En 2017, con apoyo del Gobierno del Estado y estudiantes de Biología de la UAA, el biólogo Héctor Ávila Villegas creó un banco de semillas de plantas nativas y repartió más de <strong>6,000 "bombas de semillas"</strong> entre apicultores locales. En 2019, con acompañamiento técnico de la Xerces Society, estableció la <strong>primera franja de hábitat para polinizadores de Aguascalientes</strong> en la granja El Rosario. Tu jardín puede sumarse a ese mismo esfuerzo.</p>
+      <p>Las abejas, mariposas, colibríes y otros polinizadores son responsables de que la mayoría de las plantas con flor —silvestres y de cultivo— puedan reproducirse. En Aguascalientes la atención se ha centrado casi siempre en la abeja europea (<em>Apis mellifera</em>); todavía sabemos poco sobre la diversidad de nuestras abejas nativas, aunque mariposas y polillas están algo mejor documentadas gracias a trabajos de la Universidad Autónoma de Aguascalientes.</p>
+      <p>En el estado ya existen esfuerzos de conservación de polinizadores, como bancos de semillas de plantas nativas y franjas de hábitat sembradas en granjas y terrenos particulares. Un jardín de polinizadores en tu casa, escuela o negocio —por pequeño que sea— puede sumarse a esa misma red y ayudar a cerrar el vacío de información sobre las especies locales.</p>
       ${JP_FUENTE}
     `,
   },
@@ -774,7 +804,7 @@ const JP_PASOS = [
       <div class="jp-tab-panel activo" id="jp-tab-semilla">
         <div class="jp-foto-wrap">
           <div class="jp-foto" data-foto-id="tepozan_blanco"><span class="placeholder">🌿</span></div>
-          <p class="jp-foto-caption">Tepozán Blanco (<em>Buddleja cordata</em>), el "arbusto de mariposas" nativo del desierto chihuahuense que Héctor Ávila Villegas recuerda de su infancia en Zacatecas.</p>
+          <p class="jp-foto-caption">Tepozán Blanco (<em>Buddleja cordata</em>), arbusto nativo del desierto chihuahuense muy visitado por mariposas.</p>
         </div>
         <p>Las especies nativas están acostumbradas al suelo, la temperatura y la lluvia de la región, por lo que una vez establecidas necesitan mucha menos agua y cuidado que las exóticas.</p>
         <ul>
@@ -944,7 +974,7 @@ function especieCard(e) {
       <div class="cuerpo">
         <div class="cabecera">
           <div>
-            <h4>${e.nombre_comun}</h4>
+            <h4>${e.nombre}</h4>
             <div class="cientifico">${e.nombre_cientifico || ''}</div>
           </div>
           <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa de México' : 'Exótica adaptada'}</span>
@@ -1122,7 +1152,7 @@ function filtrarEspecies() {
   const nativa = document.getElementById('f-nativa').value;
 
   return ESPECIES.filter(e => {
-    if (q && !(`${e.nombre_comun} ${e.nombre_cientifico}`.toLowerCase().includes(q))) return false;
+    if (q && !(`${e.nombre} ${e.nombre_cientifico}`.toLowerCase().includes(q))) return false;
     if (tipo && e.tipo !== tipo) return false;
     if (sitio && !(e.sitios || []).includes(sitio)) return false;
     if (zona && !(e.zonas_estado || []).includes(zona)) return false;
