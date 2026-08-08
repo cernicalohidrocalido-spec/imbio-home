@@ -38,31 +38,6 @@
     padding: 2.5rem 1.5rem 2.75rem;
     text-align: center;
   }
-  header .ayto {
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #aecbe6;
-  }
-  header .instituto {
-    margin-top: 0.35rem;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #dbe8f5;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  header .logo-ayto {
-    display: block;
-    height: 72px;
-    width: auto;
-    margin: 1.1rem auto 1.2rem;
-    border-radius: 8px;
-    background: #fff;
-    padding: 6px 10px;
-  }
   header .icono { font-size: 2.4rem; margin-bottom: 0.5rem; }
   header h1 { font-size: 2rem; font-weight: 800; letter-spacing: 0.3px; max-width: 760px; margin: 0 auto; }
   header p {
@@ -94,49 +69,27 @@
     background: #fff;
     border-bottom: 1px solid var(--borde);
     display: flex;
-    gap: 0.45rem;
-    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    /* center + overflow oculta el primer ítem en móvil */
-    justify-content: flex-start;
+    justify-content: center;
   }
   nav.subnav a {
     flex-shrink: 0;
     text-decoration: none;
     color: var(--azul-marino);
     font-weight: 600;
-    font-size: 0.82rem;
-    padding: 0.48rem 0.85rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.95rem;
     border-radius: 999px;
     background: var(--fondo);
     border: 1px solid var(--borde);
-    white-space: nowrap;
   }
-  nav.subnav a .nav-full { display: none; }
-  nav.subnav a .nav-corto { display: inline; }
   nav.subnav a:hover { background: var(--verde-claro); border-color: var(--verde); }
-  nav.subnav a.active {
-    background: var(--azul-marino);
-    color: #fff;
-    border-color: var(--azul-marino);
-  }
-  @media (min-width: 760px) {
-    nav.subnav {
-      justify-content: center;
-      padding: 0.75rem 1rem;
-      gap: 0.5rem;
-    }
-    nav.subnav a { font-size: 0.85rem; padding: 0.5rem 0.95rem; }
-    nav.subnav a .nav-full { display: inline; }
-    nav.subnav a .nav-corto { display: none; }
-  }
 
   main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 3rem; }
 
-  section.panel { padding-top: 2.5rem; display: none; }
-  section.panel.active { display: block; }
+  section { padding-top: 2.5rem; }
   .section-titulo {
     font-size: 1.5rem;
     font-weight: 800;
@@ -198,7 +151,7 @@
     color: var(--gris-texto);
   }
 
-  /* ── ¿Por qué importa reforestar bien? ── */
+  /* ── Consejos y datos útiles ── */
   .datos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -249,7 +202,7 @@
     overflow: hidden;
     transition: max-height 0.25s ease;
   }
-  .acordeon-item.abierto .acordeon-respuesta { max-height: 520px; }
+  .acordeon-item.abierto .acordeon-respuesta { max-height: 400px; }
   .acordeon-respuesta p {
     padding: 0 1.25rem 1.15rem;
     font-size: 0.9rem;
@@ -257,6 +210,126 @@
     line-height: 1.55;
   }
   .acordeon-respuesta a { color: var(--verde); font-weight: 600; }
+
+  /* ── Wizard: haz tu jardín de polinizadores ── */
+  .jp-wizard {
+    background: #fff;
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0, 42, 92, 0.08);
+    padding: 1.75rem;
+  }
+  .jp-progreso { margin-bottom: 1.5rem; }
+  .jp-dots { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.85rem; flex-wrap: wrap; }
+  .jp-dot {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--borde);
+    background: #fff;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .jp-dot.activo { border-color: var(--verde); background: var(--verde); color: #fff; }
+  .jp-dot.completado { border-color: var(--verde); color: var(--verde); }
+  .jp-barra { height: 5px; border-radius: 999px; background: var(--fondo); overflow: hidden; }
+  .jp-barra-fill { height: 100%; background: var(--verde); border-radius: 999px; transition: width 0.25s ease; }
+
+  .jp-paso { min-height: 220px; }
+  .jp-paso-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--verde-oscuro); margin-bottom: 0.4rem; }
+  .jp-paso h3 { font-size: 1.35rem; font-weight: 800; color: var(--azul-marino); margin-bottom: 0.85rem; }
+  .jp-paso p { font-size: 0.95rem; color: var(--gris-texto); line-height: 1.6; margin-bottom: 0.85rem; }
+  .jp-paso ul { margin: 0 0 0.85rem 1.2rem; padding: 0; }
+  .jp-paso li { font-size: 0.92rem; color: var(--gris-texto); line-height: 1.6; margin-bottom: 0.4rem; }
+  .jp-fuente { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; }
+  .jp-fuente a { color: var(--verde); }
+
+  .jp-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .jp-tab-btn {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--borde);
+    background: var(--fondo);
+    color: var(--gris-texto);
+    cursor: pointer;
+  }
+  .jp-tab-btn.activo { background: var(--verde); border-color: var(--verde); color: #fff; }
+  .jp-tab-panel { display: none; }
+  .jp-tab-panel.activo { display: block; }
+
+  .jp-dato {
+    background: var(--verde-claro);
+    border: 1px solid rgba(47, 143, 91, 0.25);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    font-size: 0.88rem;
+    color: var(--gris-texto);
+    margin-bottom: 0.85rem;
+  }
+  .jp-dato strong { color: var(--verde-oscuro); }
+
+  .jp-foto-wrap { float: right; width: 42%; max-width: 220px; margin: 0 0 0.85rem 1.1rem; }
+  .jp-foto {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--verde-claro);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .jp-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .jp-foto .placeholder { font-size: 1.8rem; opacity: 0.5; }
+  .jp-foto .creditos {
+    position: absolute; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
+    color: #fff; font-size: 0.58rem; padding: 0.5rem 0.5rem 0.25rem; text-align: right;
+  }
+  .jp-foto-caption { font-size: 0.72rem; color: var(--muted); margin-top: 0.35rem; line-height: 1.35; text-align: center; }
+  @media (max-width: 560px) {
+    .jp-foto-wrap { float: none; width: 60%; max-width: 200px; margin: 0 auto 1rem; }
+  }
+
+  .jp-nav {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .jp-btn {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.6rem 1.3rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--verde);
+    color: #fff;
+    cursor: pointer;
+  }
+  .jp-btn:disabled { opacity: 0.4; cursor: default; }
+  .jp-btn-secundario { background: #fff; color: var(--azul-marino); border: 1px solid var(--borde); }
+  .jp-contador { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  .jp-creditos { margin-top: 1.25rem; padding: 1rem 1.25rem; background: #fff; border: 1px solid var(--borde); border-radius: 14px; }
+  .jp-creditos-titulo { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--verde-oscuro); margin-bottom: 0.6rem; }
+  .jp-creditos ul { margin: 0; padding: 0 0 0 1.1rem; }
+  .jp-creditos li { font-size: 0.78rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.45rem; }
+  .jp-creditos li:last-child { margin-bottom: 0; }
+  .jp-creditos a { color: var(--verde); font-weight: 600; }
+
+  @media (max-width: 480px) {
+    .jp-nav { flex-wrap: wrap; }
+    .jp-contador { order: -1; width: 100%; text-align: center; }
+  }
 
   /* ── Catálogo ── */
   .filtros {
@@ -319,89 +392,6 @@
     font-size: 0.62rem;
     padding: 0.6rem 0.6rem 0.3rem;
     text-align: right;
-    pointer-events: none;
-  }
-  .especie-foto.has-many {
-    touch-action: pan-y;
-    cursor: grab;
-    user-select: none;
-  }
-  .especie-foto .foto-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border: none;
-    border-radius: 999px;
-    background: rgba(0,0,0,0.45);
-    color: #fff;
-    font-size: 1.1rem;
-    line-height: 1;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-  /* Flechas solo en desktop con mouse; en móvil se usa deslizamiento */
-  @media (hover: hover) and (pointer: fine) {
-    .especie-foto.has-many:hover .foto-nav,
-    .especie-foto.has-many:focus-within .foto-nav { display: flex; }
-  }
-  .especie-foto .foto-nav.prev { left: 0.45rem; }
-  .especie-foto .foto-nav.next { right: 0.45rem; }
-  .especie-foto .foto-nav:hover { background: rgba(0,0,0,0.7); }
-  .especie-foto .foto-dots {
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 1.35rem;
-    display: none;
-    justify-content: center;
-    gap: 0.28rem;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .especie-foto.has-many .foto-dots { display: flex; }
-  .especie-foto .foto-dots button {
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    border: none;
-    padding: 0;
-    background: rgba(255,255,255,0.55);
-    pointer-events: auto;
-    cursor: pointer;
-  }
-  .especie-foto .foto-dots button.active { background: #fff; transform: scale(1.15); }
-  .especie-foto .foto-contador {
-    position: absolute;
-    top: 0.45rem;
-    right: 0.45rem;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 0.15rem 0.45rem;
-    border-radius: 999px;
-    display: none;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .especie-foto.has-many .foto-contador { display: block; }
-  .especie-foto.has-many .swipe-hint {
-    position: absolute;
-    left: 0.5rem;
-    bottom: 1.35rem;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.62rem;
-    font-weight: 600;
-    z-index: 2;
-    pointer-events: none;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.45);
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .especie-foto .swipe-hint { display: none; }
   }
   .especie-card .cuerpo { padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; flex-grow: 1; }
   .especie-card .cabecera { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
@@ -460,60 +450,80 @@
     border: 1px dashed var(--borde);
   }
 
-  footer {
-    text-align: center;
-    padding: 2.25rem 1.25rem 2.5rem;
-    color: #647082;
-    font-size: 0.92rem;
-    margin-top: 2rem;
-    border-top: 1px solid var(--borde);
-    background: #fff;
-    line-height: 1.55;
-  }
-  footer .ayto {
-    font-weight: 700;
-    color: var(--azul-marino);
-    font-size: 0.95rem;
-  }
-  footer .instituto {
-    margin-top: 0.2rem;
-    color: var(--gris-texto);
-    font-weight: 600;
-  }
-  footer .creditos {
-    margin-top: 0.85rem;
-    color: var(--muted);
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  footer .creditos a { color: var(--azul-marino); font-weight: 600; text-decoration: none; }
-  footer .creditos a:hover { text-decoration: underline; }
-  footer .copy { margin-top: 0.9rem; font-size: 0.85rem; color: #8a94a6; }
+  footer { text-align: center; padding: 2rem 1rem; color: #647082; font-size: 0.95rem; margin-top: 2rem; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
-  <div class="instituto">Instituto Municipal de Biodiversidad y Protección Ambiental</div>
-  <img class="logo-ayto" src="/logo_ayuntamiento.jpg" alt="Logotipo del H. Ayuntamiento de Pabellón de Arteaga">
   <div class="icono">🌱</div>
   <h1>Manual de Plantas Útiles para la Reforestación</h1>
   <p>Guía práctica y catálogo de especies para plantar y cuidar árboles en Pabellón de Arteaga y el estado de Aguascalientes.</p>
   <a class="volver" href="/">← Volver a IMBIO</a>
 </header>
 
-<nav class="subnav" id="subnav">
-  <a href="#catalogo" data-panel="catalogo"><span class="nav-corto">Catálogo</span><span class="nav-full">Catálogo de especies</span></a>
-  <a href="#polinizadores" data-panel="polinizadores"><span class="nav-corto">🐝 Polinizadores</span><span class="nav-full">🐝 Jardines de polinizadores</span></a>
-  <a href="#guia" data-panel="guia">Cómo plantar</a>
-  <a href="#consejos" data-panel="consejos"><span class="nav-corto">¿Por qué importa?</span><span class="nav-full">¿Por qué importa reforestar bien?</span></a>
+<nav class="subnav">
+  <a href="#guia">Cómo plantar</a>
+  <a href="#consejos">Consejos y datos útiles</a>
+  <a href="#guia-polinizadores">Haz tu jardín de polinizadores</a>
+  <a href="#polinizadores">Especies para polinizadores</a>
+  <a href="#catalogo">Catálogo de especies</a>
 </nav>
 
 <main>
 
-  <section id="catalogo" class="panel active">
+  <section id="guia">
+    <div class="section-titulo">Cómo plantar un árbol, paso a paso</div>
+    <p class="section-sub">Sigue esta guía para asegurar la mayor supervivencia posible de cada árbol plantado. La tasa de supervivencia al año es el indicador más importante de éxito en reforestación: una tasa mayor al 70% se considera exitosa.</p>
+    <div class="pasos-grid" id="pasos-grid"></div>
+  </section>
+
+  <section id="consejos">
+    <div class="section-titulo">¿Por qué importa reforestar bien?</div>
+    <p class="section-sub">Cada árbol que se planta en Pabellón de Arteaga con la especie correcta, en el sitio correcto, es agua, sombra y biodiversidad ganada para las próximas décadas. Este manual existe para que esa decisión se tome con información, no al azar.</p>
+
+    <div class="datos-grid" id="datos-grid"></div>
+
+    <div class="acordeon" id="acordeon-consejos"></div>
+  </section>
+
+  <section id="guia-polinizadores">
+    <div class="section-titulo">🐝 Haz tu jardín de polinizadores</div>
+    <p class="section-sub">Guía paso a paso para establecer un jardín que alimente y albergue abejas nativas, mariposas y colibríes en Pabellón de Arteaga — con semillas de especies nativas o con plantas de vivero. Basada en la guía de la <a href="https://xerces.org/blog/conservacion-de-polinizadores-en-aguascalientes-mexico" target="_blank" rel="noopener">Xerces Society sobre conservación de polinizadores en Aguascalientes</a>.</p>
+
+    <div class="jp-wizard">
+      <div class="jp-progreso">
+        <div class="jp-dots" id="jp-dots"></div>
+        <div class="jp-barra"><div class="jp-barra-fill" id="jp-barra-fill"></div></div>
+      </div>
+      <div class="jp-paso" id="jp-paso"></div>
+      <div class="jp-nav">
+        <button type="button" class="jp-btn jp-btn-secundario" id="jp-anterior" onclick="jpIrPaso(jpPasoActual - 1)">‹ Anterior</button>
+        <span class="jp-contador" id="jp-contador"></span>
+        <button type="button" class="jp-btn" id="jp-siguiente" onclick="jpIrPaso(jpPasoActual + 1)">Siguiente ›</button>
+      </div>
+    </div>
+
+    <div class="jp-creditos">
+      <p class="jp-creditos-titulo">Fuentes y créditos</p>
+      <ul>
+        <li>Ávila Villegas, Héctor. <a href="https://xerces.org/blog/conservacion-de-polinizadores-en-aguascalientes-mexico" target="_blank" rel="noopener">"Conservación de Polinizadores en Aguascalientes, México"</a> (parte 1) y <a href="https://xerces.org/blog/arrancando-la-primera-iniciativa-de-conservacion-de-polinizadores-para-el-centro-de-mexico" target="_blank" rel="noopener">"Arrancando la Primera Iniciativa de Conservación de Polinizadores para el Centro de México"</a> (parte 2). Blog de la Xerces Society, 2020–2021. Traducción de Stephanie Frischie.</li>
+        <li>The Xerces Society for Invertebrate Conservation y USDA NRCS. <em>Cultivando para los Polinizadores</em> (folleto).</li>
+        <li>Riverside-Corona Resource Conservation District. <em>Planifique su paraíso polinizador</em> (guía de diseño de jardín).</li>
+        <li>The Xerces Society for Invertebrate Conservation. <em>Jardines para Polinizadores — Guía de diseño</em>.</li>
+        <li>Fotografías de <em>Cosmos bipinnatus</em> y <em>Buddleja cordata</em>: contribuciones de la comunidad de <a href="https://www.inaturalist.org" target="_blank" rel="noopener">iNaturalist</a> o de <a href="https://es.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a>, según se indica en cada imagen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="polinizadores">
+    <div class="section-titulo">🌼 Especies para atraer polinizadores</div>
+    <p class="section-sub">Árboles, arbustos y herbáceas con flor que alimentan abejas nativas, mariposas y colibríes. Úsalas para llenar tu jardín de polinizadores del paso anterior.</p>
+    <p class="resultados-conteo" id="polinizadores-conteo"></p>
+    <div class="catalogo-grid" id="polinizadores-grid"></div>
+  </section>
+
+  <section id="catalogo">
     <div class="section-titulo">Catálogo de especies</div>
     <p class="section-sub">218 especies nativas de México y exóticas bien adaptadas al clima semiárido de Aguascalientes, con recomendaciones de sitio, riego y advertencias de raíz.</p>
     <p class="section-sub" style="margin-top:-1.25rem; font-size:0.82rem;">"Nativa de México" indica que la especie es originaria del país; no todas ocurren de forma natural específicamente en Pabellón de Arteaga. Usa el filtro de zona para ver qué especies están documentadas en el valle, la sierra, oriente o Calvillo.</p>
@@ -560,114 +570,14 @@
     <p class="sin-resultados" id="sin-resultados" style="display:none;">No hay especies con estos filtros. Intenta ajustar la búsqueda.</p>
   </section>
 
-  <section id="polinizadores" class="panel">
-    <div class="section-titulo">🐝 Jardines de polinizadores</div>
-    <p class="section-sub">Árboles, arbustos y herbáceas con flor que alimentan abejas nativas, mariposas y colibríes. Para que un jardín funcione como refugio real de polinizadores, evita el uso de insecticidas y deja algunas zonas con flor silvestre sin podar.</p>
-
-    <div class="filtros">
-      <input type="search" id="p-buscar" placeholder="Buscar por nombre común o científico…">
-      <select id="p-tipo">
-        <option value="">Todos los tipos</option>
-        <option value="arbol">Árbol</option>
-        <option value="arbusto">Arbusto</option>
-        <option value="herbacea">Herbácea</option>
-      </select>
-      <select id="p-sitio">
-        <option value="">Cualquier sitio</option>
-        <option value="banquetas">Banquetas</option>
-        <option value="camellones">Camellones</option>
-        <option value="parques">Parques</option>
-        <option value="jardin">Jardín</option>
-        <option value="agricola">Agrícola</option>
-      </select>
-      <select id="p-zona">
-        <option value="">Cualquier zona</option>
-        <option value="valle">Valle</option>
-        <option value="sierra">Sierra</option>
-        <option value="oriente">Oriente</option>
-        <option value="calvillo">Calvillo</option>
-      </select>
-      <select id="p-riego">
-        <option value="">Cualquier riego</option>
-        <option value="muy bajo">Muy bajo</option>
-        <option value="bajo">Bajo</option>
-        <option value="medio">Medio</option>
-        <option value="medio-alto">Medio-alto</option>
-        <option value="alto">Alto</option>
-      </select>
-      <select id="p-nativa">
-        <option value="">Nativas de México y exóticas</option>
-        <option value="1">Solo nativas de México</option>
-        <option value="0">Solo exóticas adaptadas</option>
-      </select>
-    </div>
-    <p class="resultados-conteo" id="polinizadores-conteo"></p>
-    <div class="catalogo-grid" id="polinizadores-grid"></div>
-    <p class="sin-resultados" id="polinizadores-sin" style="display:none;">No hay especies polinizadoras con estos filtros. Intenta ajustar la búsqueda.</p>
-  </section>
-
-  <section id="guia" class="panel">
-    <div class="section-titulo">Cómo plantar un árbol, paso a paso</div>
-    <p class="section-sub">Sigue esta guía para asegurar la mayor supervivencia posible de cada árbol plantado. La tasa de supervivencia al año es el indicador más importante de éxito en reforestación: una tasa mayor al 70% se considera exitosa.</p>
-    <div class="pasos-grid" id="pasos-grid"></div>
-  </section>
-
-  <section id="consejos" class="panel">
-    <div class="section-titulo">¿Por qué importa reforestar bien?</div>
-    <p class="section-sub">Cada árbol que se planta en Pabellón de Arteaga con la especie correcta, en el sitio correcto, es agua, sombra y biodiversidad ganada para las próximas décadas. Este manual existe para que esa decisión se tome con información, no al azar.</p>
-    <div class="datos-grid" id="datos-grid"></div>
-    <div class="acordeon" id="acordeon-consejos"></div>
-  </section>
-
 </main>
 
 <footer>
-  <div class="ayto">H. Ayuntamiento de Pabellón de Arteaga</div>
-  <div class="instituto">Instituto Municipal de Biodiversidad y Protección Ambiental</div>
-  <div class="creditos">
-    Coordinación y elaboración: Biólogo Luis Felipe Lozano Román<br>
-    Correo electrónico: <a href="mailto:imbio@pabellon.gob.mx">imbio@pabellon.gob.mx</a>
-  </div>
-  <div class="copy">© <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes</div>
+  © <span id="anio"></span> IMBIO · Pabellón de Arteaga, Aguascalientes
 </footer>
 
 <script>
 document.getElementById("anio").textContent = new Date().getFullYear();
-
-const PANELES = ['catalogo', 'polinizadores', 'guia', 'consejos'];
-
-function mostrarPanel(id) {
-  const panelId = PANELES.includes(id) ? id : 'catalogo';
-  document.querySelectorAll('section.panel').forEach(s => {
-    s.classList.toggle('active', s.id === panelId);
-  });
-  document.querySelectorAll('nav.subnav a').forEach(a => {
-    a.classList.toggle('active', a.dataset.panel === panelId);
-  });
-  const activo = document.querySelector(`nav.subnav a[data-panel="${panelId}"]`);
-  if (activo) {
-    // Asegura que el ítem activo (p. ej. Catálogo) quede visible en la tira móvil
-    activo.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-  }
-  if (location.hash.slice(1) !== panelId) {
-    history.replaceState(null, '', '#' + panelId);
-  }
-  window.scrollTo(0, 0);
-}
-
-function panelDesdeHash() {
-  const h = location.hash.replace(/^#/, '');
-  mostrarPanel(h || 'catalogo');
-}
-
-document.querySelectorAll('nav.subnav a').forEach(a => {
-  a.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    mostrarPanel(a.dataset.panel);
-  });
-});
-window.addEventListener('hashchange', panelDesdeHash);
-panelDesdeHash();
 
 const TIPO_LABEL = { arbol: 'Árbol', arbusto: 'Arbusto', herbacea: 'Herbácea' };
 const SITIO_LABEL = { banquetas: 'Banquetas', camellones: 'Camellones', parques: 'Parques', jardin: 'Jardín', agricola: 'Agrícola' };
@@ -683,7 +593,7 @@ const PASOS = [
   },
   {
     numero: '2 de 8', titulo: 'Elige la especie correcta', img: null,
-    descripcion: 'Prioriza especies nativas o adaptadas al clima semiárido de Aguascalientes, con bajo consumo hídrico. Consulta el catálogo: filtra por tu sitio (banqueta, camellón, parque) y región para ver las especies recomendadas, y revisa las advertencias de cada ficha antes de plantar.',
+    descripcion: 'Prioriza especies nativas o adaptadas al clima semiárido de Aguascalientes, con bajo consumo hídrico. Evita las especies PROHIBIDAS por SEMARNAT, Secretaría Estatal y SEMADESU (ver sección Qué NO plantar). Consulta el catálogo: filtra por tu sitio (banqueta, camellón, parque) y región para ver las especies recomendadas.',
     consejo: 'Las plantas nativas de la región requieren hasta 80% menos agua que las especies exóticas una vez establecidas.',
     tip: 'En Aguascalientes, la mejor época para plantar es al inicio de lluvias (junio–julio) o en otoño (sept–oct) cuando el calor cede. Evita plantar en enero–febrero cuando hay riesgo de heladas para especies sensibles.',
   },
@@ -703,8 +613,8 @@ const PASOS = [
     consejo: 'Si el cuello queda más de 5 cm bajo el suelo, el tronco puede pudrirse. Si queda elevado, las raíces se secan.',
   },
   {
-    numero: '6 de 8', titulo: 'Arriate (cajete) y primer riego', img: '/reforestacion/img/guia_paso_05_regar.jpg',
-    descripcion: 'Forma un bordillo circular con tierra alrededor del árbol (radio 40-50 cm, altura 10-15 cm). Este arriate o cajete —como se le conoce en Aguascalientes— retiene el agua. Aplica el primer riego: mínimo 20 litros, muy lentamente, para empapar todo el cepellón y que el agua llegue hasta el fondo del hoyo. No uses manguera a presión directamente sobre la base.',
+    numero: '6 de 8', titulo: 'Palangana y primer riego', img: '/reforestacion/img/guia_paso_05_regar.jpg',
+    descripcion: 'Forma un bordillo circular con tierra alrededor del árbol (radio 40-50 cm, altura 10-15 cm). Esta palangana retiene el agua. Aplica el primer riego: mínimo 20 litros, muy lentamente, para empapar todo el cepellón y que el agua llegue hasta el fondo del hoyo. No uses manguera a presión directamente sobre la base.',
     consejo: 'El primer riego es el más importante de toda la vida del árbol. Un árbol mal hidratado al plantar tarda meses en recuperarse.',
   },
   {
@@ -735,7 +645,7 @@ function renderPasos() {
   `).join('');
 }
 
-/* ═══ ¿Por qué importa reforestar bien? ═══ */
+/* ═══ Consejos y datos útiles ═══ */
 const DATOS_CURIOSOS = [
   { icono: '🌡️', cifra: 'Hasta 5°C menos', texto: 'La sombra de un árbol urbano bien ubicado reduce la temperatura de su entorno inmediato.' },
   { icono: '💧', cifra: '80% menos agua', texto: 'Las especies nativas ya establecidas requieren mucha menos agua de riego que las exóticas no adaptadas.' },
@@ -746,9 +656,7 @@ const DATOS_CURIOSOS = [
 ];
 
 function renderDatosCuriosos() {
-  const grid = document.getElementById('datos-grid');
-  if (!grid) return;
-  grid.innerHTML = DATOS_CURIOSOS.map(d => `
+  document.getElementById('datos-grid').innerHTML = DATOS_CURIOSOS.map(d => `
     <div class="dato-card">
       <div class="dato-icono">${d.icono}</div>
       <div class="dato-cifra">${d.cifra}</div>
@@ -790,7 +698,6 @@ const CONSEJOS_ACORDEON = [
 
 function renderAcordeonConsejos() {
   const cont = document.getElementById('acordeon-consejos');
-  if (!cont) return;
   cont.innerHTML = CONSEJOS_ACORDEON.map((c, i) => `
     <div class="acordeon-item" id="acordeon-item-${i}">
       <button class="acordeon-pregunta" type="button" aria-expanded="false" onclick="toggleAcordeon(${i})">
@@ -809,6 +716,168 @@ function toggleAcordeon(i) {
   item.querySelector('.acordeon-pregunta').setAttribute('aria-expanded', abierto ? 'true' : 'false');
 }
 
+/* ═══ Wizard: Haz tu jardín de polinizadores ═══ */
+const JP_FUENTE = '<p class="jp-fuente">Fuente: <a href="https://xerces.org/blog/conservacion-de-polinizadores-en-aguascalientes-mexico" target="_blank" rel="noopener">Xerces Society — Conservación de Polinizadores en Aguascalientes, México</a></p>';
+
+const JP_PASOS = [
+  {
+    eyebrow: 'Paso 1 de 7',
+    titulo: '¿Por qué armar un jardín de polinizadores?',
+    html: `
+      <div class="jp-foto-wrap">
+        <div class="jp-foto" data-foto-id="maria_bonita"><span class="placeholder">🌸</span></div>
+        <p class="jp-foto-caption">Cosmos (<em>Cosmos bipinnatus</em>), la flor silvestre favorita del biólogo Héctor Ávila Villegas, quien impulsó la conservación de polinizadores en Aguascalientes.</p>
+      </div>
+      <div class="jp-dato"><strong>Más del 80%</strong> de las plantas silvestres del planeta y <strong>tres cuartas partes</strong> de los cultivos agrícolas dependen de la polinización animal (Xerces Society).</div>
+      <p>En Aguascalientes la atención se ha centrado casi siempre en la abeja europea (<em>Apis mellifera</em>); no hay todavía investigadores locales estudiando la diversidad de nuestras abejas nativas, aunque mariposas y polillas están algo mejor documentadas gracias a trabajos de la Universidad Autónoma de Aguascalientes (UAA). Cada jardín, por pequeño que sea, ayuda a cerrar ese vacío.</p>
+      <p>En 2017, con apoyo del Gobierno del Estado y estudiantes de Biología de la UAA, el biólogo Héctor Ávila Villegas creó un banco de semillas de plantas nativas y repartió más de <strong>6,000 "bombas de semillas"</strong> entre apicultores locales. En 2019, con acompañamiento técnico de la Xerces Society, estableció la <strong>primera franja de hábitat para polinizadores de Aguascalientes</strong> en la granja El Rosario. Tu jardín puede sumarse a ese mismo esfuerzo.</p>
+      ${JP_FUENTE}
+    `,
+  },
+  {
+    eyebrow: 'Paso 2 de 7',
+    titulo: 'Elige el lugar y el tamaño',
+    html: `
+      <p>No necesitas un terreno grande: una maceta en el balcón, una franja de jardín o un camellón completo funcionan, siempre que cumplan estas condiciones:</p>
+      <ul>
+        <li><strong>Sol directo</strong> la mayor parte del día — la mayoría de las flores nativas de Aguascalientes lo necesitan para producir néctar.</li>
+        <li>Que sea un lugar al que puedas <strong>volver con frecuencia</strong> para regar y observar, sobre todo los primeros meses.</li>
+        <li>Evita zonas donde se apliquen <strong>insecticidas o herbicidas</strong> con regularidad (jardines junto a áreas fumigadas no funcionan como refugio).</li>
+        <li>Si puedes, ubícalo cerca de otro jardín, camellón o parque con flores: los polinizadores se mueven mejor entre <strong>parches conectados</strong> que entre islas aisladas.</li>
+        <li>Deja al menos una esquina sin pavimentar ni cubrir con plástico o grava — la necesitarás en el paso 5.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 3 de 7',
+    titulo: 'Prepara el terreno',
+    html: `
+      <p>Antes de sembrar hay que eliminar el pasto y la maleza existente. La forma más sencilla, sin químicos ni maquinaria, es la <strong>solarización</strong> — el mismo método que se usó para preparar la primera franja de polinizadores de Aguascalientes:</p>
+      <ul>
+        <li>Corta la vegetación existente lo más al ras posible.</li>
+        <li>Cubre el terreno con un <strong>plástico transparente</strong> (tipo invernadero) bien sujeto por las orillas, durante <strong>dos meses</strong> en la temporada de más calor (idealmente antes de las lluvias, marzo–mayo en Aguascalientes). El calor atrapado bajo el plástico esteriliza el suelo y elimina semillas de maleza.</li>
+        <li>Retira el plástico justo antes de sembrar, al inicio de la temporada de lluvias (junio).</li>
+      </ul>
+      <div class="jp-dato">Alternativa sin plástico: cubre el área con cartón o varias capas de papel periódico y una capa gruesa de poda encima ("asfixia"), y déjalo toda la temporada de crecimiento antes de retirarlo y sembrar.</div>
+      <p><strong>Labra lo menos posible.</strong> Muchas de nuestras mejores abejas nativas viven bajo tierra la mayor parte del año, a veces justo en la base de las plantas que polinizan — remover el suelo más de lo necesario las mata o las desplaza.</p>
+    `,
+  },
+  {
+    eyebrow: 'Paso 4 de 7',
+    titulo: 'Elige tus plantas',
+    html: `
+      <p>Puedes empezar tu jardín de dos formas. Elige la pestaña que te aplique (o revisa ambas):</p>
+      <div class="jp-tabs">
+        <button type="button" class="jp-tab-btn activo" id="jp-tab-btn-semilla" onclick="jpCambiarTab('semilla')">🌱 Con semillas nativas</button>
+        <button type="button" class="jp-tab-btn" id="jp-tab-btn-vivero" onclick="jpCambiarTab('vivero')">🪴 Comprando en vivero</button>
+      </div>
+      <div class="jp-tab-panel activo" id="jp-tab-semilla">
+        <div class="jp-foto-wrap">
+          <div class="jp-foto" data-foto-id="tepozan_blanco"><span class="placeholder">🌿</span></div>
+          <p class="jp-foto-caption">Tepozán Blanco (<em>Buddleja cordata</em>), el "arbusto de mariposas" nativo del desierto chihuahuense que Héctor Ávila Villegas recuerda de su infancia en Zacatecas.</p>
+        </div>
+        <p>Las especies nativas están acostumbradas al suelo, la temperatura y la lluvia de la región, por lo que una vez establecidas necesitan mucha menos agua y cuidado que las exóticas.</p>
+        <ul>
+          <li>Siembra al voleo (esparcida a mano) una <strong>mezcla de varias especies</strong> nativas y cúbrela con una capa ligera de paja o aserrín para conservar la humedad — así se sembró la franja de El Rosario, con 9 especies recolectadas localmente.</li>
+          <li>O, si prefieres plantar en manchones, agrupa <strong>3 o más plantas de la misma especie juntas</strong> en vez de una sola planta aislada — así son mucho más visibles y eficientes para abejas y mariposas.</li>
+          <li>Combina especies para tener <strong>algo floreciendo casi todo el año</strong>: al menos una especie en flor cada mes de primavera a otoño. En Aguascalientes octubre suele ser el mes de mayor floración.</li>
+          <li>Riega 2 veces por semana si las lluvias se retrasan, hasta que las plantas estén establecidas.</li>
+          <li>Revisa el <a href="#polinizadores">catálogo de especies para polinizadores</a> de este manual y filtra por tu zona (valle, sierra, oriente o Calvillo) y tipo de sitio.</li>
+        </ul>
+      </div>
+      <div class="jp-tab-panel" id="jp-tab-vivero">
+        <p>Comprar plantines ya crecidos (a raíz desnuda, en maceta o en cepellón) es una forma válida y más rápida de empezar. Antes de pagar, pregunta o revisa:</p>
+        <ul>
+          <li>Que <strong>no vengan tratadas con insecticidas sistémicos</strong> (neonicotinoides): quedan en el polen y el néctar y son tóxicos para los polinizadores que se supone atraerás.</li>
+          <li>Evita variedades de <strong>flor "doble"</strong> muy ornamentales (con muchos pétalos extra): suelen ofrecer poco o nada de polen y néctar accesible.</li>
+          <li>Confirma el nombre científico en la etiqueta y compáralo contra el <a href="#polinizadores">catálogo</a> para saber si es nativa de México o una exótica bien adaptada.</li>
+          <li>Al plantar, afloja las raíces si vienen enredadas y planta en un día nublado si es posible, para reducir el estrés del trasplante.</li>
+          <li>Es normal que en su primera (o segunda) temporada la planta invierta su energía en raíz y no en flores — no significa que algo salió mal.</li>
+        </ul>
+      </div>
+    `,
+  },
+  {
+    eyebrow: 'Paso 5 de 7',
+    titulo: 'Da refugio y sitios de anidación',
+    html: `
+      <p>Un jardín solo con flores alimenta a los polinizadores de paso, pero no les da dónde vivir. Las abejas nativas anidan de tres formas distintas, así que conviene ofrecer las tres:</p>
+      <ul>
+        <li><strong>En el suelo</strong> — la mayoría de nuestras abejas nativas son solitarias y excavan su propio túnel bajo tierra. Deja un <strong>parche de tierra desnuda</strong>, sin pasto, acolchado ni plástico.</li>
+        <li><strong>En madera</strong> — algunas especies solitarias anidan en túneles que dejaron escarabajos en árboles secos o troncos viejos. Conserva madera muerta o construye un refugio con bloques de madera perforados.</li>
+        <li><strong>En cavidades pequeñas</strong> — los abejorros (especies sociales) aprovechan huecos como madrigueras abandonadas de roedores. No selles ni rellenes ese tipo de agujeros si los encuentras en una esquina del jardín.</li>
+      </ul>
+      <p>No "limpies" todo el jardín en otoño: la hojarasca y los tallos secos son refugio de invierno para huevecillos, larvas y mariposas adultas. Espera a que las temperaturas sean cálidas de forma constante en primavera antes de retirarlos.</p>
+    `,
+  },
+  {
+    eyebrow: 'Paso 6 de 7',
+    titulo: 'Nunca uses pesticidas',
+    html: `
+      <p>Es la regla más simple y la más importante: la mayoría de los insecticidas son letales para las abejas, y los herbicidas destruyen las flores de las que dependen para comer.</p>
+      <ul>
+        <li>Evita insecticidas de amplio espectro y herbicidas cerca de tus plantas con flor, incluso los que se anuncian como "para jardín".</li>
+        <li>Si tienes una plaga, prueba primero <strong>control manual</strong> (quitar insectos a mano, chorro de agua) o <strong>biológico</strong> antes que un químico de amplio espectro.</li>
+        <li>Si de verdad necesitas aplicar algo, usa el <strong>ingrediente más específico posible</strong> para la plaga y rocía en <strong>tardes secas, poco después del anochecer</strong>, cuando los polinizadores ya no están activos — nunca con las flores abiertas y polinizadores visitándolas.</li>
+        <li>Si compraste plantas de vivero, recuerda el aviso del paso 4: muchas vienen pre-tratadas con insecticida desde el vivero, sin que se note a simple vista.</li>
+      </ul>
+    `,
+  },
+  {
+    eyebrow: 'Paso 7 de 7',
+    titulo: 'Da seguimiento y comparte',
+    html: `
+      <p>Tu jardín también es una fuente de datos útil para la ciencia ciudadana local:</p>
+      <ul>
+        <li>Fotografía a los polinizadores que visiten tus flores y súbelos a <strong>iNaturalist</strong> — así contribuyes al mismo tipo de registros que alimentan este manual.</li>
+        <li>Platica con tus vecinos y anímalos a sembrar algo similar: jardines conectados funcionan como un <strong>corredor</strong>, igual que el primer corredor de polinizadores de Aguascalientes establecido en 2019 en la granja El Rosario.</li>
+        <li>Revisa cada temporada qué especies te funcionaron mejor y ve ampliando tu jardín con nuevas plantas del <a href="#polinizadores">catálogo</a>.</li>
+      </ul>
+      <p>¡Listo! Con esto tienes lo esencial para establecer y mantener un jardín de polinizadores en Pabellón de Arteaga.</p>
+      ${JP_FUENTE}
+    `,
+  },
+];
+
+let jpPasoActual = 0;
+
+function jpRenderDots() {
+  const dots = document.getElementById('jp-dots');
+  dots.innerHTML = JP_PASOS.map((_, i) => `
+    <button type="button" class="jp-dot ${i === jpPasoActual ? 'activo' : i < jpPasoActual ? 'completado' : ''}" onclick="jpIrPaso(${i})" aria-label="Ir al paso ${i + 1}">${i + 1}</button>
+  `).join('');
+}
+
+function jpRenderPaso() {
+  const paso = JP_PASOS[jpPasoActual];
+  document.getElementById('jp-paso').innerHTML = `
+    <div class="jp-paso-eyebrow">${paso.eyebrow}</div>
+    <h3>${paso.titulo}</h3>
+    ${paso.html}
+  `;
+  document.getElementById('jp-contador').textContent = `Paso ${jpPasoActual + 1} de ${JP_PASOS.length}`;
+  document.getElementById('jp-barra-fill').style.width = `${((jpPasoActual + 1) / JP_PASOS.length) * 100}%`;
+  document.getElementById('jp-anterior').disabled = jpPasoActual === 0;
+  const btnSig = document.getElementById('jp-siguiente');
+  btnSig.textContent = jpPasoActual === JP_PASOS.length - 1 ? 'Volver al inicio ↺' : 'Siguiente ›';
+  jpRenderDots();
+}
+
+function jpIrPaso(i) {
+  if (i > JP_PASOS.length - 1) i = 0;
+  if (i < 0) i = 0;
+  jpPasoActual = i;
+  jpRenderPaso();
+  document.getElementById('guia-polinizadores').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function jpCambiarTab(tab) {
+  document.getElementById('jp-tab-semilla').classList.toggle('activo', tab === 'semilla');
+  document.getElementById('jp-tab-vivero').classList.toggle('activo', tab === 'vivero');
+  document.getElementById('jp-tab-btn-semilla').classList.toggle('activo', tab === 'semilla');
+  document.getElementById('jp-tab-btn-vivero').classList.toggle('activo', tab === 'vivero');
+}
+
 /* ═══ Catálogo de especies ═══ */
 let ESPECIES = [];
 
@@ -822,6 +891,14 @@ async function cargarEspecies() {
   }
   renderCatalogo();
   renderPolinizadores();
+  jpCargarFotosIlustrativas();
+}
+
+function jpCargarFotosIlustrativas() {
+  ['maria_bonita', 'tepozan_blanco'].forEach(id => {
+    const especie = ESPECIES.find(e => e.id === id);
+    if (especie) encolarFoto(especie);
+  });
 }
 
 /* ═══ Jardines de polinizadores ═══ */
@@ -829,37 +906,17 @@ const POLINIZADOR_PALABRAS = ['melífero', 'polinizador', 'mariposa', 'colibrí'
 
 function esPlantaPolinizadora(especie) {
   return (especie.servicios || []).some(s =>
-    POLINIZADOR_PALABRAS.some(p => String(s).toLowerCase().includes(p))
+    POLINIZADOR_PALABRAS.some(p => s.toLowerCase().includes(p))
   );
 }
 
-let observadorPolinizadores = null;
 function renderPolinizadores() {
   const grid = document.getElementById('polinizadores-grid');
-  const sinResultados = document.getElementById('polinizadores-sin');
   if (!grid) return;
-
-  const base = ESPECIES.filter(esPlantaPolinizadora);
-  const plantas = filtrarLista(base, {
-    buscar: 'p-buscar',
-    tipo: 'p-tipo',
-    sitio: 'p-sitio',
-    zona: 'p-zona',
-    riego: 'p-riego',
-    nativa: 'p-nativa',
-  });
-
+  const plantas = ESPECIES.filter(esPlantaPolinizadora);
   document.getElementById('polinizadores-conteo').textContent =
-    `${plantas.length} de ${base.length} especies para atraer abejas, mariposas y colibríes`;
-
-  if (plantas.length === 0) {
-    grid.innerHTML = '';
-    if (sinResultados) sinResultados.style.display = 'block';
-    return;
-  }
-  if (sinResultados) sinResultados.style.display = 'none';
+    `${plantas.length} especies para atraer abejas, mariposas y colibríes`;
   grid.innerHTML = plantas.map(especieCard).join('');
-  aplicarFotosResueltas(plantas);
 
   if (observadorPolinizadores) observadorPolinizadores.disconnect();
   observadorPolinizadores = new IntersectionObserver((entradas) => {
@@ -873,6 +930,7 @@ function renderPolinizadores() {
   }, { rootMargin: '200px' });
   grid.querySelectorAll('.especie-card').forEach(card => observadorPolinizadores.observe(card));
 }
+let observadorPolinizadores = null;
 
 function especieCard(e) {
   const sitios = (e.sitios || []).map(s => `<span class="chip">${SITIO_LABEL[s] || s}</span>`).join('');
@@ -886,7 +944,7 @@ function especieCard(e) {
       <div class="cuerpo">
         <div class="cabecera">
           <div>
-            <h4>${e.nombre_comun || e.nombre || ''}</h4>
+            <h4>${e.nombre_comun}</h4>
             <div class="cientifico">${e.nombre_cientifico || ''}</div>
           </div>
           <span class="badge-nativa ${e.nativa ? '' : 'badge-exotica'}">${e.nativa ? 'Nativa de México' : 'Exótica adaptada'}</span>
@@ -907,37 +965,15 @@ function especieCard(e) {
   `;
 }
 
-/* ═══ Fotos de especies — varias de iNaturalist + Wikipedia, con caché local ═══ */
-const FOTO_CACHE_KEY = 'reforesta_fotos_v4_';
+/* ═══ Fotos de especies — iNaturalist → Wikipedia, con caché local ═══ */
+const FOTO_CACHE_KEY = 'reforesta_foto_v1_';
 const FOTO_CACHE_DIAS = 30;
 const INAT_BASE = 'https://api.inaturalist.org/v1';
 const INAT_HEADERS = { 'Accept': 'application/json' };
-const MAX_FOTOS_POR_ESPECIE = 6;
 
-function normNombre(s) {
-  return String(s || '').trim().toLowerCase().replace(/_/g, ' ').replace(/\s+/g, ' ');
-}
-
-function esRangoEspecie(rank) {
-  return ['species', 'subspecies', 'variety'].includes(rank || '');
-}
-
-function nombreCoincideTaxon(esperado, taxon) {
-  const n = normNombre(esperado);
-  if (!n || !taxon) return false;
-  if (normNombre(taxon.name) === n) return true;
-  if (normNombre(taxon.matched_term) === n) return true;
-  const aliases = taxon.taxon_names || [];
-  if (aliases.some(tn => normNombre(tn.name) === n)) return true;
-  // sinonimia aceptada: mismo epíteto si el resultado es especie de planta
-  // (p.ej. Prosopis laevigata → Neltuma laevigata, Schefflera → Heptapleurum)
-  const parts = n.split(' ');
-  if (parts.length >= 2 && esRangoEspecie(taxon.rank)) {
-    const epithet = parts[1];
-    const taxParts = normNombre(taxon.name).split(' ');
-    if (taxParts[1] === epithet) return true;
-  }
-  return false;
+function generoConcuerda(esperado, devuelto) {
+  if (!esperado || !devuelto) return false;
+  return esperado.trim().split(' ')[0].toLowerCase() === devuelto.trim().split(' ')[0].toLowerCase();
 }
 
 function leerCacheFoto(id) {
@@ -945,10 +981,9 @@ function leerCacheFoto(id) {
     const raw = localStorage.getItem(FOTO_CACHE_KEY + id);
     if (!raw) return null;
     const data = JSON.parse(raw);
-    if (!Array.isArray(data.fotos)) return null;
     const dias = (Date.now() - data.ts) / 86400000;
-    if (data.fotos.length === 0 && dias >= FOTO_CACHE_DIAS) return null;
-    if (data.fotos.length > 0 && dias >= FOTO_CACHE_DIAS * 6) return null;
+    if (data.source === 'placeholder' && dias >= FOTO_CACHE_DIAS) return null;
+    if (data.source !== 'placeholder' && dias >= FOTO_CACHE_DIAS * 6) return null;
     return data;
   } catch (e) {
     return null;
@@ -975,299 +1010,63 @@ async function fetchJsonConTimeout(url, headers, ms) {
   }
 }
 
-function normalizarUrlInat(url) {
-  if (!url) return null;
-  return url
-    .replace('/square.', '/medium.')
-    .replace('/small.', '/medium.')
-    .replace('/thumb.', '/medium.');
+function fotoDesdeTaxon(taxon, nombreEsperado) {
+  const iconico = taxon.iconic_taxon_name || '';
+  if (iconico !== 'Plantae') return null;
+  const rank = taxon.rank || '';
+  if (!['species', 'subspecies', 'variety'].includes(rank)) return null;
+  if (!generoConcuerda(nombreEsperado, taxon.name || '')) return null;
+  const foto = taxon.default_photo;
+  if (!foto || !foto.medium_url) return null;
+  return { url: foto.medium_url, attribution: foto.attribution || '', source: 'inat', taxonId: taxon.id };
 }
 
-function dedupeFotos(fotos) {
-  const vistos = new Set();
-  const out = [];
-  for (const f of fotos) {
-    if (!f?.url) continue;
-    const key = f.url.split('?')[0];
-    if (vistos.has(key)) continue;
-    vistos.add(key);
-    out.push(f);
-    if (out.length >= MAX_FOTOS_POR_ESPECIE) break;
-  }
-  return out;
-}
-
-async function buscarTaxonPorNombre(nombreCientifico) {
-  if (!nombreCientifico || /\bspp\.?\b/i.test(nombreCientifico)) return null;
-  const params = new URLSearchParams({
-    q: nombreCientifico,
-    iconic_taxa: 'Plantae',
-    per_page: '10',
-    is_active: 'true',
-  });
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 10000);
-  const results = data?.results || [];
-  const exact = results.find(t => esRangoEspecie(t.rank) && nombreCoincideTaxon(nombreCientifico, t));
-  if (exact) return exact;
-  // iNaturalist suele devolver el taxón correcto (o su sinónimo actual) primero
-  const top = results.find(t => esRangoEspecie(t.rank) && t.iconic_taxon_name === 'Plantae');
-  if (top && nombreCoincideTaxon(nombreCientifico, top)) return top;
-  if (top && normNombre(nombreCientifico).split(' ').length >= 2) {
-    // último recurso: primer resultado binomial de la búsqueda por nombre científico completo
-    return top;
-  }
-  return null;
-}
-
-async function validarTaxonId(taxonId, nombreCientifico) {
-  if (!taxonId) return null;
+async function fetchFotoPorTaxonId(taxonId, nombreCientifico) {
   const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxonId}`, INAT_HEADERS, 8000);
   const taxon = data?.results?.[0];
   if (!taxon) return null;
-  if (!esRangoEspecie(taxon.rank) || taxon.iconic_taxon_name !== 'Plantae') return null;
-  if (nombreCientifico && !nombreCoincideTaxon(nombreCientifico, taxon)) return null;
-  return taxon;
+  return fotoDesdeTaxon(taxon, nombreCientifico);
 }
 
-async function resolverTaxon(e) {
-  // 1) Si el ID guardado corresponde al nombre científico, úsalo
-  const validado = await validarTaxonId(e.inat_taxon_id, e.nombre_cientifico);
-  if (validado) return validado;
-  // 2) Si el ID está mal o no existe, busca por nombre científico
-  return await buscarTaxonPorNombre(e.nombre_cientifico);
-}
-
-function aspectRatioDeFoto(photo) {
-  const d = photo?.original_dimensions;
-  if (!d?.width || !d?.height) return null;
-  return d.width / d.height;
-}
-
-/** Evita panorámicas/paisajes extremos; favorece retrato o plano cercano del ejemplar. */
-function esFotoDeEjemplar(photo) {
-  const ar = aspectRatioDeFoto(photo);
-  if (ar == null) return true; // sin datos: no descartar
-  if (ar > 1.85) return false; // paisaje muy ancho
-  if (ar < 0.35) return false; // franja rara
-  return true;
-}
-
-function fotoDesdeObjetoPhoto(photo, source, taxonId) {
-  if (!photo) return null;
-  if (!esFotoDeEjemplar(photo)) return null;
-  const url = photo.medium_url || normalizarUrlInat(photo.url) || photo.large_url;
-  if (!url) return null;
-  return {
-    url,
-    attribution: photo.attribution || '',
-    source,
-    taxonId: taxonId || null,
-    aspect: aspectRatioDeFoto(photo),
-    curated: source === 'inat-curated',
-  };
-}
-
-async function fetchFotosObservaciones(taxonId) {
-  if (!taxonId) return [];
-  const fotos = [];
-  const vistas = new Set();
-
-  // 1) Preferir observaciones con fenología de planta (flor/fruto) — suelen ser close-ups
-  // term_id=12 = Plant phenology en iNaturalist
-  const queries = [
-    { taxon_id: String(taxonId), photos: 'true', quality_grade: 'research', per_page: '12', order_by: 'votes', term_id: '12' },
-    { taxon_id: String(taxonId), photos: 'true', quality_grade: 'research', per_page: '12', order_by: 'created_at' },
-  ];
-
-  for (const q of queries) {
-    if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
-    const params = new URLSearchParams(q);
-    const data = await fetchJsonConTimeout(`${INAT_BASE}/observations?${params}`, INAT_HEADERS, 10000);
-    for (const obs of (data?.results || [])) {
-      const obsTaxonId = obs.taxon?.id;
-      // Exacto o subespecie/variedad del taxón pedido (ancestor incluye al padre)
-      const ancestors = obs.taxon?.ancestor_ids || [];
-      if (obsTaxonId !== taxonId && !ancestors.includes(taxonId)) continue;
-      // Evitar observaciones de taxones superiores (género/familia) coladas por error
-      if (obs.taxon?.rank && !esRangoEspecie(obs.taxon.rank) && obsTaxonId !== taxonId) continue;
-
-      for (const photo of (obs.photos || []).slice(0, 2)) {
-        const f = fotoDesdeObjetoPhoto(photo, 'inat', taxonId);
-        if (!f) continue;
-        const key = f.url.split('?')[0];
-        if (vistas.has(key)) continue;
-        vistas.add(key);
-        fotos.push(f);
-        if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
-      }
-      if (fotos.length >= MAX_FOTOS_POR_ESPECIE) break;
-    }
-  }
-  return fotos;
-}
-
-async function fetchFotosDeTaxon(taxon) {
-  if (!taxon?.id) return [];
-  // Siempre pedir detalle: taxon_photos curadas son las más representativas del ejemplar
-  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa/${taxon.id}`, INAT_HEADERS, 10000);
-  const full = data?.results?.[0];
-  if (!full || full.iconic_taxon_name !== 'Plantae') return [];
-
-  const fotos = [];
-  const fDef = fotoDesdeObjetoPhoto(full.default_photo, 'inat-curated', full.id);
-  if (fDef) fotos.push(fDef);
-
-  for (const tp of (full.taxon_photos || [])) {
-    const photo = tp.photo || tp;
-    const f = fotoDesdeObjetoPhoto(photo, 'inat-curated', full.id);
-    if (f) fotos.push(f);
-  }
-  return fotos;
-}
-
-async function fetchFotoWikipedia(titulo) {
-  if (!titulo) return null;
-  const clean = String(titulo).replace(/_/g, ' ').trim();
-  if (/\bspp\.?\b/i.test(clean)) return null;
-  for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
-    const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(clean)}`, {}, 6000);
-    if (!data || data.type === 'disambiguation') continue;
-    const url = data?.originalimage?.source || data?.thumbnail?.source;
-    if (url) return { url, attribution: `Wikipedia / ${data.title || clean}`, source: 'wikipedia', curated: false };
+async function fetchFotoPorNombre(nombreCientifico) {
+  const params = new URLSearchParams({ q: nombreCientifico, iconic_taxa: 'Plantae', per_page: '8' });
+  const data = await fetchJsonConTimeout(`${INAT_BASE}/taxa?${params}`, INAT_HEADERS, 8000);
+  const results = data?.results || [];
+  for (const taxon of results) {
+    const foto = fotoDesdeTaxon(taxon, nombreCientifico);
+    if (foto) return foto;
   }
   return null;
 }
 
-async function resolverFotosEspecie(e) {
-  const taxon = await resolverTaxon(e);
-  let fotos = [];
-
-  if (taxon?.id) {
-    // 1) Primero fotos curadas de iNaturalist (ejemplar / hojas / flores / frutos)
-    const curadas = await fetchFotosDeTaxon(taxon);
-    fotos.push(...curadas);
-
-    // 2) Completar con observaciones (prioriza fenología: flor/fruto), sin paisajes anchos
-    if (fotos.length < MAX_FOTOS_POR_ESPECIE) {
-      const obs = await fetchFotosObservaciones(taxon.id);
-      fotos.push(...obs);
-    }
+async function fetchFotoWikipedia(titulo) {
+  for (const base of ['https://es.wikipedia.org/api/rest_v1/page/summary', 'https://en.wikipedia.org/api/rest_v1/page/summary']) {
+    const data = await fetchJsonConTimeout(`${base}/${encodeURIComponent(titulo)}`, {}, 6000);
+    const url = data?.thumbnail?.source;
+    if (url) return { url, attribution: `Wikipedia / ${data.title || titulo}`, source: 'wikipedia' };
   }
+  return null;
+}
 
-  // 3) Wikipedia solo como último recurso si casi no hay nada de iNaturalist
-  const soloInat = fotos.filter(f => f.source !== 'wikipedia');
-  if (soloInat.length === 0) {
-    let wiki = null;
-    if (e.wikipedia_titulo) wiki = await fetchFotoWikipedia(e.wikipedia_titulo);
-    if (!wiki && e.nombre_cientifico) wiki = await fetchFotoWikipedia(e.nombre_cientifico);
-    if (wiki) fotos.push(wiki);
-  }
-
-  fotos = dedupeFotos(fotos);
-  // Orden: curadas primero, luego el resto
-  fotos.sort((a, b) => Number(!!b.curated) - Number(!!a.curated));
-  return { fotos, taxonId: taxon?.id || null, taxonName: taxon?.name || null };
+async function resolverFotoEspecie(e) {
+  let resultado = null;
+  if (e.inat_taxon_id) resultado = await fetchFotoPorTaxonId(e.inat_taxon_id, e.nombre_cientifico);
+  if (!resultado) resultado = await fetchFotoPorNombre(e.nombre_cientifico);
+  if (!resultado && e.wikipedia_titulo) resultado = await fetchFotoWikipedia(e.wikipedia_titulo);
+  if (!resultado && e.nombre_cientifico) resultado = await fetchFotoWikipedia(e.nombre_cientifico.replace(/ /g, '_'));
+  return resultado || { source: 'placeholder' };
 }
 
 function pintarFotoEspecie(id, resultado) {
   const contenedores = document.querySelectorAll(`[data-foto-id="${id}"]`);
   if (!contenedores.length) return;
-  const fotos = (resultado?.fotos || []).filter(f => f.url);
-  if (fotos.length === 0) return;
-
+  if (!resultado.url) return; // deja el placeholder 🌿
+  const credito = resultado.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
   contenedores.forEach(cont => {
-    cont.dataset.fotos = JSON.stringify(fotos);
-    cont.dataset.idx = cont.dataset.idx || '0';
-    cont.classList.toggle('has-many', fotos.length > 1);
-    actualizarVistaFoto(cont);
-  });
-}
-
-function actualizarVistaFoto(cont) {
-  const fotos = JSON.parse(cont.dataset.fotos || '[]');
-  if (!fotos.length) return;
-  let idx = Number(cont.dataset.idx || 0);
-  if (idx < 0) idx = fotos.length - 1;
-  if (idx >= fotos.length) idx = 0;
-  cont.dataset.idx = String(idx);
-
-  const foto = fotos[idx];
-  const credito = foto.source === 'wikipedia' ? 'Wikipedia' : 'iNaturalist';
-  const muchas = fotos.length > 1;
-
-  cont.classList.toggle('has-many', muchas);
-  cont.innerHTML = `
-    <img src="${foto.url}" alt="" draggable="false" loading="lazy" onerror="this.style.opacity=0.2">
-    ${muchas ? `
-      <button type="button" class="foto-nav prev" aria-label="Foto anterior">‹</button>
-      <button type="button" class="foto-nav next" aria-label="Foto siguiente">›</button>
-      <div class="foto-contador">${idx + 1}/${fotos.length}</div>
-      <div class="foto-dots">
-        ${fotos.map((_, i) => `<button type="button" data-dot="${i}" class="${i === idx ? 'active' : ''}" aria-label="Foto ${i + 1}"></button>`).join('')}
-      </div>
-      <div class="swipe-hint">Desliza ›</div>
-    ` : ''}
-    <span class="creditos">Foto: ${credito}${muchas ? ` · ${idx + 1}/${fotos.length}` : ''}</span>
-  `;
-
-  const prev = cont.querySelector('.foto-nav.prev');
-  const next = cont.querySelector('.foto-nav.next');
-  if (prev) prev.addEventListener('click', (ev) => { ev.stopPropagation(); cont.dataset.idx = String(idx - 1); actualizarVistaFoto(cont); });
-  if (next) next.addEventListener('click', (ev) => { ev.stopPropagation(); cont.dataset.idx = String(idx + 1); actualizarVistaFoto(cont); });
-  cont.querySelectorAll('[data-dot]').forEach(btn => {
-    btn.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      cont.dataset.idx = btn.dataset.dot;
-      actualizarVistaFoto(cont);
-    });
-  });
-  activarSwipeFoto(cont);
-}
-
-function activarSwipeFoto(cont) {
-  if (cont._swipeBound) return;
-  cont._swipeBound = true;
-  let startX = 0;
-  let startY = 0;
-  let tracking = false;
-
-  cont.addEventListener('touchstart', (ev) => {
-    if (!cont.classList.contains('has-many')) return;
-    const t = ev.changedTouches[0];
-    startX = t.clientX;
-    startY = t.clientY;
-    tracking = true;
-  }, { passive: true });
-
-  cont.addEventListener('touchend', (ev) => {
-    if (!tracking) return;
-    tracking = false;
-    const t = ev.changedTouches[0];
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-    if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    const idx = Number(cont.dataset.idx || 0);
-    cont.dataset.idx = String(dx < 0 ? idx + 1 : idx - 1);
-    actualizarVistaFoto(cont);
-  }, { passive: true });
-
-  // También con mouse (arrastre) en desktop táctil/híbrido
-  let mouseDown = false;
-  cont.addEventListener('mousedown', (ev) => {
-    if (!cont.classList.contains('has-many') || ev.button !== 0) return;
-    mouseDown = true;
-    startX = ev.clientX;
-    startY = ev.clientY;
-  });
-  window.addEventListener('mouseup', (ev) => {
-    if (!mouseDown) return;
-    mouseDown = false;
-    const dx = ev.clientX - startX;
-    const dy = ev.clientY - startY;
-    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-    const idx = Number(cont.dataset.idx || 0);
-    cont.dataset.idx = String(dx < 0 ? idx + 1 : idx - 1);
-    actualizarVistaFoto(cont);
+    cont.innerHTML = `
+      <img src="${resultado.url}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span class=&quot;placeholder&quot;>🌿</span>'">
+      <span class="creditos">Foto: ${credito}</span>
+    `;
   });
 }
 
@@ -1277,11 +1076,6 @@ let fotosActivas = 0;
 const MAX_FOTOS_CONCURRENTES = 3;
 
 function encolarFoto(especie) {
-  // Tras filtrar se recrea el DOM: si ya tenemos el resultado, solo repintar
-  if (especie._fotosResultado) {
-    pintarFotoEspecie(especie.id, especie._fotosResultado);
-    return;
-  }
   if (especie._fotoEncolada) return;
   especie._fotoEncolada = true;
   colaFotos.push(especie);
@@ -1295,9 +1089,8 @@ async function procesarColaFotos() {
   fotosActivas++;
   try {
     const cache = leerCacheFoto(especie.id);
-    const resultado = cache || await resolverFotosEspecie(especie);
+    const resultado = cache || await resolverFotoEspecie(especie);
     if (!cache) guardarCacheFoto(especie.id, resultado);
-    especie._fotosResultado = resultado;
     pintarFotoEspecie(especie.id, resultado);
   } finally {
     fotosActivas--;
@@ -1320,30 +1113,16 @@ function iniciarObservadorFotos() {
   document.querySelectorAll('.especie-card').forEach(card => observadorFotos.observe(card));
 }
 
-function aplicarFotosResueltas(lista) {
-  for (const e of lista) {
-    if (e._fotosResultado?.fotos?.length) {
-      pintarFotoEspecie(e.id, e._fotosResultado);
-      continue;
-    }
-    const cache = leerCacheFoto(e.id);
-    if (cache?.fotos?.length) {
-      e._fotosResultado = cache;
-      pintarFotoEspecie(e.id, cache);
-    }
-  }
-}
+function filtrarEspecies() {
+  const q = document.getElementById('f-buscar').value.trim().toLowerCase();
+  const tipo = document.getElementById('f-tipo').value;
+  const sitio = document.getElementById('f-sitio').value;
+  const zona = document.getElementById('f-zona').value;
+  const riego = document.getElementById('f-riego').value;
+  const nativa = document.getElementById('f-nativa').value;
 
-function filtrarLista(lista, ids) {
-  const q = (document.getElementById(ids.buscar)?.value || '').trim().toLowerCase();
-  const tipo = document.getElementById(ids.tipo)?.value || '';
-  const sitio = document.getElementById(ids.sitio)?.value || '';
-  const zona = document.getElementById(ids.zona)?.value || '';
-  const riego = document.getElementById(ids.riego)?.value || '';
-  const nativa = document.getElementById(ids.nativa)?.value || '';
-
-  return lista.filter(e => {
-    if (q && !(`${e.nombre_comun || e.nombre || ''} ${e.nombre_cientifico || ''}`.toLowerCase().includes(q))) return false;
+  return ESPECIES.filter(e => {
+    if (q && !(`${e.nombre_comun} ${e.nombre_cientifico}`.toLowerCase().includes(q))) return false;
     if (tipo && e.tipo !== tipo) return false;
     if (sitio && !(e.sitios || []).includes(sitio)) return false;
     if (zona && !(e.zonas_estado || []).includes(zona)) return false;
@@ -1351,17 +1130,6 @@ function filtrarLista(lista, ids) {
     if (nativa === '1' && !e.nativa) return false;
     if (nativa === '0' && e.nativa) return false;
     return true;
-  });
-}
-
-function filtrarEspecies() {
-  return filtrarLista(ESPECIES, {
-    buscar: 'f-buscar',
-    tipo: 'f-tipo',
-    sitio: 'f-sitio',
-    zona: 'f-zona',
-    riego: 'f-riego',
-    nativa: 'f-nativa',
   });
 }
 
@@ -1379,8 +1147,6 @@ function renderCatalogo() {
   }
   sinResultados.style.display = 'none';
   grid.innerHTML = filtradas.map(especieCard).join('');
-  // Repinta de inmediato las que ya se habían cargado / están en caché (filtros recrean el DOM)
-  aplicarFotosResueltas(filtradas);
   iniciarObservadorFotos();
 }
 
@@ -1389,15 +1155,10 @@ function renderCatalogo() {
   el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', renderCatalogo);
 });
 
-['p-buscar', 'p-tipo', 'p-sitio', 'p-zona', 'p-riego', 'p-nativa'].forEach(id => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', renderPolinizadores);
-});
-
 renderPasos();
 renderDatosCuriosos();
 renderAcordeonConsejos();
+jpRenderPaso();
 cargarEspecies();
 </script>
 
