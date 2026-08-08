@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manejo de Arbolado Urbano — Pabellón de Arteaga | IMBIO</title>
+<style>
+:root{
+  /* Paleta institucional IMBIO — azul + verde de acento */
+  --verde-900:#0a2547;
+  --verde-800:#0d3060;
+  --verde-700:#123a72;
+  --verde-600:#1a4c8f;
+  --verde-500:#2f6bb5;
+  --verde-400:#5f97d6;
+  --verde-100:#e9f0fb;
+  --acento-700:#1f6b3f;
+  --acento-500:#2fa84f;
+  --acento-100:#dcefe3;
+  --tierra-700:#6b4a2b;
+  --tierra-400:#a9825a;
+  --arena-100:#f4f6fa;
+  --ambar-500:#d99a2b;
+  --rojo-500:#c1443c;
+  --tinta-900:#111a2b;
+  --tinta-600:#42506b;
+  --blanco:#ffffff;
+  --radius:14px;
+  --shadow:0 6px 24px rgba(10,37,71,.12);
+  --serif:'Georgia','Iowan Old Style',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--tinta-900);
+  background:var(--arena-100);
+  line-height:1.6;
+}
+a{color:var(--verde-700);}
+img{max-width:100%;display:block;border-radius:10px;}
+
+/* ---------- TOPBAR ---------- */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  background:var(--verde-900);
+  color:var(--arena-100);
+  padding:.7rem 1.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:var(--shadow);
+}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:1.15rem;letter-spacing:.3px;}
+.brand .leaf{font-size:1.4rem;}
+.brand small{display:block;font-family:var(--sans);font-size:.65rem;color:var(--acento-500);font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.nav-toggle{display:none;background:none;border:1px solid var(--verde-600);color:var(--arena-100);padding:.4rem .7rem;border-radius:8px;cursor:pointer;}
+.topnav{display:flex;gap:1.1rem;flex-wrap:wrap;font-size:.85rem;}
+.topnav a{color:var(--verde-100);text-decoration:none;opacity:.85;}
+.topnav a:hover{opacity:1;text-decoration:underline;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  background:linear-gradient(160deg,var(--verde-900) 0%,var(--verde-700) 55%,var(--verde-500) 100%);
+  color:var(--arena-100);
+  padding:4.5rem 1.5rem 5rem;
+  text-align:center;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 15% 30%, rgba(255,255,255,.08) 0, transparent 40%),
+                    radial-gradient(circle at 85% 70%, rgba(255,255,255,.07) 0, transparent 45%);
+}
+.hero-inner{position:relative;max-width:820px;margin:0 auto;}
+.hero .eyebrow{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--acento-500);font-weight:700;}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);margin:.6rem 0 1rem;line-height:1.15;}
+.hero p{font-size:1.05rem;max-width:640px;margin:0 auto 1.8rem;color:var(--verde-100);}
+.hero-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
+.btn{
+  display:inline-block;padding:.75rem 1.4rem;border-radius:999px;font-weight:600;
+  text-decoration:none;font-size:.9rem;cursor:pointer;border:none;transition:transform .15s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:var(--ambar-500);color:var(--verde-900);}
+.btn-ghost{background:transparent;color:var(--arena-100);border:1.5px solid rgba(255,255,255,.5);}
+.hero-figure{margin-top:1rem;font-size:.72rem;color:var(--verde-100);opacity:.65;font-style:italic;max-width:600px;margin-inline:auto;}
+
+/* image prompt callouts */
+.img-prompt{
+  background:var(--verde-100);
+  border:1.5px dashed var(--verde-500);
+  border-radius:var(--radius);
+  padding:1rem 1.2rem;
+  margin:1.2rem 0;
+  font-size:.85rem;
+  color:var(--verde-800);
+}
+.img-prompt b{color:var(--verde-900);}
+.img-prompt .tag{
+  display:inline-block;background:var(--verde-600);color:#fff;font-size:.65rem;
+  padding:.15rem .55rem;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem;font-weight:700;
+}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.4rem;}
+.section-label{
+  text-align:center;margin:3.4rem 0 .6rem;
+}
+.section-label .eyebrow{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--verde-600);font-weight:700;}
+.section-label h2{font-family:var(--serif);font-size:1.9rem;margin:.3rem 0;color:var(--verde-900);}
+.section-label p{max-width:640px;margin:0 auto;color:var(--tinta-600);font-size:.95rem;}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2.4rem 0;}
+.stat{background:var(--blanco);border-radius:var(--radius);padding:1.2rem;text-align:center;box-shadow:var(--shadow);}
+.stat .num{font-family:var(--serif);font-size:1.7rem;color:var(--verde-700);}
+.stat .lbl{font-size:.75rem;color:var(--tinta-600);text-transform:uppercase;letter-spacing:.5px;}
+
+/* module cards grid (landing) */
+.modgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;margin:2rem 0 3rem;}
+.modcard{
+  background:var(--blanco);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:1.3rem 1.3rem 1.1rem;cursor:pointer;border:2px solid transparent;transition:.15s;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.modcard:hover{border-color:var(--verde-400);transform:translateY(-3px);}
+.modcard .modnum{font-size:.7rem;font-weight:700;color:var(--verde-500);letter-spacing:1px;}
+.modcard h3{font-family:var(--serif);font-size:1.15rem;margin:0;color:var(--verde-900);}
+.modcard p{font-size:.85rem;color:var(--tinta-600);margin:0;flex:1;}
+.modcard .goto{font-size:.78rem;font-weight:700;color:var(--verde-700);}
+
+/* module page layout */
+.course{display:none;background:var(--blanco);}
+.course.active{display:block;}
+.course-shell{display:grid;grid-template-columns:250px 1fr;gap:0;min-height:70vh;}
+.course-side{
+  background:var(--verde-900);color:var(--verde-100);padding:1.6rem 1rem;position:sticky;top:52px;align-self:start;
+  max-height:calc(100vh - 52px);overflow-y:auto;
+}
+.course-side h4{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--verde-400);margin:1.1rem 0 .4rem;}
+.course-side a{display:block;color:var(--verde-100);text-decoration:none;font-size:.82rem;padding:.35rem .5rem;border-radius:6px;opacity:.8;cursor:pointer;}
+.course-side a:hover,.course-side a.active-link{background:var(--verde-700);opacity:1;}
+.course-side .back{display:inline-block;margin-bottom:.6rem;font-size:.78rem;color:var(--verde-400);cursor:pointer;font-weight:700;}
+.course-main{padding:2.2rem 2.4rem 4rem;max-width:820px;}
+.course-main h2{font-family:var(--serif);color:var(--verde-900);font-size:1.9rem;margin-top:0;}
+.course-main h3{font-family:var(--serif);color:var(--verde-800);font-size:1.3rem;margin-top:2rem;border-bottom:2px solid var(--verde-100);padding-bottom:.3rem;}
+.course-main h4{color:var(--verde-700);font-size:1rem;margin-bottom:.3rem;}
+.course-main table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.85rem;}
+.course-main th,.course-main td{border:1px solid #e0dccf;padding:.5rem .6rem;text-align:left;}
+.course-main th{background:var(--verde-100);color:var(--verde-900);}
+.badge{display:inline-block;background:var(--acento-100);color:var(--acento-700);font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:999px;margin:0 .3rem .3rem 0;text-transform:uppercase;letter-spacing:.3px;}
+.callout{background:var(--arena-100);border-left:4px solid var(--ambar-500);padding:.8rem 1rem;border-radius:8px;margin:1rem 0;font-size:.9rem;}
+.callout.danger{border-color:var(--rojo-500);background:#fbeceb;}
+.callout.tip{border-color:var(--verde-500);background:var(--verde-100);}
+ul,ol{padding-left:1.3rem;}
+.progress-note{font-size:.75rem;color:var(--tinta-600);margin-top:2.5rem;border-top:1px solid #e5e0d2;padding-top:1rem;}
+
+/* quiz */
+.quiz{background:var(--verde-100);border-radius:var(--radius);padding:1.3rem 1.4rem;margin:1.8rem 0;}
+.quiz h4{margin-top:0;color:var(--verde-900);font-family:var(--serif);font-size:1.05rem;}
+.qitem{margin-bottom:1rem;}
+.qitem p.qtext{font-weight:600;font-size:.9rem;margin-bottom:.4rem;}
+.qopt{display:block;background:var(--blanco);border:1px solid #d8e6dc;border-radius:8px;padding:.5rem .7rem;margin-bottom:.4rem;cursor:pointer;font-size:.85rem;}
+.qopt:hover{border-color:var(--verde-500);}
+.qopt.correct{background:#e3f6e9;border-color:var(--verde-600);}
+.qopt.wrong{background:#fbeceb;border-color:var(--rojo-500);}
+.quiz-result{font-size:.85rem;font-weight:700;margin-top:.5rem;color:var(--verde-800);}
+
+/* glossary */
+.glossary{columns:2;column-gap:2rem;}
+.gterm{break-inside:avoid;margin-bottom:1rem;}
+.gterm b{color:var(--verde-800);}
+@media(max-width:700px){.glossary{columns:1;}}
+
+/* footer */
+footer{background:var(--verde-900);color:var(--verde-100);padding:2.5rem 1.4rem;text-align:center;font-size:.82rem;margin-top:3rem;}
+footer a{color:var(--acento-500);}
+footer .foot-title{font-family:var(--serif);font-size:1.05rem;color:#fff;margin-bottom:.3rem;}
+footer .foot-line{opacity:.85;margin:.15rem 0;}
+footer .foot-credit{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.15);opacity:.85;}
+
+@media(max-width:850px){
+  .topnav{display:none;}
+  .nav-toggle{display:block;}
+  .course-shell{grid-template-columns:1fr;}
+  .course-side{position:relative;top:0;max-height:none;}
+  .course-main{padding:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="leaf">🌳</span><div>IMBIO<small>Manejo de Arbolado Urbano</small></div></div>
+  <nav class="topnav">
+    <a href="/">← Volver a IMBIO</a>
+    <a href="#inicio" onclick="showLanding()">Inicio</a>
+    <a href="#modulos" onclick="showLanding()">Módulos</a>
+    <a href="#glosario-land" onclick="showLanding();setTimeout(()=>document.getElementById('glosario-land').scrollIntoView(),50)">Glosario</a>
+  </nav>
+</div>
+
+<!-- ============ LANDING ============ -->
+<div id="landing">
+  <header class="hero" id="inicio">
+    <div class="hero-inner">
+      <div class="eyebrow">Curso técnico interactivo · IMBIO</div>
+      <h1>Manejo de Arbolado Urbano: de la raíz a la copa</h1>
+      <p>Material didáctico basado en el Curso de Capacitación sobre Manejo de Arbolado y Áreas Verdes en Zonas Urbanas (Secretaría de Medio Ambiente del Estado de México, UAEMéx e IMBIO), con biología, técnica, normativa y gestión del arbolado en ciudades.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#modulos">Explorar los 14 módulos</a>
+        <a class="btn btn-ghost" href="#glosario-land">Ir al glosario</a>
+      </div>
+      <p class="hero-figure">Espacio de imagen — ver prompt de Adobe Firefly al pie de esta sección.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="img-prompt" style="margin-top:1.6rem;">
+      <span class="tag">Prompt Firefly · Portada</span><br>
+      <b>Genera:</b> "Wide horizontal illustration, editorial botanical style, a diverse urban avenue lined with mature native trees, tree canopy overhead, pedestrians and cyclists beneath dappled shade, warm afternoon light, green and amber earthy palette, flat vector illustration with fine line texture, no text" — tamaño sugerido 1600×700px, usar como imagen de portada (hero) del sitio.
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">14</div><div class="lbl">Módulos técnicos</div></div>
+      <div class="stat"><div class="num">25+</div><div class="lbl">Documentos fuente</div></div>
+      <div class="stat"><div class="num">9–15 m²</div><div class="lbl">Área verde/hab. (OMS)</div></div>
+      <div class="stat"><div class="num">80%</div><div class="lbl">Población urbana proyectada a 2050</div></div>
+    </div>
+
+    <div class="section-label" id="modulos">
+      <div class="eyebrow">Contenido del curso</div>
+      <h2>Catorce módulos, un árbol urbano completo</h2>
+      <p>Cada módulo es interactivo: incluye conceptos técnicos, tablas de referencia, normativa aplicable y una autoevaluación corta.</p>
+    </div>
+
+    <div class="modgrid" id="modgrid"></div>
+
+    <div class="section-label" id="glosario-land">
+      <div class="eyebrow">Referencia rápida</div>
+      <h2>Glosario de arboricultura urbana</h2>
+    </div>
+    <div class="glossary" id="glossary-landing" style="margin-bottom:3rem;"></div>
+  </div>
+
+  <footer>
+    <div class="foot-title">H. Ayuntamiento de Pabellón de Arteaga</div>
+    <div class="foot-line">Instituto Municipal de Biodiversidad y Protección Ambiental (IMBIO)</div>
+    <div class="foot-line">IMBIO — Manejo de Arbolado Urbano</div>
+    <div class="foot-line">Material elaborado a partir del Curso de Capacitación sobre Manejo de Arbolado y Áreas Verdes en Zonas Urbanas (SEMAGEM / UAEMéx), 2020–2021.</div>
+    <div class="foot-credit">
+      Coordinación y elaboración: Biól. Luis Felipe Lozano Román<br>
+      Contacto: <a href="mailto:imbio@pabellon.gob.mx">imbio@pabellon.gob.mx</a><br>
+      © 2026 IMBIO · Pabellón de Arteaga, Aguascalientes
+    </div>
+  </footer>
+</div>
+
+<!-- ============ MODULE TEMPLATE CONTAINER ============ -->
+<div id="courses"></div>
+
+<script>
+/* =========================================================
+   DATA: 14 módulos con contenido HTML completo
+   ========================================================= */
+const MODULES = [
+{
+ id:"m1", num:"01", title:"Dasonomía urbana: historia y valores",
+ short:"Origen del árbol en la ciudad, urbanización acelerada, islas de calor y los servicios que presta el arbolado.",
+ sidebar:["Definición y origen","Urbanización y demanda de verde","Islas de calor","Valores del árbol urbano"],
+ html:`
+ <p class="badge">Historia</p><p class="badge">Servicios ecosistémicos</p><p class="badge">Introducción</p>
+ <h2>01 · Dasonomía urbana: historia y valores</h2>
+ <p>La <b>Dasonomía urbana</b> es la disciplina de las ciencias forestales que estudia los árboles dentro de los centros de población humana. Integra dos campos: la <b>Arboricultura</b> (técnicas de establecimiento y manejo de árboles individuales) y la <b>Arquitectura del paisaje</b> (diseño estético y funcional de la vegetación urbana).</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Split illustration comparing an ancient Egyptian garden with trees planted in raised earthen beds (left) and a modern city street with municipal tree planting crew (right), sepia and green tones, historical botanical illustration style, no text" — usar en la sección de historia (banqueo desde el Antiguo Egipto).</div>
+
+ <h3>Una práctica milenaria</h3>
+ <p>El trasplante y banqueo de árboles no es una técnica nueva: existen registros del <b>banqueo en el Antiguo Egipto</b>. Durante siglos, los árboles aportaron bienes de consumo directo (leña, frutos, materiales) y para la industria de transformación. En las ciudades, sin embargo, se les valoró casi exclusivamente por ser "algo bonito", relegando su función ambiental.</p>
+
+ <h3>La urbanización acelerada</h3>
+ <table><tr><th>Periodo</th><th>Población rural</th><th>Población urbana</th></tr>
+ <tr><td>1950 (siglo XX)</td><td>80%</td><td>20%</td></tr>
+ <tr><td>2015 (siglo XXI)</td><td>50%</td><td>50%</td></tr>
+ <tr><td>2050 (proyección)</td><td>20%</td><td>80%</td></tr></table>
+ <p>Este crecimiento demográfico concentrado en ciudades intensifica el fenómeno de <b>islas de calor urbano</b>, asociado al calentamiento global, y presiona el espacio disponible para vegetación. La <b>Organización Mundial de la Salud (OMS)</b> recomienda un mínimo de <b>9 m² de área verde por habitante</b>, con un ideal de <b>15 m²</b>.</p>
+
+ <div class="callout tip"><b>Dato clave:</b> los patrones atmosféricos cambiantes han llevado a las sociedades a revalorar la importancia de la vegetación urbana como infraestructura de adaptación climática, no solo como ornato.</div>
+
+ <h3>Valores del árbol urbano</h3>
+ <ul>
+   <li><b>Ecológicos:</b> regulación microclimática, captura de carbono, hábitat para fauna, infiltración de agua.</li>
+   <li><b>Económicos:</b> ahorro energético (sombra), plusvalía, turismo, reducción de costos de drenaje pluvial.</li>
+   <li><b>Sociales:</b> salud física y mental, cohesión comunitaria, identidad cultural y paisajística.</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q1">
+  <h4>Autoevaluación · Módulo 01</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿Cuánta área verde por habitante recomienda la OMS como valor ideal?</p>
+    <div class="qopt" data-i="0">6 m²</div>
+    <div class="qopt" data-i="1">15 m²</div>
+    <div class="qopt" data-i="2">30 m²</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. La Dasonomía urbana integra Arboricultura y...</p>
+    <div class="qopt" data-i="0">Arquitectura del paisaje</div>
+    <div class="qopt" data-i="1">Ingeniería civil</div>
+    <div class="qopt" data-i="2">Agronomía industrial</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m2", num:"02", title:"Biología y fisiología del árbol",
+ short:"Anatomía, funciones vitales y el modelo CODIT que explica cómo compartimenta sus heridas un árbol.",
+ sidebar:["Estructura básica","Transporte de agua y nutrientes","Fotosíntesis y respiración","CODIT: compartimentación"],
+ html:`
+ <p class="badge">Biología</p><p class="badge">Fisiología</p>
+ <h2>02 · Biología y fisiología del árbol</h2>
+ <p>Comprender cómo funciona un árbol es la base de cualquier intervención técnica (poda, riego, fertilización, inyección). Un árbol no es un objeto inerte: es un organismo con sistemas de transporte, defensa y crecimiento interdependientes.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Cross-section botanical diagram of a tree trunk showing bark, phloem, cambium, sapwood (xylem) and heartwood layers, labeled scientific illustration style, soft educational color palette, clean white background, no text overlays" — usar como diagrama de anatomía del tronco (agregar etiquetas en español tras generar).</div>
+
+ <h3>Estructura funcional</h3>
+ <ul>
+   <li><b>Raíces:</b> anclaje, absorción de agua y nutrientes; la mayoría se concentra en los primeros 30-60 cm de suelo y se extiende 2-3 veces el radio de la copa.</li>
+   <li><b>Tronco:</b> transporte (xilema hacia arriba, floema hacia abajo) y soporte estructural.</li>
+   <li><b>Copa:</b> fotosíntesis, intercambio gaseoso y regulación de temperatura foliar.</li>
+ </ul>
+
+ <h3>Transporte: cohesión-tensión</h3>
+ <p>El movimiento de agua desde la raíz hasta las hojas se explica mediante la <b>teoría de cohesión-tensión</b> (Dixon y Joly, 1895): la transpiración en las hojas genera una tensión negativa que "jala" columnas continuas de agua a través del xilema, gracias a la cohesión entre moléculas de agua.</p>
+
+ <h3>CODIT: cómo se defiende un árbol herido</h3>
+ <p>El modelo <b>CODIT</b> (Compartmentalization of Decay in Trees, Alex Shigo, 1977) describe cómo un árbol no "cura" sus heridas como un animal, sino que las <b>compartimenta</b>, aislando el tejido dañado mediante cuatro paredes de defensa (verticales, horizontales, radiales y una pared de generación de nuevo tejido). Este principio es la base científica de toda técnica moderna de poda: cortar en el lugar y ángulo correctos permite que el árbol selle eficazmente la herida.</p>
+
+ <div class="callout"><b>Aplicación práctica:</b> el CODIT explica por qué "sellar" cortes de poda con pintura o brea (práctica antigua) resulta contraproducente: interfiere con la compartimentación natural del árbol.</div>
+
+ <div class="quiz" data-quiz="q2">
+  <h4>Autoevaluación · Módulo 02</h4>
+  <div class="qitem" data-answer="2">
+    <p class="qtext">1. ¿Qué tejido transporta agua desde la raíz hacia las hojas?</p>
+    <div class="qopt" data-i="0">Floema</div>
+    <div class="qopt" data-i="1">Corteza</div>
+    <div class="qopt" data-i="2">Xilema</div>
+  </div>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">2. El modelo CODIT fue propuesto por:</p>
+    <div class="qopt" data-i="0">Justus von Liebig</div>
+    <div class="qopt" data-i="1">Alex Shigo</div>
+    <div class="qopt" data-i="2">Dixon y Joly</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m3", num:"03", title:"Selección y establecimiento de especies",
+ short:"Criterios técnicos para elegir la especie correcta en el sitio correcto: talla adulta, forma de copa y factores urbanos.",
+ sidebar:["Por qué importa la calidad del árbol","Cinco criterios de selección","Formas de copa","Caso: decisiones políticas vs. técnicas"],
+ html:`
+ <p class="badge">Selección de especies</p><p class="badge">Planeación</p>
+ <h2>03 · Selección y establecimiento de especies</h2>
+ <p>"El árbol barato sale caro": un árbol de buena calidad de vivero vive, en promedio, el doble que uno de calidad deficiente, porque llega con manejo adecuado de raíz, vigor y sanidad. Pero la calidad del árbol no basta — también se debe seleccionar correctamente el <b>sitio</b>.</p>
+
+ <h3>Cinco criterios de selección</h3>
+ <table>
+ <tr><th>Criterio</th><th>Qué evalúa</th></tr>
+ <tr><td><b>A. Características de la especie</b></td><td>Altura adulta, diámetro y forma de copa, tipo de raíz, velocidad de crecimiento</td></tr>
+ <tr><td><b>B. Factores urbanos</b></td><td>Líneas aéreas, tuberías subterráneas, equipamiento urbano, tránsito, espacio de plantación</td></tr>
+ <tr><td><b>C. Factores ambientales</b></td><td>Clima (temperaturas extremas), suelo, contaminación atmosférica</td></tr>
+ <tr><td><b>D. Factores de manejo</b></td><td>Nivel de mantenimiento requerido, susceptibilidad a estrés urbano</td></tr>
+ <tr><td><b>E. Factores sociales</b></td><td>Diseño paisajístico, preferencias comunitarias, disponibilidad en vivero</td></tr>
+ </table>
+
+ <h3>Categorías por talla adulta</h3>
+ <ul>
+   <li><b>Arbustos:</b> ideales para espacio limitado; buena opción para especies nativas.</li>
+   <li><b>Árboles pequeños/medianos:</b> adecuados bajo líneas aéreas y en banquetas estrechas; preferir especies tolerantes a la poda.</li>
+   <li><b>Árboles grandes/extra grandes:</b> reservados a parques, camellones &gt;10 m, jardines temáticos — nunca en banquetas de espacio limitado.</li>
+ </ul>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Botanical infographic showing five tree crown silhouette shapes side by side: oval, round, columnar, pyramidal, and vase-shaped (V-form), simple flat vector icons, dark green on cream background, minimal labels, educational diagram style" — usar en la sección "Formas de copa" (agregar etiquetas correspondientes tras generar: Oval, Redonda, Columnar, Piramidal, Jarrón).</div>
+
+ <h3>Formas de copa y su función urbana</h3>
+ <ul>
+   <li><b>Oval:</b> crecimiento vertical, no interfiere con el paso; puede quedar cerca de edificios.</li>
+   <li><b>Redonda:</b> copa extendida horizontalmente; requiere podas de formación juveniles; ideal en espacios abiertos.</li>
+   <li><b>Columnar:</b> poca anchura, apta para espacios reducidos.</li>
+   <li><b>Piramidal:</b> típica de coníferas; rama dominante única.</li>
+   <li><b>Jarrón ("V"):</b> considerada la forma más recomendable para árboles de calle — sombra amplia con buena visibilidad a nivel de piso.</li>
+ </ul>
+
+ <div class="callout danger"><b>Caso Pachuca (factores sociales):</b> con frecuencia la elección de especies no responde a criterios técnicos sino a gustos, modas o disponibilidad de vivero — decisión política más que técnica. Esto compromete la longevidad del arbolado.</div>
+
+ <div class="quiz" data-quiz="q3">
+  <h4>Autoevaluación · Módulo 03</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿Qué forma de copa se considera más recomendable para árboles de calle?</p>
+    <div class="qopt" data-i="0">Redonda</div>
+    <div class="qopt" data-i="1">En jarrón ("V")</div>
+    <div class="qopt" data-i="2">Piramidal</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. Un árbol grande debe preferentemente ubicarse en:</p>
+    <div class="qopt" data-i="0">Parques y camellones anchos (&gt;10 m)</div>
+    <div class="qopt" data-i="1">Banquetas estrechas</div>
+    <div class="qopt" data-i="2">Bajo líneas eléctricas</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m4", num:"04", title:"Plantación (arborización)",
+ short:"Fecha, espaciamiento, apertura de cepa, cajeteo, tutoreo y mulch: la técnica completa de plantar un árbol urbano.",
+ sidebar:["Fecha y espaciamiento","Apertura de cepa","Colocación y profundidad","Cajeteo y tutoreo","Mulch: 10 beneficios"],
+ html:`
+ <p class="badge">Plantación</p><p class="badge">Técnica de campo</p>
+ <h2>04 · Plantación (arborización)</h2>
+ <p><b>Arborizar</b> significa plantar árboles en zonas urbanas. Un árbol de la especie y calidad correctas, en el sitio adecuado, debe además plantarse con la técnica correcta — de lo contrario se pierde todo el trabajo previo de selección.</p>
+
+ <h3>Fecha de plantación</h3>
+ <p>En climas fríos: plantar en el periodo de menor actividad (invierno). En la Ciudad de México puede plantarse todo el año, pero se recomienda el inicio de la temporada de lluvias por mayor humedad relativa y nubosidad. Si se planta en época seca, hacerlo de noche o fuera de las horas más calurosas (antes de 10:00 o después de 16:00h).</p>
+
+ <h3>Espaciamiento de referencia</h3>
+ <table><tr><th>Tipo</th><th>Distancia mínima</th></tr>
+ <tr><td>Árboles de sombra entre sí</td><td>10 m</td></tr>
+ <tr><td>Arbustos entre sí</td><td>5 m</td></tr>
+ <tr><td>Coníferas en cortina rompevientos</td><td>3–5 m</td></tr>
+ <tr><td>Árbol a residencia</td><td>≥ ½ de la altura máxima esperada</td></tr>
+ </table>
+
+ <h3>Apertura de la cepa</h3>
+ <p>La cepa debe ser <b>2 a 3 veces el diámetro del cepellón</b>, con profundidad equivalente a su altura, procurando un 50% de suelo removido en el fondo. Esto facilita el crecimiento de raíces nuevas: crecen rápido en suelo suelto y muy lento en suelo compactado.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Technical cutaway diagram of proper urban tree planting: root ball at correct depth, root collar level with soil surface, mulch ring around base not touching trunk, staking with soft ties, cross-section illustration, clean instructional style, muted earth tones, no text" — usar en "Colocación y profundidad" (etiquetar tras generar: cuello radical, mulch, tutor).</div>
+
+ <h3>Colocación: la regla del cuello radical</h3>
+ <div class="callout"><b>Regla de oro:</b> el cuello radical debe quedar 5-10 cm por encima del nivel del piso (el suelo suelto bajará con el riego). Raíces muy profundas se asfixian por falta de O₂; raíces muy superficiales se deshidratan.</div>
+ <p>La arboricultura moderna recomienda <b>no</b> podar ramas vivas, <b>no</b> fertilizar ni agregar mejoradores de suelo al momento de plantar (salvo suelo muy pobre), para reducir el shock de trasplante (3-6 meses).</p>
+
+ <h3>Cajeteo y tutoreo</h3>
+ <ul>
+   <li><b>Cajete:</b> barrera elevada de ~20 cm de tierra para contener el riego; temporal en climas húmedos, puede ser permanente en climas secos (con cubrepiso orgánico).</li>
+   <li><b>Tutoreo:</b> no recomendable en árboles pequeños (daña el tronco). En árboles grandes, usar tutores o vientos con cinta (nunca alambre), retirar antes de 1 año.</li>
+ </ul>
+
+ <h3>Mulch (cubrepiso): 10 beneficios</h3>
+ <ol>
+  <li>Conservación de humedad</li><li>Amortigua temperaturas extremas del suelo</li>
+  <li>Control de herbáceas competidoras</li><li>Aporte de materia orgánica</li>
+  <li>Mejora la textura del suelo</li><li>Permite intercambio gaseoso O₂-CO₂</li>
+  <li>Favorece la biodiversidad</li><li><b>Favorece la formación de nuevas raíces</b> (la función más importante)</li>
+  <li>Aporta estética</li><li>Ahorra mantenimiento</li>
+ </ol>
+ <div class="callout tip">Aplicar el mulch en capa uniforme sobre la zona del cepellón <b>sin tocar el tallo</b>, para evitar pudriciones.</div>
+
+ <div class="quiz" data-quiz="q4">
+  <h4>Autoevaluación · Módulo 04</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿Cuántas veces el diámetro del cepellón debe medir la cepa?</p>
+    <div class="qopt" data-i="0">Igual al cepellón</div>
+    <div class="qopt" data-i="1">2 a 3 veces</div>
+    <div class="qopt" data-i="2">5 a 7 veces</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. ¿Dónde debe quedar el cuello radical tras plantar?</p>
+    <div class="qopt" data-i="0">5-10 cm por encima del nivel del piso</div>
+    <div class="qopt" data-i="1">10 cm por debajo del piso</div>
+    <div class="qopt" data-i="2">Exactamente al nivel del piso, sin margen</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m5", num:"05", title:"Relación suelo-árbol y riego",
+ short:"Propiedades químicas del suelo (pH, CIC, salinidad), texturas y métodos de riego para arbolado establecido.",
+ sidebar:["Manejo del suelo","pH, CIC y salinidad","Textura y retención de agua","Métodos de riego","Fertirriego"],
+ html:`
+ <p class="badge">Edafología</p><p class="badge">Riego</p>
+ <h2>05 · Relación suelo-árbol y riego</h2>
+ <p>El único elemento realmente modificable en el sitio de plantación es el <b>suelo</b>. Existen tres estrategias: sustitución total (suelo externo), mejoramiento parcial (suelo del sitio + mejoradores) o manejo puntual del suelo existente — la más común en árboles ya establecidos, donde solo es posible intervenir la superficie.</p>
+
+ <h3>Tres propiedades químicas clave</h3>
+ <table>
+ <tr><th>Propiedad</th><th>Qué regula</th><th>Manejo</th></tr>
+ <tr><td><b>pH</b></td><td>Disponibilidad de nutrimentos y afinidad de especies</td><td>Exceso de acidez → carbonato de calcio; exceso de alcalinidad → materia orgánica</td></tr>
+ <tr><td><b>CIC</b> (capacidad de intercambio catiónico)</td><td>Reserva de fertilidad del suelo</td><td>Las arcillas, por su tamaño de partícula, tienen mayor CIC</td></tr>
+ <tr><td><b>Salinidad (CE)</b></td><td>A mayor salinidad, menor absorción de nutrimentos</td><td>Azufre agrícola o lavado con agua abundante</td></tr>
+ </table>
+
+ <h3>Textura: arena vs. arcilla</h3>
+ <p>Las arcillas retienen más agua por su mayor superficie de contacto (microporosidad), en comparación con las arenas, debido a las fuerzas de tensión y cohesión entre partículas de suelo y agua.</p>
+
+ <h3>Métodos de riego</h3>
+ <ul>
+   <li><b>Aspersión:</b> provoca raíces superficiales, compactación y favorece hongos en tronco/follaje.</li>
+   <li><b>Goteo:</b> evita evaporación excesiva y mejora infiltración — recomendado.</li>
+   <li><b>Inyección a alta presión:</b> costosa, para árboles aislados o áreas pequeñas.</li>
+   <li><b>Inundación:</b> solo en áreas pequeñas con buen drenaje.</li>
+ </ul>
+ <div class="callout danger"><b>Evitar:</b> riego con pipa a chorro directo sin cajete ni cubrepiso — el impacto del chorro daña la estructura radicular superficial.</div>
+
+ <h3>Fertirrigación</h3>
+ <p>Formas de aplicación de fertilizante: al suelo (granular), fertirrigación, aspersión foliar, perforaciones al suelo (pasivas o a presión) y microinyecciones al tronco. Las perforaciones al suelo se hacen a 60-90 cm entre sí (concéntricas) y 20-30 cm de profundidad.</p>
+
+ <div class="quiz" data-quiz="q5">
+  <h4>Autoevaluación · Módulo 05</h4>
+  <div class="qitem" data-answer="2">
+    <p class="qtext">1. ¿Qué tipo de suelo retiene más agua por microporosidad?</p>
+    <div class="qopt" data-i="0">Arenoso</div>
+    <div class="qopt" data-i="1">Limoso grueso</div>
+    <div class="qopt" data-i="2">Arcilloso</div>
+  </div>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">2. ¿Qué método de riego mejora la infiltración y reduce la evaporación?</p>
+    <div class="qopt" data-i="0">Aspersión</div>
+    <div class="qopt" data-i="1">Goteo</div>
+    <div class="qopt" data-i="2">Pipa a chorro directo</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m6", num:"06", title:"Nutrición vegetal",
+ short:"Macro y micronutrientes esenciales, criterios de esencialidad y diagnóstico visual de deficiencias.",
+ sidebar:["Historia y criterios de esencialidad","13 elementos esenciales","Fertilidad y crecimiento","Deficiencias visibles"],
+ html:`
+ <p class="badge">Nutrición</p><p class="badge">Fisiología</p>
+ <h2>06 · Nutrición vegetal</h2>
+ <p>Los efectos benéficos de agregar minerales al suelo se conocen desde hace más de 2,000 años, pero fue hasta el siglo XIX que <b>Justus von Liebig</b> formuló la "teoría de los elementos minerales". En 1939, Arnon y Stout (Universidad de California) establecieron los <b>tres criterios de esencialidad</b> de un nutriente:</p>
+ <ol>
+   <li>Su omisión provoca crecimiento anormal, incapacidad de completar el ciclo de vida, o muerte prematura.</li>
+   <li>Su función es específica y no reemplazable por otro elemento.</li>
+   <li>Ejerce un efecto directo en crecimiento y metabolismo (constituyente de una enzima o proceso metabólico).</li>
+ </ol>
+
+ <h3>13 elementos esenciales</h3>
+ <p>Se clasifican en <b>6 macronutrientes</b> (requeridos en grandes cantidades; constituyentes de proteínas y ácidos nucleicos) y <b>7 micronutrientes</b> (constituyentes de enzimas, en proporciones muy pequeñas).</p>
+
+ <h3>Fertilidad y crecimiento: la curva de respuesta</h3>
+ <p>El crecimiento aumenta con la concentración de nutrientes hasta un punto máximo; más allá de ese punto, el exceso ya no favorece el crecimiento y puede provocar consumo excesivo o toxicidad.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Simple line chart illustration showing a growth-response curve rising then plateauing then declining (toxicity zone), botanical scientific poster style, sage green line on cream background, minimal educational infographic, no text" — usar para ilustrar la curva de fertilidad y crecimiento.</div>
+
+ <h3>Diagnóstico visual de deficiencias</h3>
+ <table>
+ <tr><th>Nutriente</th><th>Síntoma característico</th></tr>
+ <tr><td>Nitrógeno (N)</td><td>Clorosis generalizada, achaparramiento</td></tr>
+ <tr><td>Fósforo (P)</td><td>"Corazón púrpura" — coloración morada en tejido nuevo</td></tr>
+ <tr><td>Potasio (K)</td><td>Follaje corto y clorótico; en casos severos, necrosis con muerte descendente desde la punta</td></tr>
+ </table>
+ <div class="callout"><b>Ojo clínico:</b> al momento en que aparecen síntomas visibles de deficiencia, ya se ha perdido una cantidad significativa de crecimiento — el diagnóstico temprano (análisis de suelo/tejido) es más valioso que la inspección visual tardía.</div>
+
+ <h3>El suelo urbano y la disponibilidad de nutrientes</h3>
+ <p>La mayoría del suelo urbano es de origen mineral profundo (bancos de préstamo), bajo en materia orgánica y con poca dinámica biológica, además de estar frecuentemente compactado — condiciones que limitan la disponibilidad de nutrientes independientemente de la fertilización aplicada.</p>
+
+ <div class="quiz" data-quiz="q6">
+  <h4>Autoevaluación · Módulo 06</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿Qué deficiencia produce el "corazón púrpura" en tejido nuevo?</p>
+    <div class="qopt" data-i="0">Nitrógeno</div>
+    <div class="qopt" data-i="1">Fósforo</div>
+    <div class="qopt" data-i="2">Potasio</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. ¿Cuántos elementos esenciales se han identificado para las plantas superiores?</p>
+    <div class="qopt" data-i="0">13</div>
+    <div class="qopt" data-i="1">6</div>
+    <div class="qopt" data-i="2">20</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m7", num:"07", title:"Conceptos y técnicas de poda",
+ short:"Tipos de poda, herramientas adecuadas según diámetro y el principio del corte correcto (cuello de rama).",
+ sidebar:["Objetivos de la poda","Herramientas por diámetro","Tipos de poda","El corte correcto"],
+ html:`
+ <p class="badge">Poda</p><p class="badge">Técnica</p>
+ <h2>07 · Conceptos y técnicas de poda</h2>
+ <p>La poda es la intervención más frecuente — y más frecuentemente mal ejecutada — en el arbolado urbano. Su objetivo no es "arreglar" al árbol sino guiar su desarrollo estructural, retirar tejido muerto o enfermo, y mantener espacios seguros (visibilidad, líneas eléctricas, infraestructura), siempre en función de la biología descrita por el CODIT (módulo 02).</p>
+
+ <h3>Herramientas según el diámetro de la rama</h3>
+ <table>
+ <tr><th>Herramienta</th><th>Diámetro recomendado</th><th>Notas</th></tr>
+ <tr><td>Tijera de navaja</td><td>&lt; 3 cm, ramas verdes</td><td>Corte por deslizamiento de navaja curva</td></tr>
+ <tr><td>Tijera Anvil</td><td>&lt; 3 cm, ramas secas</td><td>Corte por presión contra base plana; macera tejido suave</td></tr>
+ <tr><td>Tijera con mango largo (30-60 cm)</td><td>Hasta 7 cm</td><td>Uni o bimanual</td></tr>
+ <tr><td>Serrucho manual</td><td>Hasta 10 cm</td><td>Dientes abiertos evitan atasque</td></tr>
+ <tr><td>Motosierra</td><td>Ramas gruesas</td><td>Mayor rendimiento; requiere trepado seguro</td></tr>
+ <tr><td>Garrocha / pértiga telescópica</td><td>Ramas altas hasta 5 m</td><td>Fibra de vidrio o aluminio (aluminio prohibido cerca de líneas eléctricas)</td></tr>
+ </table>
+
+ <div class="callout danger"><b>Riesgo eléctrico:</b> la poda bajo cables energizados es sumamente peligrosa. Debe realizarse solo con canastilla hidráulica y personal profesional; nunca con extensiones de aluminio cerca de líneas de energía.</div>
+
+ <h3>Higiene de herramientas</h3>
+ <p>En individuos enfermos, desinfectar las tijeras entre cortes (alcohol al 70% o cloro comercial 1:9) para no propagar patógenos. En coníferas, usar aceite delgado para evitar que la resina trabe las navajas.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Close-up technical illustration of a correct pruning cut showing the branch collar and branch bark ridge, arrow indicating the correct cutting angle just outside the collar, versus an incorrect flush cut, side-by-side comparison, clean scientific diagram style, muted greens and browns, no text" — usar en "El corte correcto" (etiquetar: correcto / incorrecto tras generar).</div>
+
+ <h3>El principio del corte correcto</h3>
+ <p>Todo corte de poda debe hacerse <b>justo afuera del cuello de la rama</b> (branch collar), sin dejar muñón y sin cortar a ras del tronco ("corte a flor"). Esto respeta las zonas de tejido que el árbol utiliza para compartimentar la herida (CODIT). Nunca se deben aplicar selladores o pinturas cicatrizantes: interfieren con el proceso natural de compartimentación.</p>
+
+ <h3>Tipos de poda más comunes</h3>
+ <ul>
+   <li><b>Poda de formación:</b> en árboles jóvenes, para establecer una estructura de ramas sólida y reducir podas costosas en la madurez.</li>
+   <li><b>Poda de mantenimiento/sanitaria:</b> retiro de ramas muertas, enfermas, cruzadas o de inserción débil.</li>
+   <li><b>Poda de despeje/elevación:</b> para liberar gálibo vial o peatonal.</li>
+   <li><b>Rasurado (setos/topiarios):</b> solo en ramillas &lt; 1 cm; no recomendable en árboles de porte grande por los desgarres que ocasiona.</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q7">
+  <h4>Autoevaluación · Módulo 07</h4>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">1. ¿Dónde debe hacerse el corte de poda?</p>
+    <div class="qopt" data-i="0">Justo afuera del cuello de la rama</div>
+    <div class="qopt" data-i="1">A ras del tronco (corte a flor)</div>
+    <div class="qopt" data-i="2">Dejando un muñón de protección</div>
+  </div>
+  <div class="qitem" data-answer="2">
+    <p class="qtext">2. ¿Es recomendable sellar los cortes de poda con pintura cicatrizante?</p>
+    <div class="qopt" data-i="0">Sí, siempre</div>
+    <div class="qopt" data-i="1">Solo en coníferas</div>
+    <div class="qopt" data-i="2">No, interfiere con la compartimentación natural</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m8", num:"08", title:"Banqueo y trasplante",
+ short:"Formación del cepellón, materiales de arpillado, carga y transporte de árboles al sitio de plantación.",
+ sidebar:["Qué es el cepellón","Regla del cepellón","Materiales de banqueo","Carga y transporte"],
+ html:`
+ <p class="badge">Banqueo</p><p class="badge">Vivero</p>
+ <h2>08 · Banqueo y trasplante</h2>
+ <p>El <b>cepellón</b> es el volumen del sistema radicular envuelto dentro de un envase o arpillado. El banqueo es recomendable para árboles menores de 3 m; en árboles mayores se combina producción en envase con plantación en piso.</p>
+
+ <div class="callout tip"><b>Regla general del cepellón:</b> de 5 a 7 veces el diámetro del tronco en la base. Árboles menores de 10 m de altura requieren cepellón de 50-70 cm de alto.</div>
+
+ <h3>Materiales para formar el cepellón</h3>
+ <p>Costal (yute, plástico o tela), rafia, cuerda (mínimo 2 cabos), aguja costalera, palas, picos y barreta. Los cepellones hechos a mano son irregulares en forma; los mecánicos son homogéneos pero pueden presentar otros inconvenientes según el tipo de máquina excavadora usada.</p>
+
+ <h3>Carga y transporte</h3>
+ <ul>
+   <li>El transporte del vivero al sitio de plantación debe hacerse <b>el mismo día</b> de la plantación.</li>
+   <li>Usar vehículos de "cama baja" para facilitar carga y descarga.</li>
+   <li>Vehículos enlonados o con malla sombra, para evitar deshidratación y desgarre foliar.</li>
+   <li>En trayectos largos: riego sobre la marcha o viajar de noche.</li>
+   <li>Usar protecciones en tallo y cepellón; <b>cintas</b>, nunca cuerdas directas sobre corteza.</li>
+   <li>Distancias cortas: carritos, "diablitos" o carretillas.</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q8">
+  <h4>Autoevaluación · Módulo 08</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. Según la regla general, ¿cuántas veces el diámetro del tronco debe medir el cepellón?</p>
+    <div class="qopt" data-i="0">2 a 3 veces</div>
+    <div class="qopt" data-i="1">5 a 7 veces</div>
+    <div class="qopt" data-i="2">10 veces</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. ¿Cuándo debe transportarse el árbol del vivero al sitio de plantación?</p>
+    <div class="qopt" data-i="0">El mismo día de la plantación</div>
+    <div class="qopt" data-i="1">Una semana antes</div>
+    <div class="qopt" data-i="2">No importa el tiempo si hay riego</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m9", num:"09", title:"Manejo integrado de plagas y enfermedades (MIP)",
+ short:"Triada epidemiológica, fases de diagnóstico fitosanitario y umbral económico de daño.",
+ sidebar:["Qué es una plaga","La triada epidemiológica","Fases de diagnóstico","Tipos de daño"],
+ html:`
+ <p class="badge">Fitosanidad</p><p class="badge">MIP</p>
+ <h2>09 · Manejo integrado de plagas y enfermedades</h2>
+ <p>El <b>Manejo Integrado de Plagas (MIP)</b> es la selección, integración e implementación de tácticas de control basadas en predicciones económicas, ecológicas y sociales — utilizando dos o más métodos para mantener a la población plaga por debajo del <b>umbral económico</b>.</p>
+ <p><b>Plaga:</b> cualquier organismo vivo (insecto, ácaro, roedor, ave, molusco, nematodo, bacteria, hongo, virus, planta) que cause daño "no deseado" — es un concepto antropocéntrico y de contexto, no una categoría biológica fija.</p>
+
+ <h3>Magnitud del problema (a nivel mundial)</h3>
+ <table><tr><th>Grupo</th><th>Especies referidas como plaga</th></tr>
+ <tr><td>Insectos y ácaros</td><td>~20,000</td></tr>
+ <tr><td>Malezas</td><td>~1,800 (hasta 30,000 según fuente)</td></tr>
+ <tr><td>Nematodos</td><td>~500</td></tr>
+ <tr><td>Virus</td><td>~8,000</td></tr>
+ <tr><td>Bacterias</td><td>~250</td></tr>
+ <tr><td>Enfermedades (tipos)</td><td>~100,000</td></tr>
+ </table>
+
+ <h3>La triada epidemiológica</h3>
+ <p>Todo problema fitosanitario resulta de la interacción de tres elementos: el <b>organismo o agente causal</b>, el <b>hospedante</b> (el árbol) y el <b>ambiente</b>. Modificar cualquiera de los tres altera el desenlace — de ahí que el manejo del sitio (riego, suelo, poda) sea tan importante como el control directo de la plaga.</p>
+
+ <h3>Tres fases del diagnóstico fitosanitario</h3>
+ <ol>
+   <li><b>Detección</b> — ¿Cuál es el problema? Reconocimiento en campo, recolecta e identificación taxonómica, biología y ecología del agente.</li>
+   <li><b>Evaluación</b> — ¿Qué tan grande es el problema? Valoración del nivel de daño, muestreo poblacional, determinación del umbral económico.</li>
+   <li><b>Control o manejo</b> — ¿Cómo, cuándo y con qué? Selección de tácticas, análisis de costos, monitoreo y seguimiento.</li>
+ </ol>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Educational diagram of the epidemiological triangle for plant pathology: three connected nodes labeled Agente causal, Hospedante, Ambiente, forming a triangle, botanical scientific poster style, olive and rust color palette, clean icons for insect, tree leaf, and weather symbol at each node" — usar para ilustrar la triada epidemiológica (mantener texto en español).</div>
+
+ <h3>Tipos de daño según el aparato bucal del insecto</h3>
+ <ul>
+   <li><b>Masticadores:</b> defoliación, minado, barrenado.</li>
+   <li><b>Chupadores:</b> clorosis, deformación, transmisión de patógenos (áfidos, escamas, mosca blanca).</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q9">
+  <h4>Autoevaluación · Módulo 09</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. Los tres elementos de la triada epidemiológica son agente causal, hospedante y...</p>
+    <div class="qopt" data-i="0">Presupuesto</div>
+    <div class="qopt" data-i="1">Ambiente</div>
+    <div class="qopt" data-i="2">Normatividad</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. La primera fase del diagnóstico fitosanitario es:</p>
+    <div class="qopt" data-i="0">Detección</div>
+    <div class="qopt" data-i="1">Control</div>
+    <div class="qopt" data-i="2">Evaluación económica</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m10", num:"10", title:"Inyecciones en tronco",
+ short:"Métodos con y sin taladro para aplicar agroquímicos directamente al xilema, ventajas y recomendaciones.",
+ sidebar:["Principios: transpiración y traslocación","Ventajas vs. desventajas","Método sin taladro","Método con taladro","Recomendaciones finales"],
+ html:`
+ <p class="badge">Fitosanidad</p><p class="badge">Técnica especializada</p>
+ <h2>10 · Inyecciones en tronco</h2>
+ <p>Las inyecciones al tronco aprovechan los principios de <b>transpiración</b> y <b>traslocación</b> del árbol para distribuir agroquímicos directamente por el xilema. Las primeras referencias históricas datan de Hartig (1853, primer método con equipo) y Shevyrev (1894, control de plagas); Shigo (CODIT, 1977) explicó después cómo el árbol compartimenta el daño de la perforación.</p>
+
+ <h3>Ventajas y desventajas</h3>
+ <table><tr><th>Ventajas</th><th>Desventajas</th></tr>
+ <tr><td>Menor exposición a agroquímicos del entorno<br>Baja residualidad ambiental<br>Aplicación directa al xilema<br>Útil en árboles altos<br>Sustituye aspersiones y riegos</td>
+ <td>Requiere equipo especializado<br>Puede causar daños en el tronco (perforaciones)</td></tr>
+ </table>
+
+ <h3>Método sin taladro</h3>
+ <p>Microinyecciones pasivas o "a pulso"; no usan perforación con broca, menor daño al tronco, permiten mayor número de aplicaciones con compuestos concentrados. Ejemplos comerciales: Bite®, Wedgle® (ArborSystems).</p>
+
+ <h3>Método con taladro</h3>
+ <p>Macro y microinyecciones o implantes mediante perforaciones de 2 a 9.5 mm de diámetro, con taquetes especiales. Mayor volumen de producto, presiones de 207 a 450 kPa (algunos sistemas de alta presión superan 3,000 kPa). Ejemplos: ArborJet®, ChemJet®, Mauget®, Viper®, Acecaps®.</p>
+
+ <div class="callout danger"><b>Regla de seguridad:</b> vaciar siempre el aire de mangueras y jeringas antes de inyectar. Cambiar la broca después de cada 10 árboles tratados para evitar contaminación cruzada.</div>
+
+ <h3>Recomendaciones finales</h3>
+ <ul>
+   <li>Diagnóstico previo obligatorio y bitácora de inyecciones.</li>
+   <li>Usar EPP y revisar fichas técnicas si se mezclan productos.</li>
+   <li>Evitar aplicar en baja humedad relativa y alta temperatura.</li>
+   <li>Aplicar en el periodo de crecimiento activo del árbol.</li>
+   <li><b>No</b> aplicar selladores en las heridas ni intentar retirar los taquetes.</li>
+   <li>No realizar más perforaciones de las estrictamente necesarias.</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q10">
+  <h4>Autoevaluación · Módulo 10</h4>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">1. ¿Después de cuántos árboles se recomienda cambiar la broca?</p>
+    <div class="qopt" data-i="0">10</div>
+    <div class="qopt" data-i="1">50</div>
+    <div class="qopt" data-i="2">100</div>
+  </div>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">2. ¿Se debe aplicar sellador en la herida de la inyección?</p>
+    <div class="qopt" data-i="0">Sí, siempre</div>
+    <div class="qopt" data-i="1">No, nunca</div>
+    <div class="qopt" data-i="2">Solo en coníferas</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m11", num:"11", title:"Derribo de arbolado y marco normativo",
+ short:"Criterios válidos e inválidos para derribar un árbol, sanciones legales en el Estado de México.",
+ sidebar:["Definición y norma aplicable","Razones NO válidas","Criterios que sí justifican derribo","Sanciones legales"],
+ html:`
+ <p class="badge">Normativa</p><p class="badge">Derribo</p>
+ <h2>11 · Derribo de arbolado y marco normativo</h2>
+ <p><b>Derribo:</b> corte de un árbol desde la base, vivo o muerto (NTEA-018-SeMAGEM-DS-2017). Es la intervención más drástica y está fuertemente regulada — la mayoría de las razones "comunes" para pedir un derribo no son legalmente válidas.</p>
+
+ <div class="callout danger"><b>Razones NO válidas para derribar</b>
+ <ul>
+   <li>Pérdida de visibilidad</li>
+   <li>Remodelación de áreas verdes</li>
+   <li>Sustitución simple por otra especie</li>
+   <li>Características "molestas" del árbol (frutos, polen, hojarasca)</li>
+   <li>Voluntad propia del agente derribador, sin autorización</li>
+ </ul></div>
+
+ <h3>Alternativas al derribo</h3>
+ <ul>
+   <li>Adecuación del diseño arquitectónico al árbol existente</li>
+   <li>Programación y calendarización de podas</li>
+   <li>Trasplante</li>
+ </ul>
+
+ <h3>Criterios que sí justifican el derribo</h3>
+ <ul>
+   <li>Riesgo estructural comprobado</li>
+   <li>Árboles suprimidos (sin viabilidad de desarrollo)</li>
+   <li>Muerte descendente irreversible</li>
+   <li>Plagas o enfermedades difíciles de controlar</li>
+   <li>Daño severo</li>
+   <li>Obra pública con autorización en materia de impacto ambiental</li>
+ </ul>
+
+ <h3>Tipos de derribo</h3>
+ <p><b>Derribo controlado:</b> técnicas de cordaje y apeo, con cuerdas de resistencia superior a 25 kN. <b>Derribo direccional:</b> solo en espacios abiertos donde no se afecten personas o bienes; manual o mecanizado.</p>
+
+ <h3>Sustitución de árboles</h3>
+ <p>Cuando se autoriza por riesgo o afectación severa a patrimonio urbano, la sustitución es de <b>1 a 1</b> conforme a tabla oficial.</p>
+
+ <h3>Sanciones (Estado de México)</h3>
+ <div class="callout">Código para la Biodiversidad del Estado de México, Art. 2.263: podar, trasplantar o afectar áreas verdes públicas sin autorización se sanciona de 100 a 3,000 veces la Unidad de Medida y Actualización (UMA). Con UMA de $86.8: <b>de $8,688 a $260,640 MXN</b>.<br><br>
+ Además, el derribo doloso sin autorización de un árbol en área natural protegida puede constituir <b>delito</b>, con prisión de 2 a 8 años y de 30 a 150 días multa (Art. 228).</div>
+
+ <div class="quiz" data-quiz="q11">
+  <h4>Autoevaluación · Módulo 11</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿La pérdida de visibilidad es razón válida para derribar un árbol?</p>
+    <div class="qopt" data-i="0">Sí, siempre</div>
+    <div class="qopt" data-i="1">No, no es una razón válida</div>
+    <div class="qopt" data-i="2">Solo en zonas comerciales</div>
+  </div>
+  <div class="qitem" data-answer="2">
+    <p class="qtext">2. La relación de sustitución de árboles autorizada es de:</p>
+    <div class="qopt" data-i="0">3 a 1</div>
+    <div class="qopt" data-i="1">1 a 5</div>
+    <div class="qopt" data-i="2">1 a 1</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m12", num:"12", title:"Seguridad en arboricultura",
+ short:"Marco legal STPS, trabajo en alturas, EPP y factores de riesgo físico, químico y ergonómico del arborista.",
+ sidebar:["Marco legal (STPS/LFT)","Trabajo en alturas","EPP","Riesgos físicos, químicos, ergonómicos"],
+ html:`
+ <p class="badge">Seguridad laboral</p><p class="badge">NOM-STPS</p>
+ <h2>12 · Seguridad en arboricultura</h2>
+ <p>Los trabajos de mantenimiento en altura generan riesgos potenciales muy altos de muerte o invalidez grave. Como resume la propia capacitación fuente: <i>"No perder es una forma de ganar"</i>.</p>
+
+ <h3>Marco legal aplicable</h3>
+ <ul>
+   <li><b>Constitución, Art. 123, Fracc. XIV-XV:</b> la empresa es responsable de accidentes y enfermedades profesionales; el patrón debe observar higiene y seguridad.</li>
+   <li><b>Ley Federal del Trabajo, Art. 473-475:</b> define accidente y enfermedad de trabajo.</li>
+   <li><b>NOM-009-STPS-2011:</b> condiciones de seguridad para trabajos en altura.</li>
+   <li><b>NOM-017-STPS-2008:</b> selección, uso y manejo del EPP.</li>
+   <li><b>NOM-010-STPS-2015:</b> límites de exposición a sustancias químicas (VLE-PPT).</li>
+ </ul>
+
+ <h3>Trabajo en alturas</h3>
+ <p>Según STPS, el <b>16% de los accidentes laborales mortales</b> ocurren por caídas de altura. Se considera "trabajo en altura" cualquier actividad realizada a más de <b>1.8 m</b> sobre el nivel más bajo, sin plataformas protegidas con barandas.</p>
+
+ <h3>Actos inseguros vs. condiciones inseguras</h3>
+ <table><tr><th>Concepto</th><th>Definición</th></tr>
+ <tr><td>Acto inseguro</td><td>Acción del trabajador que omite o viola el método seguro establecido</td></tr>
+ <tr><td>Condición insegura</td><td>Deriva de la inobservancia de procedimientos de seguridad dispuestos por la norma</td></tr>
+ <tr><td>Condición peligrosa</td><td>Características inherentes de instalaciones/equipo que ponen en riesgo la vida</td></tr>
+ </table>
+
+ <h3>Medidas contra caídas</h3>
+ <p><b>Pasivas:</b> delimitación y señalización del área, inspector de seguridad, conos y vallas. <b>Activas</b> (participación directa del trabajador): puntos de anclaje fijos o móviles, conectores, arnés de cuerpo completo. Los puntos de anclaje deben resistir mínimo 22.2 kN (5,000 lb) por persona conectada.</p>
+
+ <h3>Factores de riesgo del arborista</h3>
+ <ul>
+   <li><b>Físicos:</b> ruido &gt;90 dB (pérdida auditiva), radiación infrarroja de motosierras.</li>
+   <li><b>Químicos:</b> humos de motosierra, polvo de madera (algunas maderas duras son carcinógenas categoría A1/A2, ej. cedro rojo, roble, abedul).</li>
+   <li><b>Ergonómicos:</b> evaluados con métodos OWAS (postura) y REBA (carga postural de tronco, cuello, brazos); posturas de poda con torsión y flexión &gt;20° reciben calificaciones altas de riesgo musculoesquelético.</li>
+ </ul>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Illustration of a professional arborist wearing full safety gear — helmet, harness, climbing rope system — working safely in a tree canopy near a marked safety perimeter with cones and signage on the ground, flat educational infographic style, safety orange and forest green palette, no text" — usar en la sección de EPP y trabajo en alturas.</div>
+
+ <h3>Trabajo seguro en alturas: checklist</h3>
+ <ul>
+   <li>Permiso de trabajo en alturas</li><li>Revisión diaria del EPP</li><li>Capacitación certificada</li>
+   <li>Examen médico anual</li><li>Manual de procedimientos y botiquín</li><li>Guía de respuesta a emergencias</li>
+ </ul>
+
+ <div class="quiz" data-quiz="q12">
+  <h4>Autoevaluación · Módulo 12</h4>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">1. ¿A partir de qué altura se considera "trabajo en altura" según la norma?</p>
+    <div class="qopt" data-i="0">1.8 m</div>
+    <div class="qopt" data-i="1">3 m</div>
+    <div class="qopt" data-i="2">5 m</div>
+  </div>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">2. ¿Qué porcentaje de accidentes mortales laborales se debe a caídas de altura, según STPS?</p>
+    <div class="qopt" data-i="0">5%</div>
+    <div class="qopt" data-i="1">16%</div>
+    <div class="qopt" data-i="2">40%</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m13", num:"13", title:"Evaluación económica, i-Tree e infraestructura verde",
+ short:"Valoración monetaria del arbolado, la herramienta i-Tree del USFS y el concepto de infraestructura verde.",
+ sidebar:["Por qué valorar económicamente un árbol","i-Tree: Canopy y Eco","Infraestructura verde: definición","Beneficios cuantificables"],
+ html:`
+ <p class="badge">Valoración económica</p><p class="badge">i-Tree</p><p class="badge">Infraestructura verde</p>
+ <h2>13 · Evaluación económica, i-Tree e infraestructura verde</h2>
+
+ <h3>¿Por qué poner precio a un árbol?</h3>
+ <p>La evaluación económica del arbolado permite justificar presupuestos de mantenimiento, calcular indemnizaciones por daño o derribo ilegal, y comparar el costo de reposición contra el valor de los servicios ambientales que el árbol ya provee. Existen métodos como el de costo de reposición (valor de un árbol equivalente en tamaño y especie) y métodos de valoración de servicios ecosistémicos (captura de carbono, ahorro energético, manejo de agua pluvial).</p>
+
+ <h3>i-Tree: la ciencia forestal del USFS al alcance de todos</h3>
+ <p><b>i-Tree</b> es un conjunto de herramientas gratuitas desarrolladas por el Servicio Forestal de Estados Unidos (USFS) y Davey Tree Expert Company, derivado del modelo UFORE de los años 90, para evaluar y gestionar el bosque urbano.</p>
+ <table>
+ <tr><th>Herramienta</th><th>Función</th></tr>
+ <tr><td><b>i-Tree Canopy</b></td><td>Estima cobertura arbórea mediante fotointerpretación satelital y muestreo cualitativo; permite comparar cambios de cobertura en el tiempo</td></tr>
+ <tr><td><b>i-Tree Eco</b></td><td>Caracteriza la estructura del bosque urbano a partir de inventario de campo y cuantifica servicios ambientales: carbono, calidad del aire, control de escorrentía, compuestos orgánicos volátiles, valoración económica</td></tr>
+ </table>
+ <p>Opera cruzando datos de campo (especie, diámetro, altura, copa) con bases de datos de +8,000 especies, información climática y de contaminantes por hora, para generar pronósticos de servicios ecosistémicos y bioemisiones.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Aerial satellite-style illustration of a city block with tree canopy coverage highlighted in green overlay dots for sampling, data visualization aesthetic, clean modern GIS map style, teal and green palette, no text" — usar en la explicación de i-Tree Canopy.</div>
+
+ <h3>Infraestructura verde</h3>
+ <p><b>Definición:</b> "Estructuras naturales y hechas por el hombre, o espacios permanentemente vacíos, que proveen — directa o indirectamente, parcial o totalmente por la vegetación que soportan — una serie de servicios para la sociedad", manteniendo y mejorando las funciones ecológicas en combinación con la multifuncionalidad del uso del territorio.</p>
+ <ul>
+   <li>La <b>biodiversidad</b> es el eje central del concepto.</li>
+   <li>Promueve redes ecológicas a diferentes escalas.</li>
+   <li>Requiere planificación espacial y temporal y diseño adecuado.</li>
+   <li>Se construye mediante colaboración entre agentes políticos, técnicos y ciudadanía.</li>
+ </ul>
+ <h4>Beneficios documentados</h4>
+ <ul><li>Cambios microclimáticos favorables</li><li>Mejora de suelo y aire</li><li>Mejora de la calidad de vida</li></ul>
+
+ <div class="quiz" data-quiz="q13">
+  <h4>Autoevaluación · Módulo 13</h4>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">1. ¿Qué herramienta de i-Tree usa fotointerpretación satelital para estimar cobertura arbórea?</p>
+    <div class="qopt" data-i="0">i-Tree Eco</div>
+    <div class="qopt" data-i="1">i-Tree Canopy</div>
+    <div class="qopt" data-i="2">i-Tree Design</div>
+  </div>
+  <div class="qitem" data-answer="0">
+    <p class="qtext">2. ¿Cuál es el eje central del concepto de infraestructura verde?</p>
+    <div class="qopt" data-i="0">La biodiversidad</div>
+    <div class="qopt" data-i="1">El presupuesto municipal</div>
+    <div class="qopt" data-i="2">La densidad de construcción</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `},
+
+{
+ id:"m14", num:"14", title:"Diseño de áreas verdes y casos de estudio",
+ short:"Los 11 pasos para diseñar un área verde y dos casos reales: Nezahualcóyotl y Xochitla, Estado de México.",
+ sidebar:["11 pasos del diseño","Principios de diseño","Caso: Nezahualcóyotl","Caso: Xochitla"],
+ html:`
+ <p class="badge">Diseño</p><p class="badge">Casos de estudio</p>
+ <h2>14 · Diseño de áreas verdes y casos de estudio</h2>
+ <p>El diseño de un área verde equilibra cinco aspectos: <b>estético, ecológico, funcional, económico y cultural</b>.</p>
+
+ <h3>11 pasos para diseñar un área verde</h3>
+ <ol>
+   <li>Conocer a los usuarios: sus deseos y necesidades (niños, adultos mayores, etc.)</li>
+   <li>Recorrer el espacio y registrar aspectos importantes (registros, coladeras, vistas)</li>
+   <li>Analizar el contexto (tipología del espacio, contexto socioeconómico)</li>
+   <li>Analizar factores ambientales (clima, microclima, suelo, topografía, patrones de luz/sombra, disponibilidad de agua)</li>
+   <li>Preguntar el presupuesto disponible</li>
+   <li>Definir zonas con volumen vs. zonas libres</li>
+   <li>Seleccionar el estilo del jardín (ej. naturalista con especies nativas)</li>
+   <li>Establecer usos de cada zona (habitación-estadío, esparcimiento, trabajo, circulación)</li>
+   <li>Delimitar zonas de tránsito</li>
+   <li>Elaborar lista de plantas (paleta vegetal) y elementos artificiales</li>
+   <li>Recordar que el espacio necesitará <b>mantenimiento</b> permanente</li>
+ </ol>
+
+ <h3>Principios del diseño</h3>
+ <p>Armonía, balance, contraste, proporción, ritmo y unidad — aplicados a los elementos de forma, color y textura para lograr una composición armónica.</p>
+
+ <div class="img-prompt"><span class="tag">Prompt Firefly</span><br><b>Genera:</b> "Top-down landscape design sketch of an urban park showing tree placement zones, circulation paths, seating areas, and planting beds, hand-drawn architectural rendering style with green watercolor washes, warm paper texture background, no text" — usar en la sección de diseño de áreas verdes.</div>
+
+ <h3 style="margin-top:2.2rem;">Caso de estudio: Ciudad Nezahualcóyotl</h3>
+ <p>Municipio de 63.44 km² y 1.3 millones de habitantes que implementó un programa integral: modernización de 32,000 luminarias a tecnología LED/aditivo cerámico, 45 km de ciclopista, composteo de 50 toneladas diarias de residuos orgánicos, huertos urbanos con agua tratada, y reforestación de zonas antes cementadas.</p>
+ <table><tr><th>Especie usada</th><th>Nombre científico</th></tr>
+ <tr><td>Tulipán africano</td><td>Spathodea campanulata</td></tr>
+ <tr><td>Grevillea</td><td>Grevillea robusta</td></tr>
+ <tr><td>Árbol de orquídea</td><td>Bauhinia variegata</td></tr>
+ <tr><td>Fresno</td><td>Fraxinus uhdei</td></tr>
+ <tr><td>Trueno</td><td>Ligustrum lucidum</td></tr>
+ </table>
+
+ <h3>Caso de estudio: Xochitla y Parque Bicentenario</h3>
+ <p>Casos documentados de manejo integral de áreas verdes en el Estado de México que sirven de referencia para inventarios con i-Tree, programas de MIP y gestión de arbolado a escala de parque metropolitano — articulando en la práctica todos los módulos anteriores de este curso.</p>
+
+ <div class="callout tip"><b>Cierre del curso:</b> "La mitad de la belleza depende del paisaje y la otra mitad del hombre que la mira" — Khalil Gibran, citado en el módulo original de Diseño de Áreas Verdes.</div>
+
+ <div class="quiz" data-quiz="q14">
+  <h4>Autoevaluación · Módulo 14</h4>
+  <div class="qitem" data-answer="2">
+    <p class="qtext">1. ¿Cuál es el último de los 11 pasos para diseñar un área verde?</p>
+    <div class="qopt" data-i="0">Elegir el estilo del jardín</div>
+    <div class="qopt" data-i="1">Definir el presupuesto</div>
+    <div class="qopt" data-i="2">Recordar que necesitará mantenimiento</div>
+  </div>
+  <div class="qitem" data-answer="1">
+    <p class="qtext">2. ¿Cuántos km de ciclopista implementó Nezahualcóyotl en su programa de infraestructura verde?</p>
+    <div class="qopt" data-i="0">10 km</div>
+    <div class="qopt" data-i="1">45 km</div>
+    <div class="qopt" data-i="2">100 km</div>
+  </div>
+  <div class="quiz-result"></div>
+ </div>
+ `}
+];
+
+const GLOSSARY = [
+ ["Arboricultura","Conjunto de técnicas de establecimiento, plantación y manejo de árboles individuales, especialmente en entorno urbano."],
+ ["Dasonomía urbana","Disciplina forestal que estudia el arbolado dentro de los centros de población."],
+ ["Cepellón","Volumen del sistema radicular de un árbol envuelto en un envase o arpillado, formado durante el banqueo."],
+ ["CODIT","Compartmentalization of Decay in Trees. Modelo de Alex Shigo (1977) que describe cómo un árbol aísla el tejido dañado tras una herida."],
+ ["Cuello de rama (branch collar)","Zona engrosada donde la rama se une al tronco; el punto correcto para hacer un corte de poda."],
+ ["Mulch (cubrepiso)","Material orgánico o inorgánico colocado sobre el suelo alrededor del árbol para conservar humedad y favorecer raíces nuevas."],
+ ["Cajete","Barrera elevada de tierra alrededor de un árbol recién plantado, para contener el agua de riego."],
+ ["CIC","Capacidad de Intercambio Catiónico: capacidad del suelo para retener e intercambiar nutrientes con la solución del suelo."],
+ ["Umbral económico","Nivel de población de una plaga a partir del cual el daño económico justifica una acción de control."],
+ ["Triada epidemiológica","Modelo que explica un problema fitosanitario como la interacción entre agente causal, hospedante y ambiente."],
+ ["i-Tree","Conjunto de herramientas gratuitas del Servicio Forestal de EE.UU. para inventariar y valorar servicios ecosistémicos del arbolado urbano."],
+ ["Infraestructura verde","Red de espacios naturales y seminaturales que provee servicios ecosistémicos a la sociedad de forma planificada."],
+ ["Derribo direccional","Técnica de corte de un árbol que dirige su caída hacia una zona específica, solo en espacios abiertos y seguros."],
+ ["EPP","Equipo de Protección Personal, regulado en México por la NOM-017-STPS-2008."],
+ ["MIP","Manejo Integrado de Plagas: uso combinado de tácticas de control basado en umbrales económicos, ecológicos y sociales."],
+];
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+const modgrid = document.getElementById('modgrid');
+const coursesEl = document.getElementById('courses');
+
+MODULES.forEach(m=>{
+  const card = document.createElement('div');
+  card.className='modcard';
+  card.onclick=()=>openCourse(m.id);
+  card.innerHTML = `<div class="modnum">Módulo ${m.num}</div><h3>${m.title}</h3><p>${m.short}</p><div class="goto">Abrir módulo →</div>`;
+  modgrid.appendChild(card);
+
+  const course = document.createElement('div');
+  course.className='course';
+  course.id=m.id;
+  const sideLinks = m.sidebar.map((s,i)=>`<a href="#${m.id}-s${i}">${s}</a>`).join('');
+  const nextIdx = MODULES.findIndex(x=>x.id===m.id);
+  const prev = MODULES[nextIdx-1], next = MODULES[nextIdx+1];
+  course.innerHTML = `
+   <div class="course-shell">
+     <aside class="course-side">
+       <span class="back" onclick="showLanding()">← Volver al índice</span>
+       <h4>En este módulo</h4>
+       ${sideLinks}
+       <h4>Navegación</h4>
+       ${prev? `<a onclick="openCourse('${prev.id}')">← ${prev.num} ${prev.title}</a>`:''}
+       ${next? `<a onclick="openCourse('${next.id}')">${next.num} ${next.title} →</a>`:''}
+     </aside>
+     <main class="course-main">
+       ${m.html}
+       <p class="progress-note">Módulo ${m.num} de ${MODULES.length} · IMBIO</p>
+     </main>
+   </div>`;
+  coursesEl.appendChild(course);
+});
+
+const glossEl = document.getElementById('glossary-landing');
+GLOSSARY.forEach(([t,d])=>{
+  const div=document.createElement('div');
+  div.className='gterm';
+  div.innerHTML=`<b>${t}.</b> ${d}`;
+  glossEl.appendChild(div);
+});
+
+function showLanding(){
+  document.getElementById('landing').style.display='block';
+  document.querySelectorAll('.course').forEach(c=>c.classList.remove('active'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openCourse(id){
+  document.getElementById('landing').style.display='none';
+  document.querySelectorAll('.course').forEach(c=>c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+
+/* quiz logic */
+document.addEventListener('click', e=>{
+  if(e.target.classList.contains('qopt')){
+    const qitem = e.target.closest('.qitem');
+    const correct = qitem.dataset.answer;
+    qitem.querySelectorAll('.qopt').forEach(o=>{o.classList.remove('correct','wrong');});
+    if(e.target.dataset.i === correct){
+      e.target.classList.add('correct');
+    } else {
+      e.target.classList.add('wrong');
+      qitem.querySelector(`.qopt[data-i="${correct}"]`).classList.add('correct');
+    }
+    const quiz = qitem.closest('.quiz');
+    const total = quiz.querySelectorAll('.qitem').length;
+    const answered = quiz.querySelectorAll('.qitem .qopt.correct, .qitem .qopt.wrong').length;
+    if(answered>=total){
+      quiz.querySelector('.quiz-result').textContent = `Resultado: revisa las respuestas marcadas en verde.`;
+    }
+  }
+});
+</script>
+</body>
+</html>
